@@ -3,8 +3,48 @@
 @tailwind utilities;
 
 @layer base {
+  :root, .light {
+    --color-background: #F6F7F3;
+    --color-surface: #FFFFFF;
+    --color-surface-subtle: #EEF1EC;
+    --color-surface-container: #E7ECE7;
+    --color-surface-container-high: #DDE3DD;
+    --color-border-subtle: #DDE3DD;
+    --color-text-primary: #1D2923;
+    --color-text-secondary: #66736C;
+    --color-text-muted: #8B958F;
+    --color-primary: #4E6C5D;
+    --color-primary-container: #adceb9;
+    --color-secondary: #854935;
+    --color-secondary-container: #ffb59d;
+    --color-tertiary: #6e5d26;
+    --color-tertiary-container: #d8c68b;
+  }
+  
+  .dark {
+    --color-background: #0b0f0e;
+    --color-surface: #101413;
+    --color-surface-subtle: #1c201f;
+    --color-surface-container: #272b2a;
+    --color-surface-container-high: #323634;
+    --color-border-subtle: #424843;
+    --color-text-primary: #e0e3e1;
+    --color-text-secondary: #c2c8c2;
+    --color-text-muted: #8c928c;
+    --color-primary: #adceb9;
+    --color-primary-container: #264333;
+    --color-secondary: #ffb59d;
+    --color-secondary-container: #6e3825;
+    --color-tertiary: #d8c68b;
+    --color-tertiary-container: #483c0e;
+  }
+
   html, body { margin: 0; padding: 0; }
-  body { overscroll-behavior: none; }
+  body { 
+    overscroll-behavior: none; 
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
   main > :first-child { margin-top: 0 !important; }
   main > :last-child { margin-bottom: 0 !important; }
 }

@@ -14,5 +14,19 @@
   <body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      document.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('#theme-toggle');
+        if (toggleBtn) {
+          const html = document.documentElement;
+          const isDark = html.classList.contains('dark');
+          html.className = isDark ? 'light' : 'dark';
+          const icon = toggleBtn.querySelector('.material-symbols-outlined');
+          const text = toggleBtn.querySelector('span:not(.material-symbols-outlined)');
+          if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+          if (text) text.textContent = isDark ? 'Light' : 'Dark';
+        }
+      });
+    </script>
   </body>
 </html>
