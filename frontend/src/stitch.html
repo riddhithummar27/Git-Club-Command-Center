@@ -661,45 +661,78 @@
 </section>
 <!-- INTERACTIVE MODAL: CREATE NEW EVENT -->
 <div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md p-space-md" id="modal-event">
-<div class="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl p-space-lg flex flex-col space-y-space-md transform transition-all">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[24px]">event</span>
-<h3 class="font-title-md text-title-md text-on-surface font-bold">Create New Club Event</h3>
-</div>
-<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container transition-colors" onclick="toggleModal('modal-event')">
-<span class="material-symbols-outlined text-[20px]">close</span>
-</button>
-</div>
-<div class="space-y-space-sm">
-<div>
-<label class="block font-label-mono-sm text-label-mono-sm text-outline mb-1 uppercase">// EVENT_TITLE</label>
-<input class="w-full px-space-md py-space-sm rounded bg-surface-container text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. Open Source Hack Night" type="text"/>
-</div>
-<div class="grid grid-cols-2 gap-space-sm">
-<div>
-<label class="block font-label-mono-sm text-label-mono-sm text-outline mb-1 uppercase">// DATE</label>
-<input class="w-full px-space-md py-space-sm rounded bg-surface-container text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none focus:ring-1 focus:ring-primary-container" type="date" value="2024-10-25"/>
-</div>
-<div>
-<label class="block font-label-mono-sm text-label-mono-sm text-outline mb-1 uppercase">// MAX_SEATS</label>
-<input class="w-full px-space-md py-space-sm rounded bg-surface-container text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none focus:ring-1 focus:ring-primary-container" type="number" value="100"/>
-</div>
-</div>
-<div>
-<label class="block font-label-mono-sm text-label-mono-sm text-outline mb-1 uppercase">// DESCRIPTION &amp; PREREQUISITES</label>
-<textarea class="w-full px-space-md py-space-sm rounded bg-surface-container text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="Brief outline, workshop tracks, and prerequisites..." rows="3"></textarea>
-</div>
-</div>
-<div class="flex items-center justify-end gap-space-sm pt-space-xs">
-<button class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md text-body-md hover:bg-surface-container-high transition-colors" onclick="toggleModal('modal-event')">
-          Cancel
-        </button>
-<button class="px-space-md py-space-sm rounded bg-primary-container text-on-primary-container font-title-md text-body-md hover:brightness-110 shadow transition-all" onclick="toggleModal('modal-event'); triggerFeedback('Event created &amp; staged to main calendar!');">
-          Deploy Event Hook
-        </button>
-</div>
-</div>
+  <div class="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl p-space-lg flex flex-col space-y-space-md transform transition-all">
+    <div class="flex items-center justify-between">
+      <h2 class="font-headline-sm text-title-lg font-semibold flex items-center gap-2 text-on-surface">
+        <span class="material-symbols-outlined text-[#fd5832] text-[24px]">calendar_today</span> Create New Club Event
+      </h2>
+      <button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container transition-colors" onclick="toggleModal('modal-event')">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+    
+    <form class="space-y-space-md" onsubmit="event.preventDefault(); toggleModal('modal-event'); triggerFeedback('Event created & staged to main calendar!'); setTimeout(() => document.querySelector('a[data-path=events]').click(), 800);">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+        <div class="flex flex-col gap-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// EVENT_TITLE</label>
+          <input name="name" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Open Source Hack Night" required="" type="text">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// CATEGORY_TRACK</label>
+          <select name="category" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
+            <option>Workshop</option>
+            <option>Hackathon</option>
+            <option>Competition</option>
+            <option>Community Talk</option>
+            <option>Social Meetup</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+        <div class="flex flex-col gap-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// DATE</label>
+          <input name="date" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="datetime-local">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// MAX_SEATS</label>
+          <input name="capacity" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="number" value="100">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+        <div class="flex flex-col gap-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// REGISTRATION_LINK</label>
+          <input name="link" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://forms.gle/..." type="url">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// TARGET_AUDIENCE</label>
+          <select name="audience" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors">
+            <option>All Students (Beginner Friendly)</option>
+            <option>Intermediate (Some Experience)</option>
+            <option>Advanced (Domain Experts)</option>
+            <option>Core Team Only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// TEAM_MEMBERS_LEADS</label>
+        <input name="members" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Jay Shah, Anushka Patel" required="" type="text">
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// DESCRIPTION & PREREQUISITES</label>
+        <textarea name="description" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] min-h-[120px] transition-colors resize-y" placeholder="Brief outline, workshop tracks, and prerequisites... (e.g. Node.js installed)" required=""></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex items-center justify-end gap-space-sm pt-space-md">
+        <button class="px-space-md py-2.5 rounded bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-container-highest transition-colors cursor-pointer" onclick="toggleModal('modal-event')" type="button">Cancel</button>
+        <button class="px-space-md py-2.5 rounded bg-[#fd5832] text-white font-title-md text-body-md hover:brightness-110 transition-all cursor-pointer shadow-md" type="submit">Deploy Event Hook</button>
+      </div>
+    </form>
+  </div>
 </div>
 <!-- INTERACTIVE MODAL: COMMAND PALETTE (CMD + K) -->
 <div class="hidden fixed inset-0 z-50 flex items-start justify-center pt-24 bg-surface-container-lowest/80 backdrop-blur-md p-space-md" id="modal-cmd">
@@ -798,4 +831,17 @@
       }
     });
   </script>
-</div></div></main></div><div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]"><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all"><span class="material-symbols-outlined text-[18px]">add</span><span>Event</span></button><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span></button><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span></button><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span></button></div></body></html>...
+</div></div></main></div><div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
+  <a href="#" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
+  </a>
+  <a href="#" data-path="members" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span>
+  </a>
+  <a href="#" data-path="projects" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span>
+  </a>
+  <a href="#" data-path="announcements" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span>
+  </a>
+</div></body></html>...
