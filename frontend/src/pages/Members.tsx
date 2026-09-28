@@ -1,713 +1,689 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
-import { useState } from "react";
 export default function Members() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  useEffect(() => {
-    // You can add canvas scripts here if needed
-  }, []);
-  
   return (
     <>
-      
+<aside className="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-40 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div className="flex flex-col flex-1 overflow-y-auto"><div className="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="gitclub logo.png" className="h-8 w-auto object-contain" src="/gitclub-logo.png"/><div className="flex flex-col min-w-0"><span className="font-title-md text-title-md text-on-surface tracking-tight truncate">Git Club</span><span className="font-label-mono-sm text-label-mono-sm text-primary tracking-wide uppercase truncate">CHARUSAT HQ</span></div></div><div className="px-space-md py-space-sm"><div className="px-space-sm py-space-xs rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline flex items-center justify-between"><span>// BRANCH: main</span><span className="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span></div></div><nav className="flex-1 px-space-sm space-y-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-title-md"><a className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span className="material-symbols-outlined text-[20px]">terminal</span><span className="font-body-md text-body-md font-medium">Command Center</span></a><a className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="events" href="#"><span className="material-symbols-outlined text-[20px]">event</span><span className="font-body-md text-body-md font-medium">Events</span></a><a aria-current="page" className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-title-md" data-path="members" href="#"><span className="material-symbols-outlined text-[20px]">group</span><span className="font-body-md text-body-md font-medium">Members</span></a><a className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="projects" href="#"><span className="material-symbols-outlined text-[20px]">account_tree</span><span className="font-body-md text-body-md font-medium">Projects</span></a><a className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="announcements" href="#"><span className="material-symbols-outlined text-[20px]">campaign</span><span className="font-body-md text-body-md font-medium">Announcements</span></a><a className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics" href="#"><span className="material-symbols-outlined text-[20px]">insights</span><span className="font-body-md text-body-md font-medium">Analytics</span></a><div className="my-space-sm pt-space-xs"><div className="h-[1px] bg-surface-container-highest mx-space-xs"></div></div><a className="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="notifications" href="#"><div className="flex items-center gap-space-sm"><span className="material-symbols-outlined text-[20px]">notifications</span><span className="font-body-md text-body-md font-medium">Notifications</span></div><span className="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm">4</span></a><a className="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><span className="material-symbols-outlined text-[20px]">settings</span><span className="font-body-md text-body-md font-medium">Settings</span></a></nav></div><div className="p-space-sm bg-surface-container-lowest"><div className="p-space-sm rounded-lg bg-surface-container flex items-center justify-between"><div className="flex flex-col min-w-0"><span className="font-label-mono-sm text-label-mono-sm text-outline truncate">#GrowWith git</span><span className="font-body-sm text-body-sm text-on-surface font-semibold truncate">Build. Collab. Ship.</span></div><span className="material-symbols-outlined text-primary text-[18px]">commit</span></div></div></aside><div className="pl-64"><header className="fixed top-0 left-64 right-0 h-16 bg-surface/85 backdrop-blur-xl z-30 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div className="flex items-center gap-space-md"><div className="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline"><span className="text-on-surface-variant">charusat</span><span>/</span><span className="text-primary font-medium">git-club-ops</span></div><button className="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"><span className="material-symbols-outlined text-[16px]">search</span><span className="font-body-sm text-body-sm">Search or type command...</span><kbd className="px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">⌘K</kbd></button></div><div className="flex items-center gap-space-md"><div className="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant"><span className="material-symbols-outlined text-[16px] text-secondary">shield_person</span><select className="bg-transparent text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer"><option className="bg-surface-container-low text-on-surface" selected="">Role: Admin</option><option className="bg-surface-container-low text-on-surface">Role: Event Lead</option><option className="bg-surface-container-low text-on-surface">Role: Project Lead</option><option className="bg-surface-container-low text-on-surface">Role: Member</option></select></div><button className="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Theme toggle"><span className="material-symbols-outlined text-[20px]">dark_mode</span></button><button className="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Notifications"><span className="material-symbols-outlined text-[20px]">notifications</span><span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></button><div className="flex items-center gap-space-sm pl-space-xs"><div className="text-right hidden sm:block min-w-0"><div className="font-title-md text-body-sm text-on-surface font-semibold truncate leading-tight">Riddhi Thummar</div><div className="font-label-mono-sm text-label-mono-sm text-outline truncate leading-tight">Admin &amp; Tech Lead</div></div><img alt="Profile" className="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://lh3.googleusercontent.com/aida/AEtjO1UrVJz7fo8AVpiImVFIAHDJwXkDVlSXn93D0d3A5ZTuVhLgBX69N5xXk78QmOy3xKkOuntLtHYFrvIpP6XdRFW7R9CNwFcN0DtZPPqUfKP6kPA8Y8tWGgGwdy3KhGt8XLX7pX374qfC3qo8PjxzS5EvEIRwJoPI5wwvXZzQnmybI32lpOTU5zt6jXd-LJUvgLrCg-2v-NrHB3RcGO5OsvtVhyw8r4cpfSUPaVYpVV9Y8dSUSDf6ZH5b6xM"/></div></div></header><main className="relative pt-16 w-full min-h-screen pb-24 bg-background px-gutter"><div className="max-w-7xl mx-auto py-space-lg"><div className="flex flex-col w-full">
 
-<aside className="fixed left-0 top-0 h-full w-64 bg-surface z-50 flex flex-col justify-between border-r border-border-subtle select-none">
-<div className="flex flex-col">
+<section className="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div className="space-y-space-xs max-w-2xl">
+<div className="flex items-center gap-space-sm font-label-mono-sm text-label-mono-sm text-primary">
+<span className="inline-block w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span>// DIRECTORY :: CHARUSAT_NODE_SYNC</span>
+</div>
+<h1 className="font-headline-xl text-headline-xl text-on-surface tracking-tight uppercase">
+        The People Behind <span className="text-primary-container font-black">The Code</span>
+</h1>
+<p className="font-body-lg text-body-lg text-on-surface-variant">
+        Find the right people to learn, build, and collaborate with across every commit and milestone.
+      </p>
+</div>
+<div className="flex flex-wrap items-center gap-space-md">
 
-<div className="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
-<div className="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-primary border border-border-subtle">
-<span className="material-symbols-outlined text-[19px]">terminal</span>
+<div className="flex items-center gap-space-md px-space-md py-space-sm rounded-xl bg-surface-container-low shadow-sm">
+<div className="px-space-xs">
+<span className="font-label-mono-sm text-label-mono-sm text-outline block uppercase">Total Base</span>
+<span className="font-headline-sm text-headline-sm text-on-surface font-bold">248</span>
 </div>
-<div className="flex flex-col">
-<span className="font-headline-sm text-base leading-tight font-bold tracking-tight text-text-primary uppercase">GIT CLUB</span>
-<span className="font-label-caps text-[10px] tracking-widest text-text-muted uppercase">COMMAND CENTER</span>
-</div>
-</div>
-
-<div className="px-5 pt-4 pb-1">
-<div className="font-label-caps text-[11px] uppercase text-text-muted tracking-wider">Workspace</div>
-</div>
-<nav className="px-3 flex flex-col gap-1">
-<Link className="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-colors rounded-lg" data-path="dashboard" to="/">
-<span className="material-symbols-outlined text-[20px]">hub</span>
-<span className="font-label-ui text-sm font-medium">Command Center</span>
-</Link>
-<Link className="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-colors rounded-lg" data-path="events" to="/events">
-<span className="material-symbols-outlined text-[20px]">event_available</span>
-<span className="font-label-ui text-sm font-medium">Events</span>
-</Link>
-<Link aria-current="page" className="flex items-center gap-3 px-3 py-2 transition-colors rounded-lg bg-primary-container/70 text-primary border-l-[3px] border-primary font-semibold" data-path="members" to="/members">
-<span className="material-symbols-outlined text-[20px]">group</span>
-<span className="font-label-ui text-sm">Members</span>
-</Link>
-<Link className="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-colors rounded-lg" data-path="projects" to="/projects">
-<span className="material-symbols-outlined text-[20px]">deployed_code</span>
-<span className="font-label-ui text-sm font-medium">Projects</span>
-</Link>
-<Link className="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-colors rounded-lg" data-path="announcements" to="/announcements">
-<span className="material-symbols-outlined text-[20px]">campaign</span>
-<span className="font-label-ui text-sm font-medium">Announcements</span>
-</Link>
-</nav>
-<div className="my-3 mx-4 border-t border-border-subtle"></div>
-
-<div className="px-5 pb-1">
-<div className="font-label-caps text-[11px] uppercase text-text-muted tracking-wider">System</div>
-</div>
-<nav className="px-3 flex flex-col gap-1">
-<Link className="flex items-center gap-3 px-3 py-2 text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-colors rounded-lg" data-path="settings" to="/settings">
-<span className="material-symbols-outlined text-[20px]">settings</span>
-<span className="font-label-ui text-sm font-medium">Settings</span>
-</Link>
-</nav>
-</div>
-
-<div className="p-4 border-t border-border-subtle bg-surface-subtle/50">
-<div className="flex items-center justify-between gap-2">
-<div className="flex items-center gap-2">
-<div className="w-7 h-7 rounded-lg bg-surface border border-border-subtle flex items-center justify-center text-primary shadow-xs">
-<span className="material-symbols-outlined text-[15px]">account_balance</span>
-</div>
-<div className="flex flex-col">
-<span className="font-label-code text-xs uppercase font-semibold text-text-primary">GIT CLUB</span>
-<span className="font-label-caps text-[10px] text-text-muted">CHARUSAT UNIT</span>
-</div>
-</div>
-<div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-white border border-border-subtle shadow-xs">
-<span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-<span className="font-label-caps text-[10px] font-semibold text-primary uppercase">ACTIVE</span>
-</div>
-</div>
-</div>
-</aside>
-
-<div className="pl-64">
-
-<header className="fixed top-0 left-64 right-0 h-16 bg-surface/95 backdrop-blur-md z-40 border-b border-border-subtle flex items-center justify-between px-8">
-<div className="flex items-center gap-2 text-xs font-label-code">
-<span className="text-text-muted uppercase tracking-wider font-medium">COMMAND CENTER</span>
-<span className="text-border-subtle font-mono">//</span>
-<span className="text-primary font-semibold uppercase tracking-wider">MEMBERS DIRECTORY</span>
-</div>
-<div className="flex items-center gap-3">
-
-<div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-subtle border border-border-subtle text-text-secondary text-sm">
-<span className="material-symbols-outlined text-[18px] text-text-muted">search</span>
-<span className="font-label-ui text-xs text-text-muted pr-4">Search repository...</span>
-<kbd className="px-1.5 py-0.5 rounded bg-surface border border-border-subtle font-label-code text-[10px] text-text-secondary shadow-xs">⌘K</kbd>
-</div>
-<button aria-label="Notifications" className="relative w-9 h-9 rounded-lg bg-surface border border-border-subtle flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors shadow-xs">
-<span className="material-symbols-outlined text-[19px]">notifications</span>
-<span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-white"></span>
-</button>
-<div className="flex items-center gap-3 pl-3 border-l border-border-subtle">
-<div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-medium text-xs shadow-xs">
-            RT
-          </div>
-<div className="flex flex-col text-left">
+<div className="w-px h-8 bg-surface-container-highest"></div>
+<div className="px-space-xs">
+<span className="font-label-mono-sm text-label-mono-sm text-outline block uppercase">Mtd Joined</span>
 <div className="flex items-center gap-1">
-<span className="font-label-ui text-sm text-text-primary font-semibold leading-tight">Riddhi</span>
-<span className="material-symbols-outlined text-text-muted text-[14px]">arrow_drop_down</span>
-</div>
-<span className="font-label-caps text-[10px] text-primary font-semibold uppercase">Admin</span>
+<span className="font-headline-sm text-headline-sm text-tertiary font-bold">+12</span>
+<span className="material-symbols-outlined text-tertiary text-sm">trending_up</span>
 </div>
 </div>
+<div className="w-px h-8 bg-surface-container-highest"></div>
+<div className="px-space-xs">
+<span className="font-label-mono-sm text-label-mono-sm text-outline block uppercase">Active Sync</span>
+<span className="font-headline-sm text-headline-sm text-secondary font-bold">84</span>
 </div>
-</header>
-
-<main className="w-full pt-16 bg-background min-h-screen">
-<div className="max-w-[1440px] mx-auto p-8">
-<div className="flex flex-col w-full">
-
-<section className="relative w-full rounded-2xl bg-surface border border-border-subtle p-8 mb-6 overflow-hidden shadow-card">
-<div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-primary/10 via-primary/5 to-transparent pointer-events-none"></div>
-<div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6">
-<div className="space-y-2 max-w-2xl">
-<div className="flex items-center gap-2">
-<span className="px-2.5 py-0.5 rounded-full bg-primary-container text-primary font-label-caps text-[11px] font-semibold uppercase tracking-wider">Git Node // Roster v2.4</span>
-<span className="text-text-muted text-xs font-label-caps uppercase tracking-wider">Academic Session 2024-25</span>
-</div>
-<h1 className="font-headline-lg text-3xl font-bold text-text-primary tracking-tight uppercase">MEMBERS DIRECTORY</h1>
-<p className="font-body-md text-text-secondary text-sm">Discover and manage the Git Club community, core engineering team, research leads, and emerging contributors.</p>
 </div>
 
-<div className="flex flex-wrap items-center gap-2.5">
-<button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle text-text-primary transition-colors font-label-ui text-sm font-medium shadow-card" id="exportBtn">
-<span className="material-symbols-outlined text-[18px] text-text-secondary">file_download</span>
-<span>Export (.CSV)</span>
-</button>
-<button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle text-text-primary transition-colors font-label-ui text-sm font-medium shadow-card">
-<span className="material-symbols-outlined text-[18px] text-text-secondary">tune</span>
-<span>Batch Actions</span>
-</button>
-<button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#4E6C5D] font-label-ui text-sm font-medium shadow-sm transition-all">
-<span className="material-symbols-outlined text-[18px]">person_add</span>
+<button className="flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-primary-container text-on-primary-container font-title-md text-body-md font-semibold hover:brightness-110 shadow-lg transition-all active:scale-95" onClick={() => { document.getElementById('add-member-modal').classList.remove('hidden') }}>
+<span className="material-symbols-outlined text-[20px]">person_add</span>
 <span>+ Add Member</span>
 </button>
 </div>
-</div>
-
-<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-border-subtle">
-<div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle/80 flex items-center justify-between">
-<div>
-<div className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider">Total Active</div>
-<div className="font-headline-md text-2xl font-bold text-text-primary mt-0.5">248</div>
-<div className="font-label-caps text-[11px] text-primary font-semibold mt-1">● 98.4% retention</div>
-</div>
-<div className="w-10 h-10 rounded-lg bg-white border border-border-subtle flex items-center justify-center text-primary shadow-xs">
-<span className="material-symbols-outlined text-[20px]">diversity_3</span>
-</div>
-</div>
-<div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle/80 flex items-center justify-between">
-<div>
-<div className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider">Joined This Month</div>
-<div className="font-headline-md text-2xl font-bold text-secondary mt-0.5">+24</div>
-<div className="font-label-caps text-[11px] text-secondary font-semibold mt-1">↑ +14% vs last term</div>
-</div>
-<div className="w-10 h-10 rounded-lg bg-white border border-border-subtle flex items-center justify-center text-secondary shadow-xs">
-<span className="material-symbols-outlined text-[20px]">rocket_launch</span>
-</div>
-</div>
-<div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle/80 flex items-center justify-between">
-<div>
-<div className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider">Core Maintainers</div>
-<div className="font-headline-md text-2xl font-bold text-[#8C7A3E] mt-0.5">18</div>
-<div className="font-label-caps text-[11px] text-text-secondary mt-1">Full commit access</div>
-</div>
-<div className="w-10 h-10 rounded-lg bg-white border border-border-subtle flex items-center justify-center text-[#8C7A3E] shadow-xs">
-<span className="material-symbols-outlined text-[20px]">shield_person</span>
-</div>
-</div>
-<div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle/80 flex items-center justify-between">
-<div>
-<div className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider">Pending Review</div>
-<div className="font-headline-md text-2xl font-bold text-text-primary mt-0.5">08</div>
-<div className="font-label-caps text-[11px] text-text-muted mt-1">Requires review &amp; sign-off</div>
-</div>
-<div className="w-10 h-10 rounded-lg bg-white border border-border-subtle flex items-center justify-center text-text-muted shadow-xs">
-<span className="material-symbols-outlined text-[20px]">pending_actions</span>
-</div>
-</div>
-</div>
 </section>
 
-<section className="w-full bg-surface rounded-2xl border border-border-subtle p-5 mb-6 shadow-card space-y-4">
+<section className="mb-space-xl">
+<div className="flex items-center justify-between mb-space-md">
+<div className="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline uppercase tracking-wider">
+<span className="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span>// 01. CORE LEADERSHIP SPOTLIGHT</span>
+</div>
+<span className="font-label-mono-sm text-label-mono-sm text-outline-variant">EST. 2024 • DEP_GIT_EXEC</span>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-space-md">
 
-<div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-<div className="relative flex-1">
-<span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
-<input className="w-full pl-11 pr-4 py-2.5 rounded-xl bg-surface-subtle border border-border-subtle text-text-primary placeholder:text-text-muted text-sm font-body-md focus:outline-none focus:border-primary focus:bg-white transition-all shadow-xs" id="memberSearch" placeholder="Search by name, skill, branch, or USN (e.g. 22CE084)..." type="text" />
-</div>
-<div className="flex items-center gap-2 self-end md:self-auto font-label-code text-xs text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-primary">filter_alt</span>
-<span>Showing <strong className="text-text-primary font-semibold" id="visibleCount">6</strong> of 248 members</span>
-</div>
-</div>
-
-<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-1">
-
-<div className="flex flex-col gap-1.5">
-<label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Academic Year</label>
-<div className="flex items-center gap-1 p-1 bg-surface-subtle border border-border-subtle rounded-xl font-label-code text-xs">
-<button className="filter-pill filter-year active flex-1 py-1.5 rounded-lg bg-white text-primary font-semibold border border-border-subtle shadow-xs transition-all" data-year="all">All</button>
-<button className="filter-pill filter-year flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-year="1st">1st</button>
-<button className="filter-pill filter-year flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-year="2nd">2nd</button>
-<button className="filter-pill filter-year flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-year="3rd">3rd</button>
-<button className="filter-pill filter-year flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-year="4th">4th</button>
-</div>
-</div>
-
-<div className="flex flex-col gap-1.5">
-<label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Branch</label>
-<div className="flex items-center gap-1 p-1 bg-surface-subtle border border-border-subtle rounded-xl font-label-code text-xs">
-<button className="filter-pill filter-branch active flex-1 py-1.5 rounded-lg bg-white text-primary font-semibold border border-border-subtle shadow-xs transition-all" data-branch="all">All</button>
-<button className="filter-pill filter-branch flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-branch="CSE">CSE</button>
-<button className="filter-pill filter-branch flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-branch="IT">IT</button>
-<button className="filter-pill filter-branch flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-branch="CE">CE</button>
-</div>
-</div>
-
-<div className="flex flex-col gap-1.5">
-<label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Domain</label>
+<div className="relative group rounded-xl bg-surface-container-low p-space-lg overflow-hidden shadow-md transition-all hover:bg-surface-container">
+<div className="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-primary-container/10 blur-2xl group-hover:bg-primary-container/20 transition-all"></div>
+<div className="flex items-start justify-between gap-space-md mb-space-md">
 <div className="relative">
-<select className="w-full px-3.5 py-2 rounded-xl bg-surface-subtle border border-border-subtle text-text-primary font-label-ui text-xs focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer shadow-xs" id="domainSelect">
-<option value="all">All Domains (Engineering &amp; Product)</option>
-<option value="Web Development">Web Development &amp; Architecture</option>
-<option value="AI/ML">AI/ML &amp; Vision</option>
-<option value="Cloud/DevOps">Cloud &amp; DevOps</option>
-<option value="Mobile">Mobile &amp; Flutter</option>
-<option value="UI/UX">UI/UX &amp; Product Design</option>
-<option value="Security">App Security &amp; Infrastructure</option>
-</select>
-<span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none text-[18px]">expand_more</span>
-</div>
-</div>
-
-<div className="flex flex-col gap-1.5">
-<label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Membership Role</label>
-<div className="relative">
-<select className="w-full px-3.5 py-2 rounded-xl bg-surface-subtle border border-border-subtle text-text-primary font-label-ui text-xs focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer shadow-xs" id="roleSelect">
-<option value="all">All Roles</option>
-<option value="Admin">Admin</option>
-<option value="Core Team">Core Team</option>
-<option value="Event Lead">Event Lead</option>
-<option value="UI/UX Lead">UI/UX Lead</option>
-<option value="Security Lead">Security Lead</option>
-<option value="Member">Member / Contributor</option>
-</select>
-<span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none text-[18px]">expand_more</span>
-</div>
-</div>
-</div>
-</section>
-
-<div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
-
-<div className="xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4" id="cardsGrid">
-
-<article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card ring-1 ring-primary/30" data-branch="CSE" data-card="riddhi" data-domain="Web Development" data-role="Admin" data-year="2nd">
-<div>
-<div className="flex items-start justify-between gap-3 mb-4">
-<div className="flex items-center gap-3">
-<div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-subtle border border-border-subtle shrink-0">
-<img className="w-full h-full object-cover" data-alt="Portrait photo of a young South Asian female software engineer with glasses, calm ambient studio lighting in dark botanical tones, professional tech headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_c38Yl9_7cNMP2nNpOa5quMdJMIESIz63Z-F0n9MyYx7DYNcIdveu2eL8L5lVCaRTjbHRGA0edlViK0GRuT4goTPRXAdAD-lSJxDN6xobFuSo91RpyAe-EDY4diRPqeoN5UwpqII4ttITPmjd6LU2Bfk0G1TkvPfRtJNJfBRBvjNHjO2abZWzEZclStU9uZVUh8zJub0cqsc1yvdZHQ-sqqTvccyvFuVyRPeXybf8y50C32TKcBABJg" />
-</div>
-<div>
-<div className="flex items-center gap-1.5">
-<h3 className="font-headline-sm text-base font-bold text-text-primary group-hover:text-primary transition-colors">Riddhi Thummar</h3>
-<span className="material-symbols-outlined text-[16px] text-primary" title="Verified Maintainer">verified</span>
-</div>
-<div className="font-label-code text-xs text-text-muted">USN: 22CE084</div>
-</div>
-</div>
-<span className="px-2.5 py-0.5 rounded-full bg-primary-container text-primary font-label-caps text-[10px] font-semibold uppercase tracking-wider">Admin</span>
-</div>
-<div className="space-y-2 mb-5">
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">school</span>
-<span>2nd Year • Computer Science &amp; Eng.</span>
-</div>
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-primary">code_blocks</span>
-<span className="text-text-primary font-medium">Web Dev &amp; Distributed Systems</span>
-</div>
-
-<div className="flex flex-wrap gap-1.5 pt-1.5">
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">React</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Node.js</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">UI/UX</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">PostgreSQL</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Docker</span>
-</div>
-</div>
-</div>
-
-<div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
-<div className="flex items-center gap-4 font-label-code text-xs">
-<span className="flex items-center gap-1.5 text-text-primary font-medium">
-<span className="material-symbols-outlined text-[16px] text-primary">commit</span>
-<strong>142</strong> commits
-                    </span>
-<span className="flex items-center gap-1.5 text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">terminal</span>
-<strong>4</strong> projects
-                    </span>
-</div>
-<div className="flex items-center gap-1.5">
-<Link className="w-7 h-7 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors shadow-xs" to="https://github.com" target="_blank">
-<span className="material-symbols-outlined text-[15px]">code</span>
-</Link>
-<button className="inspect-btn ml-1 px-3 py-1 rounded-lg bg-primary-container text-primary hover:bg-primary hover:text-white font-label-caps text-[11px] font-semibold transition-all">Inspect →</button>
-</div>
-</div>
-</article>
-
-<article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="IT" data-card="arjun" data-domain="AI/ML" data-role="Core Team" data-year="3rd">
-<div>
-<div className="flex items-start justify-between gap-3 mb-4">
-<div className="flex items-center gap-3">
-<div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-subtle border border-border-subtle shrink-0">
-<img className="w-full h-full object-cover" data-alt="Close-up portrait of an Indian male university computer science student with headphones around neck, dark ambient room with warm clay and sage rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqEMiZgQ4rVrkXbB8mOvdp9HDgdNWnAI9f5F8PY76PmFCsVwvjtASAUkRF1CIE34fb5JMTJgQOuf0LaprN89t6Ugp2C7WLDO9nPXHhECCXVHXKMsjRl_3RbI1--prgP9BMqm6PgS_kP7JiGvgfdaGNHgucWRy3ZGaZo1_eLQ_tAnfLUF4pmOdYV3YmQztPugKpClQs1Po88Vl3kZW7CGoJ93q7GHQDnPkQuB8r9SVIdtGubwX5suSEPQ" />
-</div>
-<div>
-<div className="flex items-center gap-1.5">
-<h3 className="font-headline-sm text-base font-bold text-text-primary group-hover:text-primary transition-colors">Arjun Mehta</h3>
-<span className="material-symbols-outlined text-[16px] text-secondary" title="AI Lead">psychology</span>
-</div>
-<div className="font-label-code text-xs text-text-muted">USN: 21IT045</div>
-</div>
-</div>
-<span className="px-2.5 py-0.5 rounded-full bg-secondary-container text-secondary font-label-caps text-[10px] font-semibold uppercase tracking-wider">AI Lead</span>
-</div>
-<div className="space-y-2 mb-5">
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">school</span>
-<span>3rd Year • Information Technology</span>
-</div>
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-secondary">memory</span>
-<span className="text-text-primary font-medium">AI/ML &amp; Computer Vision Labs</span>
-</div>
-<div className="flex flex-wrap gap-1.5 pt-1.5">
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">PyTorch</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Python</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Fastify</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">OpenCV</span>
-</div>
-</div>
-</div>
-<div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
-<div className="flex items-center gap-4 font-label-code text-xs">
-<span className="flex items-center gap-1.5 text-text-primary font-medium">
-<span className="material-symbols-outlined text-[16px] text-secondary">commit</span>
-<strong>89</strong> commits
-                    </span>
-<span className="flex items-center gap-1.5 text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">co_present</span>
-<strong>2</strong> workshops
-                    </span>
-</div>
-<div className="flex items-center gap-1.5">
-<Link className="w-7 h-7 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors shadow-xs" to="https://github.com" target="_blank">
-<span className="material-symbols-outlined text-[15px]">code</span>
-</Link>
-<button className="inspect-btn ml-1 px-3 py-1 rounded-lg bg-secondary-container text-secondary hover:bg-secondary hover:text-white font-label-caps text-[11px] font-semibold transition-all">Inspect →</button>
-</div>
-</div>
-</article>
-
-<article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="CE" data-card="priya" data-domain="Cloud/DevOps" data-role="Event Lead" data-year="2nd">
-<div>
-<div className="flex items-start justify-between gap-3 mb-4">
-<div className="flex items-center gap-3">
-<div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-subtle border border-border-subtle shrink-0">
-<img className="w-full h-full object-cover" data-alt="Portrait of an Indian woman developer speaking in a technical conference breakout session, low key subtle background with green botanical tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQKp7bX2TufLRcxe3kDIozwMrPYRv8Q01BwvQUoj32n_fKH9CdG0uzg52BdmqApbTxvLLcmcgBNvqGEKuKKMXhLlJD52rl8N70i8mv_uxgSonIov7MYutnWvvAPlJ4vj1JnrOA7HYg-92arwxtzCSOn9nQhTTn-Z2JLdxM0x2kvgeTgHaP4Jqj4fHnu_uVkyHkDAUzHFhiSr1-pnXyll9SO3xidcu3gOwcK0uHYMie4NZ6REPnUTvefA" />
-</div>
-<div>
-<div className="flex items-center gap-1.5">
-<h3 className="font-headline-sm text-base font-bold text-text-primary group-hover:text-primary transition-colors">Priya Patel</h3>
-<span className="material-symbols-outlined text-[16px] text-[#8C7A3E]" title="Event Operations">event_seat</span>
-</div>
-<div className="font-label-code text-xs text-text-muted">USN: 22CE112</div>
-</div>
-</div>
-<span className="px-2.5 py-0.5 rounded-full bg-[#FAF3DE] text-[#8C7A3E] font-label-caps text-[10px] font-semibold uppercase tracking-wider">Event Lead</span>
-</div>
-<div className="space-y-2 mb-5">
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">school</span>
-<span>2nd Year • Computer Engineering</span>
-</div>
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-primary">cloud_sync</span>
-<span className="text-text-primary font-medium">Cloud &amp; Automated Infrastructure</span>
-</div>
-<div className="flex flex-wrap gap-1.5 pt-1.5">
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Kubernetes</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">AWS</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Go</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">CI/CD</span>
-</div>
-</div>
-</div>
-<div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
-<div className="flex items-center gap-4 font-label-code text-xs">
-<span className="flex items-center gap-1.5 text-text-primary font-medium">
-<span className="material-symbols-outlined text-[16px] text-primary">commit</span>
-<strong>64</strong> commits
-                    </span>
-<span className="flex items-center gap-1.5 text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">account_tree</span>
-<strong>3</strong> pipelines
-                    </span>
-</div>
-<div className="flex items-center gap-1.5">
-<Link className="w-7 h-7 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors shadow-xs" to="https://github.com" target="_blank">
-<span className="material-symbols-outlined text-[15px]">code</span>
-</Link>
-<button className="inspect-btn ml-1 px-3 py-1 rounded-lg bg-[#FAF3DE] text-[#8C7A3E] hover:bg-[#8C7A3E] hover:text-white font-label-caps text-[11px] font-semibold transition-all">Inspect →</button>
-</div>
-</div>
-</article>
-
-<article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="CSE" data-card="dev" data-domain="Mobile" data-role="Member" data-year="1st">
-<div>
-<div className="flex items-start justify-between gap-3 mb-4">
-<div className="flex items-center gap-3">
-<div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-subtle border border-border-subtle shrink-0 flex items-center justify-center text-primary font-headline-sm font-bold">
-                        DS
-                      </div>
-<div>
-<div className="flex items-center gap-1.5">
-<h3 className="font-headline-sm text-base font-bold text-text-primary group-hover:text-primary transition-colors">Dev Shah</h3>
-<span className="material-symbols-outlined text-[16px] text-text-muted">flutter</span>
-</div>
-<div className="font-label-code text-xs text-text-muted">USN: 23CS019</div>
-</div>
-</div>
-<span className="px-2.5 py-0.5 rounded-full bg-surface-subtle text-text-secondary border border-border-subtle font-label-caps text-[10px] font-semibold uppercase tracking-wider">Contributor</span>
-</div>
-<div className="space-y-2 mb-5">
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">school</span>
-<span>1st Year • Computer Science &amp; Eng.</span>
-</div>
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-primary">phone_android</span>
-<span className="text-text-primary font-medium">Cross-platform Mobile Development</span>
-</div>
-<div className="flex flex-wrap gap-1.5 pt-1.5">
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Flutter</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Dart</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Firebase</span>
-</div>
-</div>
-</div>
-<div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
-<div className="flex items-center gap-4 font-label-code text-xs">
-<span className="flex items-center gap-1.5 text-text-primary font-medium">
-<span className="material-symbols-outlined text-[16px] text-primary">commit</span>
-<strong>31</strong> commits
-                    </span>
-<span className="flex items-center gap-1.5 text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">deployed_code</span>
-<strong>1</strong> project
-                    </span>
-</div>
-<div className="flex items-center gap-1.5">
-<Link className="w-7 h-7 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors shadow-xs" to="https://github.com" target="_blank">
-<span className="material-symbols-outlined text-[15px]">code</span>
-</Link>
-<button className="inspect-btn ml-1 px-3 py-1 rounded-lg bg-surface-subtle hover:bg-primary hover:text-white border border-border-subtle text-text-secondary font-label-caps text-[11px] font-semibold transition-all">Inspect →</button>
-</div>
-</div>
-</article>
-
-<article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="CSE" data-card="ananya" data-domain="UI/UX" data-role="UI/UX Lead" data-year="3rd">
-<div>
-<div className="flex items-start justify-between gap-3 mb-4">
-<div className="flex items-center gap-3">
-<div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-subtle border border-border-subtle shrink-0">
-<img className="w-full h-full object-cover" data-alt="Portrait of creative design technologist woman working on modern laptop, minimalist dark environment, soft clay and amber lighting accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjRuYSjBmpe6gzoPOC62TqHnKxlCX-xHXX8kMGTtfygti9OnMsfpgvjBvg5pWsQx6CeUqYkCJeIBcZoVZcU2g3URVzVoGmnRaQ-54jQ2n4gJ2xsQ3yfoSHhQx3wWfP0c-CZ48OpNNmwYHbSw8EcXuilF8xE9Z2lLQnHVy6_MnebgYmtRPPZKJUrfGKidMO04MB5O3caE7jfMc3y7qy76-jINyjEs74f5JghbV3sbYTqn8SnxeDsEaP9Q" />
-</div>
-<div>
-<div className="flex items-center gap-1.5">
-<h3 className="font-headline-sm text-base font-bold text-text-primary group-hover:text-primary transition-colors">Ananya Joshi</h3>
-<span className="material-symbols-outlined text-[16px] text-secondary">palette</span>
-</div>
-<div className="font-label-code text-xs text-text-muted">USN: 21CS092</div>
-</div>
-</div>
-<span className="px-2.5 py-0.5 rounded-full bg-secondary-container text-secondary font-label-caps text-[10px] font-semibold uppercase tracking-wider">UI/UX Lead</span>
-</div>
-<div className="space-y-2 mb-5">
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">school</span>
-<span>3rd Year • Computer Science &amp; Eng.</span>
-</div>
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-secondary">design_services</span>
-<span className="text-text-primary font-medium">Design Systems &amp; HCI</span>
-</div>
-<div className="flex flex-wrap gap-1.5 pt-1.5">
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Figma</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Tailwind</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Design Tokens</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">A11y</span>
-</div>
-</div>
-</div>
-<div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
-<div className="flex items-center gap-4 font-label-code text-xs">
-<span className="flex items-center gap-1.5 text-text-primary font-medium">
-<span className="material-symbols-outlined text-[16px] text-secondary">brush</span>
-<strong>52</strong> tokens
-                    </span>
-<span className="flex items-center gap-1.5 text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">layers</span>
-<strong>3</strong> systems
-                    </span>
-</div>
-<div className="flex items-center gap-1.5">
-<Link className="w-7 h-7 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors shadow-xs" to="https://github.com" target="_blank">
-<span className="material-symbols-outlined text-[15px]">code</span>
-</Link>
-<button className="inspect-btn ml-1 px-3 py-1 rounded-lg bg-secondary-container text-secondary hover:bg-secondary hover:text-white font-label-caps text-[11px] font-semibold transition-all">Inspect →</button>
-</div>
-</div>
-</article>
-
-<article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="IT" data-card="kabir" data-domain="Security" data-role="Security Lead" data-year="4th">
-<div>
-<div className="flex items-start justify-between gap-3 mb-4">
-<div className="flex items-center gap-3">
-<div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-subtle border border-border-subtle shrink-0 flex items-center justify-center text-primary font-headline-sm font-bold">
-                        KV
-                      </div>
-<div>
-<div className="flex items-center gap-1.5">
-<h3 className="font-headline-sm text-base font-bold text-text-primary group-hover:text-primary transition-colors">Kabir Varma</h3>
-<span className="material-symbols-outlined text-[16px] text-[#8C7A3E]">security</span>
-</div>
-<div className="font-label-code text-xs text-text-muted">USN: 20IT014</div>
-</div>
-</div>
-<span className="px-2.5 py-0.5 rounded-full bg-[#FAF3DE] text-[#8C7A3E] font-label-caps text-[10px] font-semibold uppercase tracking-wider">Security Lead</span>
-</div>
-<div className="space-y-2 mb-5">
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">school</span>
-<span>4th Year • Information Technology</span>
-</div>
-<div className="flex items-center gap-2 text-xs font-body-sm text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-[#8C7A3E]">lock</span>
-<span className="text-text-primary font-medium">Application Security &amp; Cryptography</span>
-</div>
-<div className="flex flex-wrap gap-1.5 pt-1.5">
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Rust</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Crypto</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Linux</span>
-<span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Zero Trust</span>
-</div>
-</div>
-</div>
-<div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
-<div className="flex items-center gap-4 font-label-code text-xs">
-<span className="flex items-center gap-1.5 text-text-primary font-medium">
-<span className="material-symbols-outlined text-[16px] text-primary">commit</span>
-<strong>104</strong> commits
-                    </span>
-<span className="flex items-center gap-1.5 text-text-secondary">
-<span className="material-symbols-outlined text-[16px] text-text-muted">bug_report</span>
-<strong>14</strong> audits
-                    </span>
-</div>
-<div className="flex items-center gap-1.5">
-<Link className="w-7 h-7 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors shadow-xs" to="https://github.com" target="_blank">
-<span className="material-symbols-outlined text-[15px]">code</span>
-</Link>
-<button className="inspect-btn ml-1 px-3 py-1 rounded-lg bg-[#FAF3DE] text-[#8C7A3E] hover:bg-[#8C7A3E] hover:text-white font-label-caps text-[11px] font-semibold transition-all">Inspect →</button>
-</div>
-</div>
-</article>
-</div>
-
-<aside className="xl:col-span-4 sticky top-20 flex flex-col rounded-2xl bg-surface border border-border-subtle p-6 shadow-card space-y-5" id="inspectPanel">
-
-<div className="flex items-center justify-between pb-3 border-b border-border-subtle">
-<div className="flex items-center gap-2">
-<span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-<span className="font-label-caps text-xs uppercase tracking-wider text-text-secondary font-semibold">Telemetry Inspector</span>
-</div>
-<span className="font-label-code text-[11px] text-text-secondary bg-surface-subtle border border-border-subtle px-2 py-0.5 rounded-md font-semibold">ID: #0084</span>
-</div>
-
-<div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle space-y-4">
-<div className="flex items-center gap-3">
-<div className="w-14 h-14 rounded-xl overflow-hidden bg-white border border-border-subtle shrink-0 shadow-xs">
-<img className="w-full h-full object-cover" data-alt="Close-up developer avatar of Riddhi Thummar with calm focused posture in dark tech setting" id="inspectImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL6nJ3isrtYvbGs2uyyP5qMzDTaLgk9C_WZ_IaTjt1v4eZbd-nuU7gUzW1IQELn4K_nXm8tOVRV6YrIumAh5ZAelawif622klpTxspwKuVGXVYSVKd8Dbw2WRNMA5ePKHz0EaZPTCljnU2bo4kUNg5v2_cSza4tzkVe1uTcjg9D3Up7yU1eHfWXwcdMl9OWVM-El3lQudG6cbNQ3Q2CmpqM7e1bEs7xBPUePijbl8su1G3X9tjhTipeQ" />
-</div>
-<div className="min-w-0">
-<h4 className="font-headline-sm text-base font-bold text-text-primary truncate" id="inspectName">Riddhi Thummar</h4>
-<div className="font-label-ui text-xs text-primary font-semibold" id="inspectRole">Admin &amp; Tech Lead</div>
-<div className="font-label-code text-[11px] text-text-muted truncate" id="inspectSub">USN: 22CE084 • 2nd Year CSE</div>
-</div>
-</div>
-<div className="grid grid-cols-3 gap-2 text-center font-label-code">
-<div className="p-2.5 rounded-lg bg-white border border-border-subtle shadow-xs">
-<div className="text-[10px] text-text-muted uppercase">COMMITS</div>
-<div className="text-sm font-bold text-text-primary" id="inspectCommits">142</div>
-</div>
-<div className="p-2.5 rounded-lg bg-white border border-border-subtle shadow-xs">
-<div className="text-[10px] text-text-muted uppercase">PRS MERGED</div>
-<div className="text-sm font-bold text-primary" id="inspectPRs">38</div>
-</div>
-<div className="p-2.5 rounded-lg bg-white border border-border-subtle shadow-xs">
-<div className="text-[10px] text-text-muted uppercase">REPOS</div>
-<div className="text-sm font-bold text-secondary" id="inspectRepos">7</div>
-</div>
-</div>
-</div>
-
-<div className="space-y-2">
-<div className="flex items-center justify-between">
-<span className="font-label-caps text-xs text-text-secondary uppercase tracking-wider font-semibold">Recent Activity Log</span>
-<span className="font-label-code text-xs text-primary font-semibold cursor-pointer hover:underline">Live Feed</span>
-</div>
-<div className="space-y-2 pt-1 font-label-code text-xs">
-<div className="p-3 rounded-xl bg-surface-subtle border border-border-subtle flex items-start gap-2.5">
-<span className="material-symbols-outlined text-[17px] text-primary mt-0.5">merge_type</span>
-<div className="min-w-0 flex-1">
-<div className="text-text-primary truncate font-medium">Merged PR #124 into <span className="text-primary font-semibold">gitclub/core-web</span></div>
-<div className="text-[10px] text-text-muted">24 mins ago • verified commit</div>
-</div>
-</div>
-<div className="p-3 rounded-xl bg-surface-subtle border border-border-subtle flex items-start gap-2.5">
-<span className="material-symbols-outlined text-[17px] text-secondary mt-0.5">new_releases</span>
-<div className="min-w-0 flex-1">
-<div className="text-text-primary truncate font-medium">Authored Release <span className="text-secondary font-semibold">v1.8.2-canary</span></div>
-<div className="text-[10px] text-text-muted">4 hours ago • production build</div>
-</div>
-</div>
-<div className="p-3 rounded-xl bg-surface-subtle border border-border-subtle flex items-start gap-2.5">
-<span className="material-symbols-outlined text-[17px] text-[#8C7A3E] mt-0.5">verified_user</span>
-<div className="min-w-0 flex-1">
-<div className="text-text-primary truncate font-medium">Approved signing keys for onboarding lead</div>
-<div className="text-[10px] text-text-muted">Yesterday • security ops</div>
-</div>
-</div>
-</div>
-</div>
-
-<div className="space-y-2">
-<div className="font-label-caps text-xs text-text-secondary uppercase tracking-wider font-semibold">Assigned Repositories</div>
-<div className="space-y-1.5 font-label-code text-xs">
-<div className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-border-subtle">
-<div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-[16px] text-primary">bookmark</span>
-<span className="text-text-primary font-medium">charusat-git/monorepo</span>
-</div>
-<span className="px-2 py-0.5 rounded-md bg-primary-container text-primary text-[10px] font-semibold">Maintainer</span>
-</div>
-<div className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-border-subtle">
-<div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-[16px] text-text-muted">terminal</span>
-<span className="text-text-primary font-medium">gitclub/design-system</span>
-</div>
-<span className="px-2 py-0.5 rounded-md bg-surface border border-border-subtle text-text-secondary text-[10px] font-semibold">Contributor</span>
-</div>
-</div>
-</div>
-
-<div className="pt-1 space-y-2">
-<div className="font-label-caps text-xs text-text-secondary uppercase tracking-wider font-semibold">Node Permissions</div>
-<div className="p-2.5 rounded-xl bg-surface-subtle border border-border-subtle flex items-center justify-between">
-<div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-primary text-[18px]">key</span>
-<span className="text-xs font-body-sm text-text-primary font-medium">Branch Protection Bypass</span>
-</div>
-<span className="text-[10px] font-label-code text-primary uppercase font-bold">Granted</span>
-</div>
-</div>
-
-<div className="pt-2 flex gap-2">
-<button className="flex-1 py-2.5 rounded-xl bg-primary text-white font-label-ui text-sm font-semibold hover:bg-[#4E6C5D] transition-colors shadow-sm">
-                  Open Full Dossier
-                </button>
-<button className="px-3.5 py-2.5 rounded-xl bg-surface-subtle hover:bg-surface-container-high border border-border-subtle text-text-secondary font-label-ui transition-colors">
-<span className="material-symbols-outlined text-[18px]">more_horiz</span>
+<img className="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Close up professional portrait of Riddhi Thummar, a young South Asian female engineer student wearing glasses with warm studio amber rim lighting and clean charcoal dark background, highly focused gaze, 8k resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAqhRXrtB-bRoYp4Xs2pibumYK6Uinfb4Jv1dCdr8u1faSmFXJEv9QwPskFvZIuj36x26Ft8Q6HXDj_5mwPGUoXdr-G9DSTPTXQirEkQr62V8W9ascxc42IXaGfU2m_hOJ3nV9jSFGGEsXeNwTdCe7pE3Vl3EBn5pCyN9PNtCY1qQkSThqi8ng_0S34ajPzHdU-DrUcdT1gLOUwoqnlmpfSpwYknaBo7xDiSdPc-3M7HvN0fEo5KdHyg"/>
+<div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span className="w-3 h-3 rounded-full bg-primary-container"></span>
+</div>
+</div>
+<div className="flex items-center gap-space-xs">
+<span className="px-space-xs py-0.5 rounded bg-primary-fixed/20 text-primary-fixed font-label-mono-sm text-label-mono-sm font-semibold uppercase">Admin &amp; Tech Lead</span>
+</div>
+</div>
+<div className="space-y-space-xs mb-space-md">
+<div className="flex items-baseline justify-between">
+<h2 className="font-title-md text-title-md text-on-surface font-bold">Riddhi Thummar</h2>
+<span className="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CSE</span>
+</div>
+<p className="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Spearheading technical pipeline deployments and student open-source mentor circles across Charusat.
+          </p>
+</div>
+<div className="flex flex-wrap gap-space-xs mb-space-md">
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Git Internals</span>
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">React</span>
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Architecture</span>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-sm text-outline">
+<a className="hover:text-primary transition-colors flex items-center" href="https://github.com" target="_blank" title="GitHub">
+<span className="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a className="hover:text-primary transition-colors flex items-center" href="https://linkedin.com" target="_blank" title="LinkedIn">
+<span className="material-symbols-outlined text-[18px]">share</span>
+</a>
+</div>
+<button className="font-label-mono-sm text-label-mono-sm text-primary flex items-center gap-1 hover:text-on-surface transition-colors" onClick={() => { openInspectDrawer() }}>
+<span>INSPECT CELL</span>
+<span className="material-symbols-outlined text-[14px]">arrow_forward</span>
 </button>
 </div>
+</div>
+
+<div className="relative group rounded-xl bg-surface-container-low p-space-lg overflow-hidden shadow-md transition-all hover:bg-surface-container">
+<div className="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-secondary-container/10 blur-2xl group-hover:bg-secondary-container/20 transition-all"></div>
+<div className="flex items-start justify-between gap-space-md mb-space-md">
+<div className="relative">
+<img className="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Portrait photo of Anushka Patel, Indian female student tech lead in a dark navy collegiate hoodie, warm ambient workspace lighting with code monitors in soft-focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRpn5rinTMDW5iNcvzFlV5Bnld0s0VujHr8C9QpUfGqu5ml6v1NZmkzbyEFdt3UaXQYOPT-JzH3fqvgDUGJM_1HpzXo-vzy5qkkSCdyfdrUVxDFpdL1k_CMy4-2GphbwG5TdsygoiRuNKanzVojNChdLIyTkJZaMkmnN6FMzNhFCQL-MoSOsxmNsg07g91ZrkvbfCV7rTeCn7VL6hmlIVS6J3xEZ5WzTnGrJVQsNor85h2VeXn33wRuA"/>
+<div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span className="w-3 h-3 rounded-full bg-secondary"></span>
+</div>
+</div>
+<div className="flex items-center gap-space-xs">
+<span className="px-space-xs py-0.5 rounded bg-secondary-fixed/20 text-secondary-fixed font-label-mono-sm text-label-mono-sm font-semibold uppercase">Project Lead</span>
+</div>
+</div>
+<div className="space-y-space-xs mb-space-md">
+<div className="flex items-baseline justify-between">
+<h2 className="font-title-md text-title-md text-on-surface font-bold">Anushka Patel</h2>
+<span className="font-label-mono-sm text-label-mono-sm text-outline">3rd Year IT</span>
+</div>
+<p className="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Managing cross-team release trains, backend services, and repository maintenance standards.
+          </p>
+</div>
+<div className="flex flex-wrap gap-space-xs mb-space-md">
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Python</span>
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Cloud</span>
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Node.js</span>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-sm text-outline">
+<a className="hover:text-primary transition-colors flex items-center" href="https://github.com" target="_blank" title="GitHub">
+<span className="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a className="hover:text-primary transition-colors flex items-center" href="https://linkedin.com" target="_blank" title="LinkedIn">
+<span className="material-symbols-outlined text-[18px]">share</span>
+</a>
+</div>
+<button className="font-label-mono-sm text-label-mono-sm text-secondary flex items-center gap-1 hover:text-on-surface transition-colors">
+<span>INSPECT CELL</span>
+<span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+
+<div className="relative group rounded-xl bg-surface-container-low p-space-lg overflow-hidden shadow-md transition-all hover:bg-surface-container">
+<div className="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-tertiary-container/10 blur-2xl group-hover:bg-tertiary-container/20 transition-all"></div>
+<div className="flex items-start justify-between gap-space-md mb-space-md">
+<div className="relative">
+<img className="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Portrait photo of Jay Shah, energetic Indian college student, wearing dark jacket with subtle orange logo badge, warm indoor workshop background, creative look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBWlm-Y3kj8A2Iib_DY73QqLLJkm40lLe2wqPW4QCAIL3nPiZ3ZIKglxeJEEI0eVV1V35R7mVnUYxGH6Lr13L_CsdkmNX8jXehDdVTOA9BCPDG0sgcXhiFrPzV8LtDsr-k6rYIEGSU5vofgFtKV3-fhGdubSmWYBK4eKKcL0G5VW7Fp-BwwkrppPQ6IzlbYCR-KdyAHubz-yyqqKedItN0E-_eDpY6TFiviC6TZD_jcdvSYILkojtB1A"/>
+<div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span className="w-3 h-3 rounded-full bg-tertiary"></span>
+</div>
+</div>
+<div className="flex items-center gap-space-xs">
+<span className="px-space-xs py-0.5 rounded bg-tertiary-fixed/20 text-tertiary-fixed font-label-mono-sm text-label-mono-sm font-semibold uppercase">Event Lead</span>
+</div>
+</div>
+<div className="space-y-space-xs mb-space-md">
+<div className="flex items-baseline justify-between">
+<h2 className="font-title-md text-title-md text-on-surface font-bold">Jay Shah</h2>
+<span className="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CE</span>
+</div>
+<p className="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Directing community bootcamps, git hackfests, and collaborative branch showdowns across engineering institutes.
+          </p>
+</div>
+<div className="flex flex-wrap gap-space-xs mb-space-md">
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Community</span>
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">DevOps</span>
+<span className="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Public Speaking</span>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-sm text-outline">
+<a className="hover:text-primary transition-colors flex items-center" href="https://github.com" target="_blank" title="GitHub">
+<span className="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a className="hover:text-primary transition-colors flex items-center" href="https://linkedin.com" target="_blank" title="LinkedIn">
+<span className="material-symbols-outlined text-[18px]">share</span>
+</a>
+</div>
+<button className="font-label-mono-sm text-label-mono-sm text-tertiary flex items-center gap-1 hover:text-on-surface transition-colors">
+<span>INSPECT CELL</span>
+<span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<section className="space-y-space-md mb-space-xl">
+<div className="p-space-md rounded-xl bg-surface-container-low shadow-sm space-y-space-sm">
+<div className="flex flex-col md:flex-row items-center gap-space-md">
+
+<div className="relative flex-1 w-full">
+<span className="absolute left-space-md top-1/2 -translate-y-1/2 text-primary font-label-mono-sm text-label-mono-sm">❯</span>
+<input className="w-full pl-8 pr-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-label-mono-sm text-label-mono-sm focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search by name, skill, or role..." type="text"/>
+</div>
+
+<div className="flex items-center gap-space-xs text-outline font-label-mono-sm text-label-mono-sm">
+<span>QUERY_SCOPE:</span>
+<span className="text-on-surface font-semibold">ALL_CAMPUS_RECORDS</span>
+</div>
+</div>
+
+<div className="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+
+<div className="flex flex-wrap items-center gap-1 p-1 rounded-lg bg-surface-container-lowest">
+<button className="px-space-sm py-1 rounded bg-surface-container text-primary font-label-mono-sm text-label-mono-sm font-semibold">All Branches</button>
+<button className="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">CSE</button>
+<button className="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">IT</button>
+<button className="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">CE</button>
+<button className="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">Other</button>
+</div>
+
+<div className="flex flex-wrap items-center gap-space-xs">
+<div className="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline">
+<span>YEAR:</span>
+<select className="bg-transparent text-on-surface cursor-pointer focus:outline-none">
+<option className="bg-surface-container-low text-on-surface">All Years</option>
+<option className="bg-surface-container-low text-on-surface">1st Year</option>
+<option className="bg-surface-container-low text-on-surface" selected="">2nd Year</option>
+<option className="bg-surface-container-low text-on-surface">3rd Year</option>
+<option className="bg-surface-container-low text-on-surface">4th Year</option>
+</select>
+</div>
+<div className="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline">
+<span>ROLE:</span>
+<select className="bg-transparent text-on-surface cursor-pointer focus:outline-none">
+<option className="bg-surface-container-low text-on-surface">All Roles</option>
+<option className="bg-surface-container-low text-on-surface">Core Team</option>
+<option className="bg-surface-container-low text-on-surface">Lead</option>
+<option className="bg-surface-container-low text-on-surface">Active Contributor</option>
+<option className="bg-surface-container-low text-on-surface">Member</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section className="space-y-space-md mb-space-xl">
+<div className="flex items-center justify-between">
+<div className="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline uppercase tracking-wider">
+<span className="material-symbols-outlined text-[16px] text-primary">group</span>
+<span>// 02. ACTIVE REGISTRY (SHOWING 8 OF 248)</span>
+</div>
+<div className="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline">
+<span>SORT:</span>
+<button className="text-on-surface hover:text-primary font-semibold">RECENT COMMITS ↓</button>
+</div>
+</div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Meet Vaghasiya, young male Indian student smiling wearing a minimal black graphic tech t-shirt against modern concrete architectural studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt_o1tt3DRW_33jJM0JSJBa99qFU2cjtaTA0iSXBnS-vOzT8KNl-CwFNq9IhriZggHcF27So--ZlmDnznFHDs6f6-kgY24JoPHWyZQYbSfkEz19akoe4p-SrfIQf3tNWdH6lKcmieHRP5Ql7AltlzleFvR-cX4yw0lHA6c7FQu99hW_MNYdglI6YgKgEXLWWD6ipam743aWZmJ13j5rf3iq5lDMhsJK0S2BAe-5IPbrIu0lJUx260Hzw"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold">Active Contributor</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Meet Vaghasiya</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">3rd Year CSE</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">React</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Tailwind</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Next.js</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs border-t-0">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Priyanshi Dave, female Indian software engineering student with glasses in front of warm wooden library shelves with soft depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp9qmfGu93NKi9owSlIjJ-wt_W9vqipQU26akVLmzHqnFQJ24FDxOUjPWSxloIZFgpGOl_GQ3gXY1KaGeiFA-FTcWPelUcLYn__esExpy5yrIkjy8lLeLKj6JX7v9r9-lCVrdoxGkJCqVFdlFcITkdBfCpkUPP1LWsZqgiXy9-uhb_OcQqLIjs-mFv_xLnQa4f2ewKjbZG44I4_LOK5Q-4Kdl-1EaT2_gs9rPcxIA1hNTr7OV9_bWSrA"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-secondary-fixed/20 text-secondary-fixed font-semibold">Project Member</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Priyanshi Dave</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year IT</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Docker</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Linux</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Python</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Dhruv Prajapati, male Indian student in collegiate lab setting with soft neon backlight, focused and confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHcoSabLuvLOld_O3ImtMUuju7SOpLIcBruFS1Q_2NcpKNsxAeFYqNmwPjl8xII-zIJhohuSF_vdPPNxJjg_LFWwYz9yzW_-0PIGSOFvse8FUCCw_8RSoZgjoTYt3oiZvblsoOdBOAhTxwUCmzrMD8ePaWiqpLLsSdbHLrNDAo921QFILT7-MivXU6HmHug9VDMtlCTKyv7tpyR2_J-Hbxi3krCTTLUCNNmDYiVdDbNw3qvnheIuDk2A"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-primary-fixed/20 text-primary-fixed font-semibold">Core Contributor</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Dhruv Prajapati</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year CE</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Go</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Kubernetes</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">gRPC</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Tanvi Joshi, creative female student designer in minimalist white shirt with headphones around neck, dark muted warm backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9zhxA_YFcfp62u6qmACHzURucx4_tjOJbtr5irHuyynMcHxbc8oSr1jwzsL8yqYg4Cpn3b2G1Ehc4DSmRGIxCyURiCdooSmcjXsQvR3Xb6JGi-KJSKZF7uiaQbYWybuD6BK11rpqcMP4l6jOOVmoQ0ER-8S4FsF5Rp2szu_yebiD2Yd_tYYzW0jJgvUvG181MSthYocw18niTebc0hIm2JtO-OK1g_k5QTBvJmX5knvtwULg3D8C9w"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-secondary-fixed/20 text-secondary-fixed font-semibold">Design &amp; UI</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Tanvi Joshi</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">3rd Year CSE</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">UI/UX</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Figma</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">CSS Arc</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Parth Soni, South Asian male student engineer in glasses and dark sweater with warm orange backlighting, focused gaze" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGKnw2IX1qH1zrnGDqjKtGlFkCuLeKdKABYR8WGkyI_o9RlOGjbHMI-DetChR5BfoCFbN1k3yGU0Uu99Igr_TH539IJ9pBIZ9wbVsfUuHQj6yoS-SU-RQihao1-JxBzH0wtiiGzUwGQe9ti6Ysl55uAHSylWSS7ZBh0If52-NQVzTVVPZ_zLvXIDxCi2Tb0dpfSgAW2oEfE_veuLyF6Z6gM4zBjgVPcB2BIpSumk6VJPkMS6maIgSeHQ"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold">Active Contributor</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Parth Soni</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">1st Year IT</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">C++</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Algorithms</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Git Flow</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Mansi Trivedi, female college engineer in collegiate campus makerspace room with laptops and workshop gear, natural ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2O7XpK2r78nZltVl1dW87fNZXLOFnt2zbcKos2nusSfhRD7tQESPwM2mmOQSBr9AgQbY3zMziLjDSTR4giAO66vw-x2MZDZEKTHI9aTLOSgk32rA40MdO5rTTz3Ys6ukK0APrmUptztgqy1kSjA5-JBS_0Ine7HiU_gYON1aSAZ6oh--R0Ec5PhP6gyJ0Jpkysq8cyhuzmJqHm1czbrUP1QldoAOaL4NXG3u1CXg7o1AjmmwHZly6qw"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-outline-variant/30 text-outline font-semibold">Member</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Mansi Trivedi</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year CE</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Node.js</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">MongoDB</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Express</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Kevin Choksi, young male Indian student smiling with laptop sticker visible in background, warm tech laboratory atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhxI3IF558k-V0LGWtjT6Ge_G4HoQh-2QUT-O2pbfe6owDnJe1Lk8Un36PlMPblCFO7lvdTb9gDXACds17Rh6YL-5-gb9O8jyYckhaAUUHvSJ5zUI7xk-9qkJ-BnDUP0HIkGtiKUvdxNgqttxNtqTSm-DxFkGigJgUiRRePqz1Gpu9GcKG6I1lyiLHGBQjpdHWlLjg31EKRvxSi9GvVehOU67AcUz-9ppOZhQ4sHpoVbn8DyM_-nSIhg"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold">Active Contributor</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Kevin Choksi</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">4th Year CSE</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Rust</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Wasm</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">CI/CD</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+
+<div className="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div className="flex items-start justify-between gap-space-sm mb-space-sm">
+<img className="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Harshita Mehta, female IT undergraduate student smiling warmly in front of a lecture theater with subtle ambient overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIhjwxPUK7hwI9ejEVBJLn3L77189tksJmIL5ltypQ7mTvE4ww2emJ-u5mJEdOsW2Z9cmIpGtjweFPGu-eOEMq1viXwdfyKIlMA5aPEgI6OaxYeX0fxdmwiXehaOc_-7wgNKY32LTwPBqeTqsyeHMaDid6Aj7vYfDaU7UoXHDK1HyrqZzEHBWLstLNjQ0s4dySpm9ZW9xUnCY57jaqD40QDibeEdygWiYmOb2-I1FY5IQ2pir2RGEV6A"/>
+<span className="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-secondary-fixed/20 text-secondary-fixed font-semibold">Event Lead Team</span>
+</div>
+<h3 className="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Harshita Mehta</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year IT</p>
+<div className="flex flex-wrap gap-1 mb-space-md">
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">DevOps</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">GitHub CLI</span>
+<span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Docs</span>
+</div>
+</div>
+<div className="flex items-center justify-between pt-space-xs">
+<div className="flex items-center gap-space-xs text-outline">
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">code</span></a>
+<a className="p-1 rounded hover:text-on-surface transition-colors" href="#"><span className="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button className="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onClick={() => { openInspectDrawer() }}>Profile</button>
+</div>
+</div>
+</div>
+</section>
+
+<aside className="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-surface-container-low shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto" id="member-drawer">
+
+<div className="p-space-lg bg-surface-container-lowest sticky top-0 z-10 flex items-center justify-between">
+<div className="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline">
+<span className="text-primary font-bold">#GrowWith git</span>
+<span>/</span>
+<span>NODE_INSPECT</span>
+</div>
+<button className="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-all" onClick={() => { closeInspectDrawer() }}>
+<span className="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+
+<div className="p-space-lg space-y-space-lg flex-1">
+
+<div className="flex items-start gap-space-md">
+<div className="relative">
+<img className="w-20 h-20 rounded-xl object-cover shadow-md" data-alt="Detailed close up avatar portrait of Riddhi Thummar, tech admin lead student, studio warm lighting, charcoal backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvgoGO4RmvyuplUbtlgrHNAUIH1AZLnT-1VHGBgZbxxlp409Bg36a-XRiuwfKYjKSBRDvgyM5DIziRhE4sCOpssq9vsi2pO-LJ1DFtT7aOC8Sy2MauStJB3Nyaoum6xoL8BTvsNmbd0Cv48r6AbGiKLK_hwwQpbBhVMsiDxROasc9zsnkG3X0fQ3wa_XV0oL8DZfCGDvVb-TpFiXZpGUkU08OTrKjcktAy4MFqqowAQZdyKuozX5f1wQ"/>
+<div className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-[9px] font-bold">ROOT</div>
+</div>
+<div className="space-y-1 min-w-0">
+<span className="px-2 py-0.5 rounded bg-primary-fixed/20 text-primary-fixed font-label-mono-sm text-[10px] font-semibold uppercase">Admin &amp; Tech Lead</span>
+<h3 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Riddhi Thummar</h3>
+<p className="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CSE • CHARUSAT HQ</p>
+</div>
+</div>
+
+<div className="p-space-md rounded-xl bg-surface-container text-body-sm font-body-sm text-on-surface-variant">
+        Passionate open-source maintainer, full-stack architect, and mentor at Git Club CHARUSAT. Leading technical curriculum, hands-on git workshops, and architecture reviews for internal college tooling.
+      </div>
+
+<div className="grid grid-cols-2 gap-space-xs font-label-mono-sm text-label-mono-sm">
+<div className="p-space-sm rounded-lg bg-surface-container-lowest">
+<span className="text-outline block text-[10px]">EMAIL_HANDLE</span>
+<span className="text-on-surface truncate block">riddhi@charusat.edu.in</span>
+</div>
+<div className="p-space-sm rounded-lg bg-surface-container-lowest">
+<span className="text-outline block text-[10px]">STUDENT_ID</span>
+<span className="text-on-surface truncate block">22CSE049</span>
+</div>
+</div>
+
+<div className="p-space-md rounded-xl bg-surface-container-lowest space-y-space-sm">
+<div className="flex items-center justify-between">
+<span className="font-label-mono-sm text-label-mono-sm text-outline uppercase">// COMMIT FREQUENCY (LAST 16 WEEKS)</span>
+<span className="font-label-mono-sm text-label-mono-sm text-tertiary">412 Commits</span>
+</div>
+<svg className="w-full h-16" fill="none" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg">
+
+<g className="transition-opacity">
+
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="0" y="4" /></rect>
+<rect className="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="20" y="4" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="40" y="4" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="60" y="4" /></rect>
+<rect className="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="80" y="4" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="100" y="4" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="120" y="4" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="140" y="4" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="160" y="4" /></rect>
+<rect className="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="180" y="4" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="200" y="4" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="220" y="4" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="240" y="4" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="260" y="4" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="280" y="4" /></rect>
+<rect className="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="300" y="4" /></rect>
+
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="0" y="18" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="20" y="18" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="40" y="18" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="60" y="18" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="80" y="18" /></rect>
+<rect className="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="100" y="18" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="120" y="18" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="140" y="18" /></rect>
+<rect className="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="160" y="18" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="180" y="18" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="200" y="18" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="220" y="18" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="240" y="18" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="260" y="18" /></rect>
+<rect className="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="280" y="18" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="300" y="18" /></rect>
+
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="0" y="32" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="20" y="32" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="40" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="60" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="80" y="32" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="100" y="32" /></rect>
+<rect className="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="120" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="140" y="32" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="160" y="32" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="180" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="200" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="220" y="32" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="240" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="260" y="32" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="280" y="32" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="300" y="32" /></rect>
+
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="0" y="46" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="20" y="46" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="40" y="46" /></rect>
+<rect className="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="60" y="46" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="80" y="46" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="100" y="46" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="120" y="46" /></rect>
+<rect className="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="140" y="46" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="160" y="46" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="180" y="46" /></rect>
+<rect className="text-primary" fill="currentColor" height="10" rx="2" width="14" x="200" y="46" /></rect>
+<rect className="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="220" y="46" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="240" y="46" /></rect>
+<rect className="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="260" y="46" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="280" y="46" /></rect>
+<rect className="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="300" y="46" /></rect>
+</g>
+</svg>
+</div>
+
+<div className="space-y-space-xs">
+<span className="font-label-mono-sm text-label-mono-sm text-outline uppercase block">// ACTIVE PROJECT CONTRIBUTIONS</span>
+<div className="space-y-2">
+<div className="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div className="flex items-center gap-space-sm">
+<span className="material-symbols-outlined text-primary text-[18px]">folder_code</span>
+<div>
+<span className="font-title-md text-body-md text-on-surface font-semibold block leading-tight">HomeVault</span>
+<span className="font-label-mono-sm text-[11px] text-outline">Core Contributor • v1.4.0</span>
+</div>
+</div>
+<span className="px-2 py-0.5 rounded bg-surface-container-highest text-tertiary font-label-mono-sm text-[10px]">Merged 24 PRs</span>
+</div>
+<div className="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div className="flex items-center gap-space-sm">
+<span className="material-symbols-outlined text-secondary text-[18px]">school</span>
+<div>
+<span className="font-title-md text-body-md text-on-surface font-semibold block leading-tight">GitLearn</span>
+<span className="font-label-mono-sm text-[11px] text-outline">Lead Architect • Interactive Sandbox</span>
+</div>
+</div>
+<span className="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-label-mono-sm text-[10px]">Maintainer</span>
+</div>
+</div>
+</div>
+
+<div className="space-y-space-xs">
+<span className="font-label-mono-sm text-label-mono-sm text-outline uppercase block">// PAST EVENTS &amp; SESSIONS</span>
+<div className="p-space-sm rounded-lg bg-surface-container space-y-2">
+<div className="flex items-center justify-between text-body-sm">
+<span className="text-on-surface font-medium">Git Merge Conflict Showdown '24</span>
+<span className="font-label-mono-sm text-label-mono-sm text-outline">Mentor</span>
+</div>
+<div className="w-full h-px bg-surface-container-highest"></div>
+<div className="flex items-center justify-between text-body-sm">
+<span className="text-on-surface font-medium">CHARUSAT Open Source Summit</span>
+<span className="font-label-mono-sm text-label-mono-sm text-outline">Speaker</span>
+</div>
+</div>
+</div>
+</div>
+
+<div className="p-space-lg bg-surface-container-lowest sticky bottom-0 z-10 flex items-center gap-space-sm">
+<button className="flex-1 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-md font-semibold hover:brightness-110 transition-all text-center">
+        Edit Profile
+      </button>
+<button className="px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-bright transition-all" onClick={() => { closeInspectDrawer() }}>
+        Close
+      </button>
+</div>
 </aside>
+
+<div className="fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md hidden p-space-md" id="add-member-modal">
+<div className="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+
+<div className="px-space-lg py-space-md bg-surface-container flex items-center justify-between">
+<div className="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-primary">
+<span className="material-symbols-outlined text-[18px]">person_add</span>
+<span>// REGISTER_NEW_MEMBER</span>
+</div>
+<button className="p-1 rounded text-outline hover:text-on-surface" onClick={() => { document.getElementById('add-member-modal').classList.add('hidden') }}>
+<span className="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+
+<div className="p-space-lg space-y-space-md">
+<div className="grid grid-cols-2 gap-space-md">
+<div className="space-y-1">
+<label className="font-label-mono-sm text-label-mono-sm text-outline block">FULL NAME</label>
+<input className="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. Aarav Patel" type="text"/>
+</div>
+<div className="space-y-1">
+<label className="font-label-mono-sm text-label-mono-sm text-outline block">STUDENT ID</label>
+<input className="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. 23IT082" type="text"/>
 </div>
 </div>
+<div className="grid grid-cols-2 gap-space-md">
+<div className="space-y-1">
+<label className="font-label-mono-sm text-label-mono-sm text-outline block">DEPARTMENT / BRANCH</label>
+<select className="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>Computer Science (CSE)</option>
+<option>Information Tech (IT)</option>
+<option>Computer Eng (CE)</option>
+<option>Other Department</option>
+</select>
 </div>
-</main>
+<div className="space-y-1">
+<label className="font-label-mono-sm text-label-mono-sm text-outline block">ACADEMIC YEAR</label>
+<select className="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>1st Year</option>
+<option selected="">2nd Year</option>
+<option>3rd Year</option>
+<option>4th Year</option>
+</select>
+</div>
+</div>
+<div className="space-y-1">
+<label className="font-label-mono-sm text-label-mono-sm text-outline block">CLUB ROLE</label>
+<select className="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>General Member</option>
+<option>Active Contributor</option>
+<option>Project Member</option>
+<option>Core Team Lead</option>
+</select>
+</div>
+<div className="space-y-1">
+<label className="font-label-mono-sm text-label-mono-sm text-outline block">INITIAL SKILL TOKENS (COMMA SEPARATED)</label>
+<input className="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. React, Git, Docker, Go" type="text"/>
+</div>
+<div className="p-space-sm rounded bg-surface-container-lowest flex items-center gap-space-sm">
+<input checked="" className="accent-primary-container w-4 h-4 cursor-pointer" id="invite-box" type="checkbox"/>
+<label className="font-label-mono-sm text-label-mono-sm text-outline cursor-pointer select-none" htmlFor="invite-box">Send Git Club CHARUSAT onboarding packet &amp; GitHub team invite</label>
+</div>
+</div>
+
+<div className="px-space-lg py-space-md bg-surface-container-lowest flex items-center justify-end gap-space-sm">
+<button className="px-space-md py-2 rounded bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all" onClick={() => { document.getElementById('add-member-modal').classList.add('hidden') }}>Cancel</button>
+<button className="px-space-lg py-2 rounded bg-primary-container text-on-primary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md transition-all" onClick={() => { document.getElementById('add-member-modal').classList.add('hidden') }}>Register Contributor</button>
+</div>
+</div>
 </div>
 
 
-    </>
+</div></div></main></div><div className="fixed bottom-6 right-6 z-50 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]"><button className="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all"><span className="material-symbols-outlined text-[18px]">add</span><span>Event</span></button><button className="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span className="material-symbols-outlined text-[18px]">person_add</span><span>Member</span></button><button className="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span className="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span></button><button className="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span className="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span></button></div></body></html></textarea></form></div></div></div></main></div>
+</>
   );
 }

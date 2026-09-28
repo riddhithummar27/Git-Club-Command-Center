@@ -1,19 +1,10 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Events() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [viewMode, setViewMode] = useState("calendar");
-  const [timeframe, setTimeframe] = useState("month");
-  const [filter, setFilter] = useState("all");
-
-  useEffect(() => {
-    // You can add canvas scripts here if needed
-  }, []);
-  
   return (
     <>
-      
+
 
 <aside className="fixed left-0 top-0 h-full w-64 bg-surface z-50 flex flex-col justify-between border-r border-outline-variant select-none">
 <div className="flex flex-col">
@@ -32,23 +23,23 @@ export default function Events() {
 <div className="font-label-caps text-[11px] font-semibold uppercase text-outline tracking-wider">Workspace</div>
 </div>
 <nav className="px-3 flex flex-col gap-1">
-<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" data-path="dashboard" to="/">
+<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" to="/dashboard" >
 <span className="material-symbols-outlined text-[20px] text-outline">hub</span>
 <span className="font-label-ui">Command Center</span>
 </Link>
-<Link aria-current="page" className="flex items-center gap-3 px-3 py-2 transition-colors rounded-lg bg-surface-container-high text-primary font-semibold text-sm border-l-4 border-primary" data-path="events" to="/events">
+<Link aria-current="page" className="flex items-center gap-3 px-3 py-2 transition-colors rounded-lg bg-surface-container-high text-primary font-semibold text-sm border-l-4 border-primary" to="/events" >
 <span className="material-symbols-outlined text-[20px] text-primary">event_available</span>
 <span className="font-label-ui">Events</span>
 </Link>
-<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" data-path="members" to="/members">
+<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" to="/members" >
 <span className="material-symbols-outlined text-[20px] text-outline">group</span>
 <span className="font-label-ui">Members</span>
 </Link>
-<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" data-path="projects" to="/projects">
+<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" to="/projects" >
 <span className="material-symbols-outlined text-[20px] text-outline">deployed_code</span>
 <span className="font-label-ui">Projects</span>
 </Link>
-<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" data-path="announcements" to="/announcements">
+<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" to="/announcements" >
 <span className="material-symbols-outlined text-[20px] text-outline">campaign</span>
 <span className="font-label-ui">Announcements</span>
 </Link>
@@ -58,7 +49,7 @@ export default function Events() {
 <div className="font-label-caps text-[11px] font-semibold uppercase text-outline tracking-wider">System</div>
 </div>
 <nav className="px-3 flex flex-col gap-1">
-<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" data-path="settings" to="/settings">
+<Link className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg font-medium text-sm" to="/settings" >
 <span className="material-symbols-outlined text-[20px] text-outline">settings</span>
 <span className="font-label-ui">Settings</span>
 </Link>
@@ -150,7 +141,7 @@ export default function Events() {
 <span className="material-symbols-outlined text-[18px]">campaign</span>
 <span>Publish Announcement</span>
 </button>
-<button onClick={() => setIsDrawerOpen(true)} className="h-9 px-4 bg-primary hover:bg-[#526f60] text-white rounded-lg flex items-center gap-1.5 font-semibold text-xs shadow-[0_2px_8px_rgba(29,41,35,0.08)] transition-all cursor-pointer group" >
+<button className="h-9 px-4 bg-primary hover:bg-[#526f60] text-white rounded-lg flex items-center gap-1.5 font-semibold text-xs shadow-[0_2px_8px_rgba(29,41,35,0.08)] transition-all cursor-pointer group" onClick={() => { toggleEventDrawer(true) }}>
 <span className="material-symbols-outlined text-[18px] group-hover:rotate-90 transition-transform duration-200">add</span>
 <span className="font-label-ui">Create Event</span>
 </button>
@@ -240,27 +231,27 @@ export default function Events() {
 <div className="relative flex-1 min-w-[280px]">
 <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
 <input className="w-full h-10 pl-10 pr-10 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="event-search-input" placeholder="Search events by name, lead, venue, or tag..." type="text" />
-<button className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" >
+<button className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" onClick={() => { clearSearch() }}>
 <span className="material-symbols-outlined text-[16px]">close</span>
 </button>
 </div>
 
 <div className="flex items-center gap-1 bg-surface-container-high p-1 rounded-lg border border-outline-variant">
-<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-semibold transition-all bg-surface text-primary shadow-xs flex items-center gap-1.5" data-filter="all" >
+<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-semibold transition-all bg-surface text-primary shadow-xs flex items-center gap-1.5" data-filter="all" onClick={() => { filterStatus('all') }}>
 <span>All Stages</span>
 <span className="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px]">18</span>
 </button>
-<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-filter="upcoming" >
+<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-filter="upcoming" onClick={() => { filterStatus('upcoming') }}>
 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
 <span>Upcoming</span>
 <span className="px-1.5 py-0.5 rounded-full bg-surface text-primary text-[10px] font-bold">3</span>
 </button>
-<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-filter="ongoing" >
+<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-filter="ongoing" onClick={() => { filterStatus('ongoing') }}>
 <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
 <span>Ongoing</span>
 <span className="px-1.5 py-0.5 rounded-full bg-surface text-secondary text-[10px] font-bold">1</span>
 </button>
-<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-filter="completed" >
+<button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-filter="completed" onClick={() => { filterStatus('completed') }}>
 <span>Completed</span>
 <span className="px-1.5 py-0.5 rounded-full bg-surface text-outline text-[10px]">14</span>
 </button>
@@ -270,16 +261,16 @@ export default function Events() {
 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-1 border-t border-outline-variant/60">
 <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
 <span className="font-label-caps text-xs text-outline uppercase font-semibold mr-1.5 tracking-wider">CATEGORY:</span>
-<button className="category-pill px-3 py-1 rounded-full bg-primary text-white font-label-caps text-xs font-bold uppercase transition-all shadow-xs" data-cat="all" >All</button>
-<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="workshop" >Workshop</button>
-<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="competition" >Competition</button>
-<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="hackathon" >Hackathon</button>
-<button onClick={() => setFilter('community')} className={`px-3 py-1.5 rounded-full font-label-caps text-label-caps uppercase transition-colors whitespace-nowrap ${filter === 'community' ? 'bg-text-primary text-surface' : 'bg-surface-subtle border border-border-subtle text-text-secondary hover:text-text-primary'}`}>Community</button>
-<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="social" >Social</button>
+<button className="category-pill px-3 py-1 rounded-full bg-primary text-white font-label-caps text-xs font-bold uppercase transition-all shadow-xs" data-cat="all" onClick={() => { filterCategory('all') }}>All</button>
+<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="workshop" onClick={() => { filterCategory('workshop') }}>Workshop</button>
+<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="competition" onClick={() => { filterCategory('competition') }}>Competition</button>
+<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="hackathon" onClick={() => { filterCategory('hackathon') }}>Hackathon</button>
+<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="community" onClick={() => { filterCategory('community') }}>Community</button>
+<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="social" onClick={() => { filterCategory('social') }}>Social</button>
 </div>
 <div className="flex items-center gap-2 self-end sm:self-auto">
 <span className="font-label-caps text-xs text-outline uppercase tracking-wider font-semibold">SORT:</span>
-<select className="h-8 bg-surface-container-high text-on-surface font-label-code text-xs px-2.5 rounded-lg border border-outline-variant cursor-pointer focus:outline-none focus:border-primary" id="sort-select" >
+<select className="h-8 bg-surface-container-high text-on-surface font-label-code text-xs px-2.5 rounded-lg border border-outline-variant cursor-pointer focus:outline-none focus:border-primary" id="sort-select" onchange="sortCards()">
 <option value="date-asc">Date (Earliest First)</option>
 <option value="date-desc">Date (Latest First)</option>
 <option value="capacity-desc">Capacity (Highest)</option>
@@ -293,7 +284,7 @@ export default function Events() {
 
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="86" data-category="workshop" data-status="upcoming" data-timestamp="2025-10-03">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
-<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Technical hands coding terminal commands and visualizing Git tree branch structures on a mechanical keyboard laptop screen in a dim university computer laboratory with green monitor glow and warm focused desk lamp." style={{}}></div>
+<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Technical hands coding terminal commands and visualizing Git tree branch structures on a mechanical keyboard laptop screen in a dim university computer laboratory with green monitor glow and warm focused desk lamp." style={{"backgroundImage":"url('https"}}></div>
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 <div className="absolute top-3 left-3 flex items-center gap-1.5">
 <span className="px-2.5 py-0.5 rounded-full bg-primary text-white font-label-caps text-[10px] uppercase font-bold tracking-wider shadow-sm">WORKSHOP</span>
@@ -349,7 +340,7 @@ export default function Events() {
 </div>
 <div className="pt-2 border-t border-outline-variant/60 flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
-<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" >
+<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" onClick={() => { openEventDetail('GIT &amp; GITHUB WORKSHOP', 'Meet Patel', '03 Oct 2025 • 4:00 PM', 'CSPIT Lab 2') }}>
                       View Details
                     </button>
 <button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface-variant hover:text-on-surface rounded-lg font-label-ui text-xs font-medium transition-colors">
@@ -365,7 +356,7 @@ export default function Events() {
 
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="92" data-category="competition" data-status="upcoming" data-timestamp="2025-10-12">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
-<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="High intensity university hackathon floor with groups of engineering students collaborating in front of glowing multi monitor setups, whiteboard system diagrams, and neon green and deep black ambient staging lights." style={{}}></div>
+<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="High intensity university hackathon floor with groups of engineering students collaborating in front of glowing multi monitor setups, whiteboard system diagrams, and neon green and deep black ambient staging lights." style={{"backgroundImage":"url('https"}}></div>
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 <div className="absolute top-3 left-3 flex items-center gap-1.5">
 <span className="px-2.5 py-0.5 rounded-full bg-[#C9A85C] text-white font-label-caps text-[10px] uppercase font-bold tracking-wider shadow-sm">COMPETITION</span>
@@ -421,7 +412,7 @@ export default function Events() {
 </div>
 <div className="pt-2 border-t border-outline-variant/60 flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
-<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" >
+<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" onClick={() => { openEventDetail('HACKATHON 2.0: CODE SPRINT', 'Core Team', '12 Oct 2025 • 10:00 AM', 'CSPIT Auditorium') }}>
                       View Details
                     </button>
 <button className="h-8 px-3 bg-secondary hover:bg-[#b56954] text-white rounded-lg font-label-ui text-xs font-semibold transition-colors shadow-xs">
@@ -437,7 +428,7 @@ export default function Events() {
 
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="60" data-category="community" data-status="upcoming" data-timestamp="2025-10-18">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
-<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Neural network mathematical architecture diagrams projected behind an academic lecturer discussing attention mechanisms and tensor operations in an amphitheater lecture hall with students focused on code." style={{}}></div>
+<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Neural network mathematical architecture diagrams projected behind an academic lecturer discussing attention mechanisms and tensor operations in an amphitheater lecture hall with students focused on code." style={{"backgroundImage":"url('https"}}></div>
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 <div className="absolute top-3 left-3 flex items-center gap-1.5">
 <span className="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-caps text-[10px] uppercase font-bold tracking-wider shadow-sm border border-outline-variant">COMMUNITY</span>
@@ -493,7 +484,7 @@ export default function Events() {
 </div>
 <div className="pt-2 border-t border-outline-variant/60 flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
-<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" >
+<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" onClick={() => { openEventDetail('AI/ML COMMUNITY SESSION', 'Prof. D. Rawal', '18 Oct 2025 • 3:00 PM', 'Hall A &amp; Virtual') }}>
                       View Details
                     </button>
 <button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface-variant hover:text-on-surface rounded-lg font-label-ui text-xs font-medium transition-colors">
@@ -509,7 +500,7 @@ export default function Events() {
 
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="91" data-category="workshop" data-status="ongoing" data-timestamp="2025-09-30">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
-<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Dark linux kernel terminal session showing C code compile errors and patch verification pipelines on dual monitors with developers wearing headphones collaborating over remote audio call." style={{}}></div>
+<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Dark linux kernel terminal session showing C code compile errors and patch verification pipelines on dual monitors with developers wearing headphones collaborating over remote audio call." style={{"backgroundImage":"url('https"}}></div>
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 <div className="absolute top-3 left-3 flex items-center gap-1.5">
 <span className="px-2.5 py-0.5 rounded-full bg-primary text-white font-label-caps text-[10px] uppercase font-bold tracking-wider shadow-sm">WORKSHOP</span>
@@ -572,7 +563,7 @@ export default function Events() {
 <span className="material-symbols-outlined text-[14px]">login</span>
                       Join Session
                     </button>
-<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-medium transition-colors" >
+<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-medium transition-colors" onClick={() => { openEventDetail('OPEN SOURCE DAY: CONTRIBUTING TO LINUX', 'Karan Panchal', 'Ongoing Live', 'Online Meet Room #3') }}>
                       Console Log
                     </button>
 </div>
@@ -585,7 +576,7 @@ export default function Events() {
 
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="100" data-category="workshop" data-status="completed" data-timestamp="2025-09-15">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
-<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 filter grayscale contrast-125" data-alt="Auditorium full of university software engineering students raising hands with web browser developer tools open on their screens during an interactive modern JavaScript framework lecture." style={{}}></div>
+<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 filter grayscale contrast-125" data-alt="Auditorium full of university software engineering students raising hands with web browser developer tools open on their screens during an interactive modern JavaScript framework lecture." style={{"backgroundImage":"url('https"}}></div>
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 <div className="absolute top-3 left-3 flex items-center gap-1.5">
 <span className="px-2.5 py-0.5 rounded-full bg-surface text-on-surface-variant font-label-caps text-[10px] uppercase font-bold tracking-wider shadow-sm border border-outline-variant">WORKSHOP</span>
@@ -641,7 +632,7 @@ export default function Events() {
 </div>
 <div className="pt-2 border-t border-outline-variant/60 flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
-<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" >
+<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" onClick={() => { openEventDetail('WEB DEVELOPMENT BOOTCAMP 2025', 'Aanand Sharma', '15 Sep 2025', 'CSPIT Seminar Hall 1') }}>
                       Access Artifacts
                     </button>
 <button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface-variant hover:text-on-surface rounded-lg font-label-ui text-xs font-medium transition-colors">
@@ -657,7 +648,7 @@ export default function Events() {
 
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="55" data-category="workshop" data-status="upcoming" data-timestamp="2025-10-25">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
-<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Continuous integration pipeline status graphs and GitHub actions workflow terminal displays showing automated green test badges on multiple vertical developer screens." style={{}}></div>
+<div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Continuous integration pipeline status graphs and GitHub actions workflow terminal displays showing automated green test badges on multiple vertical developer screens." style={{"backgroundImage":"url('https"}}></div>
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 <div className="absolute top-3 left-3 flex items-center gap-1.5">
 <span className="px-2.5 py-0.5 rounded-full bg-primary text-white font-label-caps text-[10px] uppercase font-bold tracking-wider shadow-sm">WORKSHOP</span>
@@ -713,7 +704,7 @@ export default function Events() {
 </div>
 <div className="pt-2 border-t border-outline-variant/60 flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
-<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" >
+<button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface rounded-lg font-label-ui text-xs font-semibold transition-colors" onClick={() => { openEventDetail('AUTOMATED CI/CD &amp; SECURITY AUDIT', 'Riddhi Joshi', '25 Oct 2025 • 4:30 PM', 'CSPIT Lab 1') }}>
                       View Details
                     </button>
 <button className="h-8 px-3 bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface-variant hover:text-on-surface rounded-lg font-label-ui text-xs font-medium transition-colors">
@@ -732,8 +723,8 @@ export default function Events() {
 </main>
 </div>
 
-<div className={`fixed inset-0 bg-[#1D2923]/40 backdrop-blur-xs z-50 transition-opacity duration-300 ${isDrawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsDrawerOpen(false)}></div>
-<div className={`fixed top-0 right-0 h-full w-full max-w-xl bg-surface shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto border-l border-border-subtle ${isDrawerOpen ? 'translate-x-0' : 'translate-x-full'}`} id="create-event-drawer">
+<div className="fixed inset-0 bg-[#1D2923]/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="drawer-backdrop" onClick={() => { toggleEventDrawer(false) }}></div>
+<div className="fixed top-0 right-0 h-full w-full max-w-xl bg-surface shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto border-l border-outline-variant" id="create-event-drawer">
 
 <div className="p-6 bg-surface border-b border-outline-variant flex items-center justify-between">
 <div className="flex flex-col">
@@ -743,16 +734,16 @@ export default function Events() {
 </div>
 <h3 className="font-headline-sm text-xl font-bold text-on-surface mt-1">Create New Event</h3>
 </div>
-<button className="w-9 h-9 rounded-lg bg-surface-container-high hover:bg-surface border border-outline-variant text-outline hover:text-on-surface flex items-center justify-center transition-colors" >
+<button className="w-9 h-9 rounded-lg bg-surface-container-high hover:bg-surface border border-outline-variant text-outline hover:text-on-surface flex items-center justify-center transition-colors" onClick={() => { toggleEventDrawer(false) }}>
 <span className="material-symbols-outlined text-[20px]">close</span>
 </button>
 </div>
 
-<form className="p-6 flex flex-col gap-5 flex-1" id="create-event-form" >
+<form className="p-6 flex flex-col gap-5 flex-1" id="create-event-form" onSubmit={(e) => { e.preventDefault(); handleFormSubmit(event) }}>
 
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-event-name">Event Name / Designation</label>
-<input className="h-10 px-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-event-name" placeholder="e.g., Rust for Systems Programming" required type="text" />
+<input className="h-10 px-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-event-name" placeholder="e.g., Rust for Systems Programming" required="" type="text" />
 </div>
 
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -796,7 +787,7 @@ export default function Events() {
 
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-desc">Detailed Abstract</label>
-<textarea className="p-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-desc" placeholder="Specify prerequisites, agenda modules, required local toolchains, and post-session repo artifacts..." rows={4}></textarea>
+<textarea className="p-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-desc" placeholder="Specify prerequisites, agenda modules, required local toolchains, and post-session repo artifacts..." rows="4"></textarea>
 </div>
 
 <div className="p-4 bg-surface-container-high rounded-lg border border-outline-variant flex items-center justify-between">
@@ -807,7 +798,7 @@ export default function Events() {
 <span className="font-label-caps text-[11px] text-outline mt-1 font-medium">Generates Zoom / Google Meet cluster node</span>
 </div>
 </div>
-<input checked className="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox" />
+<input checked="" className="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox" />
 </div>
 <div className="hidden p-3 rounded-lg bg-surface-container-high text-primary font-label-code text-xs border border-primary/30" id="form-feedback">
         Event node deployed to campus registry.
@@ -815,7 +806,7 @@ export default function Events() {
 </form>
 
 <div className="p-6 bg-surface border-t border-outline-variant flex items-center justify-end gap-3">
-<button className="h-10 px-4 rounded-lg bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface font-label-ui text-xs font-semibold transition-colors"  type="button">
+<button className="h-10 px-4 rounded-lg bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface font-label-ui text-xs font-semibold transition-colors" onClick={() => { toggleEventDrawer(false) }} type="button">
         Cancel
       </button>
 <button className="h-10 px-5 rounded-lg bg-primary hover:bg-[#526f60] text-white font-label-ui text-xs font-semibold shadow-xs transition-colors flex items-center gap-1.5" form="create-event-form" type="submit">
@@ -832,7 +823,7 @@ export default function Events() {
 <span className="material-symbols-outlined text-primary text-[20px]">hub</span>
 <span className="font-label-caps text-xs font-bold uppercase tracking-wider text-on-surface">NODE TELEMETRY INSPECTOR</span>
 </div>
-<button className="text-outline hover:text-on-surface" >
+<button className="text-outline hover:text-on-surface" onClick={() => { closeEventDetail() }}>
 <span className="material-symbols-outlined text-[18px]">close</span>
 </button>
 </div>
@@ -861,7 +852,7 @@ export default function Events() {
 </div>
 </div>
 <div className="p-4 bg-surface border-t border-outline-variant flex justify-end">
-<button className="h-8 px-4 bg-primary text-white rounded-lg font-label-ui text-xs font-semibold hover:bg-[#526f60] transition-colors" >
+<button className="h-8 px-4 bg-primary text-white rounded-lg font-label-ui text-xs font-semibold hover:bg-[#526f60] transition-colors" onClick={() => { closeEventDetail() }}>
           Close Inspector
         </button>
 </div>
@@ -870,6 +861,6 @@ export default function Events() {
 
 
 
-    </>
+</>
   );
 }
