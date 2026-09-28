@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad2","surface-container-high":"#2a2a2a","error":"#ffb4ab","outline-variant":"#5b403a","on-tertiary-fixed-variant":"#19512c","on-secondary-container":"#fff7f0","on-tertiary-container":"#003114","surface-container-highest":"#353534","on-background":"#e5e2e1","surface-tint":"#ffb4a3","surface-bright":"#393939","primary-fixed-dim":"#ffb4a3","surface-container-lowest":"#0e0e0e","on-tertiary":"#003918","surface-container-low":"#1c1b1b","on-tertiary-fixed":"#00210c","secondary-fixed-dim":"#f5bd58","on-primary-container":"#570c00","on-error":"#690005","on-primary-fixed":"#3d0600","surface":"#131313","on-primary":"#631000","tertiary-container":"#669d71","primary":"#ffb4a3","on-primary-fixed-variant":"#8b1a00","inverse-primary":"#b62500","surface-dim":"#131313","on-surface":"#e5e2e1","on-error-container":"#ffdad6","tertiary-fixed":"#b5f1be","primary-container":"#fd5832","on-secondary":"#422c00","background":"#131313","tertiary":"#9ad4a4","surface-variant":"#353534","on-surface-variant":"#e4beb6","secondary-container":"#976a00","tertiary-fixed-dim":"#9ad4a4","on-secondary-fixed":"#271900","inverse-surface":"#e5e2e1","on-secondary-fixed-variant":"#5f4100","outline":"#ab8981","secondary-fixed":"#ffdeaa","secondary":"#f5bd58","surface-container":"#201f1f","error-container":"#93000a","inverse-on-surface":"#313030"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","gutter-mobile":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","space-md":"1rem","space-xs":"0.25rem","gutter":"1.5rem","margin":"2rem"},fontFamily:{"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Inter"],"label-mono-md":["JetBrains Mono"],"label-mono-sm":["JetBrains Mono"],"title-md":["Plus Jakarta Sans"],"body-md":["Inter"],"headline-xl":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"800"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-mono-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"label-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"title-md":["18px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl":["40px",{"lineHeight":"48px","fontWeight":"700"}],"display-lg":["56px",{"lineHeight":"64px","fontWeight":"800"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-40 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="gitclub logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VcLc2E_L_FHYuZ4ukokr497gnAe5UO5wXjga9-LFeHWH1UScEaCxSAUiolo7ZOIv2y6kPMpp6M2Q8kew_nz-wdc31PkCOBAY3mVlo8pM6z64_UQzX_MzKgph0zJ8qzPCJ6DNgsp4EiI7ZkcmSi4k_hT-6ICXawYD45ZoanJ-aaferLGZPoglYHLPgUwJVIPW6APz-tfFWpnQRJjucmYL2W_iZDU6Os_BYyUnWpAVUdL-JKhbWXmHVo1q2WdBBUo5iUFP0xE02URQ"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface tracking-tight truncate">Git Club</span><span class="font-label-mono-sm text-label-mono-sm text-primary tracking-wide uppercase truncate">CHARUSAT HQ</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline flex items-center justify-between"><span>// BRANCH: main</span><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span></div></div><nav class="flex-1 px-space-sm space-y-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-title-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-body-md text-body-md font-medium">Command Center</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="events" href="#"><span class="material-symbols-outlined text-[20px]">event</span><span class="font-body-md text-body-md font-medium">Events</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-title-md" data-path="members" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md font-medium">Members</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="projects" href="#"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-body-md text-body-md font-medium">Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="announcements" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-body-md text-body-md font-medium">Announcements</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics" href="#"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-body-md text-body-md font-medium">Analytics</span></a><div class="my-space-sm pt-space-xs"><div class="h-[1px] bg-surface-container-highest mx-space-xs"></div></div><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="font-body-md text-body-md font-medium">Notifications</span></div><span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm">4</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md font-medium">Settings</span></a></nav></div><div class="p-space-sm bg-surface-container-lowest"><div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between"><div class="flex flex-col min-w-0"><span class="font-label-mono-sm text-label-mono-sm text-outline truncate">#GrowWith git</span><span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Build. Collab. Ship.</span></div><span class="material-symbols-outlined text-primary text-[18px]">commit</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/85 backdrop-blur-xl z-30 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline"><span class="text-on-surface-variant">charusat</span><span>/</span><span class="text-primary font-medium">git-club-ops</span></div><button class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm">Search or type command...</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">⌘K</kbd></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">shield_person</span><select class="bg-transparent text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer"><option class="bg-surface-container-low text-on-surface" selected="">Role: Admin</option><option class="bg-surface-container-low text-on-surface">Role: Event Lead</option><option class="bg-surface-container-low text-on-surface">Role: Project Lead</option><option class="bg-surface-container-low text-on-surface">Role: Member</option></select></div><button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Theme toggle"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><button class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="text-right hidden sm:block min-w-0"><div class="font-title-md text-body-sm text-on-surface font-semibold truncate leading-tight">Riddhi Thummar</div><div class="font-label-mono-sm text-label-mono-sm text-outline truncate leading-tight">Admin &amp; Tech Lead</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://lh3.googleusercontent.com/aida/AEtjO1UrVJz7fo8AVpiImVFIAHDJwXkDVlSXn93D0d3A5ZTuVhLgBX69N5xXk78QmOy3xKkOuntLtHYFrvIpP6XdRFW7R9CNwFcN0DtZPPqUfKP6kPA8Y8tWGgGwdy3KhGt8XLX7pX374qfC3qo8PjxzS5EvEIRwJoPI5wwvXZzQnmybI32lpOTU5zt6jXd-LJUvgLrCg-2v-NrHB3RcGO5OsvtVhyw8r4cpfSUPaVYpVV9Y8dSUSDf6ZH5b6xM"/></div></div></header><main class="relative pt-16 w-full min-h-screen pb-24 bg-background px-gutter"><div class="max-w-7xl mx-auto py-space-lg"><div class="flex flex-col w-full">
+<!-- Top Section: Overview & Metrics Header -->
+<section class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-sm font-label-mono-sm text-label-mono-sm text-primary">
+<span class="inline-block w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span>// DIRECTORY :: CHARUSAT_NODE_SYNC</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight uppercase">
+        The People Behind <span class="text-primary-container font-black">The Code</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+        Find the right people to learn, build, and collaborate with across every commit and milestone.
+      </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- High Impact Stats Counter Strip -->
+<div class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl bg-surface-container-low shadow-sm">
+<div class="px-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-outline block uppercase">Total Base</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">248</span>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="px-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-outline block uppercase">Mtd Joined</span>
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">+12</span>
+<span class="material-symbols-outlined text-tertiary text-sm">trending_up</span>
+</div>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="px-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-outline block uppercase">Active Sync</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">84</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-primary-container text-on-primary-container font-title-md text-body-md font-semibold hover:brightness-110 shadow-lg transition-all active:scale-95" onclick="document.getElementById('add-member-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>+ Add Member</span>
+</button>
+</div>
+</section>
+<!-- Section 2: Core Leadership Spotlight (Bento Atelier Architecture) -->
+<section class="mb-space-xl">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span>// 01. CORE LEADERSHIP SPOTLIGHT</span>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm text-outline-variant">EST. 2024 • DEP_GIT_EXEC</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Leader 1: Riddhi Thummar -->
+<div class="relative group rounded-xl bg-surface-container-low p-space-lg overflow-hidden shadow-md transition-all hover:bg-surface-container">
+<div class="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-primary-container/10 blur-2xl group-hover:bg-primary-container/20 transition-all"></div>
+<div class="flex items-start justify-between gap-space-md mb-space-md">
+<div class="relative">
+<img class="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Close up professional portrait of Riddhi Thummar, a young South Asian female engineer student wearing glasses with warm studio amber rim lighting and clean charcoal dark background, highly focused gaze, 8k resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAqhRXrtB-bRoYp4Xs2pibumYK6Uinfb4Jv1dCdr8u1faSmFXJEv9QwPskFvZIuj36x26Ft8Q6HXDj_5mwPGUoXdr-G9DSTPTXQirEkQr62V8W9ascxc42IXaGfU2m_hOJ3nV9jSFGGEsXeNwTdCe7pE3Vl3EBn5pCyN9PNtCY1qQkSThqi8ng_0S34ajPzHdU-DrUcdT1gLOUwoqnlmpfSpwYknaBo7xDiSdPc-3M7HvN0fEo5KdHyg"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed/20 text-primary-fixed font-label-mono-sm text-label-mono-sm font-semibold uppercase">Admin &amp; Tech Lead</span>
+</div>
+</div>
+<div class="space-y-space-xs mb-space-md">
+<div class="flex items-baseline justify-between">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Riddhi Thummar</h2>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CSE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Spearheading technical pipeline deployments and student open-source mentor circles across Charusat.
+          </p>
+</div>
+<div class="flex flex-wrap gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Git Internals</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">React</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Architecture</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm text-outline">
+<a class="hover:text-primary transition-colors flex items-center" href="https://github.com" target="_blank" title="GitHub">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a class="hover:text-primary transition-colors flex items-center" href="https://linkedin.com" target="_blank" title="LinkedIn">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+</div>
+<button class="font-label-mono-sm text-label-mono-sm text-primary flex items-center gap-1 hover:text-on-surface transition-colors" onclick="openInspectDrawer()">
+<span>INSPECT CELL</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Leader 2: Anushka Patel -->
+<div class="relative group rounded-xl bg-surface-container-low p-space-lg overflow-hidden shadow-md transition-all hover:bg-surface-container">
+<div class="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-secondary-container/10 blur-2xl group-hover:bg-secondary-container/20 transition-all"></div>
+<div class="flex items-start justify-between gap-space-md mb-space-md">
+<div class="relative">
+<img class="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Portrait photo of Anushka Patel, Indian female student tech lead in a dark navy collegiate hoodie, warm ambient workspace lighting with code monitors in soft-focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRpn5rinTMDW5iNcvzFlV5Bnld0s0VujHr8C9QpUfGqu5ml6v1NZmkzbyEFdt3UaXQYOPT-JzH3fqvgDUGJM_1HpzXo-vzy5qkkSCdyfdrUVxDFpdL1k_CMy4-2GphbwG5TdsygoiRuNKanzVojNChdLIyTkJZaMkmnN6FMzNhFCQL-MoSOsxmNsg07g91ZrkvbfCV7rTeCn7VL6hmlIVS6J3xEZ5WzTnGrJVQsNor85h2VeXn33wRuA"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed/20 text-secondary-fixed font-label-mono-sm text-label-mono-sm font-semibold uppercase">Project Lead</span>
+</div>
+</div>
+<div class="space-y-space-xs mb-space-md">
+<div class="flex items-baseline justify-between">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Anushka Patel</h2>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">3rd Year IT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Managing cross-team release trains, backend services, and repository maintenance standards.
+          </p>
+</div>
+<div class="flex flex-wrap gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Python</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Cloud</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Node.js</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm text-outline">
+<a class="hover:text-primary transition-colors flex items-center" href="https://github.com" target="_blank" title="GitHub">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a class="hover:text-primary transition-colors flex items-center" href="https://linkedin.com" target="_blank" title="LinkedIn">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+</div>
+<button class="font-label-mono-sm text-label-mono-sm text-secondary flex items-center gap-1 hover:text-on-surface transition-colors">
+<span>INSPECT CELL</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Leader 3: Jay Shah -->
+<div class="relative group rounded-xl bg-surface-container-low p-space-lg overflow-hidden shadow-md transition-all hover:bg-surface-container">
+<div class="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-tertiary-container/10 blur-2xl group-hover:bg-tertiary-container/20 transition-all"></div>
+<div class="flex items-start justify-between gap-space-md mb-space-md">
+<div class="relative">
+<img class="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Portrait photo of Jay Shah, energetic Indian college student, wearing dark jacket with subtle orange logo badge, warm indoor workshop background, creative look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBWlm-Y3kj8A2Iib_DY73QqLLJkm40lLe2wqPW4QCAIL3nPiZ3ZIKglxeJEEI0eVV1V35R7mVnUYxGH6Lr13L_CsdkmNX8jXehDdVTOA9BCPDG0sgcXhiFrPzV8LtDsr-k6rYIEGSU5vofgFtKV3-fhGdubSmWYBK4eKKcL0G5VW7Fp-BwwkrppPQ6IzlbYCR-KdyAHubz-yyqqKedItN0E-_eDpY6TFiviC6TZD_jcdvSYILkojtB1A"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-tertiary-fixed/20 text-tertiary-fixed font-label-mono-sm text-label-mono-sm font-semibold uppercase">Event Lead</span>
+</div>
+</div>
+<div class="space-y-space-xs mb-space-md">
+<div class="flex items-baseline justify-between">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Jay Shah</h2>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Directing community bootcamps, git hackfests, and collaborative branch showdowns across engineering institutes.
+          </p>
+</div>
+<div class="flex flex-wrap gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Community</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">DevOps</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface">Public Speaking</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm text-outline">
+<a class="hover:text-primary transition-colors flex items-center" href="https://github.com" target="_blank" title="GitHub">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a class="hover:text-primary transition-colors flex items-center" href="https://linkedin.com" target="_blank" title="LinkedIn">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+</div>
+<button class="font-label-mono-sm text-label-mono-sm text-tertiary flex items-center gap-1 hover:text-on-surface transition-colors">
+<span>INSPECT CELL</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Filter & Query Matrix -->
+<section class="space-y-space-md mb-space-xl">
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm space-y-space-sm">
+<div class="flex flex-col md:flex-row items-center gap-space-md">
+<!-- Search Prompt -->
+<div class="relative flex-1 w-full">
+<span class="absolute left-space-md top-1/2 -translate-y-1/2 text-primary font-label-mono-sm text-label-mono-sm">❯</span>
+<input class="w-full pl-8 pr-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-label-mono-sm text-label-mono-sm focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search by name, skill, or role..." type="text"/>
+</div>
+<!-- Secondary Search Metric / Quick Stats -->
+<div class="flex items-center gap-space-xs text-outline font-label-mono-sm text-label-mono-sm">
+<span>QUERY_SCOPE:</span>
+<span class="text-on-surface font-semibold">ALL_CAMPUS_RECORDS</span>
+</div>
+</div>
+<!-- Segmented Category Filters -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<!-- Branch Tabs -->
+<div class="flex flex-wrap items-center gap-1 p-1 rounded-lg bg-surface-container-lowest">
+<button class="px-space-sm py-1 rounded bg-surface-container text-primary font-label-mono-sm text-label-mono-sm font-semibold">All Branches</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">CSE</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">IT</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">CE</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">Other</button>
+</div>
+<!-- Role / Year Selectors -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline">
+<span>YEAR:</span>
+<select class="bg-transparent text-on-surface cursor-pointer focus:outline-none">
+<option class="bg-surface-container-low text-on-surface">All Years</option>
+<option class="bg-surface-container-low text-on-surface">1st Year</option>
+<option class="bg-surface-container-low text-on-surface" selected="">2nd Year</option>
+<option class="bg-surface-container-low text-on-surface">3rd Year</option>
+<option class="bg-surface-container-low text-on-surface">4th Year</option>
+</select>
+</div>
+<div class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline">
+<span>ROLE:</span>
+<select class="bg-transparent text-on-surface cursor-pointer focus:outline-none">
+<option class="bg-surface-container-low text-on-surface">All Roles</option>
+<option class="bg-surface-container-low text-on-surface">Core Team</option>
+<option class="bg-surface-container-low text-on-surface">Lead</option>
+<option class="bg-surface-container-low text-on-surface">Active Contributor</option>
+<option class="bg-surface-container-low text-on-surface">Member</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: 8 Realistic Member Grid -->
+<section class="space-y-space-md mb-space-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-primary">group</span>
+<span>// 02. ACTIVE REGISTRY (SHOWING 8 OF 248)</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline">
+<span>SORT:</span>
+<button class="text-on-surface hover:text-primary font-semibold">RECENT COMMITS ↓</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Member Card 1 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Meet Vaghasiya, young male Indian student smiling wearing a minimal black graphic tech t-shirt against modern concrete architectural studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt_o1tt3DRW_33jJM0JSJBa99qFU2cjtaTA0iSXBnS-vOzT8KNl-CwFNq9IhriZggHcF27So--ZlmDnznFHDs6f6-kgY24JoPHWyZQYbSfkEz19akoe4p-SrfIQf3tNWdH6lKcmieHRP5Ql7AltlzleFvR-cX4yw0lHA6c7FQu99hW_MNYdglI6YgKgEXLWWD6ipam743aWZmJ13j5rf3iq5lDMhsJK0S2BAe-5IPbrIu0lJUx260Hzw"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold">Active Contributor</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Meet Vaghasiya</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">3rd Year CSE</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">React</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Tailwind</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Next.js</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t-0">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 2 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Priyanshi Dave, female Indian software engineering student with glasses in front of warm wooden library shelves with soft depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp9qmfGu93NKi9owSlIjJ-wt_W9vqipQU26akVLmzHqnFQJ24FDxOUjPWSxloIZFgpGOl_GQ3gXY1KaGeiFA-FTcWPelUcLYn__esExpy5yrIkjy8lLeLKj6JX7v9r9-lCVrdoxGkJCqVFdlFcITkdBfCpkUPP1LWsZqgiXy9-uhb_OcQqLIjs-mFv_xLnQa4f2ewKjbZG44I4_LOK5Q-4Kdl-1EaT2_gs9rPcxIA1hNTr7OV9_bWSrA"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-secondary-fixed/20 text-secondary-fixed font-semibold">Project Member</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Priyanshi Dave</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year IT</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Docker</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Linux</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Python</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 3 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Dhruv Prajapati, male Indian student in collegiate lab setting with soft neon backlight, focused and confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHcoSabLuvLOld_O3ImtMUuju7SOpLIcBruFS1Q_2NcpKNsxAeFYqNmwPjl8xII-zIJhohuSF_vdPPNxJjg_LFWwYz9yzW_-0PIGSOFvse8FUCCw_8RSoZgjoTYt3oiZvblsoOdBOAhTxwUCmzrMD8ePaWiqpLLsSdbHLrNDAo921QFILT7-MivXU6HmHug9VDMtlCTKyv7tpyR2_J-Hbxi3krCTTLUCNNmDYiVdDbNw3qvnheIuDk2A"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-primary-fixed/20 text-primary-fixed font-semibold">Core Contributor</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Dhruv Prajapati</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year CE</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Go</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Kubernetes</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">gRPC</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 4 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Tanvi Joshi, creative female student designer in minimalist white shirt with headphones around neck, dark muted warm backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9zhxA_YFcfp62u6qmACHzURucx4_tjOJbtr5irHuyynMcHxbc8oSr1jwzsL8yqYg4Cpn3b2G1Ehc4DSmRGIxCyURiCdooSmcjXsQvR3Xb6JGi-KJSKZF7uiaQbYWybuD6BK11rpqcMP4l6jOOVmoQ0ER-8S4FsF5Rp2szu_yebiD2Yd_tYYzW0jJgvUvG181MSthYocw18niTebc0hIm2JtO-OK1g_k5QTBvJmX5knvtwULg3D8C9w"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-secondary-fixed/20 text-secondary-fixed font-semibold">Design &amp; UI</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Tanvi Joshi</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">3rd Year CSE</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">UI/UX</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Figma</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">CSS Arc</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 5 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Parth Soni, South Asian male student engineer in glasses and dark sweater with warm orange backlighting, focused gaze" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGKnw2IX1qH1zrnGDqjKtGlFkCuLeKdKABYR8WGkyI_o9RlOGjbHMI-DetChR5BfoCFbN1k3yGU0Uu99Igr_TH539IJ9pBIZ9wbVsfUuHQj6yoS-SU-RQihao1-JxBzH0wtiiGzUwGQe9ti6Ysl55uAHSylWSS7ZBh0If52-NQVzTVVPZ_zLvXIDxCi2Tb0dpfSgAW2oEfE_veuLyF6Z6gM4zBjgVPcB2BIpSumk6VJPkMS6maIgSeHQ"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold">Active Contributor</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Parth Soni</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">1st Year IT</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">C++</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Algorithms</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Git Flow</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 6 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Mansi Trivedi, female college engineer in collegiate campus makerspace room with laptops and workshop gear, natural ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2O7XpK2r78nZltVl1dW87fNZXLOFnt2zbcKos2nusSfhRD7tQESPwM2mmOQSBr9AgQbY3zMziLjDSTR4giAO66vw-x2MZDZEKTHI9aTLOSgk32rA40MdO5rTTz3Ys6ukK0APrmUptztgqy1kSjA5-JBS_0Ine7HiU_gYON1aSAZ6oh--R0Ec5PhP6gyJ0Jpkysq8cyhuzmJqHm1czbrUP1QldoAOaL4NXG3u1CXg7o1AjmmwHZly6qw"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-outline-variant/30 text-outline font-semibold">Member</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Mansi Trivedi</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year CE</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Node.js</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">MongoDB</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Express</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 7 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Kevin Choksi, young male Indian student smiling with laptop sticker visible in background, warm tech laboratory atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhxI3IF558k-V0LGWtjT6Ge_G4HoQh-2QUT-O2pbfe6owDnJe1Lk8Un36PlMPblCFO7lvdTb9gDXACds17Rh6YL-5-gb9O8jyYckhaAUUHvSJ5zUI7xk-9qkJ-BnDUP0HIkGtiKUvdxNgqttxNtqTSm-DxFkGigJgUiRRePqz1Gpu9GcKG6I1lyiLHGBQjpdHWlLjg31EKRvxSi9GvVehOU67AcUz-9ppOZhQ4sHpoVbn8DyM_-nSIhg"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold">Active Contributor</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Kevin Choksi</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">4th Year CSE</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Rust</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Wasm</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">CI/CD</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+<!-- Member Card 8 -->
+<div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+<div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Portrait of Harshita Mehta, female IT undergraduate student smiling warmly in front of a lecture theater with subtle ambient overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIhjwxPUK7hwI9ejEVBJLn3L77189tksJmIL5ltypQ7mTvE4ww2emJ-u5mJEdOsW2Z9cmIpGtjweFPGu-eOEMq1viXwdfyKIlMA5aPEgI6OaxYeX0fxdmwiXehaOc_-7wgNKY32LTwPBqeTqsyeHMaDid6Aj7vYfDaU7UoXHDK1HyrqZzEHBWLstLNjQ0s4dySpm9ZW9xUnCY57jaqD40QDibeEdygWiYmOb2-I1FY5IQ2pir2RGEV6A"/>
+<span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-secondary-fixed/20 text-secondary-fixed font-semibold">Event Lead Team</span>
+</div>
+<h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Harshita Mehta</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline mb-space-sm">2nd Year IT</p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">DevOps</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">GitHub CLI</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">Docs</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">code</span></a>
+<a class="p-1 rounded hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">alternate_email</span></a>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="openInspectDrawer()">Profile</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Member Detail Inspection Drawer (Slide-Over Panel) -->
+<aside class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-surface-container-low shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto" id="member-drawer">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-lowest sticky top-0 z-10 flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline">
+<span class="text-primary font-bold">#GrowWith git</span>
+<span>/</span>
+<span>NODE_INSPECT</span>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-all" onclick="closeInspectDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Content Body -->
+<div class="p-space-lg space-y-space-lg flex-1">
+<!-- Member Identity Header -->
+<div class="flex items-start gap-space-md">
+<div class="relative">
+<img class="w-20 h-20 rounded-xl object-cover shadow-md" data-alt="Detailed close up avatar portrait of Riddhi Thummar, tech admin lead student, studio warm lighting, charcoal backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvgoGO4RmvyuplUbtlgrHNAUIH1AZLnT-1VHGBgZbxxlp409Bg36a-XRiuwfKYjKSBRDvgyM5DIziRhE4sCOpssq9vsi2pO-LJ1DFtT7aOC8Sy2MauStJB3Nyaoum6xoL8BTvsNmbd0Cv48r6AbGiKLK_hwwQpbBhVMsiDxROasc9zsnkG3X0fQ3wa_XV0oL8DZfCGDvVb-TpFiXZpGUkU08OTrKjcktAy4MFqqowAQZdyKuozX5f1wQ"/>
+<div class="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-[9px] font-bold">ROOT</div>
+</div>
+<div class="space-y-1 min-w-0">
+<span class="px-2 py-0.5 rounded bg-primary-fixed/20 text-primary-fixed font-label-mono-sm text-[10px] font-semibold uppercase">Admin &amp; Tech Lead</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Riddhi Thummar</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CSE • CHARUSAT HQ</p>
+</div>
+</div>
+<!-- Bio -->
+<div class="p-space-md rounded-xl bg-surface-container text-body-sm font-body-sm text-on-surface-variant">
+        Passionate open-source maintainer, full-stack architect, and mentor at Git Club CHARUSAT. Leading technical curriculum, hands-on git workshops, and architecture reviews for internal college tooling.
+      </div>
+<!-- Contact Info Metadata Strip -->
+<div class="grid grid-cols-2 gap-space-xs font-label-mono-sm text-label-mono-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest">
+<span class="text-outline block text-[10px]">EMAIL_HANDLE</span>
+<span class="text-on-surface truncate block">riddhi@charusat.edu.in</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest">
+<span class="text-outline block text-[10px]">STUDENT_ID</span>
+<span class="text-on-surface truncate block">22CSE049</span>
+</div>
+</div>
+<!-- Git Contribution Graph Representation (Inline SVG Atelier) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-sm text-label-mono-sm text-outline uppercase">// COMMIT FREQUENCY (LAST 16 WEEKS)</span>
+<span class="font-label-mono-sm text-label-mono-sm text-tertiary">412 Commits</span>
+</div>
+<svg class="w-full h-16" fill="none" viewbox="0 0 320 60" xmlns="http://www.w3.org/2000/svg">
+<!-- 16 Columns x 4 Rows simulated commit tiles -->
+<g class="transition-opacity">
+<!-- Row 1 -->
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="0" y="4"></rect>
+<rect class="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="20" y="4"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="40" y="4"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="60" y="4"></rect>
+<rect class="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="80" y="4"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="100" y="4"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="120" y="4"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="140" y="4"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="160" y="4"></rect>
+<rect class="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="180" y="4"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="200" y="4"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="220" y="4"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="240" y="4"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="260" y="4"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="280" y="4"></rect>
+<rect class="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="300" y="4"></rect>
+<!-- Row 2 -->
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="0" y="18"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="20" y="18"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="40" y="18"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="60" y="18"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="80" y="18"></rect>
+<rect class="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="100" y="18"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="120" y="18"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="140" y="18"></rect>
+<rect class="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="160" y="18"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="180" y="18"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="200" y="18"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="220" y="18"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="240" y="18"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="260" y="18"></rect>
+<rect class="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="280" y="18"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="300" y="18"></rect>
+<!-- Row 3 -->
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="0" y="32"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="20" y="32"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="40" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="60" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="80" y="32"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="100" y="32"></rect>
+<rect class="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="120" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="140" y="32"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="160" y="32"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="180" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="200" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="220" y="32"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="240" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="260" y="32"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="280" y="32"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="300" y="32"></rect>
+<!-- Row 4 -->
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="0" y="46"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="20" y="46"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="40" y="46"></rect>
+<rect class="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="60" y="46"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="80" y="46"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="100" y="46"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="120" y="46"></rect>
+<rect class="text-tertiary-container" fill="currentColor" height="10" rx="2" width="14" x="140" y="46"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="160" y="46"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="180" y="46"></rect>
+<rect class="text-primary" fill="currentColor" height="10" rx="2" width="14" x="200" y="46"></rect>
+<rect class="text-surface-container-high" fill="currentColor" height="10" rx="2" width="14" x="220" y="46"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="240" y="46"></rect>
+<rect class="text-tertiary" fill="currentColor" height="10" rx="2" width="14" x="260" y="46"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="280" y="46"></rect>
+<rect class="text-primary-container" fill="currentColor" height="10" rx="2" width="14" x="300" y="46"></rect>
+</g>
+</svg>
+</div>
+<!-- Contributing Projects -->
+<div class="space-y-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-outline uppercase block">// ACTIVE PROJECT CONTRIBUTIONS</span>
+<div class="space-y-2">
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">folder_code</span>
+<div>
+<span class="font-title-md text-body-md text-on-surface font-semibold block leading-tight">HomeVault</span>
+<span class="font-label-mono-sm text-[11px] text-outline">Core Contributor • v1.4.0</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-tertiary font-label-mono-sm text-[10px]">Merged 24 PRs</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">school</span>
+<div>
+<span class="font-title-md text-body-md text-on-surface font-semibold block leading-tight">GitLearn</span>
+<span class="font-label-mono-sm text-[11px] text-outline">Lead Architect • Interactive Sandbox</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-label-mono-sm text-[10px]">Maintainer</span>
+</div>
+</div>
+</div>
+<!-- Past Events Attended -->
+<div class="space-y-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-outline uppercase block">// PAST EVENTS &amp; SESSIONS</span>
+<div class="p-space-sm rounded-lg bg-surface-container space-y-2">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface font-medium">Git Merge Conflict Showdown '24</span>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">Mentor</span>
+</div>
+<div class="w-full h-px bg-surface-container-highest"></div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface font-medium">CHARUSAT Open Source Summit</span>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">Speaker</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-space-lg bg-surface-container-lowest sticky bottom-0 z-10 flex items-center gap-space-sm">
+<button class="flex-1 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-md font-semibold hover:brightness-110 transition-all text-center">
+        Edit Profile
+      </button>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-bright transition-all" onclick="closeInspectDrawer()">
+        Close
+      </button>
+</div>
+</aside>
+<!-- Section 6: Add Member Modal Preview (Hidden by default, toggleable via JavaScript) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md hidden p-space-md" id="add-member-modal">
+<div class="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<!-- Modal Top -->
+<div class="px-space-lg py-space-md bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-primary">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>// REGISTER_NEW_MEMBER</span>
+</div>
+<button class="p-1 rounded text-outline hover:text-on-surface" onclick="document.getElementById('add-member-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Modal Form Body -->
+<div class="p-space-lg space-y-space-md">
+<div class="grid grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-mono-sm text-label-mono-sm text-outline block">FULL NAME</label>
+<input class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. Aarav Patel" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-sm text-label-mono-sm text-outline block">STUDENT ID</label>
+<input class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. 23IT082" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-mono-sm text-label-mono-sm text-outline block">DEPARTMENT / BRANCH</label>
+<select class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>Computer Science (CSE)</option>
+<option>Information Tech (IT)</option>
+<option>Computer Eng (CE)</option>
+<option>Other Department</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-sm text-label-mono-sm text-outline block">ACADEMIC YEAR</label>
+<select class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>1st Year</option>
+<option selected="">2nd Year</option>
+<option>3rd Year</option>
+<option>4th Year</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-sm text-label-mono-sm text-outline block">CLUB ROLE</label>
+<select class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>General Member</option>
+<option>Active Contributor</option>
+<option>Project Member</option>
+<option>Core Team Lead</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-sm text-label-mono-sm text-outline block">INITIAL SKILL TOKENS (COMMA SEPARATED)</label>
+<input class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. React, Git, Docker, Go" type="text"/>
+</div>
+<div class="p-space-sm rounded bg-surface-container-lowest flex items-center gap-space-sm">
+<input checked="" class="accent-primary-container w-4 h-4 cursor-pointer" id="invite-box" type="checkbox"/>
+<label class="font-label-mono-sm text-label-mono-sm text-outline cursor-pointer select-none" for="invite-box">Send Git Club CHARUSAT onboarding packet &amp; GitHub team invite</label>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-space-lg py-space-md bg-surface-container-lowest flex items-center justify-end gap-space-sm">
+<button class="px-space-md py-2 rounded bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all" onclick="document.getElementById('add-member-modal').classList.add('hidden')">Cancel</button>
+<button class="px-space-lg py-2 rounded bg-primary-container text-on-primary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md transition-all" onclick="document.getElementById('add-member-modal').classList.add('hidden')">Register Contributor</button>
+</div>
+</div>
+</div>
+<!-- Micro-Interaction Scripts for Slide-over & Modal controls -->
+<script>
+    function openInspectDrawer() {
+      const drawer = document.getElementById('member-drawer');
+      if (drawer) {
+        drawer.classList.remove('translate-x-full');
+      }
+    }
+
+    function closeInspectDrawer() {
+      const drawer = document.getElementById('member-drawer');
+      if (drawer) {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+  </script>
+</div></div></main></div><div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]"><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all"><span class="material-symbols-outlined text-[18px]">add</span><span>Event</span></button><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span></button><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span></button><button class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all"><span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span></button></div></body></html>
