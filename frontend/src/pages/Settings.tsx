@@ -225,34 +225,7 @@ export default function Settings() {
 <form className="p-space-lg space-y-space-md overflow-y-auto max-h-[768px]" onSubmit={(e) => { e.preventDefault(); handleProjectSubmit(event) }}>
 <div className="space-y-1">
 <label className="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">Project Name</label>
-<input className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="e.g. GitSync-CLI, EventPulse" required="" type="text"/>
-</div>
-<div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-<div className="space-y-1">
-<label className="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">Domain Category</label>
-<select className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary-container">
-<option>Web Development</option>
-<option>AI / Machine Learning</option>
-<option>App Development</option>
-<option>Cloud &amp; DevOps</option>
-<option>IoT / Hardware</option>
-</select>
-</div>
-<div className="space-y-1">
-<label className="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">Initial Status</label>
-<select className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary-container">
-<option>Planning Phase</option>
-<option>Active Development</option>
-<option>Completed / Shipped</option>
-</select>
-</div>
-</div>
-<div className="space-y-1">
-<label className="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">Short Pitch &amp; Objective</label>
-<textarea className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text
-
-
-NOTE: The output was truncated because it was too long. Use a more targeted query or a smaller range to get the information you need.</textarea></form></div></div></div></main></div>
+<input className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface"></textarea></form></div></div></div></main></div>
 </>
   );
 }
