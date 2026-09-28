@@ -13,7 +13,7 @@ main > :last-child { margin-bottom: 0 !important; }
   --color-primary-fixed: #ffdad2;
   --color-surface-container-high: #e2e8f0;
   --color-error: #dc2626;
-  --color-outline-variant: #e2e8f0;
+  --color-outline-variant: #94a3b8;
   --color-on-tertiary-fixed-variant: #19512c;
   --color-on-secondary-container: #fff7f0;
   --color-on-tertiary-container: #003114;
@@ -51,7 +51,7 @@ main > :last-child { margin-bottom: 0 !important; }
   --color-on-secondary-fixed: #271900;
   --color-inverse-surface: #e5e2e1;
   --color-on-secondary-fixed-variant: #5f4100;
-  --color-outline: #cbd5e1;
+  --color-outline: #64748b;
   --color-secondary-fixed: #ffdeaa;
   --color-secondary: #f5bd58;
   --color-surface-container: #e2e8f0;
