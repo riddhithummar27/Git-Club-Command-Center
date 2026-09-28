@@ -28,5 +28,109 @@
         }
       });
     </script>
-  </body>
+  
+<div class="hidden fixed inset-0 z-[60] flex items-start justify-center pt-24 bg-surface-container-lowest/80 backdrop-blur-md p-space-md" id="global-modal-cmd">
+  <div class="w-full max-w-xl rounded-xl bg-surface-container-low shadow-2xl p-space-md flex flex-col space-y-space-sm">
+    <div class="flex items-center gap-space-sm px-space-sm py-space-xs rounded bg-surface-container">
+      <span class="material-symbols-outlined text-primary text-[20px]">terminal</span>
+      <input class="w-full bg-transparent text-on-surface placeholder:text-outline font-label-mono-md text-label-mono-md focus:outline-none" id="global-cmd-input" placeholder="Type a command or jump to destination..." type="text"/>
+      <kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">ESC</kbd>
+    </div>
+    <div class="space-y-1 pt-space-xs" id="cmd-results">
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="dashboard">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">dashboard</span>
+          <span class="font-body-md text-body-md text-on-surface">Jump to Dashboard</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
+      </div>
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="events">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">event</span>
+          <span class="font-body-md text-body-md text-on-surface">Jump to Events</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
+      </div>
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="members">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">group</span>
+          <span class="font-body-md text-body-md text-on-surface">Jump to Members</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
+      </div>
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="projects">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">folder</span>
+          <span class="font-body-md text-body-md text-on-surface">Jump to Projects</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
+      </div>
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="settings">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">settings</span>
+          <span class="font-body-md text-body-md text-on-surface">Jump to Settings</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script>
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          const modal = document.getElementById('global-modal-cmd');
+          if (modal) {
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+               setTimeout(() => document.getElementById('global-cmd-input').focus(), 50);
+            }
+          }
+        }
+        if (e.key === 'Escape') {
+          const modal = document.getElementById('global-modal-cmd');
+          if (modal && !modal.classList.contains('hidden')) modal.classList.add('hidden');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        // Toggle from header button
+        const btn = e.target.closest('button');
+        if (btn && btn.textContent.includes('Search or type command')) {
+          const modal = document.getElementById('global-modal-cmd');
+          if (modal) {
+            modal.classList.remove('hidden');
+            setTimeout(() => document.getElementById('global-cmd-input').focus(), 50);
+          }
+        }
+        
+        // Execute cmd item
+        const cmdRow = e.target.closest('#cmd-results > div');
+        if (cmdRow) {
+           const action = cmdRow.getAttribute('data-action');
+           const target = cmdRow.getAttribute('data-target');
+           if (action === 'nav') {
+              const link = document.createElement('a');
+              link.href = '#';
+              link.setAttribute('data-path', target);
+              
+              // We append to the React root so the router captures the click event via delegation
+              const root = document.getElementById('root');
+              if (root) {
+                root.appendChild(link);
+                link.click();
+                root.removeChild(link);
+              }
+              document.getElementById('global-modal-cmd').classList.add('hidden');
+           }
+        }
+        
+        // Click outside to close
+        if (e.target.id === 'global-modal-cmd') {
+          e.target.classList.add('hidden');
+        }
+      });
+    </script>
+</body>
 </html>
