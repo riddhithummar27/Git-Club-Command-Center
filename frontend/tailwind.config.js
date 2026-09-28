@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'float-slow': 'float 30s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0) rotate(-10deg) scale(1)' },
+          '50%': { transform: 'translateY(-40px) rotate(10deg) scale(1.05)' },
+        }
+      },
       colors: {
         "background": "var(--color-background)",
         "surface": "var(--color-surface)",
