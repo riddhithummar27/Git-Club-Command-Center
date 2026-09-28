@@ -671,7 +671,7 @@
       </button>
     </div>
     
-    <form class="space-y-space-md" onsubmit="event.preventDefault(); toggleModal('modal-event'); triggerFeedback('Event created & staged to main calendar!'); setTimeout(() => document.querySelector('a[data-path=events]').click(), 800);">
+    <form class="space-y-space-md" onsubmit="event.preventDefault(); const fd = new FormData(event.target); window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || []; window.GIT_CLUB_EVENTS.push({ id: 'EVT-' + Math.floor(1000 + Math.random() * 9000), name: fd.get('name'), date: fd.get('date'), category: fd.get('category'), link: fd.get('link'), capacity: fd.get('capacity'), audience: fd.get('audience'), members: fd.get('members'), description: fd.get('description') }); toggleModal('modal-event'); triggerFeedback('Event created & staged to main calendar!'); setTimeout(() => document.querySelector('a[data-path=events]').click(), 800);">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
         <div class="flex flex-col gap-1">
           <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// EVENT_TITLE</label>
