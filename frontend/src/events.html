@@ -709,15 +709,28 @@
 </div>
 <!-- Modal Body Form -->
 <form class="p-space-lg space-y-space-md" id="createEventForm" onsubmit="handleCreateEvent(event)">
-  <div class="flex flex-col gap-1">
-    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// EVENT_TITLE</label>
-    <input id="eventName" name="name" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Open Source Hack Night" required="" type="text">
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// EVENT_TITLE</label>
+      <input id="eventName" name="name" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Open Source Hack Night" required="" type="text">
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// CATEGORY_TRACK</label>
+      <select id="eventCategory" name="category" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
+        <option>Workshop</option>
+        <option>Hackathon</option>
+        <option>Competition</option>
+        <option>Community Talk</option>
+        <option>Social Meetup</option>
+      </select>
+    </div>
   </div>
   
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
     <div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// DATE</label>
-      <input id="eventDate" name="date" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="date">
+      <input id="eventDate" name="date" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="datetime-local">
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// MAX_SEATS</label>
@@ -725,14 +738,35 @@
     </div>
   </div>
 
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// REGISTRATION_LINK</label>
+      <input id="eventLink" name="link" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://forms.gle/..." type="url">
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// TARGET_AUDIENCE</label>
+      <select id="eventAudience" name="audience" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors">
+        <option>All Students (Beginner Friendly)</option>
+        <option>Intermediate (Some Experience)</option>
+        <option>Advanced (Domain Experts)</option>
+        <option>Core Team Only</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// TEAM_MEMBERS_LEADS</label>
+    <input id="eventMembers" name="members" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Jay Shah, Anushka Patel" required="" type="text">
+  </div>
+
   <div class="flex flex-col gap-1">
     <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// DESCRIPTION & PREREQUISITES</label>
-    <textarea id="eventDesc" name="description" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] min-h-[120px] transition-colors resize-y" placeholder="Brief outline, workshop tracks, and prerequisites..." required=""></textarea>
+    <textarea id="eventDesc" name="description" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] min-h-[120px] transition-colors resize-y" placeholder="Brief outline, workshop tracks, and prerequisites... (e.g. Node.js installed)" required=""></textarea>
   </div>
 
   <!-- Buttons -->
   <div class="flex items-center justify-end gap-space-sm pt-space-md">
-    <button class="px-space-md py-2.5 rounded bg-transparent text-on-surface font-title-md text-body-md hover:bg-surface-container transition-colors cursor-pointer" onclick="document.getElementById('createEventModal').classList.add('hidden')" type="button">Cancel</button>
+    <button class="px-space-md py-2.5 rounded bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-container-highest transition-colors cursor-pointer" onclick="document.getElementById('createEventModal').classList.add('hidden')" type="button">Cancel</button>
     <button class="px-space-md py-2.5 rounded bg-[#fd5832] text-white font-title-md text-body-md hover:brightness-110 transition-all cursor-pointer shadow-md" type="submit">Deploy Event Hook</button>
   </div>
 </form>
@@ -779,17 +813,15 @@
     const category = document.getElementById('eventCategory')?.value || 'Workshop';
     const capacity = document.getElementById('eventCapacity')?.value || '100';
     const date = document.getElementById('eventDate')?.value || new Date().toISOString();
-    const location = document.getElementById('eventLocation')?.value || 'TBA';
     const desc = document.getElementById('eventDesc')?.value || 'No description provided.';
     const members = document.getElementById('eventMembers')?.value || 'None';
     const link = document.getElementById('eventLink')?.value || 'No link';
     const audience = document.getElementById('eventAudience')?.value || 'All Students';
-    const prereqs = document.getElementById('eventPrereqs')?.value || 'None';
     
     const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
     
     const newEvent = {
-      id, name, category, capacity, date, location, desc, members, link, audience, prereqs,
+      id, name, category, capacity, date, location: 'TBA', desc, members, link, audience, prereqs: 'See description',
       status: 'PLANNING'
     };
     
