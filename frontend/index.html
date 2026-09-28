@@ -36,44 +36,56 @@
       <input class="w-full bg-transparent text-on-surface placeholder:text-outline font-label-mono-md text-label-mono-md focus:outline-none" id="global-cmd-input" placeholder="Type a command or jump to destination..." type="text"/>
       <kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">ESC</kbd>
     </div>
+    
     <div class="space-y-1 pt-space-xs" id="cmd-results">
-      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="dashboard">
+      <!-- 1. EVENT CREATE -->
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="cmd-event">
         <div class="flex items-center gap-space-sm">
-          <span class="material-symbols-outlined text-outline text-[18px]">dashboard</span>
-          <span class="font-body-md text-body-md text-on-surface">Jump to Dashboard</span>
+          <span class="material-symbols-outlined text-outline text-[18px]">add_box</span>
+          <span class="font-body-md text-body-md text-on-surface">git event create --interactive</span>
         </div>
         <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
       </div>
-      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="events">
+      
+      <!-- 2. MEMBER REVIEW -->
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="cmd-members">
         <div class="flex items-center gap-space-sm">
-          <span class="material-symbols-outlined text-outline text-[18px]">event</span>
-          <span class="font-body-md text-body-md text-on-surface">Jump to Events</span>
+          <span class="material-symbols-outlined text-outline text-[18px]">group_add</span>
+          <span class="font-body-md text-body-md text-on-surface">git members review --pending</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-secondary">Review</span>
+      </div>
+      
+      <!-- 3. BROADCAST -->
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="cmd-broadcast">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">campaign</span>
+          <span class="font-body-md text-body-md text-on-surface">git broadcast send --channel #general</span>
+        </div>
+        <span class="font-label-mono-sm text-label-mono-sm text-tertiary">Broadcast</span>
+      </div>
+
+      <!-- 4. PROJECT INIT -->
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="cmd-project">
+        <div class="flex items-center gap-space-sm">
+          <span class="material-symbols-outlined text-outline text-[18px]">create_new_folder</span>
+          <span class="font-body-md text-body-md text-on-surface">git project init</span>
         </div>
         <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
       </div>
-      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="members">
-        <div class="flex items-center gap-space-sm">
-          <span class="material-symbols-outlined text-outline text-[18px]">group</span>
-          <span class="font-body-md text-body-md text-on-surface">Jump to Members</span>
-        </div>
-        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
-      </div>
-      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="projects">
-        <div class="flex items-center gap-space-sm">
-          <span class="material-symbols-outlined text-outline text-[18px]">folder</span>
-          <span class="font-body-md text-body-md text-on-surface">Jump to Projects</span>
-        </div>
-        <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
-      </div>
-      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="nav" data-target="settings">
+
+      <!-- 5. SETTINGS -->
+      <div class="px-space-sm py-1.5 rounded hover:bg-surface-container flex items-center justify-between cursor-pointer" data-action="cmd-settings">
         <div class="flex items-center gap-space-sm">
           <span class="material-symbols-outlined text-outline text-[18px]">settings</span>
-          <span class="font-body-md text-body-md text-on-surface">Jump to Settings</span>
+          <span class="font-body-md text-body-md text-on-surface">git config --global user.profile</span>
         </div>
         <span class="font-label-mono-sm text-label-mono-sm text-outline">Action</span>
       </div>
     </div>
+
   </div>
+</div>
 </div>
 
     <script>
@@ -120,24 +132,47 @@
           }
         }
         
+        
         // Execute cmd item
         const cmdRow = e.target.closest('#cmd-results > div');
         if (cmdRow) {
            const action = cmdRow.getAttribute('data-action');
-           const target = cmdRow.getAttribute('data-target');
-           if (action === 'nav') {
-              // Click an existing link in the sidebar so React Router catches it
-              const existingLink = document.querySelector(`#root a[data-path="${target}"]`);
-              if (existingLink) {
-                 existingLink.click();
-              } else {
-                 // Fallback if somehow not found
-                 window.location.href = '/' + target;
-              }
-              document.getElementById('global-modal-cmd').classList.add('hidden');
+           document.getElementById('global-modal-cmd').classList.add('hidden');
+           
+           function navTo(path) {
+              const link = document.querySelector(`#root a[data-path="${path}"]`);
+              if (link) link.click();
+              else window.location.href = '/' + path;
+           }
+
+           if (action === 'cmd-event') {
+              navTo('events');
+              setTimeout(() => {
+                if (window.toggleModal) {
+                   window.toggleModal('createEventModal', true);
+                   window.toggleModal('modal-event', true);
+                }
+              }, 150);
+           } else if (action === 'cmd-members') {
+              navTo('members');
+              setTimeout(() => {
+                if (window.triggerFeedback) window.triggerFeedback('Member intake directory loaded.');
+              }, 150);
+           } else if (action === 'cmd-broadcast') {
+              navTo('announcements');
+              setTimeout(() => {
+                if (window.triggerFeedback) window.triggerFeedback('Pushed latest announcements.');
+              }, 150);
+           } else if (action === 'cmd-project') {
+              navTo('projects');
+              setTimeout(() => {
+                if (window.toggleModal) window.toggleModal('modal-add-project', true);
+              }, 150);
+           } else if (action === 'cmd-settings') {
+              navTo('settings');
            }
         }
-        
+
         // Click outside to close
         if (e.target.id === 'global-modal-cmd') {
           e.target.classList.add('hidden');
