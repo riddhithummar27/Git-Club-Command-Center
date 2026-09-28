@@ -112,7 +112,7 @@
           modals.forEach(id => {
             const m = document.getElementById(id);
             if (m && !m.classList.contains('hidden')) m.classList.add('hidden');
-                    });
+          });
           const drawers = ['member-drawer', 'eventDetailDrawer'];
           drawers.forEach(id => {
             const d = document.getElementById(id);
@@ -131,7 +131,6 @@
             setTimeout(() => document.getElementById('global-cmd-input').focus(), 50);
           }
         }
-        
         
         // Execute cmd item
         const cmdRow = e.target.closest('#cmd-results > div');
@@ -173,7 +172,12 @@
            }
         }
 
-        
+        // Click outside to close
+        if (e.target.id === 'global-modal-cmd') {
+          e.target.classList.add('hidden');
+        }
+      });
+
       // Setup Command Palette Keyboard Navigation
       const cmdInput = document.getElementById('global-cmd-input');
       const cmdResults = document.getElementById('cmd-results');
@@ -228,30 +232,45 @@
 
         cmdInput.addEventListener('keydown', (e) => {
           const items = Array.from(cmdResults.children).filter(c => !c.classList.contains('hidden'));
-          if (items.length === 0) return;
           
           if (e.key === 'ArrowDown') {
             e.preventDefault();
+            if (items.length === 0) return;
             selectedIndex = (selectedIndex + 1) % items.length;
             updateSelection();
           } else if (e.key === 'ArrowUp') {
             e.preventDefault();
+            if (items.length === 0) return;
             selectedIndex = (selectedIndex - 1 + items.length) % items.length;
             updateSelection();
           } else if (e.key === 'Enter') {
             e.preventDefault();
             if (selectedIndex >= 0 && selectedIndex < items.length) {
               items[selectedIndex].click(); // Reuse existing click handler
+            } else {
+              // Fallback smart routing for custom commands
+              const val = e.target.value.toLowerCase();
+              const allItems = Array.from(cmdResults.children);
+              if (val.includes('peer') || val.includes('member')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-members');
+                 if (item) item.click();
+              } else if (val.includes('event')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-event');
+                 if (item) item.click();
+              } else if (val.includes('project')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-project');
+                 if (item) item.click();
+              } else if (val.includes('broadcast')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-broadcast');
+                 if (item) item.click();
+              } else if (val.includes('config') || val.includes('setting') || val.includes('profile')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-settings');
+                 if (item) item.click();
+              }
             }
           }
         });
       }
-
-          // Click outside to close
-        if (e.target.id === 'global-modal-cmd') {
-          e.target.classList.add('hidden');
-        }
-      });
     </script>
 
 <script>
