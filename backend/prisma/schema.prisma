@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String              @id @default(uuid())
+  name          String
+  email         String              @unique
+  passwordHash  String
+  role          String              @default("MEMBER")
+  avatarUrl     String?
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  profile       MemberProfile?
+  organizedEvents Event[]
+  registrations EventRegistration[]
+  projectRoles  ProjectMember[]
+  announcements Announcement[]
+  notifications Notification[]
+  activityLogs  ActivityLog[]
+}
+
+model MemberProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  year        String?
+  branch      String?
+  bio         String?
+  skills      String?  // comma-separated
+  githubUrl   String?
+  linkedinUrl String?
+  domain      String?
+  joinedAt    DateTime @default(now())
+}
+
+model Event {
+  id            String              @id @default(uuid())
+  title         String
+  description   String
+  category      String
+  date          DateTime
+  startTime     String
+  endTime       String
+  venue         String
+  capacity      Int
+  status        String              @default("UPCOMING")
+  organizerId   String
+  organizer     User                @relation(fields: [organizerId], references: [id])
+  registrations EventRegistration[]
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+}
+
+model EventRegistration {
+  id           String   @id @default(uuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status       String   @default("REGISTERED")
+  registeredAt DateTime @default(now())
+
+  @@unique([eventId, userId])
+}
+
+model Project {
+  id           String          @id @default(uuid())
+  name         String
+  description  String
+  category     String
+  status       String          @default("ACTIVE")
+  progress     Int             @default(0)
+  githubUrl    String?
+  liveUrl      String?
+  thumbnailUrl String?
+  members      ProjectMember[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+}
+
+model ProjectMember {
+  id        String  @id @default(uuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      String
+
+  @@unique([projectId, userId])
+}
+
+model Announcement {
+  id         String   @id @default(uuid())
+  title      String
+  content    String
+  authorId   String
+  author     User     @relation(fields: [authorId], references: [id])
+  audience   String
+  published  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action     String
+  entityType String
+  entityId   String
+  metadata   String?
+  createdAt  DateTime @default(now())
+}
