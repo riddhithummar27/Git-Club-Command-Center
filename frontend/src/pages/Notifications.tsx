@@ -225,7 +225,8 @@ export default function Notifications() {
 <form className="p-space-lg space-y-space-md overflow-y-auto max-h-[768px]" onSubmit={(e) => { e.preventDefault(); handleProjectSubmit(event) }}>
 <div className="space-y-1">
 <label className="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">Project Name</label>
-<input className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface"></textarea></form></div></div></div></main></div>
+<input className="w-full px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface" />
+</form></div></div></div></main></div>
 </>
   );
 }
