@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Events() {
@@ -9,10 +9,10 @@ export default function Events() {
   return (
     <>
       
-<!-- SIDEBAR -->
+
 <aside className="fixed left-0 top-0 h-full w-64 bg-surface z-50 flex flex-col justify-between border-r border-outline-variant select-none">
 <div className="flex flex-col">
-<!-- Brand Logo / Unit -->
+
 <div className="h-16 px-5 flex items-center gap-3 border-b border-outline-variant bg-surface">
 <div className="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary border border-outline-variant">
 <span className="material-symbols-outlined text-[18px]">terminal</span>
@@ -22,7 +22,7 @@ export default function Events() {
 <span className="font-label-caps text-[10px] tracking-widest text-outline uppercase font-semibold">COMMAND CENTER</span>
 </div>
 </div>
-<!-- Navigation Section -->
+
 <div className="px-5 py-3">
 <div className="font-label-caps text-[11px] font-semibold uppercase text-outline tracking-wider">Workspace</div>
 </div>
@@ -59,7 +59,7 @@ export default function Events() {
 </Link>
 </nav>
 </div>
-<!-- Sidebar Footer -->
+
 <div className="p-4 border-t border-outline-variant bg-surface-container-high/60">
 <div className="flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
@@ -78,9 +78,9 @@ export default function Events() {
 </div>
 </div>
 </aside>
-<!-- MAIN WRAPPER -->
+
 <div className="pl-64">
-<!-- TOP HEADER -->
+
 <header className="fixed top-0 left-64 right-0 h-16 bg-surface/95 backdrop-blur-md z-40 border-b border-outline-variant flex items-center justify-between px-6 shadow-xs">
 <div className="flex items-center gap-2">
 <span className="font-label-code text-xs text-outline font-semibold uppercase tracking-wider">COMMAND CENTER</span>
@@ -88,18 +88,18 @@ export default function Events() {
 <span className="font-label-code text-xs text-primary font-bold uppercase tracking-wider">OVERVIEW</span>
 </div>
 <div className="flex items-center gap-4">
-<!-- Search Pill -->
+
 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-high border border-outline-variant text-on-surface-variant focus-within:border-primary/50 focus-within:bg-surface transition-all">
 <span className="material-symbols-outlined text-[18px] text-outline">search</span>
 <span className="font-label-ui text-xs text-outline pr-4">Search node repository...</span>
 <kbd className="px-1.5 py-0.5 rounded bg-surface border border-outline-variant font-label-code text-[10px] text-outline font-semibold shadow-xs">⌘K</kbd>
 </div>
-<!-- Notification -->
+
 <button aria-label="Notifications" className="relative w-9 h-9 rounded-lg bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors shadow-xs">
 <span className="material-symbols-outlined text-[20px]">notifications</span>
 <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span>
 </button>
-<!-- Profile -->
+
 <div className="flex items-center gap-2.5 pl-3 border-l border-outline-variant">
 <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shadow-xs">
 <span className="material-symbols-outlined text-[18px]">person</span>
@@ -114,13 +114,13 @@ export default function Events() {
 </div>
 </div>
 </header>
-<!-- CONTENT BODY -->
+
 <main className="w-full pt-16 bg-background min-h-screen">
 <div className="max-w-[1440px] mx-auto p-6 md:p-8">
 <div className="flex flex-col w-full gap-8">
-<!-- SECTION 1: HEADER & TELEMETRY HUB -->
+
 <div className="flex flex-col gap-6">
-<!-- Top Action Row -->
+
 <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6">
 <div className="flex flex-col gap-1.5">
 <div className="flex items-center gap-2 text-outline text-xs font-semibold">
@@ -134,7 +134,7 @@ export default function Events() {
                   Manage upcoming, ongoing, and past Git Club activities and registrations. Synchronized across university infrastructure nodes.
                 </p>
 </div>
-<!-- Action Toolbar -->
+
 <div className="flex flex-wrap items-center gap-3">
 <button className="h-9 px-3.5 bg-surface hover:bg-surface-container-high border border-outline-variant text-on-surface rounded-lg flex items-center gap-2 shadow-[0_2px_8px_rgba(29,41,35,0.06)] transition-all" id="date-range-btn">
 <span className="material-symbols-outlined text-outline text-[18px]">calendar_month</span>
@@ -151,9 +151,9 @@ export default function Events() {
 </button>
 </div>
 </div>
-<!-- Quick Telemetry Band -->
+
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-<!-- Total Nodes -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col justify-between shadow-[0_2px_8px_rgba(29,41,35,0.06)] relative overflow-hidden group">
 <div className="absolute right-0 top-0 bottom-0 w-1 bg-outline-variant group-hover:bg-primary transition-colors"></div>
 <div className="flex items-center justify-between text-outline">
@@ -165,7 +165,7 @@ export default function Events() {
 <span className="font-label-caps text-[10px] text-outline ml-1 font-semibold">TOTAL</span>
 </div>
 </div>
-<!-- Scheduled -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col justify-between shadow-[0_2px_8px_rgba(29,41,35,0.06)] relative overflow-hidden group">
 <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary"></div>
 <div className="flex items-center justify-between text-primary">
@@ -177,7 +177,7 @@ export default function Events() {
 <span className="font-label-caps text-[10px] text-outline ml-1 font-semibold">UPCOMING</span>
 </div>
 </div>
-<!-- Live Stream -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col justify-between shadow-[0_2px_8px_rgba(29,41,35,0.06)] relative overflow-hidden group">
 <div className="absolute right-0 top-0 bottom-0 w-1 bg-secondary"></div>
 <div className="flex items-center justify-between">
@@ -189,7 +189,7 @@ export default function Events() {
 <span className="font-label-caps text-[10px] text-outline ml-1 font-semibold">ONGOING</span>
 </div>
 </div>
-<!-- Archived -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col justify-between shadow-[0_2px_8px_rgba(29,41,35,0.06)] relative overflow-hidden group">
 <div className="absolute right-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
 <div className="flex items-center justify-between text-outline">
@@ -201,7 +201,7 @@ export default function Events() {
 <span className="font-label-caps text-[10px] text-outline ml-1 font-semibold">COMPLETED</span>
 </div>
 </div>
-<!-- Reliability -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col justify-between shadow-[0_2px_8px_rgba(29,41,35,0.06)] relative overflow-hidden group">
 <div className="absolute right-0 top-0 bottom-0 w-1 bg-tertiary"></div>
 <div className="flex items-center justify-between">
@@ -213,7 +213,7 @@ export default function Events() {
 <span className="font-label-caps text-[10px] text-outline ml-1 font-semibold">AVG ATTENDANCE</span>
 </div>
 </div>
-<!-- Community Reach -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col justify-between shadow-[0_2px_8px_rgba(29,41,35,0.06)] relative overflow-hidden group">
 <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary"></div>
 <div className="flex items-center justify-between text-outline">
@@ -227,11 +227,11 @@ export default function Events() {
 </div>
 </div>
 </div>
-<!-- SECTION 2: CONTROL CONSOLE -->
+
 <div className="bg-surface p-4 rounded-xl border border-outline-variant flex flex-col gap-4 shadow-[0_2px_8px_rgba(29,41,35,0.06)]">
-<!-- Search & Status Row -->
+
 <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
-<!-- Search Bar -->
+
 <div className="relative flex-1 min-w-[280px]">
 <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
 <input className="w-full h-10 pl-10 pr-10 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="event-search-input" placeholder="Search events by name, lead, venue, or tag..." type="text" />
@@ -239,7 +239,7 @@ export default function Events() {
 <span className="material-symbols-outlined text-[16px]">close</span>
 </button>
 </div>
-<!-- Status Filters -->
+
 <div className="flex items-center gap-1 bg-surface-container-high p-1 rounded-lg border border-outline-variant">
 <button className="status-tab px-3 py-1.5 rounded font-label-code text-xs font-semibold transition-all bg-surface text-primary shadow-xs flex items-center gap-1.5" data-filter="all" >
 <span>All Stages</span>
@@ -261,7 +261,7 @@ export default function Events() {
 </button>
 </div>
 </div>
-<!-- Categories and Sort Row -->
+
 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-1 border-t border-outline-variant/60">
 <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
 <span className="font-label-caps text-xs text-outline uppercase font-semibold mr-1.5 tracking-wider">CATEGORY:</span>
@@ -283,9 +283,9 @@ export default function Events() {
 </div>
 </div>
 </div>
-<!-- SECTION 3: RICH EVENT CARDS GRID -->
+
 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="events-grid">
-<!-- CARD 1: GIT & GITHUB WORKSHOP -->
+
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="86" data-category="workshop" data-status="upcoming" data-timestamp="2025-10-03">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
 <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Technical hands coding terminal commands and visualizing Git tree branch structures on a mechanical keyboard laptop screen in a dim university computer laboratory with green monitor glow and warm focused desk lamp." style={{}}></div>
@@ -357,7 +357,7 @@ export default function Events() {
 </div>
 </div>
 </article>
-<!-- CARD 2: HACKATHON 2.0: CODE SPRINT -->
+
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="92" data-category="competition" data-status="upcoming" data-timestamp="2025-10-12">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
 <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="High intensity university hackathon floor with groups of engineering students collaborating in front of glowing multi monitor setups, whiteboard system diagrams, and neon green and deep black ambient staging lights." style={{}}></div>
@@ -429,7 +429,7 @@ export default function Events() {
 </div>
 </div>
 </article>
-<!-- CARD 3: AI/ML COMMUNITY SESSION -->
+
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="60" data-category="community" data-status="upcoming" data-timestamp="2025-10-18">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
 <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Neural network mathematical architecture diagrams projected behind an academic lecturer discussing attention mechanisms and tensor operations in an amphitheater lecture hall with students focused on code." style={{}}></div>
@@ -501,7 +501,7 @@ export default function Events() {
 </div>
 </div>
 </article>
-<!-- CARD 4: OPEN SOURCE DAY: CONTRIBUTING TO LINUX -->
+
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="91" data-category="workshop" data-status="ongoing" data-timestamp="2025-09-30">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
 <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Dark linux kernel terminal session showing C code compile errors and patch verification pipelines on dual monitors with developers wearing headphones collaborating over remote audio call." style={{}}></div>
@@ -577,7 +577,7 @@ export default function Events() {
 </div>
 </div>
 </article>
-<!-- CARD 5: WEB DEVELOPMENT BOOTCAMP 2025 -->
+
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="100" data-category="workshop" data-status="completed" data-timestamp="2025-09-15">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
 <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 filter grayscale contrast-125" data-alt="Auditorium full of university software engineering students raising hands with web browser developer tools open on their screens during an interactive modern JavaScript framework lecture." style={{}}></div>
@@ -649,7 +649,7 @@ export default function Events() {
 </div>
 </div>
 </article>
-<!-- CARD 6: AUTOMATED CI/CD -->
+
 <article className="event-card group bg-surface rounded-xl border border-outline-variant flex flex-col justify-between overflow-hidden shadow-[0_2px_8px_rgba(29,41,35,0.06)] hover:shadow-[0_8px_20px_rgba(29,41,35,0.1)] transition-all duration-200" data-capacity="55" data-category="workshop" data-status="upcoming" data-timestamp="2025-10-25">
 <div className="relative h-48 w-full bg-surface-container-high overflow-hidden">
 <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Continuous integration pipeline status graphs and GitHub actions workflow terminal displays showing automated green test badges on multiple vertical developer screens." style={{}}></div>
@@ -726,10 +726,10 @@ export default function Events() {
 </div>
 </main>
 </div>
-<!-- SECTION 4: SLIDE-OVER DRAWER FOR CREATE EVENT MODAL -->
+
 <div className="fixed inset-0 bg-[#1D2923]/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="drawer-backdrop" ></div>
 <div className="fixed top-0 right-0 h-full w-full max-w-xl bg-surface shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto border-l border-outline-variant" id="create-event-drawer">
-<!-- Drawer Header -->
+
 <div className="p-6 bg-surface border-b border-outline-variant flex items-center justify-between">
 <div className="flex flex-col">
 <div className="flex items-center gap-2">
@@ -742,14 +742,14 @@ export default function Events() {
 <span className="material-symbols-outlined text-[20px]">close</span>
 </button>
 </div>
-<!-- Drawer Form Body -->
+
 <form className="p-6 flex flex-col gap-5 flex-1" id="create-event-form" >
-<!-- Event Name -->
+
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-event-name">Event Name / Designation</label>
-<input className="h-10 px-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-event-name" placeholder="e.g., Rust for Systems Programming" required="" type="text" />
+<input className="h-10 px-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-event-name" placeholder="e.g., Rust for Systems Programming" required type="text" />
 </div>
-<!-- Category & Subsystem Grid -->
+
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-category">Category</label>
@@ -766,7 +766,7 @@ export default function Events() {
 <input className="h-10 px-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-lead" placeholder="e.g., Riddhi Joshi" type="text" />
 </div>
 </div>
-<!-- Date & Time Grid -->
+
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-date">Date</label>
@@ -777,7 +777,7 @@ export default function Events() {
 <input className="h-10 px-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-time" placeholder="e.g., 3:00 PM - 5:30 PM" type="text" />
 </div>
 </div>
-<!-- Venue & Max Capacity Grid -->
+
 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 <div className="sm:col-span-2 flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-venue">Venue Location</label>
@@ -788,12 +788,12 @@ export default function Events() {
 <input className="h-10 px-3 bg-surface-container-high text-on-surface rounded-lg font-label-code text-xs border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-capacity" max="500" min="1" type="number" value="100" />
 </div>
 </div>
-<!-- Description Area -->
+
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-xs font-semibold text-on-surface uppercase tracking-wider" htmlFor="drawer-desc">Detailed Abstract</label>
-<textarea className="p-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-desc" placeholder="Specify prerequisites, agenda modules, required local toolchains, and post-session repo artifacts..." rows="4"></textarea>
+<textarea className="p-3 bg-surface-container-high text-on-surface placeholder:text-outline rounded-lg font-body-sm text-sm border border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-all" id="drawer-desc" placeholder="Specify prerequisites, agenda modules, required local toolchains, and post-session repo artifacts..." rows={4}></textarea>
 </div>
-<!-- Live Broadcast / Recording Toggle -->
+
 <div className="p-4 bg-surface-container-high rounded-lg border border-outline-variant flex items-center justify-between">
 <div className="flex items-center gap-3">
 <span className="material-symbols-outlined text-primary text-[22px]">videocam</span>
@@ -802,13 +802,13 @@ export default function Events() {
 <span className="font-label-caps text-[11px] text-outline mt-1 font-medium">Generates Zoom / Google Meet cluster node</span>
 </div>
 </div>
-<input checked="" className="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox" />
+<input checked className="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox" />
 </div>
 <div className="hidden p-3 rounded-lg bg-surface-container-high text-primary font-label-code text-xs border border-primary/30" id="form-feedback">
         Event node deployed to campus registry.
       </div>
 </form>
-<!-- Drawer Footer Actions -->
+
 <div className="p-6 bg-surface border-t border-outline-variant flex items-center justify-end gap-3">
 <button className="h-10 px-4 rounded-lg bg-surface-container-high hover:bg-surface border border-outline-variant text-on-surface font-label-ui text-xs font-semibold transition-colors"  type="button">
         Cancel
@@ -819,7 +819,7 @@ export default function Events() {
 </button>
 </div>
 </div>
-<!-- SECTION 5: MODAL DETAILS INSPECTION OVERLAY -->
+
 <div className="fixed inset-0 bg-[#1D2923]/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden" id="detail-modal">
 <div className="bg-surface w-full max-w-lg rounded-xl shadow-[0_12px_32px_rgba(29,41,35,0.14)] border border-outline-variant overflow-hidden flex flex-col">
 <div className="p-5 bg-surface border-b border-outline-variant flex items-center justify-between">
@@ -862,7 +862,7 @@ export default function Events() {
 </div>
 </div>
 </div>
-<!-- JAVASCRIPT ENGINE -->
+
 
 
     </>

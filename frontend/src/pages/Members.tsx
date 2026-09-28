@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Members() {
@@ -9,10 +9,10 @@ export default function Members() {
   return (
     <>
       
-<!-- Left Sidebar Navigation -->
+
 <aside className="fixed left-0 top-0 h-full w-64 bg-surface z-50 flex flex-col justify-between border-r border-border-subtle select-none">
 <div className="flex flex-col">
-<!-- Brand Logo / Identity -->
+
 <div className="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
 <div className="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-primary border border-border-subtle">
 <span className="material-symbols-outlined text-[19px]">terminal</span>
@@ -22,7 +22,7 @@ export default function Members() {
 <span className="font-label-caps text-[10px] tracking-widest text-text-muted uppercase">COMMAND CENTER</span>
 </div>
 </div>
-<!-- Navigation links: Workspace -->
+
 <div className="px-5 pt-4 pb-1">
 <div className="font-label-caps text-[11px] uppercase text-text-muted tracking-wider">Workspace</div>
 </div>
@@ -49,7 +49,7 @@ export default function Members() {
 </Link>
 </nav>
 <div className="my-3 mx-4 border-t border-border-subtle"></div>
-<!-- Navigation links: System -->
+
 <div className="px-5 pb-1">
 <div className="font-label-caps text-[11px] uppercase text-text-muted tracking-wider">System</div>
 </div>
@@ -60,7 +60,7 @@ export default function Members() {
 </Link>
 </nav>
 </div>
-<!-- Sidebar Footer -->
+
 <div className="p-4 border-t border-border-subtle bg-surface-subtle/50">
 <div className="flex items-center justify-between gap-2">
 <div className="flex items-center gap-2">
@@ -79,9 +79,9 @@ export default function Members() {
 </div>
 </div>
 </aside>
-<!-- Main Content Layout -->
+
 <div className="pl-64">
-<!-- Header -->
+
 <header className="fixed top-0 left-64 right-0 h-16 bg-surface/95 backdrop-blur-md z-40 border-b border-border-subtle flex items-center justify-between px-8">
 <div className="flex items-center gap-2 text-xs font-label-code">
 <span className="text-text-muted uppercase tracking-wider font-medium">COMMAND CENTER</span>
@@ -89,7 +89,7 @@ export default function Members() {
 <span className="text-primary font-semibold uppercase tracking-wider">MEMBERS DIRECTORY</span>
 </div>
 <div className="flex items-center gap-3">
-<!-- Quick search header widget -->
+
 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-subtle border border-border-subtle text-text-secondary text-sm">
 <span className="material-symbols-outlined text-[18px] text-text-muted">search</span>
 <span className="font-label-ui text-xs text-text-muted pr-4">Search repository...</span>
@@ -113,11 +113,11 @@ export default function Members() {
 </div>
 </div>
 </header>
-<!-- Main Container -->
+
 <main className="w-full pt-16 bg-background min-h-screen">
 <div className="max-w-[1440px] mx-auto p-8">
 <div className="flex flex-col w-full">
-<!-- Hero Banner -->
+
 <section className="relative w-full rounded-2xl bg-surface border border-border-subtle p-8 mb-6 overflow-hidden shadow-card">
 <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-primary/10 via-primary/5 to-transparent pointer-events-none"></div>
 <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6">
@@ -129,7 +129,7 @@ export default function Members() {
 <h1 className="font-headline-lg text-3xl font-bold text-text-primary tracking-tight uppercase">MEMBERS DIRECTORY</h1>
 <p className="font-body-md text-text-secondary text-sm">Discover and manage the Git Club community, core engineering team, research leads, and emerging contributors.</p>
 </div>
-<!-- Action Cluster -->
+
 <div className="flex flex-wrap items-center gap-2.5">
 <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border-subtle hover:bg-surface-subtle text-text-primary transition-colors font-label-ui text-sm font-medium shadow-card" id="exportBtn">
 <span className="material-symbols-outlined text-[18px] text-text-secondary">file_download</span>
@@ -145,7 +145,7 @@ export default function Members() {
 </button>
 </div>
 </div>
-<!-- Metric Telemetry Cards -->
+
 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-border-subtle">
 <div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle/80 flex items-center justify-between">
 <div>
@@ -189,9 +189,9 @@ export default function Members() {
 </div>
 </div>
 </section>
-<!-- Filters Section -->
+
 <section className="w-full bg-surface rounded-2xl border border-border-subtle p-5 mb-6 shadow-card space-y-4">
-<!-- Search & Count Bar -->
+
 <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 <div className="relative flex-1">
 <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
@@ -202,9 +202,9 @@ export default function Members() {
 <span>Showing <strong className="text-text-primary font-semibold" id="visibleCount">6</strong> of 248 members</span>
 </div>
 </div>
-<!-- Segmented Architectural Filters -->
+
 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-1">
-<!-- Academic Year -->
+
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Academic Year</label>
 <div className="flex items-center gap-1 p-1 bg-surface-subtle border border-border-subtle rounded-xl font-label-code text-xs">
@@ -215,7 +215,7 @@ export default function Members() {
 <button className="filter-pill filter-year flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-year="4th">4th</button>
 </div>
 </div>
-<!-- Branch -->
+
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Branch</label>
 <div className="flex items-center gap-1 p-1 bg-surface-subtle border border-border-subtle rounded-xl font-label-code text-xs">
@@ -225,7 +225,7 @@ export default function Members() {
 <button className="filter-pill filter-branch flex-1 py-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/60 transition-all" data-branch="CE">CE</button>
 </div>
 </div>
-<!-- Domain -->
+
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Domain</label>
 <div className="relative">
@@ -241,7 +241,7 @@ export default function Members() {
 <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none text-[18px]">expand_more</span>
 </div>
 </div>
-<!-- Role -->
+
 <div className="flex flex-col gap-1.5">
 <label className="font-label-caps text-[11px] text-text-muted uppercase tracking-wider font-semibold">Membership Role</label>
 <div className="relative">
@@ -259,11 +259,11 @@ export default function Members() {
 </div>
 </div>
 </section>
-<!-- Main Directory Layout -->
+
 <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
-<!-- Member Cards Catalog Grid -->
+
 <div className="xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4" id="cardsGrid">
-<!-- Card 1: Riddhi Thummar -->
+
 <article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card ring-1 ring-primary/30" data-branch="CSE" data-card="riddhi" data-domain="Web Development" data-role="Admin" data-year="2nd">
 <div>
 <div className="flex items-start justify-between gap-3 mb-4">
@@ -290,7 +290,7 @@ export default function Members() {
 <span className="material-symbols-outlined text-[16px] text-primary">code_blocks</span>
 <span className="text-text-primary font-medium">Web Dev &amp; Distributed Systems</span>
 </div>
-<!-- Tags -->
+
 <div className="flex flex-wrap gap-1.5 pt-1.5">
 <span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">React</span>
 <span className="px-2 py-0.5 rounded-md bg-surface-subtle border border-border-subtle text-text-secondary font-label-code text-[11px]">Node.js</span>
@@ -300,7 +300,7 @@ export default function Members() {
 </div>
 </div>
 </div>
-<!-- Footer with Light Sparkline / Telemetry -->
+
 <div className="pt-3 border-t border-border-subtle bg-surface-subtle/60 -mx-6 -mb-6 px-6 py-3 rounded-b-2xl flex items-center justify-between">
 <div className="flex items-center gap-4 font-label-code text-xs">
 <span className="flex items-center gap-1.5 text-text-primary font-medium">
@@ -320,7 +320,7 @@ export default function Members() {
 </div>
 </div>
 </article>
-<!-- Card 2: Arjun Mehta -->
+
 <article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="IT" data-card="arjun" data-domain="AI/ML" data-role="Core Team" data-year="3rd">
 <div>
 <div className="flex items-start justify-between gap-3 mb-4">
@@ -374,7 +374,7 @@ export default function Members() {
 </div>
 </div>
 </article>
-<!-- Card 3: Priya Patel -->
+
 <article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="CE" data-card="priya" data-domain="Cloud/DevOps" data-role="Event Lead" data-year="2nd">
 <div>
 <div className="flex items-start justify-between gap-3 mb-4">
@@ -428,7 +428,7 @@ export default function Members() {
 </div>
 </div>
 </article>
-<!-- Card 4: Dev Shah -->
+
 <article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="CSE" data-card="dev" data-domain="Mobile" data-role="Member" data-year="1st">
 <div>
 <div className="flex items-start justify-between gap-3 mb-4">
@@ -481,7 +481,7 @@ export default function Members() {
 </div>
 </div>
 </article>
-<!-- Card 5: Ananya Joshi -->
+
 <article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="CSE" data-card="ananya" data-domain="UI/UX" data-role="UI/UX Lead" data-year="3rd">
 <div>
 <div className="flex items-start justify-between gap-3 mb-4">
@@ -535,7 +535,7 @@ export default function Members() {
 </div>
 </div>
 </article>
-<!-- Card 6: Kabir Varma -->
+
 <article className="member-card group relative flex flex-col justify-between p-6 rounded-2xl bg-surface border border-border-subtle hover:border-primary/50 transition-all cursor-pointer shadow-card" data-branch="IT" data-card="kabir" data-domain="Security" data-role="Security Lead" data-year="4th">
 <div>
 <div className="flex items-start justify-between gap-3 mb-4">
@@ -590,9 +590,9 @@ export default function Members() {
 </div>
 </article>
 </div>
-<!-- Side Inspect Drawer Panel -->
+
 <aside className="xl:col-span-4 sticky top-20 flex flex-col rounded-2xl bg-surface border border-border-subtle p-6 shadow-card space-y-5" id="inspectPanel">
-<!-- Header bar -->
+
 <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
 <div className="flex items-center gap-2">
 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -600,7 +600,7 @@ export default function Members() {
 </div>
 <span className="font-label-code text-[11px] text-text-secondary bg-surface-subtle border border-border-subtle px-2 py-0.5 rounded-md font-semibold">ID: #0084</span>
 </div>
-<!-- Member Focus Card -->
+
 <div className="p-4 rounded-xl bg-surface-subtle border border-border-subtle space-y-4">
 <div className="flex items-center gap-3">
 <div className="w-14 h-14 rounded-xl overflow-hidden bg-white border border-border-subtle shrink-0 shadow-xs">
@@ -627,7 +627,7 @@ export default function Members() {
 </div>
 </div>
 </div>
-<!-- Realtime Activity Stream -->
+
 <div className="space-y-2">
 <div className="flex items-center justify-between">
 <span className="font-label-caps text-xs text-text-secondary uppercase tracking-wider font-semibold">Recent Activity Log</span>
@@ -657,7 +657,7 @@ export default function Members() {
 </div>
 </div>
 </div>
-<!-- Assigned Repositories -->
+
 <div className="space-y-2">
 <div className="font-label-caps text-xs text-text-secondary uppercase tracking-wider font-semibold">Assigned Repositories</div>
 <div className="space-y-1.5 font-label-code text-xs">
@@ -677,7 +677,7 @@ export default function Members() {
 </div>
 </div>
 </div>
-<!-- Permissions -->
+
 <div className="pt-1 space-y-2">
 <div className="font-label-caps text-xs text-text-secondary uppercase tracking-wider font-semibold">Node Permissions</div>
 <div className="p-2.5 rounded-xl bg-surface-subtle border border-border-subtle flex items-center justify-between">
@@ -688,7 +688,7 @@ export default function Members() {
 <span className="text-[10px] font-label-code text-primary uppercase font-bold">Granted</span>
 </div>
 </div>
-<!-- Footer Buttons -->
+
 <div className="pt-2 flex gap-2">
 <button className="flex-1 py-2.5 rounded-xl bg-primary text-white font-label-ui text-sm font-semibold hover:bg-[#4E6C5D] transition-colors shadow-sm">
                   Open Full Dossier
