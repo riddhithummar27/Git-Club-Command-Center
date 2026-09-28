@@ -756,6 +756,27 @@
 <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Abstract &amp; Deliverables</label>
 <textarea class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Describe session goals, pre-requisites (installed git, editor), and key takeaways..." rows="3"></textarea>
 </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Registration Link / URL</label>
+      <input id="eventLink" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="https://forms.gle/..." type="url"/>
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Target Audience</label>
+      <select id="eventAudience" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary">
+        <option>All Students (Beginner Friendly)</option>
+        <option>Intermediate (Some Experience)</option>
+        <option>Advanced (Domain Experts)</option>
+        <option>Core Team Only</option>
+      </select>
+    </div>
+  </div>
+  <div class="flex flex-col gap-1">
+    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Prerequisites / Tech Stack</label>
+    <input id="eventPrereqs" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g. Node.js installed, basic Git knowledge" type="text"/>
+  </div>
+
 <!-- Submit & Cancel buttons -->
 <div class="flex items-center justify-end gap-space-sm pt-space-xs">
 <button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-colors cursor-pointer" onclick="document.getElementById('createEventModal').classList.add('hidden')" type="button">
