@@ -39,6 +39,17 @@ export default function RawStitch() {
     // Set the container HTML to the body's innerHTML
     containerRef.current.innerHTML = doc.body.innerHTML;
     
+    // Execute any scripts that came with the HTML (since innerHTML strips them)
+    const scripts = doc.body.querySelectorAll('script');
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement('script');
+      Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+      newScript.textContent = oldScript.textContent;
+      document.body.appendChild(newScript);
+      // Clean up script tag after execution to prevent clutter
+      document.body.removeChild(newScript);
+    });
+    
     // Setup routing for sidebar links
     const setupNavigation = () => {
       const links = containerRef.current!.querySelectorAll('a[data-path]');
