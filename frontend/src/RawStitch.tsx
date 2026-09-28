@@ -65,6 +65,18 @@ export default function RawStitch() {
     };
     
     setupNavigation();
+
+      // Sync global profile state across all pages on load
+      const profile = (window as any).GIT_CLUB_PROFILE;
+      if (profile && containerRef.current) {
+        containerRef.current.querySelectorAll('a[data-path="settings"]').forEach(link => {
+           const nameEl = link.querySelector('.font-title-md');
+           const roleEl = link.querySelector('.font-label-mono-sm');
+           if (nameEl) nameEl.textContent = profile.firstName + ' ' + profile.lastName;
+           if (roleEl) roleEl.textContent = profile.roleCustom;
+        });
+      }
+
   }, [navigate, htmlToLoad]);
 
   return <div ref={containerRef} className="w-full h-full text-on-surface bg-surface font-sans" />;

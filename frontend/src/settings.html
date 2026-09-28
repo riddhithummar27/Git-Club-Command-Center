@@ -469,14 +469,35 @@
   <span id="toast-text">Operation completed.</span>
 </div>
 
+
 <script>
   (function() {
+    window.GIT_CLUB_PROFILE = window.GIT_CLUB_PROFILE || {
+      firstName: 'Riddhi',
+      lastName: 'Thummar',
+      role: 'Admin',
+      roleCustom: 'Admin & Tech Lead',
+      email: 'riddhi.dev@gmail.com',
+      bio: 'Spearheading technical pipeline deployments and student open-source mentor clinics at CHARUSAT. Passionate about distributed systems, Rust, and building welcoming developer ecosystems.'
+    };
+
+    const inputFirstName = document.getElementById('inputFirstName');
+    const inputLastName = document.getElementById('inputLastName');
     const roleSelect = document.getElementById('roleSelect');
     const roleCustom = document.getElementById('roleCustom');
+    const inputPersonalEmail = document.getElementById('inputPersonalEmail');
+    const bioTextarea = document.getElementById('bioTextarea');
+
+    if (inputFirstName) inputFirstName.value = window.GIT_CLUB_PROFILE.firstName;
+    if (inputLastName) inputLastName.value = window.GIT_CLUB_PROFILE.lastName;
+    if (roleSelect) roleSelect.value = window.GIT_CLUB_PROFILE.role;
+    if (roleCustom) roleCustom.value = window.GIT_CLUB_PROFILE.roleCustom;
+    if (inputPersonalEmail) inputPersonalEmail.value = window.GIT_CLUB_PROFILE.email;
+    if (bioTextarea) bioTextarea.value = window.GIT_CLUB_PROFILE.bio;
+
     const addEmailBtn = document.getElementById('addEmailBtn');
     const newEmailForm = document.getElementById('newEmailForm');
     const cancelAddEmail = document.getElementById('cancelAddEmail');
-    const bioTextarea = document.getElementById('bioTextarea');
     const charCount = document.getElementById('charCount');
     
     const dockSaveBtn = document.getElementById('dockSaveBtn');
@@ -524,30 +545,53 @@
     function goToDashboard() {
       const dashboardLink = document.querySelector('a[data-path="dashboard"]');
       if (dashboardLink) dashboardLink.click();
-      else window.location.reload();
     }
 
     function triggerSave() {
+      // Save values
+      if (inputFirstName) window.GIT_CLUB_PROFILE.firstName = inputFirstName.value;
+      if (inputLastName) window.GIT_CLUB_PROFILE.lastName = inputLastName.value;
+      if (roleSelect) window.GIT_CLUB_PROFILE.role = roleSelect.value;
+      if (roleCustom) window.GIT_CLUB_PROFILE.roleCustom = roleCustom.value;
+      if (inputPersonalEmail) window.GIT_CLUB_PROFILE.email = inputPersonalEmail.value;
+      if (bioTextarea) window.GIT_CLUB_PROFILE.bio = bioTextarea.value;
+
+      // Update header
+      document.querySelectorAll('a[data-path="settings"]').forEach(link => {
+         const nameEl = link.querySelector('.font-title-md');
+         const roleEl = link.querySelector('.font-label-mono-sm');
+         if (nameEl) nameEl.textContent = window.GIT_CLUB_PROFILE.firstName + ' ' + window.GIT_CLUB_PROFILE.lastName;
+         if (roleEl) roleEl.textContent = window.GIT_CLUB_PROFILE.roleCustom;
+      });
+
       const originalText = dockSaveBtn.innerHTML;
-      dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>';
-      topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>';
+      if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>';
+      if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>';
       
       setTimeout(() => {
-        dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] text-on-primary-container">done</span><span>Saved to Cluster!</span>';
-        topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Changes Saved</span>';
+        if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] text-on-primary-container">done</span><span>Saved to Cluster!</span>';
+        if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Changes Saved</span>';
         triggerFeedback('Profile Identity Changes Saved.');
         
         setTimeout(() => {
-          unsavedDock.style.opacity = '0.5';
-          dockSaveBtn.innerHTML = originalText;
-          topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Profile Changes</span>';
+          if (unsavedDock) unsavedDock.style.opacity = '0.5';
+          if (dockSaveBtn) dockSaveBtn.innerHTML = originalText;
+          if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Profile Changes</span>';
           goToDashboard();
         }, 1200);
       }, 700);
     }
 
     function triggerDiscard() {
-      unsavedDock.style.opacity = '0.5';
+      // Revert values to global
+      if (inputFirstName) inputFirstName.value = window.GIT_CLUB_PROFILE.firstName;
+      if (inputLastName) inputLastName.value = window.GIT_CLUB_PROFILE.lastName;
+      if (roleSelect) roleSelect.value = window.GIT_CLUB_PROFILE.role;
+      if (roleCustom) roleCustom.value = window.GIT_CLUB_PROFILE.roleCustom;
+      if (inputPersonalEmail) inputPersonalEmail.value = window.GIT_CLUB_PROFILE.email;
+      if (bioTextarea) bioTextarea.value = window.GIT_CLUB_PROFILE.bio;
+
+      if (unsavedDock) unsavedDock.style.opacity = '0.5';
       triggerFeedback('Profile edits discarded.');
       setTimeout(() => {
         goToDashboard();
@@ -558,6 +602,15 @@
     if (topSaveBtn) topSaveBtn.addEventListener('click', triggerSave);
     if (dockResetBtn) dockResetBtn.addEventListener('click', triggerDiscard);
     if (topDiscardBtn) topDiscardBtn.addEventListener('click', triggerDiscard);
+
+    // Sync header on load
+    document.querySelectorAll('a[data-path="settings"]').forEach(link => {
+       const nameEl = link.querySelector('.font-title-md');
+       const roleEl = link.querySelector('.font-label-mono-sm');
+       if (nameEl) nameEl.textContent = window.GIT_CLUB_PROFILE.firstName + ' ' + window.GIT_CLUB_PROFILE.lastName;
+       if (roleEl) roleEl.textContent = window.GIT_CLUB_PROFILE.roleCustom;
+    });
+
   })();
 </script></main></div><div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
     <a href="#" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
