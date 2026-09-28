@@ -5,6 +5,8 @@ import membersHtml from './members.html?raw';
 import projectsHtml from './projects.html?raw';
 import eventsHtml from './events.html?raw';
 import announcementsHtml from './announcements.html?raw';
+import notificationsHtml from './notifications.html?raw';
+import settingsHtml from './settings.html?raw';
 
 const pages: Record<string, string> = {
   'dashboard': dashboardHtml,
@@ -12,6 +14,8 @@ const pages: Record<string, string> = {
   'projects': projectsHtml,
   'events': eventsHtml,
   'announcements': announcementsHtml,
+  'notifications': notificationsHtml,
+  'settings': settingsHtml,
 };
 
 export default function RawStitch() {
