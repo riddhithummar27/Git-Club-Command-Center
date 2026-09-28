@@ -173,7 +173,81 @@
            }
         }
 
-        // Click outside to close
+        
+      // Setup Command Palette Keyboard Navigation
+      const cmdInput = document.getElementById('global-cmd-input');
+      const cmdResults = document.getElementById('cmd-results');
+      
+      if (cmdInput && cmdResults) {
+        let selectedIndex = -1;
+        
+        // Reset selection when modal opens
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              const modal = document.getElementById('global-modal-cmd');
+              if (!modal.classList.contains('hidden')) {
+                selectedIndex = -1;
+                updateSelection();
+                cmdInput.value = '';
+              }
+            }
+          });
+        });
+        observer.observe(document.getElementById('global-modal-cmd'), { attributes: true });
+
+        function updateSelection() {
+          const items = Array.from(cmdResults.children).filter(c => !c.classList.contains('hidden'));
+          items.forEach((item, index) => {
+            if (index === selectedIndex) {
+              item.classList.add('bg-surface-container');
+            } else {
+              item.classList.remove('bg-surface-container');
+            }
+          });
+        }
+
+        cmdInput.addEventListener('input', (e) => {
+          const val = e.target.value.toLowerCase();
+          const items = Array.from(cmdResults.children);
+          let visibleCount = 0;
+          
+          items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(val)) {
+              item.classList.remove('hidden');
+              visibleCount++;
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+          
+          selectedIndex = visibleCount > 0 ? 0 : -1;
+          updateSelection();
+        });
+
+        cmdInput.addEventListener('keydown', (e) => {
+          const items = Array.from(cmdResults.children).filter(c => !c.classList.contains('hidden'));
+          if (items.length === 0) return;
+          
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectedIndex = (selectedIndex + 1) % items.length;
+            updateSelection();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+            updateSelection();
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (selectedIndex >= 0 && selectedIndex < items.length) {
+              items[selectedIndex].click(); // Reuse existing click handler
+            }
+          }
+        });
+      }
+
+          // Click outside to close
         if (e.target.id === 'global-modal-cmd') {
           e.target.classList.add('hidden');
         }
