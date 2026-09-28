@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useState } from "react";
 export default function Dashboard() {
+  const [activeTab, setActiveTab] = useState("events");
+
   useEffect(() => {
     const canvas = document.getElementById('gitNetworkCanvas') as HTMLCanvasElement;
     if (!canvas) return;
@@ -316,9 +319,9 @@ export default function Dashboard() {
 
 <div className="flex items-center gap-space-sm flex-wrap">
 <div className="flex items-center p-0.5 rounded-lg bg-surface-subtle border border-border-subtle">
-<button className="tab-activity-btn px-2.5 py-1 rounded text-primary bg-surface font-label-caps text-label-caps uppercase font-semibold shadow-xs" data-tab="events" type="button">Events</button>
-<button className="tab-activity-btn px-2.5 py-1 rounded text-text-secondary hover:text-text-primary font-label-caps text-label-caps uppercase" data-tab="members" type="button">Members</button>
-<button className="tab-activity-btn px-2.5 py-1 rounded text-text-secondary hover:text-text-primary font-label-caps text-label-caps uppercase" data-tab="projects" type="button">Projects</button>
+<button onClick={() => setActiveTab('events')} className={`tab-activity-btn px-2.5 py-1 rounded ${activeTab === 'events' ? 'bg-surface-container text-primary font-semibold' : 'text-text-secondary hover:text-text-primary'} font-label-caps text-label-caps uppercase`} data-tab="events" type="button">Events</button>
+<button onClick={() => setActiveTab('members')} className={`tab-activity-btn px-2.5 py-1 rounded ${activeTab === 'members' ? 'bg-surface-container text-primary font-semibold' : 'text-text-secondary hover:text-text-primary'} font-label-caps text-label-caps uppercase`} data-tab="members" type="button">Members</button>
+<button onClick={() => setActiveTab('projects')} className={`tab-activity-btn px-2.5 py-1 rounded ${activeTab === 'projects' ? 'bg-surface-container text-primary font-semibold' : 'text-text-secondary hover:text-text-primary'} font-label-caps text-label-caps uppercase`} data-tab="projects" type="button">Projects</button>
 </div>
 <div className="flex items-center p-0.5 rounded-lg bg-surface-subtle border border-border-subtle">
 <button className="px-2 py-1 rounded font-label-code text-label-caps text-text-secondary hover:text-text-primary" type="button">3M</button>

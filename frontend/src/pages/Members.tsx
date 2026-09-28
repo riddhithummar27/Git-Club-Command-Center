@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useState } from "react";
 export default function Members() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   useEffect(() => {
     // You can add canvas scripts here if needed
   }, []);
