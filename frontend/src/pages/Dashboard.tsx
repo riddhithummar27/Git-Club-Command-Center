@@ -52,7 +52,7 @@ export default function Dashboard() {
             ctx?.moveTo(nodes[i].x, nodes[i].y);
             ctx?.lineTo(nodes[j].x, nodes[j].y);
             const alpha = (1 - dist / 90) * 0.22;
-            ctx!.strokeStyle = \`rgba(169, 207, 185, \${alpha})\`;
+            ctx!.strokeStyle = `rgba(169, 207, 185, ${alpha})`;
             ctx!.lineWidth = 1;
             ctx?.stroke();
           }
