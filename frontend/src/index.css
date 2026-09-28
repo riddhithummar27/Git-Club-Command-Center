@@ -4,39 +4,39 @@
 
 @layer base {
   :root, .light {
-    --color-background: #F6F7F3;
+    --color-background: #F9F9F8;
     --color-surface: #FFFFFF;
-    --color-surface-subtle: #EEF1EC;
-    --color-surface-container: #E7ECE7;
-    --color-surface-container-high: #DDE3DD;
-    --color-border-subtle: #DDE3DD;
-    --color-text-primary: #1D2923;
-    --color-text-secondary: #66736C;
-    --color-text-muted: #8B958F;
-    --color-primary: #4E6C5D;
-    --color-primary-container: #adceb9;
-    --color-secondary: #854935;
-    --color-secondary-container: #ffb59d;
-    --color-tertiary: #6e5d26;
-    --color-tertiary-container: #d8c68b;
+    --color-surface-subtle: #F3F1EC;
+    --color-surface-container: #EBE7DF;
+    --color-surface-container-high: #E2DBD1;
+    --color-border-subtle: #D5CCC0;
+    --color-text-primary: #2B2313;
+    --color-text-secondary: #5F5646;
+    --color-text-muted: #8F8676;
+    --color-primary: #F05032;
+    --color-primary-container: #FFDAD4;
+    --color-secondary: #5C5544;
+    --color-secondary-container: #E0D3BB;
+    --color-tertiary: #52634F;
+    --color-tertiary-container: #D4E8D0;
   }
   
   .dark {
-    --color-background: #0b0f0e;
-    --color-surface: #101413;
-    --color-surface-subtle: #1c201f;
-    --color-surface-container: #272b2a;
-    --color-surface-container-high: #323634;
-    --color-border-subtle: #424843;
-    --color-text-primary: #e0e3e1;
-    --color-text-secondary: #c2c8c2;
-    --color-text-muted: #8c928c;
-    --color-primary: #adceb9;
-    --color-primary-container: #264333;
-    --color-secondary: #ffb59d;
-    --color-secondary-container: #6e3825;
-    --color-tertiary: #d8c68b;
-    --color-tertiary-container: #483c0e;
+    --color-background: #181510;
+    --color-surface: #221E18;
+    --color-surface-subtle: #2C2821;
+    --color-surface-container: #37332A;
+    --color-surface-container-high: #433E35;
+    --color-border-subtle: #565046;
+    --color-text-primary: #EDE5D8;
+    --color-text-secondary: #C8C0B4;
+    --color-text-muted: #A39B90;
+    --color-primary: #FFB4A8;
+    --color-primary-container: #930005;
+    --color-secondary: #C4B79E;
+    --color-secondary-container: #443E2E;
+    --color-tertiary: #B8CCB5;
+    --color-tertiary-container: #3B4B38;
   }
 
   html, body { margin: 0; padding: 0; }
