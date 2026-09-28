@@ -3,11 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import dashboardHtml from './stitch.html?raw';
 import membersHtml from './members.html?raw';
 import projectsHtml from './projects.html?raw';
+import eventsHtml from './events.html?raw';
 
 const pages: Record<string, string> = {
   'dashboard': dashboardHtml,
   'members': membersHtml,
   'projects': projectsHtml,
+  'events': eventsHtml,
 };
 
 export default function RawStitch() {

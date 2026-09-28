@@ -1,0 +1,779 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-surface": "#dde4de", "on-error": "#690005", "inverse-on-surface": "#2b322e", "on-tertiary-container": "#4f3d00", "on-background": "#dde4de", "secondary-fixed-dim": "#ffb59e", "outline-variant": "#414844", "on-secondary-fixed-variant": "#6f3725", "outline": "#8b928d", "surface-container-low": "#161d19", "secondary-fixed": "#ffdbd0", "primary-fixed": "#c4ecd4", "surface-container-high": "#242c27", "surface-dim": "#0e1511", "surface-tint": "#a9cfb9", "background": "#0e1511", "primary-fixed-dim": "#a9cfb9", "primary": "#a9cfb9", "surface-container": "#1a211d", "inverse-primary": "#436653", "on-tertiary-fixed": "#241a00", "on-secondary-container": "#f0a28a", "on-error-container": "#ffdad6", "error-container": "#93000a", "on-primary": "#133727", "on-secondary-fixed": "#380d02", "tertiary": "#e1c477", "primary-container": "#7fa48f", "secondary-container": "#6f3725", "surface-variant": "#2f3632", "on-primary-container": "#173a2a", "on-tertiary": "#3d2f00", "secondary": "#ffb59e", "on-primary-fixed-variant": "#2b4e3c", "on-tertiary-fixed-variant": "#584400", "surface-bright": "#343b36", "surface": "#0e1511", "surface-container-highest": "#2f3632", "on-primary-fixed": "#002113", "on-secondary": "#532211", "tertiary-fixed-dim": "#e1c476", "tertiary-container": "#c4a95e", "surface-container-lowest": "#09100c", "error": "#ffb4ab", "on-surface": "#dde4de", "on-surface-variant": "#c1c8c2", "tertiary-fixed": "#fee08f" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-mobile": "1rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "margin": "2rem", "space-xs": "0.25rem", "space-md": "1rem" }, "fontFamily": { "headline-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "label-caps": [ "JetBrains Mono" ], "label-ui": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "body-sm": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-code": [ "JetBrains Mono" ] }, "fontSize": { "headline-lg": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "label-caps": [ "0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" } ], "label-ui": [ "0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.005em", "fontWeight": "500" } ], "headline-xl": [ "3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-sm": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-xl-mobile": [ "2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-code": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "500" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-64 bg-surface z-50 flex flex-col justify-between border-r border-outline-variant/30 select-none"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-outline-variant/20"><div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary border border-outline-variant/30"><span class="material-symbols-outlined text-[18px]">terminal</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm leading-tight tracking-tight text-on-surface uppercase">GIT CLUB</span><span class="font-label-caps text-label-caps tracking-widest text-outline uppercase">COMMAND CENTER</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-caps text-label-caps uppercase text-outline tracking-wider">Workspace</div></div><nav class="px-space-sm flex flex-col gap-1" data-active-classes="bg-surface-container-high text-primary border-l-2 border-primary font-semibold"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-2 transition-colors rounded-r bg-surface-container-high text-primary border-l-2 border-primary font-semibold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-label-ui text-label-ui">Command Center</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors rounded-r" data-path="events" href="#"><span class="material-symbols-outlined text-[20px]">event_available</span><span class="font-label-ui text-label-ui">Events</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors rounded-r" data-path="members" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-ui text-label-ui">Members</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors rounded-r" data-path="projects" href="#"><span class="material-symbols-outlined text-[20px]">deployed_code</span><span class="font-label-ui text-label-ui">Projects</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors rounded-r" data-path="announcements" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-label-ui text-label-ui">Announcements</span></a></nav><div class="my-space-md mx-space-md border-t border-outline-variant/20"></div><div class="px-space-md pb-space-xs"><div class="px-space-sm py-space-xs font-label-caps text-label-caps uppercase text-outline tracking-wider">System</div></div><nav class="px-space-sm flex flex-col gap-1" data-active-classes="bg-surface-container-high text-primary border-l-2 border-primary font-semibold"><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors rounded-r" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-ui text-label-ui">Settings</span></a></nav></div><div class="p-space-md border-t border-outline-variant/20 bg-surface-container-lowest/50"><div class="flex items-center justify-between gap-space-sm mb-space-sm"><div class="flex items-center gap-space-xs"><div class="w-6 h-6 rounded bg-primary-container/20 border border-primary/30 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[14px]">account_balance</span></div><div class="flex flex-col"><span class="font-label-code text-label-code uppercase tracking-tight text-on-surface">GIT CLUB</span><span class="font-label-caps text-label-caps text-outline">CHARUSAT UNIT</span></div></div><div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><span class="font-label-caps text-label-caps text-primary uppercase">NODE ACTIVE</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-md z-40 border-b border-outline-variant/20 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-label-code text-label-code text-outline uppercase tracking-wider">COMMAND CENTER</span><span class="text-outline-variant text-[14px]">//</span><span class="font-label-code text-label-code text-primary uppercase tracking-wider">OVERVIEW</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-label-ui text-label-ui text-outline pr-space-md">Search node repository...</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 font-label-code text-label-caps text-outline">⌘K</kbd></div><button aria-label="Notifications" class="relative w-9 h-9 rounded bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><button aria-label="Toggle Theme" class="px-space-sm py-1.5 rounded bg-surface-container border border-outline-variant/30 flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" id="theme-toggle" onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"><span class="material-symbols-outlined text-[16px]">routine</span><span class="uppercase">Theme</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/20"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><div class="flex items-center gap-1"><span class="font-label-ui text-label-ui text-on-surface leading-none">Riddhi</span><span class="material-symbols-outlined text-outline text-[14px]">arrow_drop_down</span></div><span class="font-label-caps text-label-caps text-primary leading-tight uppercase">Admin</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="max-w-[1440px] mx-auto p-space-lg"><div class="flex flex-col w-full">
+<div class="w-full space-y-space-xl">
+<!-- Top Greeting & Operational Header -->
+<section class="flex flex-col gap-space-md pt-2">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-caps text-label-caps uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              All systems operational
+            </span>
+<span class="font-label-caps text-label-caps text-outline">NODE // IN-GUJ-04</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+            GOOD EVENING, RIDDHI 👋
+          </h1>
+<p class="font-body-md text-on-surface-variant mt-0.5">
+            Here's what's happening across Git Club CHARUSAT.
+          </p>
+</div>
+<!-- Role Context Switcher -->
+<div class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-container-low self-start lg:self-center shadow-inner">
+<button class="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase transition-all bg-primary text-on-primary font-semibold shadow-sm" data-role="admin" type="button">
+            Admin
+          </button>
+<button class="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-role="event_lead" type="button">
+            Event Lead
+          </button>
+<button class="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-role="project_lead" type="button">
+            Project Lead
+          </button>
+<button class="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-role="member" type="button">
+            Member
+          </button>
+</div>
+</div>
+<!-- Quick Action Buttons Array -->
+<div class="flex flex-wrap items-center gap-space-sm pt-2">
+<button class="group flex items-center gap-2 px-space-md py-2 rounded bg-primary text-on-primary font-label-ui text-label-ui font-semibold shadow-sm hover:opacity-90 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Create Event</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-ui text-label-ui font-medium transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Add Member</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-ui text-label-ui font-medium transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">post_add</span>
+<span>Add Project</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-ui text-label-ui font-medium transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+<span>Publish Announcement</span>
+</button>
+<div class="ml-auto hidden xl:flex items-center gap-3 font-label-code text-label-caps text-outline">
+<span>LATENCY: 14ms</span>
+<span>•</span>
+<span>SYNC: MASTER @ 9fd310a</span>
+</div>
+</div>
+</section>
+<!-- Technical Network Canvas / Active Cluster Widget -->
+<section class="w-full relative rounded-xl bg-surface-container overflow-hidden shadow-md">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent pointer-events-none"></div>
+<div class="relative z-10 p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">timeline</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">DIGITAL CLUSTER TOPOLOGY</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-1">Git Club Core Network Graph</h2>
+<p class="font-body-sm text-on-surface-variant max-w-xl">
+            Live telemetry of interconnected campus repositories, micro-teams, and synchronized event nodes across CHARUSAT.
+          </p>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-3 py-1.5 rounded">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span> Repositories (12)
+          </div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-3 py-1.5 rounded">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> Events (6)
+          </div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-3 py-1.5 rounded">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span> Review Queue (4)
+          </div>
+</div>
+</div>
+<!-- Canvas Network Visualizer -->
+<div class="relative w-full h-44 sm:h-52 bg-surface-container-lowest/70 cursor-crosshair">
+<canvas class="w-full h-full block" id="gitNetworkCanvas"></canvas>
+<div class="absolute bottom-2 left-4 font-label-code text-label-caps text-outline opacity-70">
+          NODES ACTIVE: 38 // EDGES CONNECTED: 54 // PULSE FREQ: 0.85Hz
+        </div>
+<div class="absolute bottom-2 right-4 flex items-center gap-2 font-label-code text-label-caps text-primary">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
+          REALTIME GRAPH ENGINE
+        </div>
+</div>
+</section>
+<!-- Four Elegant Metric Telemetry Blocks -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1: Members -->
+<div class="group p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">TOTAL MEMBERS</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">248</span>
+<span class="font-label-code text-label-code text-outline">devs</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[13px]">arrow_upward</span>
+            +24 this month
+          </span>
+<!-- Mini SVG Sparkline -->
+<svg class="w-20 h-6 text-primary" fill="none" viewBox="0 0 80 24">
+<path d="M2 18 L16 16 L30 19 L44 11 L58 13 L72 4 L78 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Metric 2: Events -->
+<div class="group p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">UPCOMING EVENTS</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">06</span>
+<span class="font-label-code text-label-code text-outline">sched</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]">event</span>
+</div>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[13px]">add</span>
+            +2 this week
+          </span>
+<svg class="w-20 h-6 text-secondary" fill="none" viewBox="0 0 80 24">
+<path d="M2 20 L20 14 L36 17 L52 9 L66 11 L78 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Metric 3: Active Projects -->
+<div class="group p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">ACTIVE PROJECTS</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">12</span>
+<span class="font-label-code text-label-code text-outline">repos</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">
+<span class="material-symbols-outlined text-[20px]">deployed_code</span>
+</div>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[13px]">arrow_upward</span>
+            +3 this month
+          </span>
+<svg class="w-20 h-6 text-tertiary" fill="none" viewBox="0 0 80 24">
+<path d="M2 19 L18 17 L34 11 L48 14 L62 8 L78 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Metric 4: Participants -->
+<div class="group p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">EVENT PARTICIPANTS</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">684</span>
+<span class="font-label-code text-label-code text-outline">attendees</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</div>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[13px]">trending_up</span>
+            +18% this month
+          </span>
+<svg class="w-20 h-6 text-primary" fill="none" viewBox="0 0 80 24">
+<path d="M2 22 L14 16 L28 17 L44 9 L58 12 L70 5 L78 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- Two-Column Asymmetric Dashboard Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- ================= LEFT COLUMN (MAIN - 7/12) ================= -->
+<div class="lg:col-span-7 space-y-space-lg">
+<!-- CLUB ACTIVITY ANALYTICS BLOCK -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">TELEMETRY</span>
+<span class="text-outline text-xs">•</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline">SYSTEM ENGAGEMENT</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">CLUB ACTIVITY</h3>
+</div>
+<!-- Activity Tabs & Timeframe -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center p-0.5 rounded bg-surface-container-high">
+<button class="tab-activity-btn px-2.5 py-1 rounded text-primary bg-surface-container font-label-caps text-label-caps uppercase font-semibold" data-tab="events" type="button">Events</button>
+<button class="tab-activity-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase" data-tab="members" type="button">Members</button>
+<button class="tab-activity-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase" data-tab="projects" type="button">Projects</button>
+</div>
+<div class="flex items-center p-0.5 rounded bg-surface-container-high">
+<button class="px-2 py-1 rounded font-label-code text-label-caps text-on-surface-variant hover:text-on-surface" type="button">3M</button>
+<button class="px-2 py-1 rounded font-label-code text-label-caps bg-surface-container text-primary font-semibold" type="button">6M</button>
+<button class="px-2 py-1 rounded font-label-code text-label-caps text-on-surface-variant hover:text-on-surface" type="button">1Y</button>
+</div>
+</div>
+</div>
+<!-- Main SVG Participation Trend Graph -->
+<div class="w-full pt-2">
+<div class="flex items-baseline justify-between mb-2">
+<div>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">824</span>
+<span class="font-body-sm text-on-surface-variant ml-2">Total registrations across past 6 months</span>
+</div>
+<div class="flex items-center gap-4 font-label-caps text-label-caps text-outline">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary"></span> ACTUAL</span>
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-outline"></span> TARGET</span>
+</div>
+</div>
+<!-- SVG Smooth Area Curve -->
+<div class="w-full h-56 relative">
+<svg class="w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 600 220">
+<defs>
+<linearGradient id="sageGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#a9cfb9" stop-opacity="0.32"></stop>
+<stop offset="70%" stop-color="#a9cfb9" stop-opacity="0.05"></stop>
+<stop offset="100%" stop-color="#a9cfb9" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Grid Guideline lines -->
+<line class="text-surface-variant" opacity="0.6" stroke="currentColor" stroke-dasharray="3 3" x1="0" x2="600" y1="40" y2="40"></line>
+<line class="text-surface-variant" opacity="0.6" stroke="currentColor" stroke-dasharray="3 3" x1="0" x2="600" y1="90" y2="90"></line>
+<line class="text-surface-variant" opacity="0.6" stroke="currentColor" stroke-dasharray="3 3" x1="0" x2="600" y1="140" y2="140"></line>
+<line class="text-surface-variant" opacity="0.6" stroke="currentColor" stroke-dasharray="3 3" x1="0" x2="600" y1="190" y2="190"></line>
+<!-- Target Path -->
+<path class="text-outline/40" d="M 10 160 C 90 140, 160 150, 220 120 C 280 90, 360 110, 440 70 C 500 45, 550 50, 590 35" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Area Fill Under Sage Curve -->
+<path d="M 10 170 C 90 155, 170 140, 230 115 C 290 85, 370 100, 450 60 C 510 30, 560 38, 590 20 L 590 200 L 10 200 Z" fill="url(#sageGrad)"></path>
+<!-- Main Trend Line -->
+<path d="M 10 170 C 90 155, 170 140, 230 115 C 290 85, 370 100, 450 60 C 510 30, 560 38, 590 20" fill="none" stroke="#a9cfb9" stroke-linecap="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle class="fill-surface-container stroke-primary" cx="10" cy="170" r="4" stroke-width="2.5"></circle>
+<circle class="fill-surface-container stroke-primary" cx="120" cy="148" r="4" stroke-width="2.5"></circle>
+<circle class="fill-surface-container stroke-primary" cx="230" cy="115" r="4" stroke-width="2.5"></circle>
+<circle class="fill-surface-container stroke-primary" cx="340" cy="92" r="4" stroke-width="2.5"></circle>
+<circle class="fill-surface-container stroke-primary" cx="450" cy="60" r="5" stroke-width="3"></circle>
+<circle class="fill-primary stroke-surface-container-high" cx="590" cy="20" r="5" stroke-width="2"></circle>
+</svg>
+</div>
+<!-- X-Axis Months -->
+<div class="flex justify-between items-center px-2 pt-2 font-label-code text-label-caps text-outline">
+<span>MAY</span>
+<span>JUN</span>
+<span>JUL</span>
+<span>AUG</span>
+<span>SEP</span>
+<span class="text-primary font-bold">OCT (NOW)</span>
+</div>
+</div>
+<!-- Bottom Metric & Donut Breakdown Panel -->
+<div class="mt-space-lg pt-space-md bg-surface-container-high/40 rounded-lg p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full md:w-auto">
+<!-- SVG Donut Chart for Project Status -->
+<div class="relative w-20 h-20 shrink-0">
+<svg class="w-20 h-20 -rotate-90" viewBox="0 0 36 36">
+<!-- Background Ring -->
+<circle class="text-surface-container-high" cx="18" cy="18" fill="none" r="14" stroke="currentColor" stroke-width="4.5"></circle>
+<!-- Segment 1: Active 7/12 (58%) Sage -->
+<circle cx="18" cy="18" fill="none" r="14" stroke="#a9cfb9" stroke-dasharray="51.3 88" stroke-dashoffset="0" stroke-width="4.5"></circle>
+<!-- Segment 2: Completed 3/12 (25%) Gold -->
+<circle cx="18" cy="18" fill="none" r="14" stroke="#e1c477" stroke-dasharray="22 88" stroke-dashoffset="-51.3" stroke-width="4.5"></circle>
+<!-- Segment 3: In Dev 2/12 (17%) Coral -->
+<circle cx="18" cy="18" fill="none" r="14" stroke="#ffb59e" stroke-dasharray="14.7 88" stroke-dashoffset="-73.3" stroke-width="4.5"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="font-label-code text-label-code font-bold text-on-surface">12</span>
+<span class="font-label-caps text-[8px] uppercase text-outline">Total</span>
+</div>
+</div>
+<!-- Donut Breakdown Details -->
+<div class="flex flex-col gap-1 text-xs">
+<div class="font-label-ui font-medium text-on-surface">Project Pipeline Status</div>
+<div class="flex items-center gap-3 font-label-code text-label-caps">
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-primary"></span> 7 Active</span>
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-tertiary"></span> 3 Completed</span>
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-secondary"></span> 2 In Dev</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<div class="text-right">
+<div class="font-label-caps text-label-caps uppercase text-outline">Git Commits (Past 30d)</div>
+<div class="font-label-code text-label-code font-bold text-primary">1,482 commits</div>
+</div>
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">commit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- UPCOMING EVENTS SHOWCASE -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-md">
+<div>
+<div class="font-label-caps text-label-caps uppercase tracking-wider text-outline">CALENDAR QUEUE</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">UPCOMING EVENTS</h3>
+</div>
+<a class="group inline-flex items-center gap-1 text-primary hover:text-primary-fixed-dim font-label-ui text-label-ui font-medium transition-colors" href="#">
+<span>View all</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Cards Stack -->
+<div class="space-y-space-md">
+<!-- Event Card 1 -->
+<div class="p-space-md rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex flex-col items-center justify-center shrink-0">
+<span class="font-label-caps text-[9px] uppercase text-primary font-bold">OCT</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-none">03</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-primary-container/20 text-primary font-semibold">Workshop</span>
+<span class="font-label-code text-label-caps text-outline">4:00 PM IST</span>
+<span class="font-label-code text-label-caps text-outline">• CSPIT Lab 2</span>
+</div>
+<h4 class="font-headline-sm text-base font-semibold text-on-surface mt-1">GIT &amp; GITHUB WORKSHOP</h4>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant font-body-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-outline">person</span> 86 / 100 registered</span>
+<span class="w-24 h-1.5 rounded-full bg-surface-container-lowest overflow-hidden">
+<span class="block h-full bg-primary rounded-full" style="width: 86%"></span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-center">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-label-ui text-label-ui font-medium hover:opacity-90 transition-opacity" type="button">
+                  View Event →
+                </button>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="p-space-md rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex flex-col items-center justify-center shrink-0">
+<span class="font-label-caps text-[9px] uppercase text-secondary font-bold">OCT</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-none">12</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-secondary-container/30 text-secondary font-semibold">Competition</span>
+<span class="font-label-code text-label-caps text-outline">10:00 AM IST</span>
+<span class="font-label-code text-label-caps text-outline">• CSPIT Auditorium</span>
+</div>
+<h4 class="font-headline-sm text-base font-semibold text-on-surface mt-1">HACKATHON 2.0: CODE SPRINT</h4>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant font-body-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-outline">person</span> 92 / 100 registered</span>
+<span class="w-24 h-1.5 rounded-full bg-surface-container-lowest overflow-hidden">
+<span class="block h-full bg-secondary rounded-full" style="width: 92%"></span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-center">
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-bright font-label-ui text-label-ui font-medium transition-colors" type="button">
+                  Details →
+                </button>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="p-space-md rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex flex-col items-center justify-center shrink-0">
+<span class="font-label-caps text-[9px] uppercase text-tertiary font-bold">OCT</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-none">18</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-tertiary-container/30 text-tertiary font-semibold">Community</span>
+<span class="font-label-code text-label-caps text-outline">3:00 PM IST</span>
+<span class="font-label-code text-label-caps text-outline">• Virtual Meet</span>
+</div>
+<h4 class="font-headline-sm text-base font-semibold text-on-surface mt-1">AI/ML COMMUNITY SESSION: TRANSFORMERS DECODED</h4>
+<div class="flex items-center gap-3 mt-2 text-xs text-on-surface-variant font-body-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-outline">person</span> 44 registered</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-center">
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-bright font-label-ui text-label-ui font-medium transition-colors" type="button">
+                  Details →
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= RIGHT COLUMN (SIDEBAR - 5/12) ================= -->
+<div class="lg:col-span-5 space-y-space-lg">
+<!-- NEEDS ATTENTION ACTION QUEUE -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">notifications_active</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">NEEDS ATTENTION</h3>
+</div>
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-secondary-container/40 text-secondary font-bold">
+              4 PENDING
+            </span>
+</div>
+<!-- Action Items List -->
+<div class="divide-y divide-transparent space-y-2 mt-3">
+<!-- Item 1: Urgent Hackathon closing -->
+<div class="p-3 rounded-lg bg-surface-container-high/70 hover:bg-surface-container-high flex items-start justify-between gap-space-sm transition-colors">
+<div class="flex items-start gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shrink-0 mt-1.5 animate-pulse"></span>
+<div>
+<p class="font-body-sm text-on-surface font-medium leading-snug">Hackathon 2.0 registration closes tomorrow</p>
+<p class="font-label-code text-label-caps text-outline mt-0.5">Capacity: 92/100 seats confirmed</p>
+</div>
+</div>
+<button class="shrink-0 px-2.5 py-1 rounded bg-secondary/15 hover:bg-secondary text-secondary hover:text-on-secondary font-label-caps text-label-caps uppercase transition-colors" type="button">
+                Review →
+              </button>
+</div>
+<!-- Item 2: Member Applications -->
+<div class="p-3 rounded-lg bg-surface-container-high/70 hover:bg-surface-container-high flex items-start justify-between gap-space-sm transition-colors">
+<div class="flex items-start gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary shrink-0 mt-1.5"></span>
+<div>
+<p class="font-body-sm text-on-surface font-medium leading-snug">8 member applications waiting for review</p>
+<p class="font-label-code text-label-caps text-outline mt-0.5">Campus Cohort 2024–2025</p>
+</div>
+</div>
+<button class="shrink-0 px-2.5 py-1 rounded bg-tertiary/15 hover:bg-tertiary text-tertiary hover:text-on-tertiary font-label-caps text-label-caps uppercase transition-colors" type="button">
+                Review →
+              </button>
+</div>
+<!-- Item 3: Stale Projects -->
+<div class="p-3 rounded-lg bg-surface-container-high/70 hover:bg-surface-container-high flex items-start justify-between gap-space-sm transition-colors">
+<div class="flex items-start gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-outline shrink-0 mt-1.5"></span>
+<div>
+<p class="font-body-sm text-on-surface font-medium leading-snug">2 projects haven't been updated this week</p>
+<p class="font-label-code text-label-caps text-outline mt-0.5">dev-nexus, smart-parking</p>
+</div>
+</div>
+<button class="shrink-0 px-2.5 py-1 rounded bg-surface-container hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-colors" type="button">
+                Review →
+              </button>
+</div>
+<!-- Item 4: Workshop Announcement -->
+<div class="p-3 rounded-lg bg-surface-container-high/70 hover:bg-surface-container-high flex items-start justify-between gap-space-sm transition-colors">
+<div class="flex items-start gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary shrink-0 mt-1.5"></span>
+<div>
+<p class="font-body-sm text-on-surface font-medium leading-snug">Upcoming workshop needs announcement</p>
+<p class="font-label-code text-label-caps text-outline mt-0.5">Target: Discord &amp; Campus Portal</p>
+</div>
+</div>
+<button class="shrink-0 px-2.5 py-1 rounded bg-primary/20 hover:bg-primary text-primary hover:text-on-primary font-label-caps text-label-caps uppercase transition-colors" type="button">
+                Publish →
+              </button>
+</div>
+</div>
+</div>
+<!-- MEMBER OVERVIEW DEMOGRAPHICS -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<div class="font-label-caps text-label-caps uppercase tracking-wider text-outline">DEMOGRAPHICS</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">MEMBER OVERVIEW</h3>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">248</span>
+<span class="block font-label-caps text-label-caps text-primary uppercase">+24 this month</span>
+</div>
+</div>
+<!-- Stacked Demographics Bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-lowest overflow-hidden flex my-4">
+<div class="bg-primary h-full" style="width: 57.2%" title="CSE: 142"></div>
+<div class="bg-tertiary h-full" style="width: 24.6%" title="IT: 61"></div>
+<div class="bg-secondary h-full" style="width: 11.3%" title="CE: 28"></div>
+<div class="bg-outline h-full" style="width: 6.9%" title="Other: 17"></div>
+</div>
+<!-- Department Horizontal Bars Breakdown -->
+<div class="space-y-3 font-body-sm">
+<div>
+<div class="flex justify-between items-center text-xs font-label-ui mb-1">
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-primary"></span> Computer Science (CSE)</span>
+<span class="font-label-code text-on-surface font-semibold">142 <span class="text-outline text-[11px]">(57%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 57%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center text-xs font-label-ui mb-1">
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-tertiary"></span> Information Technology (IT)</span>
+<span class="font-label-code text-on-surface font-semibold">61 <span class="text-outline text-[11px]">(25%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center text-xs font-label-ui mb-1">
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-secondary"></span> Computer Engineering (CE)</span>
+<span class="font-label-code text-on-surface font-semibold">28 <span class="text-outline text-[11px]">(11%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 11%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center text-xs font-label-ui mb-1">
+<span class="flex items-center gap-1.5 text-on-surface"><span class="w-2 h-2 rounded-full bg-outline"></span> Other Specializations</span>
+<span class="font-label-code text-on-surface font-semibold">17 <span class="text-outline text-[11px]">(7%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-outline rounded-full" style="width: 7%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- PROJECT ACTIVITY STREAM -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<div class="font-label-caps text-label-caps uppercase tracking-wider text-outline">REPOSITORIES</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">PROJECT ACTIVITY</h3>
+</div>
+<span class="font-label-code text-label-caps text-outline">3 HIGHLIGHTED</span>
+</div>
+<div class="space-y-space-sm mt-2">
+<!-- Project 1 -->
+<div class="p-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-semibold text-on-surface">HomeVault</span>
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-primary-container/20 text-primary font-semibold">Active</span>
+</div>
+<p class="font-label-code text-[11px] text-outline mt-0.5">React • Node.js • PostgreSQL</p>
+<div class="flex items-center justify-between gap-2 mt-2">
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 78%"></div>
+</div>
+<span class="font-label-code text-label-caps text-outline">78%</span>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="p-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-semibold text-on-surface">GitLearn</span>
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-secondary-container/30 text-secondary font-semibold">In Dev</span>
+</div>
+<p class="font-label-code text-[11px] text-outline mt-0.5">Next.js • WASM • Monaco Editor</p>
+<div class="flex items-center justify-between gap-2 mt-2">
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 62%"></div>
+</div>
+<span class="font-label-code text-label-caps text-outline">62%</span>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="p-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-sm font-semibold text-on-surface">CampusConnect</span>
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps uppercase bg-tertiary-container/30 text-tertiary font-semibold">Completed</span>
+</div>
+<p class="font-label-code text-[11px] text-outline mt-0.5">Flutter • Go • gRPC</p>
+<div class="flex items-center justify-between gap-2 mt-2">
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 100%"></div>
+</div>
+<span class="font-label-code text-label-caps text-outline">100%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RECENT ACTIVITY TIMELINE -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<div class="font-label-caps text-label-caps uppercase tracking-wider text-outline">AUDIT LOG</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">RECENT ACTIVITY</h3>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">history</span>
+</div>
+<div class="relative pl-6 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-high mt-3">
+<!-- Timeline Item 1 -->
+<div class="relative">
+<div class="absolute -left-[1.625rem] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-surface-container"></div>
+<div class="flex items-baseline justify-between">
+<p class="font-body-sm text-on-surface font-medium">Riya joined Git Club</p>
+<span class="font-label-code text-[11px] text-outline">4m ago</span>
+</div>
+<p class="font-label-caps text-label-caps text-outline">Member onboarding verified</p>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative">
+<div class="absolute -left-[1.625rem] top-1 w-2.5 h-2.5 rounded-full bg-secondary ring-4 ring-surface-container"></div>
+<div class="flex items-baseline justify-between">
+<p class="font-body-sm text-on-surface font-medium">Web Workshop hit 80 RSVPs</p>
+<span class="font-label-code text-[11px] text-outline">25m ago</span>
+</div>
+<p class="font-label-caps text-label-caps text-outline">80% threshold trigger reached</p>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative">
+<div class="absolute -left-[1.625rem] top-1 w-2.5 h-2.5 rounded-full bg-tertiary ring-4 ring-surface-container"></div>
+<div class="flex items-baseline justify-between">
+<p class="font-body-sm text-on-surface font-medium">Team Alpha updated HomeVault</p>
+<span class="font-label-code text-[11px] text-outline">1h ago</span>
+</div>
+<p class="font-label-caps text-label-caps text-outline">Pushed 4 commits to feature/auth</p>
+</div>
+<!-- Timeline Item 4 -->
+<div class="relative">
+<div class="absolute -left-[1.625rem] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-surface-container"></div>
+<div class="flex items-baseline justify-between">
+<p class="font-body-sm text-on-surface font-medium">Hackathon 2.0 was published</p>
+<span class="font-label-code text-[11px] text-outline">3h ago</span>
+</div>
+<p class="font-label-caps text-label-caps text-outline">Announcement deployed to campus portal</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Technical Network Visualization Canvas Interactive Script
+  (function initNetworkGraph() {
+    const canvas = document.getElementById('gitNetworkCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let nodes = [];
+    const colors = ['#a9cfb9', '#ffb59e', '#e1c477']; // Sage, Coral, Gold
+
+    function resize() {
+      width = canvas.parentElement.clientWidth;
+      height = canvas.parentElement.clientHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function initNodes() {
+      nodes = [];
+      const nodeCount = Math.floor(Math.min(width / 24, 38));
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 2.2 + 1.8,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          pulse: Math.random() * Math.PI
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw subtle connections
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 90) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            const alpha = (1 - dist / 90) * 0.22;
+            ctx.strokeStyle = `rgba(169, 207, 185, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        n.pulse += 0.03;
+
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx.beginPath();
+        const animatedRadius = n.radius + Math.sin(n.pulse) * 0.6;
+        ctx.arc(n.x, n.y, Math.max(1, animatedRadius), 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      initNodes();
+    });
+
+    resize();
+    initNodes();
+    requestAnimationFrame(draw);
+  })();
+
+  // Interactive Role Switcher Pills Filter Handler
+  document.querySelectorAll('.role-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.role-pill-btn').forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary', 'font-semibold', 'shadow-sm');
+        b.classList.add('text-on-surface-variant');
+      });
+      btn.classList.remove('text-on-surface-variant');
+      btn.classList.add('bg-primary', 'text-on-primary', 'font-semibold', 'shadow-sm');
+    });
+  });
+
+  // Interactive Activity Tabs Handler
+  document.querySelectorAll('.tab-activity-btn').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab-activity-btn').forEach(t => {
+        t.classList.remove('bg-surface-container', 'text-primary', 'font-semibold');
+        t.classList.add('text-on-surface-variant');
+      });
+      tab.classList.remove('text-on-surface-variant');
+      tab.classList.add('bg-surface-container', 'text-primary', 'font-semibold');
+    });
+  });
+
+  // Dynamic Theme Transition & Sync with App Shell
+  (function handleThemeSynchronization() {
+    const themeBtn = document.getElementById('theme-toggle');
+    const updateThemeRoot = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    };
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        setTimeout(updateThemeRoot, 20);
+      });
+    }
+    updateThemeRoot();
+  })();
+</script></div></main></div><script>(function(){const saved=localStorage.getItem('theme'); if(saved==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}})();</script></body></html>........................................
