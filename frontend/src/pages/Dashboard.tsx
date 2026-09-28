@@ -3,7 +3,98 @@ import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
   useEffect(() => {
-    // You can add canvas scripts here if needed
+    const canvas = document.getElementById('gitNetworkCanvas') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    let width: number, height: number;
+    let nodes: any[] = [];
+    const colors = ['#a9cfb9', '#ffb59e', '#e1c477']; // Sage, Coral, Gold
+    let animationFrameId: number;
+
+    function resize() {
+      width = canvas.parentElement?.clientWidth || 0;
+      height = canvas.parentElement?.clientHeight || 0;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx?.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function initNodes() {
+      nodes = [];
+      const nodeCount = Math.floor(Math.min(width / 24, 38));
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 2.2 + 1.8,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          pulse: Math.random() * Math.PI
+        });
+      }
+    }
+
+    function draw() {
+      ctx?.clearRect(0, 0, width, height);
+
+      // Draw subtle connections
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 90) {
+            ctx?.beginPath();
+            ctx?.moveTo(nodes[i].x, nodes[i].y);
+            ctx?.lineTo(nodes[j].x, nodes[j].y);
+            const alpha = (1 - dist / 90) * 0.22;
+            ctx!.strokeStyle = \`rgba(169, 207, 185, \${alpha})\`;
+            ctx!.lineWidth = 1;
+            ctx?.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        n.pulse += 0.03;
+
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx?.beginPath();
+        const animatedRadius = n.radius + Math.sin(n.pulse) * 0.6;
+        ctx?.arc(n.x, n.y, Math.max(1, animatedRadius), 0, Math.PI * 2);
+        ctx!.fillStyle = n.color;
+        ctx?.fill();
+      }
+
+      animationFrameId = requestAnimationFrame(draw);
+    }
+
+    function handleResize() {
+      resize();
+      initNodes();
+    }
+
+    window.addEventListener('resize', handleResize);
+    
+    // Initial setup
+    resize();
+    initNodes();
+    draw();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
   
   return (
