@@ -709,84 +709,32 @@
 </div>
 <!-- Modal Body Form -->
 <form class="p-space-lg space-y-space-md" id="createEventForm" onsubmit="handleCreateEvent(event)">
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Event Name / Commit Title *</label>
-<input class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" id="eventName" name="name" placeholder="e.g. NextGen Web with WASM Workshop" required="" type="text"/>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Category Track *</label>
-<select id="eventCategory" name="category" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer">
-<option>Workshop</option>
-<option>Hackathon</option>
-<option>Competition</option>
-<option>Community Talk</option>
-<option>Social Meetup</option>
-</select>
-</div>
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Capacity Roster (Max) *</label>
-<input class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" required="" type="number" id="eventCapacity" name="capacity" value="100"/>
-</div>
-</div>
-
   <div class="flex flex-col gap-1">
-    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Description *</label>
-    <textarea id="eventDesc" name="description" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary min-h-[80px]" placeholder="Detailed description of the event..." required=""></textarea>
+    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// EVENT_TITLE</label>
+    <input id="eventName" name="name" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Open Source Hack Night" required="" type="text">
   </div>
-  <div class="flex flex-col gap-1">
-    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Team Members / Leads *</label>
-    <input id="eventMembers" name="members" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g. Jay Shah, Anushka Patel" required="" type="text"/>
-  </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Date &amp; Time *</label>
-<input class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" required="" id="eventDate" name="date" type="datetime-local"/>
-</div>
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Location / Hall *</label>
-<input class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" id="eventLocation" name="location" placeholder="Auditorium B, CHARUSAT" required="" type="text"/>
-</div>
-</div>
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Organizer / Tech Lead *</label>
-<input class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" required="" type="text" value="Riddhi Thummar (Tech Lead)"/>
-</div>
-<div>
-<label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Abstract &amp; Deliverables</label>
-<textarea class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Describe session goals, pre-requisites (installed git, editor), and key takeaways..." rows="3"></textarea>
-</div>
-
+  
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
     <div class="flex flex-col gap-1">
-      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Registration Link / URL</label>
-      <input id="eventLink" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="https://forms.gle/..." type="url"/>
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// DATE</label>
+      <input id="eventDate" name="date" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="date">
     </div>
     <div class="flex flex-col gap-1">
-      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Target Audience</label>
-      <select id="eventAudience" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary">
-        <option>All Students (Beginner Friendly)</option>
-        <option>Intermediate (Some Experience)</option>
-        <option>Advanced (Domain Experts)</option>
-        <option>Core Team Only</option>
-      </select>
+      <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// MAX_SEATS</label>
+      <input id="eventCapacity" name="capacity" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="number" value="100">
     </div>
   </div>
+
   <div class="flex flex-col gap-1">
-    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 uppercase tracking-wide">Prerequisites / Tech Stack</label>
-    <input id="eventPrereqs" class="w-full bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="e.g. Node.js installed, basic Git knowledge" type="text"/>
+    <label class="font-label-mono-sm text-label-mono-sm text-outline block mb-1 tracking-wide uppercase">// DESCRIPTION & PREREQUISITES</label>
+    <textarea id="eventDesc" name="description" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] min-h-[120px] transition-colors resize-y" placeholder="Brief outline, workshop tracks, and prerequisites..." required=""></textarea>
   </div>
 
-<!-- Submit & Cancel buttons -->
-<div class="flex items-center justify-end gap-space-sm pt-space-xs">
-<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-colors cursor-pointer" onclick="document.getElementById('createEventModal').classList.add('hidden')" type="button">
-            Cancel
-          </button>
-<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5" type="submit">
-<span class="material-symbols-outlined text-[16px]">check</span>
-<span>Publish Assembly</span>
-</button>
-</div>
+  <!-- Buttons -->
+  <div class="flex items-center justify-end gap-space-sm pt-space-md">
+    <button class="px-space-md py-2.5 rounded bg-transparent text-on-surface font-title-md text-body-md hover:bg-surface-container transition-colors cursor-pointer" onclick="document.getElementById('createEventModal').classList.add('hidden')" type="button">Cancel</button>
+    <button class="px-space-md py-2.5 rounded bg-[#fd5832] text-white font-title-md text-body-md hover:brightness-110 transition-all cursor-pointer shadow-md" type="submit">Deploy Event Hook</button>
+  </div>
 </form>
 </div>
 </div>
