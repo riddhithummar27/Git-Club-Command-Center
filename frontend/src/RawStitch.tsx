@@ -4,12 +4,14 @@ import dashboardHtml from './stitch.html?raw';
 import membersHtml from './members.html?raw';
 import projectsHtml from './projects.html?raw';
 import eventsHtml from './events.html?raw';
+import announcementsHtml from './announcements.html?raw';
 
 const pages: Record<string, string> = {
   'dashboard': dashboardHtml,
   'members': membersHtml,
   'projects': projectsHtml,
   'events': eventsHtml,
+  'announcements': announcementsHtml,
 };
 
 export default function RawStitch() {
