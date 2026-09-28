@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 export default function Events() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [viewMode, setViewMode] = useState("calendar");
+  const [timeframe, setTimeframe] = useState("month");
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     // You can add canvas scripts here if needed
@@ -271,7 +274,7 @@ export default function Events() {
 <button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="workshop" >Workshop</button>
 <button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="competition" >Competition</button>
 <button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="hackathon" >Hackathon</button>
-<button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="community" >Community</button>
+<button onClick={() => setFilter('community')} className={`px-3 py-1.5 rounded-full font-label-caps text-label-caps uppercase transition-colors whitespace-nowrap ${filter === 'community' ? 'bg-text-primary text-surface' : 'bg-surface-subtle border border-border-subtle text-text-secondary hover:text-text-primary'}`}>Community</button>
 <button className="category-pill px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface text-on-surface-variant hover:text-on-surface border border-outline-variant font-label-caps text-xs font-medium uppercase transition-all" data-cat="social" >Social</button>
 </div>
 <div className="flex items-center gap-2 self-end sm:self-auto">

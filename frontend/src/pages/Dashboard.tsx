@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("events");
+  const [activeRole, setActiveRole] = useState("admin");
 
   useEffect(() => {
     const canvas = document.getElementById('gitNetworkCanvas') as HTMLCanvasElement;
@@ -124,18 +125,10 @@ export default function Dashboard() {
 </div>
 
 <div className="flex items-center gap-1.5 p-1 rounded-lg bg-surface-subtle border border-border-subtle self-start lg:self-center shadow-xs">
-<button className="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase transition-all bg-primary text-white font-semibold shadow-xs" data-role="admin" type="button">
-            Admin
-          </button>
-<button className="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase text-text-secondary hover:text-text-primary hover:bg-surface transition-all" data-role="event_lead" type="button">
-            Event Lead
-          </button>
-<button className="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase text-text-secondary hover:text-text-primary hover:bg-surface transition-all" data-role="project_lead" type="button">
-            Project Lead
-          </button>
-<button className="role-pill-btn px-3 py-1.5 rounded font-label-caps text-label-caps uppercase text-text-secondary hover:text-text-primary hover:bg-surface transition-all" data-role="member" type="button">
-            Member
-          </button>
+<button onClick={() => setActiveRole('admin')} className={`px-3 py-1.5 rounded font-label-caps text-label-caps uppercase transition-all shadow-sm ${activeRole === 'admin' ? 'bg-primary text-on-primary font-semibold' : 'text-text-secondary hover:text-text-primary hover:bg-surface-container'}`}>Admin</button>
+<button onClick={() => setActiveRole('event_lead')} className={`px-3 py-1.5 rounded font-label-caps text-label-caps uppercase transition-all shadow-sm ${activeRole === 'event_lead' ? 'bg-primary text-on-primary font-semibold' : 'text-text-secondary hover:text-text-primary hover:bg-surface-container'}`}>Event Lead</button>
+<button onClick={() => setActiveRole('project_lead')} className={`px-3 py-1.5 rounded font-label-caps text-label-caps uppercase transition-all shadow-sm ${activeRole === 'project_lead' ? 'bg-primary text-on-primary font-semibold' : 'text-text-secondary hover:text-text-primary hover:bg-surface-container'}`}>Project Lead</button>
+<button onClick={() => setActiveRole('member')} className={`px-3 py-1.5 rounded font-label-caps text-label-caps uppercase transition-all shadow-sm ${activeRole === 'member' ? 'bg-primary text-on-primary font-semibold' : 'text-text-secondary hover:text-text-primary hover:bg-surface-container'}`}>Member</button>
 </div>
 </div>
 
