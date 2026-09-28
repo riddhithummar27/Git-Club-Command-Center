@@ -1,1 +1,20 @@
-import React from 'react';\nimport { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';\nimport Dashboard from "./pages/Dashboard";\nimport Events from "./pages/Events";\nimport Members from "./pages/Members";\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path="/" element={<Dashboard />} />\n        <Route path="/events" element={<Events />} />\n        <Route path="/members" element={<Members />} />\n        <Route path='*' element={<Navigate to='/' replace />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}\nexport default App;\n
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from "./pages/Dashboard";
+import Events from "./pages/Events";
+import Members from "./pages/Members";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/members" element={<Members />} />
+        <Route path='*' element={<Navigate to='/' replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
