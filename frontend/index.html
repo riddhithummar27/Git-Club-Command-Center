@@ -308,5 +308,29 @@
     }
   };
 </script>
+
+  <!-- Global Mobile Navigation Handler -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('#mobile-menu-btn');
+      const overlay = document.getElementById('mobile-overlay');
+      const sidebar = document.getElementById('app-sidebar');
+
+      if (btn) {
+        if (sidebar) sidebar.classList.toggle('-translate-x-full');
+        if (overlay) overlay.classList.toggle('hidden');
+      } else if (e.target === overlay) {
+        if (sidebar) sidebar.classList.add('-translate-x-full');
+        if (overlay) overlay.classList.add('hidden');
+      } else if (e.target.closest('aside a[data-path]')) {
+        // Close sidebar when clicking a link on mobile
+        if (window.innerWidth < 1024) {
+          if (sidebar) sidebar.classList.add('-translate-x-full');
+          if (overlay) overlay.classList.add('hidden');
+        }
+      }
+    });
+  </script>
 </body>
+
 </html>
