@@ -11,7 +11,7 @@ export default function App() {
       <Router>
         <GlobalPatch />
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/*" element={<RawStitch />} />
         </Routes>
       </Router>

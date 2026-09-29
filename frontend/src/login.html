@@ -1,0 +1,69 @@
+
+<div class="min-h-screen w-full flex items-center justify-center bg-surface-container-lowest p-4">
+  <div class="max-w-md w-full bg-surface-container rounded-2xl shadow-xl overflow-hidden">
+    
+    <div class="px-space-lg py-space-xl flex flex-col items-center">
+      <img src="/gitclub_logo.png" alt="Git Club" class="w-20 h-20 object-contain mb-4 filter drop-shadow-md" />
+      <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold text-center mb-1">Welcome Back</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant text-center mb-8">Sign in to access the Git Club Command Center</p>
+
+      <form class="w-full space-y-space-md" onsubmit="handleLoginSubmit(event)">
+        <div class="space-y-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase tracking-wider block ml-1">Email Address</label>
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3 text-outline text-[20px] pointer-events-none">mail</span>
+            <input type="email" required class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md border border-surface-container-highest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder:text-outline" placeholder="admin@charusat.edu.in" />
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase tracking-wider block ml-1">Password</label>
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3 text-outline text-[20px] pointer-events-none">lock</span>
+            <input type="password" required class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md border border-surface-container-highest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder:text-outline" placeholder="••••••••" />
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-2.5 rounded-lg bg-primary-container text-on-primary-container font-title-md font-bold hover:brightness-110 shadow-sm transition-all flex items-center justify-center gap-2">
+            <span>Authenticate</span>
+            <span class="material-symbols-outlined text-[20px]">login</span>
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="bg-surface-container-low px-space-lg py-space-sm border-t border-surface-container-highest text-center">
+      <span class="font-label-mono-sm text-label-mono-sm text-outline">SECURE INTRA-NETWORK PORTAL</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  window.handleLoginSubmit = function(e) {
+    e.preventDefault();
+    // Simulate login loading state
+    const btn = e.target.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span><span>Authenticating...</span>';
+    btn.classList.add('opacity-80', 'cursor-not-allowed');
+    
+    setTimeout(() => {
+      // Just redirect to dashboard directly using a click simulation to let RawStitch routing take over
+      const link = document.createElement('a');
+      link.setAttribute('data-path', 'dashboard');
+      document.body.appendChild(link);
+      
+      link.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          // window.location triggers a full reload but React router navigates instead if we let React intercept it.
+          // Wait, RawStitch intercepts data-path links manually inside setupNavigation.
+          // We can just use standard History API or global React router hook if exposed.
+          // Easier: Just change hash/pathname
+          window.location.href = '/dashboard';
+      });
+      link.click();
+    }, 800);
+  };
+</script>
