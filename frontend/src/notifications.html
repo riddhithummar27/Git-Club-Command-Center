@@ -562,7 +562,7 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+(function() {
     const tabBtns = document.querySelectorAll('.bg-surface-container-low button');
     
     // Setup tab clicking
@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-});
+})();
 </script>
 
 </div></main></div><div class="fixed bottom-6 right-6 z-40 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">

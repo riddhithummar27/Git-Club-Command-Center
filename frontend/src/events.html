@@ -907,7 +907,7 @@
 
 
       // Add Search and Tab Filtering
-      document.addEventListener('DOMContentLoaded', () => {
+      (function() {
         const searchInput = document.getElementById('eventSearchInput');
         const tabs = document.querySelectorAll('.status-pill');
         const rows = document.querySelectorAll('tbody tr');
@@ -962,7 +962,7 @@
             filterEvents();
           });
         });
-      });
+      })();
 
 </script>
 

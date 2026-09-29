@@ -730,7 +730,7 @@
           if (window.triggerFeedback) window.triggerFeedback('Member record added: ' + newMember.name);
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
+        (function() {
           const searchInput = document.getElementById('memberSearchInput');
           // Find the category buttons (All, Core Team, Active, Alumni)
           // Based on the HTML, they are buttons inside a div

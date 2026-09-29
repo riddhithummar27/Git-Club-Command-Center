@@ -748,7 +748,7 @@ NOTE: The output was truncated because it was too long. Use a more targeted quer
   };
 
   // Search and Filter Logic
-  document.addEventListener('DOMContentLoaded', () => {
+  (function() {
     const searchInput = document.getElementById('project-search-input');
     const categoryBtns = document.querySelectorAll('.filter-category-btn');
     const projectCards = document.querySelectorAll('.project-card'); // Wait, do they have this class?
@@ -812,6 +812,6 @@ NOTE: The output was truncated because it was too long. Use a more targeted quer
         filterProjects();
       });
     });
-  });
+  })();
 </script>
 
