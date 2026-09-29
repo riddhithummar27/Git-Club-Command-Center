@@ -7,7 +7,7 @@ import GlobalPatch from './components/GlobalPatch';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = localStorage.getItem('auth') === 'true';
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+  return isAuthenticated ? <>{children}</> : <Navigate to="/showcase" replace />;
 };
 
 const LoginRoute = ({ children }: { children: React.ReactNode }) => {
