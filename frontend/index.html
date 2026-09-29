@@ -169,6 +169,13 @@
               }, 150);
            } else if (action === 'cmd-settings') {
               navTo('settings');
+
+           } else if (action === 'cmd-dashboard') {
+              navTo('dashboard');
+           } else if (action === 'cmd-analytics') {
+              navTo('analytics');
+           } else if (action === 'cmd-notifications') {
+              navTo('notifications');
            }
         }
 
@@ -266,6 +273,21 @@
               } else if (val.includes('config') || val.includes('setting') || val.includes('profile')) {
                  const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-settings');
                  if (item) item.click();
+
+              } else if (val.includes('dashboard') || val.includes('home')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-dashboard');
+                 if (item) item.click();
+              } else if (val.includes('analytic') || val.includes('log') || val.includes('stat')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-analytics');
+                 if (item) item.click();
+              } else if (val.includes('notification') || val.includes('fetch') || val.includes('pull')) {
+                 const item = allItems.find(i => i.getAttribute('data-action') === 'cmd-notifications');
+                 if (item) item.click();
+              } else {
+                 // Absolute fallback: if they hit enter on anything that didn't match, just execute the first visible item if any, otherwise first item in list
+                 const visibleItems = allItems.filter(i => !i.classList.contains('hidden'));
+                 if (visibleItems.length > 0) visibleItems[0].click();
+                 else allItems[0].click(); // Just run the first one
               }
             }
           }
