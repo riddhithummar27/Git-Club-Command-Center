@@ -771,6 +771,7 @@
 </div>
 </div>
 <!-- Client-side Interactive Behavior -->
+
 <script>
     function openDrawer(eventTitle) {
       const drawer = document.getElementById('eventDetailDrawer');
@@ -840,7 +841,7 @@
   }
   
   function renderEvents() {
-    const container = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.gap-space-lg');
+    const container = document.querySelector('.grid.grid-cols-1.md\:grid-cols-2.gap-space-lg');
     if (!container) return;
     
     const latestEvent = window.GIT_CLUB_EVENTS[window.GIT_CLUB_EVENTS.length - 1];
@@ -903,7 +904,68 @@
     
     container.insertAdjacentHTML('afterbegin', cardHtml);
   }
+
+
+      // Add Search and Tab Filtering
+      document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('eventSearchInput');
+        const tabs = document.querySelectorAll('.status-pill');
+        const rows = document.querySelectorAll('tbody tr');
+        
+        let currentTab = 'upcoming'; // defaults based on the active tab UI
+        let searchQuery = '';
+
+        function filterEvents() {
+          rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            const matchesSearch = text.includes(searchQuery.toLowerCase());
+            
+            let isUpcoming = text.includes('upcoming') || !text.includes('completed') && !text.includes('cancelled');
+            let isPast = text.includes('completed') || text.includes('view records');
+            let isCancelled = text.includes('cancelled');
+
+            let matchesTab = true;
+            if (currentTab === 'upcoming' && !isUpcoming) matchesTab = false;
+            if (currentTab === 'past' && !isPast) matchesTab = false;
+            if (currentTab === 'cancelled' && !isCancelled) matchesTab = false;
+
+            if (matchesSearch && matchesTab) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            filterEvents();
+          });
+        }
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', (e) => {
+            tabs.forEach(t => {
+              t.classList.remove('active-status', 'bg-primary-container', 'text-on-primary-container');
+              t.classList.add('text-on-surface-variant');
+            });
+            e.target.classList.add('active-status', 'bg-primary-container', 'text-on-primary-container');
+            e.target.classList.remove('text-on-surface-variant');
+            
+            const tabText = e.target.textContent.toLowerCase();
+            if (tabText.includes('upcoming')) currentTab = 'upcoming';
+            else if (tabText.includes('past')) currentTab = 'past';
+            else if (tabText.includes('cancelled')) currentTab = 'cancelled';
+            else currentTab = 'all';
+            
+            filterEvents();
+          });
+        });
+      });
+
 </script>
+
 </div></div></main></div><div class="fixed bottom-6 right-6 z-40 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
   <a href="#" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
     <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
