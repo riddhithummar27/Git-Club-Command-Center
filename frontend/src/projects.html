@@ -739,6 +739,14 @@
 NOTE: The output was truncated because it was too long. Use a more targeted query or a smaller range to get the information you need.
 
 <script>
+  window.openProjectModal = function(name) {
+    const modal = document.getElementById('modal-project-inspect');
+    if (modal) {
+        const titleEl = document.getElementById('inspect-modal-title');
+        if (titleEl) titleEl.textContent = name;
+        modal.classList.remove('hidden');
+    }
+  };
   window.GIT_CLUB_PROJECTS = window.GIT_CLUB_PROJECTS || [];
   window.handleProjectSubmit = function(e) {
     e.preventDefault();

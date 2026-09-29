@@ -151,8 +151,20 @@ function applyPatches(path: string) {
        }
     };
     
-    // Bind Project Inspect Drawer for whole card click
+    // Bind Project Inspect Drawer for whole card click, and handle explicit Inspect buttons
     document.querySelectorAll('.project-card').forEach(card => {
+       const inspectBtn = Array.from(card.querySelectorAll('button')).find(b => b.textContent?.includes('Inspect'));
+       if (inspectBtn) {
+           inspectBtn.removeAttribute('onclick'); // Remove inline handler to bypass CSP
+           inspectBtn.addEventListener('click', (e) => {
+               e.preventDefault();
+               e.stopPropagation();
+               const nameEl = card.querySelector('.font-title-md');
+               const name = nameEl ? nameEl.textContent?.trim() : 'Project';
+               (window as any).openProjectModal(name);
+           });
+       }
+
        card.addEventListener('click', (e) => {
           // Don't trigger if they clicked a button inside the card
           if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('a')) return;
