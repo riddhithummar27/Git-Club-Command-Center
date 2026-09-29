@@ -141,12 +141,21 @@ function applyPatches(path: string) {
       if (modal) modal.classList.add('hidden');
       if ((window as any).triggerFeedback) (window as any).triggerFeedback('Project initialized successfully.');
     };
+    // Define openProjectModal globally so native buttons work
+    (window as any).openProjectModal = function(name: string) {
+       const modal = document.getElementById('modal-project-inspect');
+       if (modal) {
+           const titleEl = document.getElementById('inspect-modal-title');
+           if (titleEl) titleEl.textContent = name;
+           modal.classList.remove('hidden');
+       }
+    };
     
-    // Bind Project Inspect Drawer
+    // Bind Project Inspect Drawer for whole card click
     document.querySelectorAll('.project-card').forEach(card => {
        card.addEventListener('click', (e) => {
           // Don't trigger if they clicked a button inside the card
-          if ((e.target as HTMLElement).closest('button')) return;
+          if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('a')) return;
           const drawer = document.getElementById('project-inspect-drawer');
           if (drawer) drawer.classList.remove('translate-x-full');
        });
