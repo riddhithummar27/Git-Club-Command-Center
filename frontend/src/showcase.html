@@ -140,7 +140,8 @@
 
   // --- 1. Elegant Central Medallion ---
   const logoGroup = new THREE.Group();
-  logoGroup.position.set(0, 3.2, 0);
+  logoGroup.position.set(0, 4.8, 0);
+  logoGroup.scale.set(0.7, 0.7, 0.7);
   masterGroup.add(logoGroup);
 
   // Texture loader for logo
@@ -148,6 +149,8 @@
   const logoTexture = textureLoader.load('/gitclub_logo.png');
   logoTexture.generateMipmaps = true;
   logoTexture.minFilter = THREE.LinearMipmapLinearFilter;
+  logoTexture.center.set(0.5, 0.5);
+  logoTexture.rotation = -Math.PI / 2;
 
   // Sophisticated Materials
   const outerBevelMat = new THREE.MeshStandardMaterial({
@@ -163,8 +166,11 @@
     emissive: 0x220500
   });
 
-  const logoFaceMat = new THREE.MeshBasicMaterial({
+  const logoFaceMat = new THREE.MeshStandardMaterial({
     map: logoTexture,
+    color: 0xdddddd,
+    metalness: 0.2,
+    roughness: 0.8,
     transparent: true
   });
 
