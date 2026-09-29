@@ -9,6 +9,7 @@ import notificationsHtml from './notifications.html?raw';
 import settingsHtml from './settings.html?raw';
 import analyticsHtml from './analytics.html?raw';
 import loginHtml from './login.html?raw';
+import showcaseHtml from './showcase.html?raw';
 
 const pages: Record<string, string> = {
   'dashboard': dashboardHtml,
@@ -20,6 +21,7 @@ const pages: Record<string, string> = {
   'settings': settingsHtml,
   'analytics': analyticsHtml,
   'login': loginHtml,
+  'showcase': showcaseHtml,
 };
 
 export default function RawStitch() {

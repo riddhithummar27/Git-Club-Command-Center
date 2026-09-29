@@ -22,7 +22,8 @@ export default function App() {
       <Router>
         <GlobalPatch />
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/showcase" replace />} />
+          <Route path="/showcase" element={<RawStitch />} />
           <Route path="/login" element={<LoginRoute><RawStitch /></LoginRoute>} />
           <Route path="/*" element={<ProtectedRoute><RawStitch /></ProtectedRoute>} />
         </Routes>
