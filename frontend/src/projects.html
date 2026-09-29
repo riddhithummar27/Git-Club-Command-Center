@@ -272,7 +272,7 @@
           </p>
 <!-- Visual preview banner -->
 <div class="mt-4 rounded-lg overflow-hidden h-36 bg-surface-container-lowest relative group/img">
-<img class="w-full h-full object-cover opacity-85 group-hover/img:scale-105 transition-transform duration-500" data-alt="Modern dark-themed SaaS interface for HomeVault dashboard showing document cards, warranty tracker, and digital folder hierarchy with orange and charcoal accents" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
+<div class="absolute inset-0 p-4 pt-6 flex items-start text-left bg-surface-container-lowest"><p class="font-body-sm text-body-sm text-on-surface-variant italic line-clamp-3 leading-relaxed">Modern dark-themed SaaS interface for HomeVault dashboard showing document cards, warranty tracker, and digital folder hierarchy with orange and charcoal accents</p></div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
 <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface/80 backdrop-blur font-label-mono-sm text-[10px] text-on-surface">repo: charusat/home-vault</span>
 </div>
@@ -346,7 +346,7 @@
           </p>
 <!-- Visual preview banner -->
 <div class="mt-4 rounded-lg overflow-hidden h-36 bg-surface-container-lowest relative group/img">
-<img class="w-full h-full object-cover opacity-85 group-hover/img:scale-105 transition-transform duration-500" data-alt="Interactive web application showing Git branching graphs, terminal console simulator, and code comparison tree in vibrant dark theme with orange connectors" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
+<div class="absolute inset-0 p-4 pt-6 flex items-start text-left bg-surface-container-lowest"><p class="font-body-sm text-body-sm text-on-surface-variant italic line-clamp-3 leading-relaxed">Interactive web application showing Git branching graphs, terminal console simulator, and code comparison tree in vibrant dark theme with orange connectors</p></div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
 <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface/80 backdrop-blur font-label-mono-sm text-[10px] text-on-surface">repo: charusat/gitlearn-hub</span>
 </div>
@@ -416,7 +416,7 @@
           </p>
 <!-- Visual preview banner -->
 <div class="mt-4 rounded-lg overflow-hidden h-36 bg-surface-container-lowest relative group/img">
-<img class="w-full h-full object-cover opacity-85 group-hover/img:scale-105 transition-transform duration-500" data-alt="Student forum and peer mentoring portal UI showing discussion threads, course cards, and calendar schedule on a sleek dark background" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
+<div class="absolute inset-0 p-4 pt-6 flex items-start text-left bg-surface-container-lowest"><p class="font-body-sm text-body-sm text-on-surface-variant italic line-clamp-3 leading-relaxed">Student forum and peer mentoring portal UI showing discussion threads, course cards, and calendar schedule on a sleek dark background</p></div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
 <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface/80 backdrop-blur font-label-mono-sm text-[10px] text-on-surface">repo: charusat/campus-connect</span>
 </div>
@@ -485,7 +485,7 @@
           </p>
 <!-- Visual preview banner -->
 <div class="mt-4 rounded-lg overflow-hidden h-36 bg-surface-container-lowest relative group/img">
-<img class="w-full h-full object-cover opacity-85 group-hover/img:scale-105 transition-transform duration-500" data-alt="Hardware engineering workbench with ESP32 microcontrollers, soldered sensor shields, and a monitor displaying real-time telemetry gauges in green and cyan" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
+<div class="absolute inset-0 p-4 pt-6 flex items-start text-left bg-surface-container-lowest"><p class="font-body-sm text-body-sm text-on-surface-variant italic line-clamp-3 leading-relaxed">Hardware engineering workbench with ESP32 microcontrollers, soldered sensor shields, and a monitor displaying real-time telemetry gauges in green and cyan</p></div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
 <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface/80 backdrop-blur font-label-mono-sm text-[10px] text-on-surface">repo: charusat/smartcampus-iot</span>
 </div>
@@ -737,12 +737,81 @@
 <truncated 120423 bytes>
 
 NOTE: The output was truncated because it was too long. Use a more targeted query or a smaller range to get the information you need.
+
 <script>
-window.GIT_CLUB_PROJECTS = window.GIT_CLUB_PROJECTS || [];
-window.handleProjectSubmit = function(e) {
-  e.preventDefault();
-  const fd = new FormData(e.target);
-  document.getElementById('modal-add-project').classList.add('hidden');
-  if (window.triggerFeedback) window.triggerFeedback('Project initialized successfully.');
-};
+  window.GIT_CLUB_PROJECTS = window.GIT_CLUB_PROJECTS || [];
+  window.handleProjectSubmit = function(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    document.getElementById('modal-add-project').classList.add('hidden');
+    if (window.triggerFeedback) window.triggerFeedback('Project initialized successfully.');
+  };
+
+  // Search and Filter Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('project-search-input');
+    const categoryBtns = document.querySelectorAll('.filter-category-btn');
+    const projectCards = document.querySelectorAll('.project-card'); // Wait, do they have this class?
+    
+    // Add project-card class if missing, but we can just select the outer divs
+    // Actually let's just select the grid children
+    const grid = document.querySelector('.grid.grid-cols-1.md\:grid-cols-2');
+    if (!grid) return;
+    const cards = Array.from(grid.children);
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function filterProjects() {
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        
+        // Rough category mapping based on content
+        let category = 'web';
+        if (text.includes('iot') || text.includes('esp32')) category = 'iot';
+        else if (text.includes('ai') || text.includes('ml')) category = 'ai';
+        else if (text.includes('app') || text.includes('mobile')) category = 'app';
+        else if (text.includes('cloud') || text.includes('devops')) category = 'cloud';
+        
+        const matchesCategory = currentCategory === 'all' || category === currentCategory;
+        const matchesSearch = text.includes(searchQuery.toLowerCase());
+
+        if (matchesCategory && matchesSearch) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        filterProjects();
+      });
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          searchInput.value = '';
+          searchQuery = '';
+          filterProjects();
+        }
+      });
+    }
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // Update active styling
+        categoryBtns.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary-container');
+          b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        e.target.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        e.target.classList.add('bg-primary-container', 'text-on-primary-container');
+        
+        currentCategory = e.target.getAttribute('data-category');
+        filterProjects();
+      });
+    });
+  });
 </script>
+
