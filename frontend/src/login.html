@@ -50,6 +50,9 @@
     btn.classList.add('opacity-80', 'cursor-not-allowed');
     
     setTimeout(() => {
+      // Set auth flag
+      localStorage.setItem('auth', 'true');
+      
       // Just redirect to dashboard directly using a click simulation to let RawStitch routing take over
       const link = document.createElement('a');
       link.setAttribute('data-path', 'dashboard');
