@@ -139,7 +139,7 @@
 <div class="flex items-center gap-space-sm self-end lg:self-auto">
 <div class="flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant">
 <span class="material-symbols-outlined text-[16px] text-outline">tune</span>
-<select class="bg-transparent text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer">
+<select class="bg-transparent text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer" onchange="alert(\'Filter synced: \' + this.value)">
 <option class="bg-surface-container-low text-on-surface">All Channels [Web, Webhook, Campus SSO, Discord]</option>
 <option class="bg-surface-container-low text-on-surface">Channel: Discord Bot Bridge</option>
 <option class="bg-surface-container-low text-on-surface">Channel: Campus FCM Push</option>
@@ -149,7 +149,7 @@
 </div>
 <div class="flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant">
 <span class="material-symbols-outlined text-[16px] text-primary">flag</span>
-<select class="bg-transparent text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer">
+<select class="bg-transparent text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer" onchange="alert(\'Filter synced: \' + this.value)">
 <option class="bg-surface-container-low text-on-surface">Priority: All [Critical, Warning, Info, Audit]</option>
 <option class="bg-surface-container-low text-on-surface">Priority: Critical Only</option>
 <option class="bg-surface-container-low text-on-surface">Priority: Warning</option>
@@ -560,6 +560,45 @@
 </div>
 </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.bg-surface-container-low button');
+    
+    // Setup tab clicking
+    tabBtns.forEach(btn => {
+        // Skip header control buttons (Mark All Read, Delivery Matrix, Test Webhook)
+        if (btn.textContent.includes('Mark All Read') || btn.textContent.includes('Delivery Matrix') || btn.textContent.includes('Test Webhook')) return;
+        
+        btn.addEventListener('click', (e) => {
+            // Reset all tabs
+            tabBtns.forEach(b => {
+                if (b.textContent.includes('Mark All Read') || b.textContent.includes('Delivery Matrix') || b.textContent.includes('Test Webhook')) return;
+                b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                b.classList.add('text-on-surface-variant');
+            });
+            // Activate current
+            const target = e.currentTarget;
+            target.classList.remove('text-on-surface-variant');
+            target.classList.add('bg-primary-container', 'text-on-primary-container');
+            
+            alert('Notifications filtered to: ' + target.textContent.trim());
+        });
+    });
+
+    // Make all the action buttons in notification cards clickable too
+    const actionBtns = document.querySelectorAll('.p-space-lg button');
+    actionBtns.forEach(btn => {
+        if (!btn.hasAttribute('onclick')) {
+            btn.addEventListener('click', (e) => {
+                const action = e.currentTarget.textContent.trim();
+                alert('Action Triggered: ' + action);
+            });
+        }
+    });
+});
+</script>
+
 </div></main></div><div class="fixed bottom-6 right-6 z-40 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
   <a href="#" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
     <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
