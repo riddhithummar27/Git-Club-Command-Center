@@ -140,6 +140,17 @@
 
   // --- 1. Elegant Central Medallion ---
   const logoGroup = new THREE.Group();
+
+  const coreGeo = new THREE.SphereGeometry(1.2, 32, 32);
+  const coreMat = new THREE.MeshStandardMaterial({ 
+    color: 0xf4512c, 
+    emissive: 0xf4512c, 
+    emissiveIntensity: 2.0,
+    wireframe: true 
+  });
+  const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+  logoGroup.add(coreMesh);
+
   logoGroup.position.set(0, 4.8, 0);
   logoGroup.scale.set(0.7, 0.7, 0.7);
   masterGroup.add(logoGroup);
@@ -184,13 +195,13 @@
   const discGeo = new THREE.CylinderGeometry(2.35, 2.35, 0.28, 64);
   discGeo.rotateX(Math.PI / 2);
   const discMesh = new THREE.Mesh(discGeo, [rimGoldMat, logoFaceMat, darkBackMat]);
-  logoGroup.add(discMesh);
+  // logoGroup.add(discMesh);
 
   // Thin futuristic chamfer ring around disc
   const chamferGeo = new THREE.TorusGeometry(2.42, 0.04, 16, 100);
   const chamferMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 });
   const chamferMesh = new THREE.Mesh(chamferGeo, chamferMat);
-  logoGroup.add(chamferMesh);
+  // logoGroup.add(chamferMesh);
 
   // Elegant nested orbital gimbal rings
   const ring1Geo = new THREE.TorusGeometry(3.3, 0.035, 16, 120);
