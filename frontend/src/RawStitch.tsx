@@ -81,6 +81,17 @@ export default function RawStitch() {
         });
       }
 
+      const handleForceNavigate = (e: any) => {
+        if (e.detail && e.detail.path) {
+          navigate(e.detail.path);
+        }
+      };
+      window.addEventListener('force-navigate', handleForceNavigate);
+      
+      return () => {
+        window.removeEventListener('force-navigate', handleForceNavigate);
+      };
+
   }, [navigate, htmlToLoad]);
 
   return <div ref={containerRef} className="w-full h-full text-on-surface bg-surface font-sans" />;

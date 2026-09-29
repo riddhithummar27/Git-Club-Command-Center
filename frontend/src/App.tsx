@@ -15,6 +15,11 @@ const LoginRoute = ({ children }: { children: React.ReactNode }) => {
   return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>;
 };
 
+// Clear authentication strictly on every reload or tab close to force re-login
+window.addEventListener('beforeunload', () => {
+  localStorage.removeItem('auth');
+});
+
 export default function App() {
   return (
     <GlobalProvider>

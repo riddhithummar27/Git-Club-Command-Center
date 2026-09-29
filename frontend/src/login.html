@@ -53,20 +53,8 @@
       // Set auth flag
       localStorage.setItem('auth', 'true');
       
-      // Just redirect to dashboard directly using a click simulation to let RawStitch routing take over
-      const link = document.createElement('a');
-      link.setAttribute('data-path', 'dashboard');
-      document.body.appendChild(link);
-      
-      link.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          // window.location triggers a full reload but React router navigates instead if we let React intercept it.
-          // Wait, RawStitch intercepts data-path links manually inside setupNavigation.
-          // We can just use standard History API or global React router hook if exposed.
-          // Easier: Just change hash/pathname
-          window.location.href = '/dashboard';
-      });
-      link.click();
+      // Dispatch custom event to React router
+      window.dispatchEvent(new CustomEvent('force-navigate', { detail: { path: '/dashboard' } }));
     }, 800);
   };
 </script>
