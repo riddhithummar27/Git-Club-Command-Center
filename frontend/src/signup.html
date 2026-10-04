@@ -85,9 +85,9 @@
     btn.classList.add('opacity-80', 'cursor-not-allowed');
     
     try {
-      if (false && window.firebaseSignUpEmail) {
+      if (true && window.firebaseSignUpEmail) {
         await window.firebaseSignUpEmail(email, pass);
-      } else if (!false && window.firebaseLoginEmail) {
+      } else if (!true && window.firebaseLoginEmail) {
         await window.firebaseLoginEmail(email, pass);
       } else {
         throw new Error("Firebase auth not initialized yet");
@@ -95,7 +95,7 @@
       window.dispatchEvent(new CustomEvent('force-navigate', { detail: { path: '/dashboard' } }));
     } catch (err) {
       console.error(err);
-      textSpan.innerHTML = false ? 'Sign Up Failed' : 'Login Failed';
+      textSpan.innerHTML = true ? 'Sign Up Failed' : 'Login Failed';
       if (err.code === 'auth/email-already-in-use') {
         alert("This email is already registered. Please log in.");
       } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found') {
