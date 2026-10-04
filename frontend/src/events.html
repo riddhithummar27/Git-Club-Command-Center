@@ -805,34 +805,52 @@
   
   window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || [];
 
-  function handleCreateEvent(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('eventName')?.value || 'Unnamed Event';
-    const category = document.getElementById('eventCategory')?.value || 'Workshop';
-    const capacity = document.getElementById('eventCapacity')?.value || '100';
-    const date = document.getElementById('eventDate')?.value || new Date().toISOString();
-    const desc = document.getElementById('eventDesc')?.value || 'No description provided.';
-    const members = document.getElementById('eventMembers')?.value || 'None';
-    const link = document.getElementById('eventLink')?.value || 'No link';
-    const audience = document.getElementById('eventAudience')?.value || 'All Students';
-    
-    const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
-    
-    const newEvent = {
-      id, name, category, capacity, date, location: 'TBA', desc, members, link, audience, prereqs: 'See description',
-      status: 'PLANNING'
-    };
-    
-    window.GIT_CLUB_EVENTS.push(newEvent);
-    
-    document.getElementById('createEventModal').classList.add('hidden');
-    e.target.reset();
-    
-    renderEvents();
-  }
   
-  function deleteEvent(btnElement) {
+    async function handleCreateEvent(e) {
+      e.preventDefault();
+      
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Saving to Database...';
+      btn.disabled = true;
+
+      const name = document.getElementById('eventName')?.value || 'Unnamed Event';
+      const category = document.getElementById('eventCategory')?.value || 'Workshop';
+      const capacity = document.getElementById('eventCapacity')?.value || '100';
+      const date = document.getElementById('eventDate')?.value || new Date().toISOString();
+      const desc = document.getElementById('eventDesc')?.value || 'No description provided.';
+      const members = document.getElementById('eventMembers')?.value || 'None';
+      const link = document.getElementById('eventLink')?.value || 'No link';
+      const audience = document.getElementById('eventAudience')?.value || 'All Students';
+      
+      const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
+      
+      const newEvent = {
+        displayId: id, name, category, capacity, date, location: 'TBA', desc, members, link, audience, prereqs: 'See description',
+        status: 'PLANNING'
+      };
+      
+      try {
+        if (window.firebaseAddEvent) {
+          await window.firebaseAddEvent(newEvent);
+        } else {
+          console.warn('Firebase not wired up, saving locally');
+          window.GIT_CLUB_EVENTS.push(newEvent);
+        }
+        
+        document.getElementById('createEventModal').classList.add('hidden');
+        e.target.reset();
+        
+        await renderEvents();
+      } catch (err) {
+        console.error('Failed to create event', err);
+        alert('Failed to create event in database');
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+function deleteEvent(btnElement) {
     // Find the closest article (the event card) and remove it from the DOM
     const card = btnElement.closest('article');
     if (card) {
@@ -840,130 +858,98 @@
     }
   }
   
-  function renderEvents() {
-    const container = document.querySelector('.grid.grid-cols-1.md\:grid-cols-2.gap-space-lg');
-    if (!container) return;
-    
-    const latestEvent = window.GIT_CLUB_EVENTS[window.GIT_CLUB_EVENTS.length - 1];
-    if (!latestEvent) return;
-    
-    const d = new Date(latestEvent.date);
-    const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-    
-    const cardHtml = `
-      <article class="bg-surface-container rounded-xl overflow-hidden shadow-md flex flex-col hover:bg-surface-container-high transition-all group relative">
-        <div class="h-32 bg-surface-container-highest relative overflow-hidden">
-          <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCAwTDggOFpNOCAwTDAgOFoiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')]"></div>
-          <div class="absolute top-space-sm right-space-sm flex gap-2">
-            <span class="px-2 py-1 rounded bg-surface/80 backdrop-blur-sm font-label-mono-sm text-[10px] text-on-surface uppercase font-bold tracking-wider">
-              ${latestEvent.category}
-            </span>
-            <button onclick="deleteEvent(this)" type="button" class="px-2 py-1 rounded bg-error/80 text-on-error backdrop-blur-sm hover:bg-error transition-colors cursor-pointer" title="Delete Event">
-              <span class="material-symbols-outlined text-[14px]">delete</span>
-            </button>
-          </div>
-        </div>
-        <div class="p-space-md flex-1 flex flex-col">
-          <div class="flex items-center justify-between mb-space-sm">
-            <span class="font-label-mono-sm text-label-mono-sm text-primary font-bold">${latestEvent.id}</span>
-            <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">${latestEvent.status}</span>
-          </div>
-          <h3 class="font-headline-sm text-title-md text-on-surface font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">${latestEvent.name}</h3>
-          <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-sm">${latestEvent.desc}</p>
-          
-          <div class="mt-auto space-y-1.5 font-label-mono-sm text-[11px] text-outline pt-2 border-t border-surface-container-highest">
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[14px]">calendar_today</span>
-              <span>${dateStr}, ${timeStr}</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[14px]">location_on</span>
-              <span>${latestEvent.location}</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[14px]">group</span>
-              <span>Team: ${latestEvent.members}</span>
-            </div>
-            <div class="flex items-center gap-2 text-secondary">
-              <span class="material-symbols-outlined text-[14px]">build</span>
-              <span class="truncate">Requires: ${latestEvent.prereqs}</span>
-            </div>
-            <div class="flex items-center gap-2 text-tertiary">
-              <span class="material-symbols-outlined text-[14px]">target</span>
-              <span>Audience: ${latestEvent.audience}</span>
-            </div>
-            ${latestEvent.link !== 'No link' ? `<div class="flex items-center gap-2 text-primary-container mt-1">
-              <span class="material-symbols-outlined text-[14px]">link</span>
-              <a href="${latestEvent.link}" target="_blank" class="hover:underline truncate">${latestEvent.link}</a>
-            </div>` : ''}
-          </div>
-        </div>
-      </article>
-    `;
-    
-    container.insertAdjacentHTML('afterbegin', cardHtml);
-  }
-
-
-      // Add Search and Tab Filtering
-      (function() {
-        const searchInput = document.getElementById('eventSearchInput');
-        const tabs = document.querySelectorAll('.status-pill');
-        const rows = document.querySelectorAll('tbody tr');
+  
+    async function renderEvents() {
+      const container = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.gap-space-lg') || document.querySelector('.grid');
+      if (!container) return;
+      
+      let events = [];
+      if (window.firebaseFetchEvents) {
+         events = await window.firebaseFetchEvents();
+      } else {
+         events = window.GIT_CLUB_EVENTS;
+      }
+      
+      if (events.length === 0) return;
+      
+      container.innerHTML = '';
+      
+      events.forEach(evt => {
+        const d = new Date(evt.date);
+        const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         
-        let currentTab = 'upcoming'; // defaults based on the active tab UI
-        let searchQuery = '';
+        const cardHtml = `
+          <article class="bg-surface-container rounded-xl overflow-hidden shadow-md flex flex-col hover:bg-surface-container-high transition-all group relative">
+            <div class="h-32 bg-surface-container-highest relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCAwTDggOFpNOCAwTDAgOFoiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')]"></div>
+              <div class="absolute top-space-sm right-space-sm flex gap-2">
+                <span class="px-2 py-1 rounded bg-surface/80 backdrop-blur-sm font-label-mono-sm text-[10px] text-on-surface uppercase font-bold tracking-wider">
+                  ${evt.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-space-md flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-space-sm">
+                <span class="font-label-mono-sm text-label-mono-sm text-primary font-bold">${evt.displayId || evt.id}</span>
+                <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">${evt.status}</span>
+              </div>
+              <h3 class="font-headline-sm text-title-md text-on-surface font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">${evt.name}</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-sm">${evt.desc}</p>
+              
+              <div class="mt-auto space-y-1.5 font-label-mono-sm text-[11px] text-outline pt-2 border-t border-surface-container-highest">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                  <span>${dateStr} @ ${timeStr}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[14px]">group</span>
+                  <span>Cap: ${evt.capacity} | Attendees: ${evt.attendees ? evt.attendees.length : 0}</span>
+                </div>
+              </div>
+              
+              <div class="mt-4 flex gap-2">
+                 <button onclick="window.registerForThisEvent('${evt.id}')" class="flex-1 bg-primary-container text-on-primary-container py-2 rounded font-bold hover:brightness-110 transition-all text-sm">Register</button>
+              </div>
+            </div>
+          </article>
+        `;
+        container.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
 
-        function filterEvents() {
-          rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            const matchesSearch = text.includes(searchQuery.toLowerCase());
-            
-            let isUpcoming = text.includes('upcoming') || !text.includes('completed') && !text.includes('cancelled');
-            let isPast = text.includes('completed') || text.includes('view records');
-            let isCancelled = text.includes('cancelled');
-
-            let matchesTab = true;
-            if (currentTab === 'upcoming' && !isUpcoming) matchesTab = false;
-            if (currentTab === 'past' && !isPast) matchesTab = false;
-            if (currentTab === 'cancelled' && !isCancelled) matchesTab = false;
-
-            if (matchesSearch && matchesTab) {
-              row.style.display = '';
-            } else {
-              row.style.display = 'none';
-            }
-          });
-        }
-
-        if (searchInput) {
-          searchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            filterEvents();
-          });
-        }
-
-        tabs.forEach(tab => {
-          tab.addEventListener('click', (e) => {
-            tabs.forEach(t => {
-              t.classList.remove('active-status', 'bg-primary-container', 'text-on-primary-container');
-              t.classList.add('text-on-surface-variant');
-            });
-            e.target.classList.add('active-status', 'bg-primary-container', 'text-on-primary-container');
-            e.target.classList.remove('text-on-surface-variant');
-            
-            const tabText = e.target.textContent.toLowerCase();
-            if (tabText.includes('upcoming')) currentTab = 'upcoming';
-            else if (tabText.includes('past')) currentTab = 'past';
-            else if (tabText.includes('cancelled')) currentTab = 'cancelled';
-            else currentTab = 'all';
-            
-            filterEvents();
-          });
-        });
-      })();
-
+    setTimeout(() => {
+       renderEvents();
+    }, 500);
+    
+    window.registerForThisEvent = async function(dbId) {
+      if (!window.firebaseRegisterEvent) {
+         alert('Firebase not connected');
+         return;
+      }
+      
+      const userName = localStorage.getItem('user_name');
+      const userEmail = localStorage.getItem('user_email');
+      const userUid = localStorage.getItem('user_uid');
+      
+      if (!userName) {
+         alert('You must be logged in to register!');
+         return;
+      }
+      
+      try {
+         await window.firebaseRegisterEvent(dbId, {
+            uid: userUid,
+            name: userName,
+            email: userEmail
+         });
+         alert('Successfully registered!');
+         renderEvents();
+      } catch (err) {
+         console.error(err);
+         alert('Failed to register');
+      }
+    };
 </script>
 
 </div></div></main></div><div class="fixed bottom-6 right-6 z-40 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">

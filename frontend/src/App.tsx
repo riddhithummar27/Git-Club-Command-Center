@@ -3,6 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { GlobalProvider } from './context/GlobalContext';
 import RawStitch from './RawStitch';
 import GlobalPatch from './components/GlobalPatch';
+import { signInWithGoogle, signOut } from './services/auth';
+import { addEvent, fetchEvents, registerForEvent } from './services/events';
+
+// Expose to window for raw HTML templates
+(window as any).firebaseLogin = signInWithGoogle;
+(window as any).firebaseLogout = signOut;
+(window as any).firebaseAddEvent = addEvent;
+(window as any).firebaseFetchEvents = fetchEvents;
+(window as any).firebaseRegisterEvent = registerForEvent;
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = localStorage.getItem('auth') === 'true';
