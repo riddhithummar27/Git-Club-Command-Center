@@ -17,6 +17,41 @@ export default function GlobalPatch() {
 }
 
 function applyPatches(path: string) {
+  // 0. MOBILE SIDEBAR LOGIC
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('mobile-overlay');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  
+  const toggleSidebar = (forceClose = false) => {
+    if (!sidebar || !overlay) return;
+    if (forceClose) {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    } else {
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+      document.body.style.overflow = overlay.classList.contains('hidden') ? '' : 'hidden';
+    }
+  };
+
+  if (menuBtn && !menuBtn.dataset.bound) {
+    menuBtn.dataset.bound = "true";
+    menuBtn.addEventListener('click', () => toggleSidebar());
+  }
+
+  if (overlay && !overlay.dataset.bound) {
+    overlay.dataset.bound = "true";
+    overlay.addEventListener('click', () => toggleSidebar(true));
+  }
+
+  if (sidebar && !sidebar.dataset.bound) {
+    sidebar.dataset.bound = "true";
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => toggleSidebar(true));
+    });
+  }
+
   // 1. DASHBOARD QUICK ACTIONS & METRICS
   if (path === '/dashboard' || path === '/') {
     
