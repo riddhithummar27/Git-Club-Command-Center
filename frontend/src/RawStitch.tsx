@@ -189,12 +189,10 @@ export default function RawStitch() {
                inputsToToggle.forEach(input => {
                  if (input) {
                    if (enable) {
-                     input.removeAttribute('readonly');
                      input.removeAttribute('disabled');
                      input.classList.add('ring-1', 'ring-primary-container');
                    } else {
-                     input.setAttribute('readonly', 'true');
-                     if (input.tagName === 'SELECT') input.setAttribute('disabled', 'true');
+                     input.setAttribute('disabled', 'true');
                      input.classList.remove('ring-1', 'ring-primary-container');
                    }
                  }
@@ -207,8 +205,6 @@ export default function RawStitch() {
                  topDiscardBtn?.classList.remove('hidden');
                  dockSaveBtn?.classList.remove('hidden');
                  dockResetBtn?.classList.remove('hidden');
-                 
-                 
                } else {
                  topEditBtn?.classList.remove('hidden');
                  dockEditBtn?.classList.remove('hidden');
@@ -216,8 +212,6 @@ export default function RawStitch() {
                  topDiscardBtn?.classList.add('hidden');
                  dockSaveBtn?.classList.add('hidden');
                  dockResetBtn?.classList.add('hidden');
-                 
-                 
                }
              };
 
