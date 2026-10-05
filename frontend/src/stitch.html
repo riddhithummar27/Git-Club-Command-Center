@@ -91,7 +91,7 @@
 </div>
 </section>
 <!-- 4 MANDATORY METRICS (3D Dimensional Instrument Elevation) -->
-<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-space-md">
 <!-- Metric 1: MEMBERS -->
 <div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
 <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
@@ -102,12 +102,11 @@
 </div>
 </div>
 <div class="mt-space-sm">
-<div class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">248</div>
+<div class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold" id="metric-total-members">0</div>
 <div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Club Members</div>
 </div>
 <div class="mt-space-sm pt-space-xs flex items-center gap-space-xs">
-<span class="flex items-center text-tertiary font-label-mono-sm text-label-mono-sm">
-<span class="material-symbols-outlined text-[16px]">trending_up</span>
+
           +12 this month
         </span>
 <span class="font-label-mono-sm text-label-mono-sm text-outline">• Active Cohort</span>
@@ -132,123 +131,8 @@
         </span>
 </div>
 </div>
-<!-- Metric 3: ACTIVE PROJECTS -->
-<div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
-<div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
-<div class="flex items-center justify-between">
 
-<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-[18px]">account_tree</span>
-</div>
-</div>
-<div class="mt-space-sm">
-<div class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">12</div>
-<div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Active Projects</div>
-</div>
-<div class="mt-space-sm pt-space-xs flex items-center gap-space-xs">
-<span class="flex items-center text-secondary font-label-mono-sm text-label-mono-sm">
-<span class="material-symbols-outlined text-[16px]">sync</span>
-          3 updated this week
-        </span>
-</div>
-</div>
-<!-- Metric 4: EVENT PARTICIPANTS -->
-<div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
-<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
-<div class="flex items-center justify-between">
-
-<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-[18px]">groups_2</span>
-</div>
-</div>
-<div class="mt-space-sm">
-<div class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">684</div>
-<div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Event Participants</div>
-</div>
-<div class="mt-space-sm pt-space-xs flex items-center gap-space-xs">
-<span class="flex items-center text-tertiary font-label-mono-sm text-label-mono-sm">
-<span class="material-symbols-outlined text-[16px]">north_east</span>
-          +18% this month
-        </span>
-</div>
-</div>
-</section>
-<!-- NEEDS ATTENTION (High Priority Operational Alert Cards) -->
-<section class="flex flex-col space-y-space-sm">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-[22px]">warning</span>
-<h2 class="font-title-md text-title-md text-on-surface">Needs Immediate Attention</h2>
-</div>
-
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-sm">
-<!-- Alert 1 -->
-<div class="p-space-md rounded-lg bg-surface-container shadow-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
-<div class="space-y-space-xs">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-mono-sm text-label-mono-sm uppercase font-semibold">
-              URGENT • CLOSES TOMORROW
-            </span>
-<span class="material-symbols-outlined text-error text-[18px]">hourglass_top</span>
-</div>
-<h3 class="font-title-md text-body-lg text-on-surface font-semibold pt-1">Hackathon 2.0 Registration</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">92 of 100 maximum seats reserved. 8 spots pending final confirmation.</p>
-</div>
-<button onclick="document.querySelector('#root a[data-path=\'events\']').click();" class="mt-space-md text-left font-label-mono-sm text-label-mono-sm text-primary hover:text-primary-fixed flex items-center gap-1 group"><span>View Event</span>
-<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-<!-- Alert 2 -->
-<div class="p-space-md rounded-lg bg-surface-container shadow-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
-<div class="space-y-space-xs">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-mono-sm text-label-mono-sm uppercase font-semibold">
-              REVIEW INTAKE
-            </span>
-<span class="material-symbols-outlined text-secondary text-[18px]">how_to_reg</span>
-</div>
-<h3 class="font-title-md text-body-lg text-on-surface font-semibold pt-1">8 Member Applications</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Sophomore developers from CSE &amp; IT awaiting team onboard review.</p>
-</div>
-<button onclick="document.querySelector('#root a[data-path=\'members\']').click();" class="mt-space-md text-left font-label-mono-sm text-label-mono-sm text-primary hover:text-primary-fixed flex items-center gap-1 group"><span>Review Members</span>
-<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-<!-- Alert 3 -->
-<div class="p-space-md rounded-lg bg-surface-container shadow-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
-<div class="space-y-space-xs">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-outline font-label-mono-sm text-label-mono-sm uppercase font-semibold">
-              STALE REPOS
-            </span>
-<span class="material-symbols-outlined text-outline text-[18px]">inventory_2</span>
-</div>
-<h3 class="font-title-md text-body-lg text-on-surface font-semibold pt-1">2 Stalled Repositories</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">No commits recorded in CampusConnect &amp; LabSync over 14 days.</p>
-</div>
-<button onclick="document.querySelector('#root a[data-path=\'projects\']').click();" class="mt-space-md text-left font-label-mono-sm text-label-mono-sm text-primary hover:text-primary-fixed flex items-center gap-1 group"><span>Review Projects</span>
-<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-<!-- Alert 4 -->
-<div class="p-space-md rounded-lg bg-surface-container shadow-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
-<div class="space-y-space-xs">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-tertiary-container text-on-tertiary-container font-label-mono-sm text-label-mono-sm uppercase font-semibold">
-              STAGED DRAFT
-            </span>
-<span class="material-symbols-outlined text-tertiary text-[18px]">send</span>
-</div>
-<h3 class="font-title-md text-body-lg text-on-surface font-semibold pt-1">Workshop Announcement</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Release notes and Slack schedule prepared by Riddhi. Ready to dispatch.</p>
-</div>
-<button onclick="document.querySelector('#root a[data-path=\'announcements\']').click();" class="mt-space-md text-left font-label-mono-sm text-label-mono-sm text-tertiary hover:text-tertiary-fixed flex items-center gap-1 group"><span>Publish Broadcast</span>
-<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">send</span>
-</button>
-</div>
-</div>
-</section>
+  </section>
 <!-- SPLIT WORKBENCH: INTERACTIVE ACTIVITY CHART & UPCOMING SCHEDULE -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg" id="activity-telemetry">
 <!-- LEFT (8 cols): CLUB ACTIVITY TELEMETRY WITH INTERACTIVE SVG GRAPH -->
@@ -341,319 +225,15 @@
 <span class="material-symbols-outlined text-[20px]">add</span>
 </button>
 </div>
-<div class="space-y-space-md flex-1">
-<!-- Event 01: Git & GitHub Workshop -->
-<div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs relative overflow-hidden group">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm font-bold">
-              03 OCT
-            </span>
-<span class="font-label-mono-sm text-label-mono-sm text-secondary">4:00 PM IST</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold group-hover:text-primary transition-colors">
-            Git &amp; GitHub Workshop
-          </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Learn Git workflows, branching, merge conflict resolution and upstream collaboration.
-          </p>
-<div class="pt-space-xs flex flex-wrap items-center gap-space-xs text-outline font-label-mono-sm text-label-mono-sm">
-<span>WORKSHOP</span>
-<span>•</span>
-<span>AUDITORIUM</span>
-<span>•</span>
-<span class="text-tertiary font-semibold">120/150 participants</span>
-</div>
-<!-- Progress track -->
-<div class="w-full h-1.5 rounded-full bg-surface-container-lowest mt-1 overflow-hidden">
-<div class="h-full bg-primary-container rounded-full" style="width: 80%;"></div>
-</div>
-</div>
-<!-- Event 02: Hackathon 2.0 -->
-<div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs relative overflow-hidden group">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-mono-sm text-label-mono-sm font-bold">
-              12 OCT
-            </span>
-<span class="font-label-mono-sm text-label-mono-sm text-error">CLOSING SOON</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold group-hover:text-primary transition-colors">
-            Hackathon 2.0
-          </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Build. Break. Ship. 36-hour overnight product hackathon for CHARUSAT engineering teams.
-          </p>
-<div class="pt-space-xs flex flex-wrap items-center gap-space-xs text-outline font-label-mono-sm text-label-mono-sm">
-<span>HACKATHON</span>
-<span>•</span>
-<span>LAB 402</span>
-<span>•</span>
-<span class="text-primary font-semibold">92/100 participants</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-lowest mt-1 overflow-hidden">
-<div class="h-full bg-secondary rounded-full" style="width: 92%;"></div>
-</div>
-</div>
-<!-- Event 03: AI / ML Community Session -->
-<div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs relative overflow-hidden group">
-<div class="flex items-center justify-between">
-<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-mono-sm text-label-mono-sm font-bold">
-              18 OCT
-            </span>
-<span class="font-label-mono-sm text-label-mono-sm text-tertiary">OPEN REGISTRATION</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold group-hover:text-primary transition-colors">
-            AI / ML Community Session
-          </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Practical AI projects, fine-tuning local LLMs and open-source models on consumer hardware.
-          </p>
-<div class="pt-space-xs flex flex-wrap items-center gap-space-xs text-outline font-label-mono-sm text-label-mono-sm">
-<span>COMMUNITY</span>
-<span>•</span>
-<span>CHARUSAT SEMINAR HALL</span>
-<span>•</span>
-<span class="text-on-surface font-semibold">78/100 participants</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-lowest mt-1 overflow-hidden">
-<div class="h-full bg-tertiary-container rounded-full" style="width: 78%;"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- PROJECTS & RECENT TIMELINE MOVEMENT -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
-<!-- LEFT (7 cols): WHAT WE'RE BUILDING (PROJECT REPOSITORIES) -->
-<div class="lg:col-span-7 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
-<div class="flex items-center justify-between">
-<div>
-
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">What We're Building</h2>
-</div>
-<button class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface font-label-mono-sm text-label-mono-sm hover:bg-surface-bright transition-colors" onclick="document.querySelector('#root a[data-path=\'projects\']').click(); setTimeout(() => window.toggleModal('modal-add-project', true), 150);">+ New Project</button>
-</div>
-<div class="space-y-space-sm">
-<!-- Project 1: HomeVault -->
-<div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[20px]">folder</span>
-<span class="font-title-md text-title-md text-on-surface font-bold">HomeVault</span>
-<span class="px-space-xs py-0.5 rounded bg-tertiary-container text-on-tertiary-container font-label-mono-sm text-label-mono-sm">ACTIVE</span>
-</div>
-<span class="font-label-mono-sm text-label-mono-sm text-primary font-bold">78% Progress</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Decentralized personal asset and credentials manager designed for student residency.
-          </p>
-<div class="flex flex-wrap items-center gap-space-xs pt-1">
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">React</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">Node.js</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">PostgreSQL</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">Firebase</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-lowest mt-2 overflow-hidden">
-<div class="h-full bg-primary-container rounded-full" style="width: 78%;"></div>
-</div>
-</div>
-<!-- Project 2: GitLearn -->
-<div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[20px]">folder</span>
-<span class="font-title-md text-title-md text-on-surface font-bold">GitLearn</span>
-<span class="px-space-xs py-0.5 rounded bg-tertiary-container text-on-tertiary-container font-label-mono-sm text-label-mono-sm">ACTIVE</span>
-</div>
-<span class="font-label-mono-sm text-label-mono-sm text-secondary font-bold">62% Progress</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Gamified interactive terminal simulator for 1st-year students to practice git commands.
-          </p>
-<div class="flex flex-wrap items-center gap-space-xs pt-1">
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">React</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">Node.js</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">Firebase</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-lowest mt-2 overflow-hidden">
-<div class="h-full bg-secondary rounded-full" style="width: 62%;"></div>
-</div>
-</div>
-<!-- Project 3: CampusConnect -->
-<div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-outline text-[20px]">folder</span>
-<span class="font-title-md text-title-md text-on-surface font-bold">CampusConnect</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-outline font-label-mono-sm text-label-mono-sm">PLANNING</span>
-</div>
-<span class="font-label-mono-sm text-label-mono-sm text-outline font-bold">28% Progress</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Inter-department event directory &amp; verified hackathon credential verifier.
-          </p>
-<div class="flex flex-wrap items-center gap-space-xs pt-1">
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">React</span>
-<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-label-mono-sm text-on-surface-variant">MongoDB</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-lowest mt-2 overflow-hidden">
-<div class="h-full bg-outline rounded-full" style="width: 28%;"></div>
-</div>
-</div>
-</div>
-</div>
-<!-- RIGHT (5 cols): RECENT MOVEMENT (GIT TIMELINE FEED) -->
-<div class="lg:col-span-5 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
-<div class="flex items-center justify-between">
-<div>
-
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Recent Movement</h2>
-</div>
-<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
-</div>
-<!-- Connected Git Branch Timeline -->
-<div class="relative pl-6 space-y-space-md flex-1">
-<!-- Vertical Git Spine vector -->
-<div class="absolute left-2.5 top-3 bottom-3 w-0.5 bg-surface-container-highest"></div>
-<!-- Node 1 -->
-<div class="relative flex items-start gap-space-sm group">
-<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary-container ring-4 ring-surface-container-low"></div>
-<div class="flex-1 p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-md text-on-surface font-semibold">Riddhi Thummar</span>
-<span class="font-label-mono-sm text-label-mono-sm text-outline">12 min ago</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-              Created new staging event: <span class="text-primary font-medium">Git &amp; GitHub Workshop</span>
-</p>
-</div>
-</div>
-<!-- Node 2 -->
-<div class="relative flex items-start gap-space-sm group">
-<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-secondary ring-4 ring-surface-container-low"></div>
-<div class="flex-1 p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-md text-on-surface font-semibold">Anushka Patel</span>
-<span class="font-label-mono-sm text-label-mono-sm text-outline">28 min ago</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-              Assigned as maintainer to <span class="text-secondary font-medium">HomeVault</span> core repository.
-            </p>
-</div>
-</div>
-<!-- Node 3 -->
-<div class="relative flex items-start gap-space-sm group">
-<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-outline ring-4 ring-surface-container-low"></div>
-<div class="flex-1 p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-md text-on-surface font-semibold">Jay Shah</span>
-<span class="font-label-mono-sm text-label-mono-sm text-outline">1 hour ago</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-              Pushed 3 commits to <span class="text-on-surface font-medium">GitLearn/v2-simulator</span>.
-            </p>
-</div>
-</div>
-<!-- Node 4 -->
-<div class="relative flex items-start gap-space-sm group">
-<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-tertiary ring-4 ring-surface-container-low"></div>
-<div class="flex-1 p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-md text-on-surface font-semibold">Club Registry</span>
-<span class="font-label-mono-sm text-label-mono-sm text-tertiary">Today</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-              12 new verified student members registered across CHARUSAT departments.
-            </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- THE PEOPLE BEHIND THE CODE (MEMBERS & CORE TEAM ARCHITECTURE) -->
-<section class="p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg flex flex-col space-y-space-lg">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
-<div>
-
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">The People Behind the Code</h2>
-</div>
-<div class="flex items-center gap-space-sm font-label-mono-sm text-label-mono-sm">
-<span class="px-space-sm py-1 rounded bg-surface-container text-on-surface">248 Total</span>
-<span class="px-space-sm py-1 rounded bg-primary-container text-on-primary-container font-semibold">12 New</span>
-<span class="px-space-sm py-1 rounded bg-tertiary-container text-on-tertiary-container font-semibold">84 Active Contributors</span>
-</div>
-</div>
-<!-- Department Distribution Bars -->
-<div class="p-space-md rounded-lg bg-surface-container flex flex-col space-y-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-md text-on-surface font-semibold">Department Cohort Distribution</span>
-<span class="font-label-mono-sm text-label-mono-sm text-outline">CHARUSAT Engineering</span>
-</div>
-<!-- Segmented Stacked Bar -->
-<div class="w-full h-3 rounded-full bg-surface-container-lowest flex overflow-hidden">
-<div class="bg-primary-container h-full" style="width: 51.6%;" title="CSE: 128"></div>
-<div class="bg-secondary h-full" style="width: 25.0%;" title="IT: 62"></div>
-<div class="bg-tertiary h-full" style="width: 12.5%;" title="CE: 31"></div>
-<div class="bg-outline h-full" style="width: 10.9%;" title="Other: 27"></div>
-</div>
-<!-- Legend Indicators -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs font-label-mono-sm text-label-mono-sm">
-<div class="flex items-center gap-1.5">
-<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
-<span class="text-on-surface font-medium">CSE (128)</span>
-</div>
-<div class="flex items-center gap-1.5">
-<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
-<span class="text-on-surface font-medium">IT (62)</span>
-</div>
-<div class="flex items-center gap-1.5">
-<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
-<span class="text-on-surface font-medium">CE (31)</span>
-</div>
-<div class="flex items-center gap-1.5">
-<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
-<span class="text-on-surface font-medium">Other (27)</span>
-</div>
-</div>
-</div>
-<!-- Core Team Leadership Showcase -->
-<div>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<!-- Lead 1: Riddhi Thummar -->
-<div class="p-space-md rounded-lg bg-surface-container flex items-center gap-space-md hover:bg-surface-container-high transition-colors">
-<img alt="Riddhi Thummar" class="w-12 h-12 rounded-full object-cover shadow" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
-<div class="flex flex-col min-w-0">
-<span class="font-title-md text-title-md text-on-surface font-bold truncate">Riddhi Thummar</span>
-<span class="font-label-mono-sm text-label-mono-sm text-primary font-medium truncate">Admin &amp; Tech Lead</span>
-<span class="font-body-sm text-body-sm text-outline truncate">CSE • Class of 2025</span>
-</div>
-</div>
-<!-- Lead 2: Anushka Patel -->
-<div class="p-space-md rounded-lg bg-surface-container flex items-center gap-space-md hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-title-md text-title-md font-bold shadow">
-            AP
-          </div>
-<div class="flex flex-col min-w-0">
-<span class="font-title-md text-title-md text-on-surface font-bold truncate">Anushka Patel</span>
-<span class="font-label-mono-sm text-label-mono-sm text-secondary font-medium truncate">Project Lead</span>
-<span class="font-body-sm text-body-sm text-outline truncate">IT • Class of 2026</span>
-</div>
-</div>
-<!-- Lead 3: Jay Shah -->
-<div class="p-space-md rounded-lg bg-surface-container flex items-center gap-space-md hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 rounded-full bg-surface-bright text-on-surface flex items-center justify-center font-title-md text-title-md font-bold shadow">
-            JS
-          </div>
-<div class="flex flex-col min-w-0">
-<span class="font-title-md text-title-md text-on-surface font-bold truncate">Jay Shah</span>
-<span class="font-label-mono-sm text-label-mono-sm text-tertiary font-medium truncate">Event Lead</span>
-<span class="font-body-sm text-body-sm text-outline truncate">CE • Class of 2025</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- INTERACTIVE MODAL: CREATE NEW EVENT -->
+<div id="dashboard-upcoming-events" class="space-y-space-md flex-1 overflow-y-auto max-h-[400px] custom-scrollbar">
+    <div class="p-space-md rounded-lg bg-surface-container shadow flex items-center justify-center text-outline">
+      Loading events...
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- INTERACTIVE MODAL: CREATE NEW EVENT -->
 <div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md p-space-md" id="modal-event">
   <div class="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl p-space-lg flex flex-col space-y-space-md transform transition-all">
     <div class="flex items-center justify-between">
@@ -874,4 +454,47 @@
   <a href="#" data-path="announcements" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
     <span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span>
   </a>
-</div></body></html>...
+</div>
+  <script>
+    async function initDashboard() {
+      if (window.firebaseFetchEvents && window.firebaseFetchMembers) {
+        try {
+          const events = await window.firebaseFetchEvents();
+          document.getElementById('metric-total-events').innerText = events.length;
+          
+          const upcomingContainer = document.getElementById('dashboard-upcoming-events');
+          if (upcomingContainer) {
+            upcomingContainer.innerHTML = '';
+            if (events.length === 0) {
+              upcomingContainer.innerHTML = '<div class="p-4 text-center text-outline">No upcoming events</div>';
+            } else {
+              events.slice(0, 5).forEach(evt => {
+                const d = new Date(evt.date);
+                const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                
+                upcomingContainer.insertAdjacentHTML('beforeend', `
+                  <div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs">
+                    <div class="flex items-center justify-between">
+                      <span class="px-space-xs py-0.5 rounded bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm font-bold">${evt.category || 'Event'}</span>
+                      <span class="font-label-mono-sm text-label-mono-sm text-outline">${dateStr}</span>
+                    </div>
+                    <h3 class="font-title-md text-title-md text-on-surface font-semibold">${evt.name || 'Unnamed Event'}</h3>
+                  </div>
+                `);
+              });
+            }
+          }
+          
+          const members = await window.firebaseFetchMembers();
+          document.getElementById('metric-total-members').innerText = members.length;
+        } catch(e) {
+          console.error("Dashboard init error", e);
+        }
+      }
+    }
+    
+    // Run on load
+    setTimeout(initDashboard, 500);
+  </script>
+
+</body></html>...
