@@ -301,6 +301,15 @@ export default function RawStitch() {
            if (nameEl) nameEl.textContent = profile.firstName + ' ' + profile.lastName;
            if (roleEl) roleEl.textContent = profile.roleCustom;
 
+             
+             // Also update the Hero card in settings.html
+             if (currentPath === 'settings') {
+               const heroName = containerRef.current!.querySelector('h2.font-headline-sm');
+               const heroRole = containerRef.current!.querySelector('p.text-secondary.mt-0\.5');
+               if (heroName) heroName.textContent = profile.firstName + ' ' + profile.lastName;
+               if (heroRole) heroRole.textContent = profile.roleCustom || profile.role || 'Member';
+             }
+
              if (profile.profilePic && currentPath === 'settings') {
                 const previewImg = containerRef.current!.querySelector<HTMLImageElement>('#profilePicPreview');
                 if (previewImg) previewImg.src = profile.profilePic;
