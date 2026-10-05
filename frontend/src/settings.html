@@ -101,7 +101,7 @@
 <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">USERNAME</label>
 <div class="relative flex items-center">
 <span class="absolute left-3 font-label-mono-md text-label-mono-md text-primary font-bold">@</span>
-<input class="w-full pl-8 pr-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" type="text" value=""/>
+<input id="inputUsername" required class="w-full pl-8 pr-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" disabled type="text" value=""/>
 </div>
 </div>
 <!-- Student / Campus Enrollment ID -->
@@ -141,10 +141,31 @@
 <!-- Department / Academic Program -->
 <div class="flex flex-col gap-1.5 md:col-span-2">
 <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">DEPARTMENT / DEGREE PROGRAM</label>
-<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" type="text" value=""/>
+<input id="inputDepartment" required class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" disabled type="text" value=""/>
 </div>
 </div>
 </div>
+
+  <!-- Social Profiles -->
+  <div class="flex flex-col gap-1.5 md:col-span-2 mt-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">GITHUB PROFILE URL</label>
+        <div class="relative">
+          <input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" disabled id="inputGithub" type="url" placeholder="https://github.com/username" required />
+          <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">code</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">LINKEDIN PROFILE URL</label>
+        <div class="relative">
+          <input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" disabled id="inputLinkedin" type="url" placeholder="https://linkedin.com/in/username" required />
+          <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">work</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <!-- SECTION 2: All Email IDs & Dispatch Routing (Crucial Prompt Request) -->
 <div class="rounded-xl bg-surface-container p-space-lg shadow-md flex flex-col gap-space-md">
 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-surface-container-highest pb-space-sm gap-2">

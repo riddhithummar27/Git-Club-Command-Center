@@ -157,10 +157,17 @@ export default function RawStitch() {
            const roleCustom = containerRef.current.querySelector<HTMLInputElement>('#roleCustom');
            const inputPersonalEmail = containerRef.current.querySelector<HTMLInputElement>('#inputPersonalEmail');
            const bioTextarea = containerRef.current.querySelector<HTMLTextAreaElement>('#bioTextarea');
+             const inputUsername = containerRef.current.querySelector<HTMLInputElement>('#inputUsername');
+             const inputDepartment = containerRef.current.querySelector<HTMLInputElement>('#inputDepartment');
+             
+             if (inputUsername && profile.username) inputUsername.value = profile.username;
+             if (inputDepartment && profile.department) inputDepartment.value = profile.department;
              const inputGithub = containerRef.current.querySelector<HTMLInputElement>('#inputGithub');
              const inputLinkedin = containerRef.current.querySelector<HTMLInputElement>('#inputLinkedin');
              
-             if (inputGithub && profile.github) inputGithub.value = profile.github;
+             if (inputUsername && profile.username) inputUsername.value = profile.username;
+                 if (inputDepartment && profile.department) inputDepartment.value = profile.department;
+                 if (inputGithub && profile.github) inputGithub.value = profile.github;
              if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
 
 
@@ -171,6 +178,8 @@ export default function RawStitch() {
            if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
            if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
            if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
+                 if (inputUsername && profile.username) inputUsername.value = profile.username;
+                 if (inputDepartment && profile.department) inputDepartment.value = profile.department;
                  if (inputGithub && profile.github) inputGithub.value = profile.github;
                  if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
 
@@ -190,7 +199,7 @@ export default function RawStitch() {
              
              
              const inputsToToggle = [
-               inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea, inputGithub, inputLinkedin
+               inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea, inputGithub, inputLinkedin, inputUsername, inputDepartment
              ];
 
              const uploadPicLabel = containerRef.current.querySelector('#uploadPicLabel');
@@ -242,6 +251,8 @@ export default function RawStitch() {
                if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
                if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
                if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
+                 if (inputUsername && profile.username) inputUsername.value = profile.username;
+                 if (inputDepartment && profile.department) inputDepartment.value = profile.department;
                  if (inputGithub && profile.github) inputGithub.value = profile.github;
                  if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
                toggleEditMode(false);
@@ -262,6 +273,8 @@ export default function RawStitch() {
                   { el: inputLastName, name: "Last Name" },
                   { el: inputStudentId, name: "Student ID" },
                   { el: inputPersonalEmail, name: "Email" },
+                  { el: inputUsername, name: "Username" },
+                  { el: inputDepartment, name: "Department" },
                   { el: inputGithub, name: "GitHub URL" },
                   { el: inputLinkedin, name: "LinkedIn URL" }
                 ];
@@ -281,6 +294,8 @@ export default function RawStitch() {
                 if (roleCustom) profile.roleCustom = roleCustom.value;
                 if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
                 if (bioTextarea) profile.bio = bioTextarea.value;
+                if (inputUsername) profile.username = inputUsername.value;
+                if (inputDepartment) profile.department = inputDepartment.value;
                 if (inputGithub) profile.github = inputGithub.value;
                 if (inputLinkedin) profile.linkedin = inputLinkedin.value;
                 
