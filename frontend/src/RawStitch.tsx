@@ -139,7 +139,15 @@ export default function RawStitch() {
         }
 
       
-        const profile = (window as any).GIT_CLUB_PROFILE || {};
+        
+      try {
+         const localData = localStorage.getItem('userProfileData');
+         if (localData) {
+            (window as any).GIT_CLUB_PROFILE = JSON.parse(localData);
+         }
+      } catch(e) {}
+      const profile = (window as any).GIT_CLUB_PROFILE || {};
+
         if (currentPath === 'settings') {
            // Populate inputs
            const inputFirstName = containerRef.current.querySelector<HTMLInputElement>('#inputFirstName');
@@ -208,13 +216,6 @@ export default function RawStitch() {
         }
 
         // Sync global profile state across all pages on load
-      
-      try {
-         const localData = localStorage.getItem('userProfileData');
-         if (localData) {
-            (window as any).GIT_CLUB_PROFILE = JSON.parse(localData);
-         }
-      } catch(e) {}
       
 
       if (profile && containerRef.current) {
