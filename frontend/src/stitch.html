@@ -685,7 +685,8 @@
           date: fd.get('startDate') || fd.get('date'), 
           endDate: fd.get('endDate'),
           category: category, 
-          link: fd.get('link'), 
+          link: fd.get('link'),
+          sheetLink: fd.get('sheetLink'), 
           capacity: fd.get('capacity'), 
           audience: audience, 
           rounds: fd.get('rounds'), 
@@ -772,7 +773,12 @@
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-    <div class="flex flex-col gap-1">
+    
+      <div class="flex flex-col gap-1">
+        <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Google Sheet Link (Responses)</label>
+        <input name="sheetLink" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://docs.google.com/spreadsheets/..." type="url">
+      </div>
+<div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Number of Rounds</label>
       <input name="rounds" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. 1" required="" type="number" min="1">
     </div>
