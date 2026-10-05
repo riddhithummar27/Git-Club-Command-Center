@@ -55,10 +55,11 @@ export const deleteMember = async (id: string) => {
 
 export const updateMember = async (id: string, memberData: any) => {
   try {
-    await updateDoc(doc(db, "members", id), {
+    const p = updateDoc(doc(db, "members", id), {
       ...memberData,
       updatedAt: new Date().toISOString()
     });
+    await withTimeout(p, 3000, null);
   } catch (e) {
     console.error("Error updating member: ", e);
     throw e;
