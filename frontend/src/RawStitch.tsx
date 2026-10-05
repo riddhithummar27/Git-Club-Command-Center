@@ -162,7 +162,7 @@ export default function RawStitch() {
            const dockSaveBtn = containerRef.current.querySelector('#dockSaveBtn');
            const topSaveBtn = containerRef.current.querySelector('#topSaveBtn');
 
-           const triggerSave = () => {
+           const triggerSave = async () => {
               if (inputFirstName) profile.firstName = inputFirstName.value;
               if (inputLastName) profile.lastName = inputLastName.value;
               if (inputStudentId) profile.studentId = inputStudentId.value;
@@ -171,6 +171,28 @@ export default function RawStitch() {
               if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
               if (bioTextarea) profile.bio = bioTextarea.value;
               
+              if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saving...';
+              
+              const fullName = ((profile.firstName || '') + ' ' + (profile.lastName || '')).trim();
+              const memberData = {
+                  name: fullName,
+                  role: profile.roleCustom || profile.role || 'Member',
+                  department: profile.studentId || 'No ID',
+                  email: profile.email || '',
+                  avatar: profile.profilePic || ''
+              };
+
+              try {
+                  if (profile.firebaseId) {
+                      if ((window as any).firebaseUpdateMember) await (window as any).firebaseUpdateMember(profile.firebaseId, memberData);
+                  } else {
+                      if ((window as any).firebaseAddMember) {
+                          const newId = await (window as any).firebaseAddMember(memberData);
+                          profile.firebaseId = newId;
+                      }
+                  }
+              } catch(e) { console.error('Firebase save failed', e); }
+
               localStorage.setItem('userProfileData', JSON.stringify(profile));
               (window as any).GIT_CLUB_PROFILE = profile;
 

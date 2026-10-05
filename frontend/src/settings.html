@@ -488,36 +488,55 @@
       if (dashboardLink) dashboardLink.click();
     }
 
-    function triggerSave() {
-      // Save values
-      if (inputFirstName) window.GIT_CLUB_PROFILE.firstName = inputFirstName.value;
-      if (inputLastName) window.GIT_CLUB_PROFILE.lastName = inputLastName.value;
+    async function triggerSave() {
+        if (inputFirstName) window.GIT_CLUB_PROFILE.firstName = inputFirstName.value;
+        if (inputLastName) window.GIT_CLUB_PROFILE.lastName = inputLastName.value;
         const inputStudentId = document.getElementById('inputStudentId');
         if (inputStudentId) window.GIT_CLUB_PROFILE.studentId = inputStudentId.value;
         const profilePicPreview = document.getElementById('profilePicPreview');
         if (profilePicPreview) window.GIT_CLUB_PROFILE.profilePic = profilePicPreview.src;
-      if (roleSelect) window.GIT_CLUB_PROFILE.role = roleSelect.value;
-      if (roleCustom) window.GIT_CLUB_PROFILE.roleCustom = roleCustom.value;
-      if (inputPersonalEmail) window.GIT_CLUB_PROFILE.email = inputPersonalEmail.value;
-      if (bioTextarea) window.GIT_CLUB_PROFILE.bio = bioTextarea.value;
+        if (roleSelect) window.GIT_CLUB_PROFILE.role = roleSelect.value;
+        if (roleCustom) window.GIT_CLUB_PROFILE.roleCustom = roleCustom.value;
+        if (inputPersonalEmail) window.GIT_CLUB_PROFILE.email = inputPersonalEmail.value;
+        if (bioTextarea) window.GIT_CLUB_PROFILE.bio = bioTextarea.value;
+        
+        const originalText = dockSaveBtn ? dockSaveBtn.innerHTML : '';
+        if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving to Server...</span>';
+        if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving to Server...</span>';
+
+        // Firebase Sync
+        const fullName = ((window.GIT_CLUB_PROFILE.firstName || '') + ' ' + (window.GIT_CLUB_PROFILE.lastName || '')).trim();
+        const memberData = {
+            name: fullName,
+            role: window.GIT_CLUB_PROFILE.roleCustom || window.GIT_CLUB_PROFILE.role || 'Member',
+            department: window.GIT_CLUB_PROFILE.studentId || 'No ID',
+            email: window.GIT_CLUB_PROFILE.email || '',
+            avatar: window.GIT_CLUB_PROFILE.profilePic || ''
+        };
+
+        try {
+            if (window.GIT_CLUB_PROFILE.firebaseId) {
+                if (window.firebaseUpdateMember) await window.firebaseUpdateMember(window.GIT_CLUB_PROFILE.firebaseId, memberData);
+            } else {
+                if (window.firebaseAddMember) {
+                    const newId = await window.firebaseAddMember(memberData);
+                    window.GIT_CLUB_PROFILE.firebaseId = newId;
+                }
+            }
+        } catch(e) { console.error(e); }
+
         localStorage.setItem('userProfileData', JSON.stringify(window.GIT_CLUB_PROFILE));
 
-      // Update header
-      document.querySelectorAll('a[data-path="settings"]').forEach(link => {
-         const nameEl = link.querySelector('.font-title-md');
-         const roleEl = link.querySelector('.font-label-mono-sm');
-         if (nameEl) nameEl.textContent = window.GIT_CLUB_PROFILE.firstName + ' ' + window.GIT_CLUB_PROFILE.lastName;
-         if (roleEl) roleEl.textContent = window.GIT_CLUB_PROFILE.roleCustom;
-      });
+        document.querySelectorAll('a[data-path="settings"]').forEach(link => {
+           const nameEl = link.querySelector('.font-title-md');
+           const roleEl = link.querySelector('.font-label-mono-sm');
+           if (nameEl) nameEl.textContent = window.GIT_CLUB_PROFILE.firstName + ' ' + window.GIT_CLUB_PROFILE.lastName;
+           if (roleEl) roleEl.textContent = window.GIT_CLUB_PROFILE.roleCustom;
+        });
 
-      const originalText = dockSaveBtn.innerHTML;
-      if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>';
-      if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>';
-      
-      setTimeout(() => {
         if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] text-on-primary-container">done</span><span>Saved to Cluster!</span>';
         if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Changes Saved</span>';
-        triggerFeedback('Profile Identity Changes Saved.');
+        triggerFeedback('Profile Identity Saved to Server.');
         
         setTimeout(() => {
           if (unsavedDock) unsavedDock.style.opacity = '0.5';
@@ -525,8 +544,7 @@
           if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Profile Changes</span>';
           goToDashboard();
         }, 1200);
-      }, 700);
-    }
+      }
 
     function triggerDiscard() {
       // Revert values to global
