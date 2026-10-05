@@ -314,7 +314,9 @@ export default function RawStitch() {
         const allSpans = containerRef.current.querySelectorAll('span');
         allSpans.forEach(span => {
           if (span.textContent?.startsWith('Role:')) {
-             span.textContent = 'Role: ' + (profile.roleCustom || profile.role || 'Member');
+             let coreRole = profile.role || 'Member';
+               if (coreRole.includes('Admin')) coreRole = 'Admin';
+               span.textContent = 'Role: ' + coreRole;
           }
         });
 
