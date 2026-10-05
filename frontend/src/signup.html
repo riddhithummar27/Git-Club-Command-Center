@@ -4,8 +4,8 @@
     
     <div class="px-space-lg py-space-xl flex flex-col items-center">
       <img src="/gitclub_logo.png" alt="Git Club" class="w-20 h-20 object-contain mb-4 filter drop-shadow-md" />
-      <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold text-center mb-1">${isSignUp ? 'Create an Account' : 'Welcome Back'}</h1>
-      <p class="font-body-md text-body-md text-on-surface-variant text-center mb-8">${isSignUp ? 'Join the Git Club Command Center' : 'Sign in to access the Git Club Command Center'}</p>
+      <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold text-center mb-1">Create an Account</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant text-center mb-8">Join the Git Club Command Center</p>
 
       <form class="w-full space-y-space-md" onsubmit="handleEmailAuth(event)">
         <div class="space-y-1">
@@ -26,17 +26,14 @@
 
         <div class="pt-2">
           <button type="submit" class="w-full py-2.5 rounded-lg bg-primary-container text-on-primary-container font-title-md font-bold hover:brightness-110 shadow-sm transition-all flex items-center justify-center gap-2">
-            <span id="email-btn-text">${isSignUp ? 'Sign Up' : 'Log In'}</span>
-            <span class="material-symbols-outlined text-[20px]">${isSignUp ? 'person_add' : 'login'}</span>
+            <span id="email-btn-text">Sign Up</span>
+            <span class="material-symbols-outlined text-[20px]">person_add</span>
           </button>
         </div>
       </form>
       
       <div class="w-full mt-6 text-center">
-        ${isSignUp 
-          ? `<p class="text-sm text-on-surface-variant">Already have an account? <a href="#" onclick="window.dispatchEvent(new CustomEvent('force-navigate', { detail: { path: '/login' } })); return false;" class="text-primary hover:underline">Log in here</a></p>` 
-          : `<p class="text-sm text-on-surface-variant">Don't have an account? <a href="#" onclick="window.dispatchEvent(new CustomEvent('force-navigate', { detail: { path: '/signup' } })); return false;" class="text-primary hover:underline">Sign up here</a></p>`
-        }
+        <p class="text-sm text-on-surface-variant">Already have an account? <a href="#" onclick="window.dispatchEvent(new CustomEvent('force-navigate', { detail: { path: '/login' } })); return false;" class="text-primary hover:underline">Log in here</a></p>
       </div>
 
       <div class="w-full flex items-center gap-4 my-6 opacity-60">
@@ -85,21 +82,17 @@
     btn.classList.add('opacity-80', 'cursor-not-allowed');
     
     try {
-      if (true && window.firebaseSignUpEmail) {
+      if (window.firebaseSignUpEmail) {
         await window.firebaseSignUpEmail(email, pass);
-      } else if (!true && window.firebaseLoginEmail) {
-        await window.firebaseLoginEmail(email, pass);
       } else {
         throw new Error("Firebase auth not initialized yet");
       }
       window.dispatchEvent(new CustomEvent('force-navigate', { detail: { path: '/dashboard' } }));
     } catch (err) {
       console.error(err);
-      textSpan.innerHTML = true ? 'Sign Up Failed' : 'Login Failed';
+      textSpan.innerHTML = 'Sign Up Failed';
       if (err.code === 'auth/email-already-in-use') {
         alert("This email is already registered. Please log in.");
-      } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found') {
-        alert("Invalid email or password.");
       } else if (err.code === 'auth/weak-password') {
         alert("Password should be at least 6 characters.");
       }
