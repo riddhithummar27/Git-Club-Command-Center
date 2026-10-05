@@ -176,8 +176,8 @@ export default function RawStitch() {
              const topEditBtn = containerRef.current.querySelector('#topEditBtn');
              const dockEditBtn = containerRef.current.querySelector('#dockEditBtn');
              
-             const uploadPicLabel = containerRef.current.querySelector('#uploadPicLabel');
-             const removeProfilePicBtn = containerRef.current.querySelector('#removeProfilePicBtn');
+             
+             
              
              
              
@@ -207,8 +207,8 @@ export default function RawStitch() {
                  topDiscardBtn?.classList.remove('hidden');
                  dockSaveBtn?.classList.remove('hidden');
                  dockResetBtn?.classList.remove('hidden');
-                 uploadPicLabel?.classList.remove('hidden');
-                 removeProfilePicBtn?.classList.remove('hidden');
+                 
+                 
                } else {
                  topEditBtn?.classList.remove('hidden');
                  dockEditBtn?.classList.remove('hidden');
@@ -216,8 +216,8 @@ export default function RawStitch() {
                  topDiscardBtn?.classList.add('hidden');
                  dockSaveBtn?.classList.add('hidden');
                  dockResetBtn?.classList.add('hidden');
-                 uploadPicLabel?.classList.add('hidden');
-                 removeProfilePicBtn?.classList.add('hidden');
+                 
+                 
                }
              };
 
