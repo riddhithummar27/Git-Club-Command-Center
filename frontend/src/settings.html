@@ -394,14 +394,25 @@
 
 <script>
   (function() {
-    window.GIT_CLUB_PROFILE = window.GIT_CLUB_PROFILE || {
-      firstName: 'Riddhi',
-      lastName: 'Thummar',
-      role: 'Admin',
-      roleCustom: 'Admin & Tech Lead',
-      email: 'riddhi.dev@gmail.com',
-      bio: 'Spearheading technical pipeline deployments and student open-source mentor clinics at CHARUSAT. Passionate about distributed systems, Rust, and building welcoming developer ecosystems.'
-    };
+    
+      try {
+        const localData = localStorage.getItem('userProfileData');
+        if (localData) {
+          window.GIT_CLUB_PROFILE = JSON.parse(localData);
+        }
+      } catch(e) {}
+      
+      window.GIT_CLUB_PROFILE = window.GIT_CLUB_PROFILE || {
+        firstName: '',
+        lastName: '',
+        studentId: '',
+        profilePic: 'https://api.dicebear.com/7.x/notionists/svg?seed=user',
+        role: '',
+        roleCustom: '',
+        email: '',
+        bio: ''
+      };
+
 
     const inputFirstName = document.getElementById('inputFirstName');
     const inputLastName = document.getElementById('inputLastName');
@@ -416,6 +427,14 @@
     if (roleCustom) roleCustom.value = window.GIT_CLUB_PROFILE.roleCustom;
     if (inputPersonalEmail) inputPersonalEmail.value = window.GIT_CLUB_PROFILE.email;
     if (bioTextarea) bioTextarea.value = window.GIT_CLUB_PROFILE.bio;
+      const loadedStudentId = document.getElementById('inputStudentId');
+      if (loadedStudentId && window.GIT_CLUB_PROFILE.studentId) loadedStudentId.value = window.GIT_CLUB_PROFILE.studentId;
+      const loadedProfilePic = document.getElementById('profilePicPreview');
+      if (loadedProfilePic && window.GIT_CLUB_PROFILE.profilePic) loadedProfilePic.src = window.GIT_CLUB_PROFILE.profilePic;
+      const loadedStudentId = document.getElementById('inputStudentId');
+      if (loadedStudentId && window.GIT_CLUB_PROFILE.studentId) loadedStudentId.value = window.GIT_CLUB_PROFILE.studentId;
+      const loadedProfilePic = document.getElementById('profilePicPreview');
+      if (loadedProfilePic && window.GIT_CLUB_PROFILE.profilePic) loadedProfilePic.src = window.GIT_CLUB_PROFILE.profilePic;
 
     const addEmailBtn = document.getElementById('addEmailBtn');
     const newEmailForm = document.getElementById('newEmailForm');
@@ -481,6 +500,7 @@
       if (roleCustom) window.GIT_CLUB_PROFILE.roleCustom = roleCustom.value;
       if (inputPersonalEmail) window.GIT_CLUB_PROFILE.email = inputPersonalEmail.value;
       if (bioTextarea) window.GIT_CLUB_PROFILE.bio = bioTextarea.value;
+        localStorage.setItem('userProfileData', JSON.stringify(window.GIT_CLUB_PROFILE));
 
       // Update header
       document.querySelectorAll('a[data-path="settings"]').forEach(link => {

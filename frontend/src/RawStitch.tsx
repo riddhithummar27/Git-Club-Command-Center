@@ -138,8 +138,63 @@ export default function RawStitch() {
             });
         }
 
-      // Sync global profile state across all pages on load
-      const profile = (window as any).GIT_CLUB_PROFILE;
+      
+        const profile = (window as any).GIT_CLUB_PROFILE || {};
+        if (currentPath === 'settings') {
+           // Populate inputs
+           const inputFirstName = containerRef.current.querySelector<HTMLInputElement>('#inputFirstName');
+           const inputLastName = containerRef.current.querySelector<HTMLInputElement>('#inputLastName');
+           const inputStudentId = containerRef.current.querySelector<HTMLInputElement>('#inputStudentId');
+           const roleSelect = containerRef.current.querySelector<HTMLSelectElement>('#roleSelect');
+           const roleCustom = containerRef.current.querySelector<HTMLInputElement>('#roleCustom');
+           const inputPersonalEmail = containerRef.current.querySelector<HTMLInputElement>('#inputPersonalEmail');
+           const bioTextarea = containerRef.current.querySelector<HTMLTextAreaElement>('#bioTextarea');
+
+           if (inputFirstName && profile.firstName) inputFirstName.value = profile.firstName;
+           if (inputLastName && profile.lastName) inputLastName.value = profile.lastName;
+           if (inputStudentId && profile.studentId) inputStudentId.value = profile.studentId;
+           if (roleSelect && profile.role) roleSelect.value = profile.role;
+           if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
+           if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
+           if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
+
+           // Hook save buttons
+           const dockSaveBtn = containerRef.current.querySelector('#dockSaveBtn');
+           const topSaveBtn = containerRef.current.querySelector('#topSaveBtn');
+
+           const triggerSave = () => {
+              if (inputFirstName) profile.firstName = inputFirstName.value;
+              if (inputLastName) profile.lastName = inputLastName.value;
+              if (inputStudentId) profile.studentId = inputStudentId.value;
+              if (roleSelect) profile.role = roleSelect.value;
+              if (roleCustom) profile.roleCustom = roleCustom.value;
+              if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
+              if (bioTextarea) profile.bio = bioTextarea.value;
+              
+              localStorage.setItem('userProfileData', JSON.stringify(profile));
+              (window as any).GIT_CLUB_PROFILE = profile;
+
+              if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saved!';
+              if (topSaveBtn) topSaveBtn.innerHTML = 'Changes Saved';
+              setTimeout(() => {
+                 navigate('/dashboard');
+              }, 1000);
+           };
+
+           if (dockSaveBtn) dockSaveBtn.addEventListener('click', triggerSave);
+           if (topSaveBtn) topSaveBtn.addEventListener('click', triggerSave);
+        }
+
+        // Sync global profile state across all pages on load
+      
+      try {
+         const localData = localStorage.getItem('userProfileData');
+         if (localData) {
+            (window as any).GIT_CLUB_PROFILE = JSON.parse(localData);
+         }
+      } catch(e) {}
+      
+
       if (profile && containerRef.current) {
         containerRef.current.querySelectorAll('a[data-path="settings"]').forEach(link => {
            const nameEl = link.querySelector('.font-title-md');
