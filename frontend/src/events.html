@@ -1508,9 +1508,10 @@ function parseCSV(str) {
 
 window.viewEventResponses = async (link) => {
   let csvLink = link;
-  if (link.includes('/edit')) {
-    csvLink = link.replace(/\/edit.*$/, '/export?format=csv');
-  } else if (!link.includes('export?format=csv')) {
+  const match = link.match(/\/d\/([a-zA-Z0-9-_]+)/);
+  if (match && match[1]) {
+    csvLink = `https://docs.google.com/spreadsheets/d/${match[1]}/gviz/tq?tqx=out:csv`;
+  } else {
     alert("Please provide a valid Google Sheets link");
     return;
   }
@@ -1733,9 +1734,37 @@ function deleteEvent(btnElement) {
             </div>
           </article>
         `;
-        container.insertAdjacentHTML('beforeend', cardHtml);
-      });
-    }
+                  container.insertAdjacentHTML('beforeend', cardHtml);
+        });
+        
+        // Auto-fetch total registered from Google Sheets if available
+        setTimeout(() => {
+          events.forEach(async (evt) => {
+            if (evt.sheetLink) {
+              try {
+                let csvLink = evt.sheetLink;
+                const match = csvLink.match(/\/d\/([a-zA-Z0-9-_]+)/);
+                if (match && match[1]) {
+                  csvLink = `https://docs.google.com/spreadsheets/d/${match[1]}/gviz/tq?tqx=out:csv`;
+                }
+                const res = await fetch(csvLink);
+                if (res.ok) {
+                  const text = await res.text();
+                  if (typeof parseCSV === 'function') {
+                    const rows = parseCSV(text).filter(r => r.length > 1 || r[0]);
+                    const count = Math.max(0, rows.length - 1);
+                    const safeId = (evt.id || '').replace(/[^a-zA-Z0-9]/g, '');
+                    const countEl = document.getElementById('attendee-count-' + safeId);
+                    if (countEl) {
+                      countEl.innerHTML = `Cap: ${evt.capacity} | <span class="text-primary font-bold">External Registered: ${count}</span>`;
+                    }
+                  }
+                }
+              } catch (e) {}
+            }
+          });
+        }, 100);
+      }
 
     setTimeout(() => {
        renderEvents();
