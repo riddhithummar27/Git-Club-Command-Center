@@ -1548,12 +1548,15 @@
             status: 'PLANNING'
           };
           
+          
+          window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || [];
+          window.GIT_CLUB_EVENTS.unshift(newEvent);
+          
           if (window.firebaseAddEvent) {
-            await window.firebaseAddEvent(newEvent);
-          } else {
-            console.warn('Firebase not wired up, saving locally');
-            window.GIT_CLUB_EVENTS.push(newEvent);
+            // Fire and forget (Optimistic UI) so it doesn't freeze the modal
+            window.firebaseAddEvent(newEvent).catch(err => console.error("Firebase background error:", err));
           }
+    
           
           document.getElementById('createEventModal')?.classList.add('hidden');
           e.target.reset();
@@ -1587,10 +1590,20 @@ function deleteEvent(btnElement) {
       
       let events = [];
       if (window.firebaseFetchEvents) {
-         events = await window.firebaseFetchEvents();
-      } else {
-         events = window.GIT_CLUB_EVENTS;
-      }
+           try {
+             events = await window.firebaseFetchEvents();
+           } catch (e) {
+             console.error(e);
+             events = [];
+           }
+        }
+        // Optimistically prepend locally created events that haven't refreshed yet
+        const localEvents = window.GIT_CLUB_EVENTS || [];
+        localEvents.forEach(le => {
+          if (!events.find(e => e.id === le.id)) {
+            events.unshift(le);
+          }
+        });
       
       if (events.length === 0) return;
       

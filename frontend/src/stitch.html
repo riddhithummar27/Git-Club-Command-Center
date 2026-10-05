@@ -697,9 +697,11 @@
         window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || []; 
         window.GIT_CLUB_EVENTS.push(newEvent); 
         
-        if (window.firebaseAddEvent) {
-          await window.firebaseAddEvent(newEvent);
-        }
+        
+          if (window.firebaseAddEvent) {
+            window.firebaseAddEvent(newEvent).catch(err => console.error("Firebase background error:", err));
+          }
+    
         
         toggleModal('modal-event'); 
         triggerFeedback('Event created & staged to main calendar!'); 
