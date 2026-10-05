@@ -10,6 +10,7 @@ import settingsHtml from './settings.html?raw';
 import analyticsHtml from './analytics.html?raw';
 import loginHtml from './login.html?raw';
 import showcaseHtml from './showcase.html?raw';
+import messagesHtml from './messages.html?raw';
 
 const pages: Record<string, string> = {
   'dashboard': dashboardHtml,
@@ -18,6 +19,7 @@ const pages: Record<string, string> = {
   'events': eventsHtml,
   'announcements': announcementsHtml,
   'notifications': notificationsHtml,
+  'messages': messagesHtml,
   'settings': settingsHtml,
   'analytics': analyticsHtml,
   'login': loginHtml,
@@ -68,7 +70,47 @@ export default function RawStitch() {
       });
     };
     
-    setupNavigation();
+    
+      setupNavigation();
+
+      // Enforce admin restrictions
+      
+      // Check if profile is empty
+      setTimeout(() => {
+        try {
+          const profileStr = localStorage.getItem('userProfileData');
+          const profile = profileStr ? JSON.parse(profileStr) : {};
+          const isComplete = profile.firstName && profile.lastName;
+          
+          const currentPath = window.location.pathname;
+          if (!isComplete && currentPath !== '/settings' && currentPath !== '/login' && currentPath !== '/showcase' && currentPath !== '/') {
+             alert('Please complete your profile configuration first!');
+             navigate('/settings');
+             return;
+          }
+
+          const isAdmin = profile.role && profile.role.toLowerCase().includes('admin');
+          
+          if (!isAdmin) {
+            // Hide action buttons
+            const buttons = document.querySelectorAll<HTMLElement>('button, a');
+            buttons.forEach(b => {
+               const text = b.textContent || '';
+               if (text.includes('+ Add Member') || text.includes('+ New Project') || text.includes('+ Schedule Event') || text.includes('Broadcast')) {
+                  b.style.display = 'none';
+               }
+            });
+            
+            // Hide floating shortcuts
+            const shortcuts = document.querySelectorAll<HTMLElement>('.fixed.bottom-6.right-6 a');
+            shortcuts.forEach(s => {
+               if(!s.textContent.includes('Messages')) s.style.display = 'none';
+            });
+          }
+        } catch(e) {}
+      }, 100);
+
+
 
       // Sync global profile state across all pages on load
       const profile = (window as any).GIT_CLUB_PROFILE;

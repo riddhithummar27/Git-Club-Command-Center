@@ -1,0 +1,80 @@
+<div class="flex-1 flex flex-col min-w-0 bg-surface text-on-surface p-space-md lg:p-space-xl overflow-y-auto">
+  <!-- Header -->
+  <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md pb-space-lg mb-space-lg border-b border-surface-container-highest">
+    <div class="flex flex-col min-w-0">
+      <div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline mb-1">
+        <span>::</span>
+        <span class="text-primary font-medium">GIT_CLUB_MESSAGES</span>
+      </div>
+      <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Public Messages Board</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-1">
+        Post messages and collaborate. This board is open to all members, regardless of admin status.
+      </p>
+    </div>
+  </div>
+
+  <!-- Messages List -->
+  <div class="flex-1 space-y-space-md mb-space-xl" id="messages-feed">
+     <!-- Dynamic Messages Go Here -->
+     <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-dashed border-outline-variant flex flex-col items-center justify-center text-center">
+       <span class="material-symbols-outlined text-[32px] text-outline mb-2">forum</span>
+       <h3 class="font-title-md text-title-md text-on-surface">No messages yet</h3>
+       <p class="text-body-sm text-on-surface-variant">Be the first to post a message!</p>
+     </div>
+  </div>
+
+  <!-- Input Form -->
+  <div class="bg-surface-container-low p-space-md rounded-xl shadow-sm border border-outline/10">
+    <form id="message-board-form" class="flex gap-space-sm" onsubmit="window.handleMessageSubmit(event)">
+      <input type="text" id="messageInput" name="message" required
+             class="flex-1 px-space-md py-3 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all"
+             placeholder="Type your message here..." />
+      <button type="submit" class="px-space-lg py-3 rounded-lg bg-primary-container text-on-primary-container font-title-md font-semibold hover:brightness-110 shadow transition-all">
+        Send
+      </button>
+    </form>
+  </div>
+
+  <script>
+    window.handleMessageSubmit = function(e) {
+      e.preventDefault();
+      const input = document.getElementById('messageInput');
+      const text = input.value.trim();
+      if(!text) return;
+      
+      const feed = document.getElementById('messages-feed');
+      
+      // Get author from local storage
+      let author = "Anonymous Member";
+      try {
+        const profile = JSON.parse(localStorage.getItem('userProfileData'));
+        if (profile && profile.firstName) {
+          author = profile.firstName + ' ' + (profile.lastName || '');
+        }
+      } catch(e) {}
+      
+      const msgHtml = \`
+        <div class="p-space-md rounded-xl bg-surface-container shadow-sm border border-outline/5 relative group flex gap-space-sm items-start">
+           <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-title-md shrink-0">
+             \${author.charAt(0).toUpperCase()}
+           </div>
+           <div class="flex-1 min-w-0">
+             <div class="flex items-center gap-space-sm mb-1">
+               <span class="font-title-md text-title-sm text-on-surface font-semibold">\${author}</span>
+               <span class="text-xs text-outline font-label-mono-sm">Just now</span>
+             </div>
+             <p class="text-body-md text-on-surface-variant whitespace-pre-wrap">\${text}</p>
+           </div>
+        </div>
+      \`;
+      
+      // Remove empty state if present
+      if (feed.innerHTML.includes('No messages yet')) {
+        feed.innerHTML = '';
+      }
+      
+      feed.insertAdjacentHTML('beforeend', msgHtml);
+      input.value = '';
+    };
+  </script>
+</div>
