@@ -22,10 +22,8 @@
 <span class="material-symbols-outlined text-[18px]">open_in_new</span>
 <span>Public Profile</span>
 </button>
-<button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-title-md text-body-md transition-all">
-        Discard
-      </button>
-<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-md hover:brightness-110 shadow-lg shadow-primary-container/20 flex items-center gap-1.5 transition-all" id="topSaveBtn">
+<button id="topDiscardBtn" class="hidden px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-title-md text-body-md transition-all">Discard</button>
+<button class="hidden px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-md hover:brightness-110 shadow-lg shadow-primary-container/20 flex items-center gap-1.5 transition-all" id="topSaveBtn">
 <span class="material-symbols-outlined text-[18px]">save</span>
 <span>Save Profile Changes</span>
 </button>
@@ -49,11 +47,11 @@
     </div>
   </div>
   <div class="flex flex-col gap-2 pb-2">
-    <label class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 cursor-pointer text-center shadow-sm">
+    <label id="uploadPicLabel" class="hidden px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 cursor-pointer text-center shadow-sm">
       Upload Photo
       <input type="file" class="hidden" id="profilePicInput" accept="image/*" />
     </label>
-    <button type="button" id="removeProfilePicBtn" class="px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:text-error transition-colors font-title-md text-body-sm text-center">
+    <button type="button" id="removeProfilePicBtn" class="hidden px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:text-error transition-colors font-title-md text-body-sm text-center">
       Remove Photo
     </button>
   </div>
@@ -86,7 +84,7 @@
 <div class="flex flex-col gap-1.5">
 <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">FIRST NAME</label>
 <div class="relative">
-<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="inputFirstName" type="text" value=""/>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="inputFirstName" readonly type="text" value=""/>
 <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">person</span>
 </div>
 </div>
@@ -94,7 +92,7 @@
 <div class="flex flex-col gap-1.5">
 <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">LAST NAME</label>
 <div class="relative">
-<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="inputLastName" type="text" value=""/>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="inputLastName" readonly type="text" value=""/>
 <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">person</span>
 </div>
 </div>
@@ -113,7 +111,7 @@
 
 </div>
 <div class="relative">
-<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="inputStudentId" type="text" value=""/>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="inputStudentId" readonly type="text" value=""/>
 <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">school</span>
 </div>
 </div>
@@ -125,7 +123,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm">
 <div class="md:col-span-6 relative">
-<select class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all appearance-none cursor-pointer" id="roleSelect">
+<select class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all appearance-none cursor-pointer" id="roleSelect" disabled>
 <option selected="" value="">Admin &amp; Tech Lead</option>
 <option value="Event Lead">Event Lead</option>
 <option value="Project Lead">Project Lead</option>
@@ -136,7 +134,7 @@
 <span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-outline pointer-events-none">expand_more</span>
 </div>
 <div class="md:col-span-6">
-<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="roleCustom" placeholder="e.g. Lead Designer, Backend Developer..." type="text" value=""/>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="roleCustom" readonly placeholder="e.g. Lead Designer, Backend Developer..." type="text" value=""/>
 </div>
 </div>
 </div>
@@ -196,7 +194,7 @@
 </div>
 <div class="flex flex-col min-w-0">
 <div class="flex items-center gap-space-xs flex-wrap">
-<input class="font-label-mono-md text-label-mono-md text-on-surface bg-surface-container px-2 py-1 rounded focus:outline-none focus:ring-1 focus:ring-primary w-64 max-w-full" id="inputPersonalEmail" type="email" value=""/>
+<input class="font-label-mono-md text-label-mono-md text-on-surface bg-surface-container px-2 py-1 rounded focus:outline-none focus:ring-1 focus:ring-primary w-64 max-w-full" id="inputPersonalEmail" readonly type="email" value=""/>
 <span class="px-space-xs py-0.5 rounded bg-secondary-container/20 text-secondary font-label-mono-sm text-label-mono-sm">COMMIT AUTHOR</span>
 <span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-mono-sm text-label-mono-sm flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[12px]">verified</span> Verified
@@ -349,7 +347,7 @@
 <span class="font-label-mono-sm text-label-mono-sm text-outline" id="charCount">186 / 300 CHARS</span>
 </div>
 <div class="relative">
-<textarea class="w-full p-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all leading-relaxed resize-none" id="bioTextarea" rows="4">Spearheading technical pipeline deployments and student open-source mentor clinics at CHARUSAT. Passionate about distributed systems, Rust, and building welcoming developer ecosystems.</textarea>
+<textarea class="w-full p-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all leading-relaxed resize-none" id="bioTextarea" readonly rows="4">Spearheading technical pipeline deployments and student open-source mentor clinics at CHARUSAT. Passionate about distributed systems, Rust, and building welcoming developer ecosystems.</textarea>
 </div>
 <div class="flex items-center justify-between mt-1">
 <span class="font-label-mono-sm text-label-mono-sm text-outline flex items-center gap-1">
@@ -373,10 +371,11 @@
       </span>
 </div>
 <div class="flex items-center gap-space-xs">
-<button class="px-space-sm py-1 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-title-md text-body-sm transition-all" id="dockResetBtn">
+<button class="px-space-sm py-1 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-title-md text-body-sm transition-all" id="dockEditBtn" class="flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md transition-all"><span class="material-symbols-outlined text-[16px]">edit</span><span>Edit Profile</span></button>
+<button id="dockResetBtn" class="hidden">
         Reset
       </button>
-<button class="flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md shadow-primary-container/25 transition-all" id="dockSaveBtn">
+<button class="hidden flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md shadow-primary-container/25 transition-all" id="dockSaveBtn">
 <span class="material-symbols-outlined text-[16px]">save</span>
 <span>Save Changes</span>
 </button>

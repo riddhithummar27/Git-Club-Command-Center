@@ -166,7 +166,81 @@ export default function RawStitch() {
            if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
            if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
 
-           // Hook save buttons
+           
+             // Hook save buttons
+             
+             
+             const topDiscardBtn = containerRef.current.querySelector('#topDiscardBtn');
+             const dockResetBtn = containerRef.current.querySelector('#dockResetBtn');
+             
+             const topEditBtn = containerRef.current.querySelector('#topEditBtn');
+             const dockEditBtn = containerRef.current.querySelector('#dockEditBtn');
+             
+             const uploadPicLabel = containerRef.current.querySelector('#uploadPicLabel');
+             const removeProfilePicBtn = containerRef.current.querySelector('#removeProfilePicBtn');
+             
+             
+             
+             const inputsToToggle = [
+               inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea
+             ];
+
+             const toggleEditMode = (enable: boolean) => {
+               inputsToToggle.forEach(input => {
+                 if (input) {
+                   if (enable) {
+                     input.removeAttribute('readonly');
+                     input.removeAttribute('disabled');
+                     input.classList.add('ring-1', 'ring-primary-container');
+                   } else {
+                     input.setAttribute('readonly', 'true');
+                     if (input.tagName === 'SELECT') input.setAttribute('disabled', 'true');
+                     input.classList.remove('ring-1', 'ring-primary-container');
+                   }
+                 }
+               });
+               
+               if (enable) {
+                 topEditBtn?.classList.add('hidden');
+                 dockEditBtn?.classList.add('hidden');
+                 topSaveBtn?.classList.remove('hidden');
+                 topDiscardBtn?.classList.remove('hidden');
+                 dockSaveBtn?.classList.remove('hidden');
+                 dockResetBtn?.classList.remove('hidden');
+                 uploadPicLabel?.classList.remove('hidden');
+                 removeProfilePicBtn?.classList.remove('hidden');
+               } else {
+                 topEditBtn?.classList.remove('hidden');
+                 dockEditBtn?.classList.remove('hidden');
+                 topSaveBtn?.classList.add('hidden');
+                 topDiscardBtn?.classList.add('hidden');
+                 dockSaveBtn?.classList.add('hidden');
+                 dockResetBtn?.classList.add('hidden');
+                 uploadPicLabel?.classList.add('hidden');
+                 removeProfilePicBtn?.classList.add('hidden');
+               }
+             };
+
+             if (topEditBtn) topEditBtn.addEventListener('click', () => toggleEditMode(true));
+             if (dockEditBtn) dockEditBtn.addEventListener('click', () => toggleEditMode(true));
+
+             if (topDiscardBtn) topDiscardBtn.addEventListener('click', () => {
+               // Revert
+               if (inputFirstName && profile.firstName) inputFirstName.value = profile.firstName;
+               if (inputLastName && profile.lastName) inputLastName.value = profile.lastName;
+               if (inputStudentId && profile.studentId) inputStudentId.value = profile.studentId;
+               if (roleSelect && profile.role) roleSelect.value = profile.role;
+               if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
+               if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
+               if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
+               toggleEditMode(false);
+             });
+             
+             if (dockResetBtn) dockResetBtn.addEventListener('click', () => {
+               if (topDiscardBtn) (topDiscardBtn as HTMLElement).click();
+             });
+
+             // Old hook save buttons
            const dockSaveBtn = containerRef.current.querySelector('#dockSaveBtn');
            const topSaveBtn = containerRef.current.querySelector('#topSaveBtn');
 
@@ -204,6 +278,7 @@ export default function RawStitch() {
               localStorage.setItem('userProfileData', JSON.stringify(profile));
               (window as any).GIT_CLUB_PROFILE = profile;
 
+              toggleEditMode(false);
               if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saved!';
               if (topSaveBtn) topSaveBtn.innerHTML = 'Changes Saved';
               setTimeout(() => {
