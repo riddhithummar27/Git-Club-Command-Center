@@ -302,8 +302,7 @@ export default function RawStitch() {
            const imgEl = link.querySelector('img[alt="Profile"]');
            
            if (nameEl && profile.firstName) nameEl.textContent = profile.firstName + ' ' + (profile.lastName || '');
-           if (roleEl && profile.roleCustom) roleEl.textContent = profile.roleCustom;
-           else if (roleEl && profile.role) roleEl.textContent = profile.role;
+           if (roleEl) roleEl.textContent = profile.role || 'Member';
            
            if (imgEl && profile.profilePic) {
              (imgEl as HTMLImageElement).src = profile.profilePic;
@@ -325,7 +324,7 @@ export default function RawStitch() {
           const heroName = containerRef.current.querySelector('h2.font-headline-sm');
           const heroRole = containerRef.current.querySelector('p.text-secondary');
           if (heroName && profile.firstName) heroName.textContent = profile.firstName + ' ' + (profile.lastName || '');
-          if (heroRole) heroRole.textContent = profile.roleCustom || profile.role || 'Member';
+          if (heroRole) heroRole.textContent = profile.role || 'Member';
           
           if (profile.profilePic) {
             const previewImg = containerRef.current.querySelector<HTMLImageElement>('#profilePicPreview');
