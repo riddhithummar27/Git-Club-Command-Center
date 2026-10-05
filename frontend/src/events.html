@@ -1720,7 +1720,7 @@ function deleteEvent(btnElement) {
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined text-[14px]">group</span>
-                  <span>Cap: ${evt.capacity} | Attendees: ${evt.attendees ? evt.attendees.length : 0}</span>
+                  <span id="attendee-count-${(evt.id || '').replace(/[^a-zA-Z0-9]/g, '')}">Cap: ${evt.capacity} | Attendees: ${evt.attendees ? evt.attendees.length : 0}</span>
                 </div>
               </div>
               
