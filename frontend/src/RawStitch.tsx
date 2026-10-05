@@ -295,27 +295,41 @@ export default function RawStitch() {
       
 
       if (profile && containerRef.current) {
+        // 1. Update the Header Profile Link (Name, Role, Avatar)
         containerRef.current.querySelectorAll('a[data-path="settings"]').forEach(link => {
            const nameEl = link.querySelector('.font-title-md');
            const roleEl = link.querySelector('.font-label-mono-sm');
-           if (nameEl) nameEl.textContent = profile.firstName + ' ' + profile.lastName;
-           if (roleEl) roleEl.textContent = profile.roleCustom;
-
-             
-             // Also update the Hero card in settings.html
-             if (currentPath === 'settings') {
-               const heroName = containerRef.current!.querySelector('h2.font-headline-sm');
-               const heroRole = containerRef.current!.querySelector('p.text-secondary');
-               if (heroName) heroName.textContent = profile.firstName + ' ' + profile.lastName;
-               if (heroRole) heroRole.textContent = profile.roleCustom || profile.role || 'Member';
-             }
-
-             if (profile.profilePic && currentPath === 'settings') {
-                const previewImg = containerRef.current!.querySelector<HTMLImageElement>('#profilePicPreview');
-                if (previewImg) previewImg.src = profile.profilePic;
-             }
-
+           const imgEl = link.querySelector('img[alt="Profile"]');
+           
+           if (nameEl && profile.firstName) nameEl.textContent = profile.firstName + ' ' + (profile.lastName || '');
+           if (roleEl && profile.roleCustom) roleEl.textContent = profile.roleCustom;
+           else if (roleEl && profile.role) roleEl.textContent = profile.role;
+           
+           if (imgEl && profile.profilePic) {
+             (imgEl as HTMLImageElement).src = profile.profilePic;
+           }
         });
+
+        // 2. Update the "Role: Admin" Chip in header
+        const allSpans = containerRef.current.querySelectorAll('span');
+        allSpans.forEach(span => {
+          if (span.textContent?.startsWith('Role:')) {
+             span.textContent = 'Role: ' + (profile.roleCustom || profile.role || 'Member');
+          }
+        });
+
+        // 3. Update the Settings Page Hero Card
+        if (currentPath === 'settings') {
+          const heroName = containerRef.current.querySelector('h2.font-headline-sm');
+          const heroRole = containerRef.current.querySelector('p.text-secondary');
+          if (heroName && profile.firstName) heroName.textContent = profile.firstName + ' ' + (profile.lastName || '');
+          if (heroRole) heroRole.textContent = profile.roleCustom || profile.role || 'Member';
+          
+          if (profile.profilePic) {
+            const previewImg = containerRef.current.querySelector<HTMLImageElement>('#profilePicPreview');
+            if (previewImg) previewImg.src = profile.profilePic;
+          }
+        }
       }
 
       const handleForceNavigate = (e: any) => {
