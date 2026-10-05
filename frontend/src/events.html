@@ -1485,7 +1485,8 @@
 </div>
 <!-- Client-side Interactive Behavior -->
 
-<script>\n
+<script>
+
 function parseCSV(str) {
   const arr = [];
   let quote = false;
@@ -1504,7 +1505,7 @@ function parseCSV(str) {
   }
   return arr;
 }
-\n
+
 window.viewEventResponses = async (link) => {
   let csvLink = link;
   if (link.includes('/edit')) {
@@ -1560,7 +1561,7 @@ window.viewEventResponses = async (link) => {
     alert(err.message);
   }
 };
-\n
+
     function openDrawer(eventTitle) {
       const drawer = document.getElementById('eventDetailDrawer');
       const titleEl = document.getElementById('drawerEventTitle');
@@ -1613,6 +1614,7 @@ window.viewEventResponses = async (link) => {
           const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
           
           const newEvent = {
+            id: id,
             displayId: id, 
             name: fd.get('name') || 'Unnamed Event', 
             category: category, 
