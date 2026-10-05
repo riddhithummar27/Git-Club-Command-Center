@@ -229,8 +229,40 @@
     
     <script>
         window.GIT_CLUB_MEMBERS = window.GIT_CLUB_MEMBERS || [];
-        
-        window.handleMemberSubmit = async function(e) {
+          window.EDITING_MEMBER_ID = null;
+
+          window.openAddMemberModal = function() {
+             window.EDITING_MEMBER_ID = null;
+             const modal = document.getElementById('add-member-modal');
+             const form = modal.querySelector('form');
+             modal.querySelector('h2').innerText = 'Create New Member';
+             form.querySelector('button[type="submit"]').innerText = 'Register Contributor';
+             form.reset();
+             modal.classList.remove('hidden');
+          };
+
+          window.editMemberRecord = function(memberStr) {
+             const m = JSON.parse(decodeURIComponent(memberStr));
+             window.EDITING_MEMBER_ID = m.id;
+             const modal = document.getElementById('add-member-modal');
+             const form = modal.querySelector('form');
+             
+             modal.querySelector('h2').innerText = 'Edit Member Profile';
+             form.querySelector('button[type="submit"]').innerText = 'Save Changes';
+
+             form.name.value = m.name || '';
+             form.studentId.value = m.studentId || '';
+             form.department.value = m.department || '';
+             form.year.value = m.year || '';
+             form.role.value = m.role || '';
+             form.github.value = m.github || '';
+             form.skills.value = (m.skills || []).join(', ');
+
+             modal.classList.remove('hidden');
+             closeInspectDrawer();
+          };
+
+          window.handleMemberSubmit = async function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
             const orig = btn.innerText;
@@ -248,13 +280,20 @@
                 skills: (fd.get('skills') || '').split(',').map(s => s.trim()).filter(Boolean)
               };
               
-              if (window.firebaseAddMember) {
-                await window.firebaseAddMember(newMember);
-              }
-              
-              const modal = document.getElementById('add-member-modal');
-              if (modal) modal.classList.add('hidden');
-              if (window.triggerFeedback) window.triggerFeedback('Member record added: ' + newMember.name);
+                              if (window.EDITING_MEMBER_ID) {
+                  if (window.firebaseUpdateMember) {
+                    await window.firebaseUpdateMember(window.EDITING_MEMBER_ID, newMember);
+                    if (window.triggerFeedback) window.triggerFeedback('Member updated: ' + newMember.name);
+                  }
+                } else {
+                  if (window.firebaseAddMember) {
+                    await window.firebaseAddMember(newMember);
+                    if (window.triggerFeedback) window.triggerFeedback('Member record added: ' + newMember.name);
+                  }
+                }
+                
+                const modal = document.getElementById('add-member-modal');
+                if (modal) modal.classList.add('hidden');
               
               e.target.reset();
               if (window.renderMembers) window.renderMembers();
