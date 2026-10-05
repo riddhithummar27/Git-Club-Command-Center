@@ -157,6 +157,12 @@ export default function RawStitch() {
            const roleCustom = containerRef.current.querySelector<HTMLInputElement>('#roleCustom');
            const inputPersonalEmail = containerRef.current.querySelector<HTMLInputElement>('#inputPersonalEmail');
            const bioTextarea = containerRef.current.querySelector<HTMLTextAreaElement>('#bioTextarea');
+             const inputGithub = containerRef.current.querySelector<HTMLInputElement>('#inputGithub');
+             const inputLinkedin = containerRef.current.querySelector<HTMLInputElement>('#inputLinkedin');
+             
+             if (inputGithub && profile.github) inputGithub.value = profile.github;
+             if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
+
 
            if (inputFirstName && profile.firstName) inputFirstName.value = profile.firstName;
            if (inputLastName && profile.lastName) inputLastName.value = profile.lastName;
@@ -165,6 +171,8 @@ export default function RawStitch() {
            if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
            if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
            if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
+                 if (inputGithub && profile.github) inputGithub.value = profile.github;
+                 if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
 
            
              // Hook save buttons
@@ -182,7 +190,7 @@ export default function RawStitch() {
              
              
              const inputsToToggle = [
-               inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea
+               inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea, inputGithub, inputLinkedin
              ];
 
              const uploadPicLabel = containerRef.current.querySelector('#uploadPicLabel');
@@ -234,6 +242,8 @@ export default function RawStitch() {
                if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
                if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
                if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
+                 if (inputGithub && profile.github) inputGithub.value = profile.github;
+                 if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
                toggleEditMode(false);
              });
              
@@ -246,17 +256,37 @@ export default function RawStitch() {
            const topSaveBtn = containerRef.current.querySelector('#topSaveBtn');
 
            const triggerSave = async () => {
-              if (inputFirstName) profile.firstName = inputFirstName.value;
-              if (inputLastName) profile.lastName = inputLastName.value;
-              if (inputStudentId) profile.studentId = inputStudentId.value;
-              if (roleSelect) profile.role = roleSelect.value;
-              if (roleCustom) profile.roleCustom = roleCustom.value;
-              if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
-              if (bioTextarea) profile.bio = bioTextarea.value;
-              
-              if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saving...';
-              
-              const fullName = ((profile.firstName || '') + ' ' + (profile.lastName || '')).trim();
+                // Validation
+                const requiredInputs = [
+                  { el: inputFirstName, name: "First Name" },
+                  { el: inputLastName, name: "Last Name" },
+                  { el: inputStudentId, name: "Student ID" },
+                  { el: inputPersonalEmail, name: "Email" },
+                  { el: inputGithub, name: "GitHub URL" },
+                  { el: inputLinkedin, name: "LinkedIn URL" }
+                ];
+                
+                for (const input of requiredInputs) {
+                   if (input.el && !input.el.value.trim()) {
+                      alert(input.name + ' is required!');
+                      input.el.focus();
+                      return; // Stop saving
+                   }
+                }
+
+                if (inputFirstName) profile.firstName = inputFirstName.value;
+                if (inputLastName) profile.lastName = inputLastName.value;
+                if (inputStudentId) profile.studentId = inputStudentId.value;
+                if (roleSelect) profile.role = roleSelect.value;
+                if (roleCustom) profile.roleCustom = roleCustom.value;
+                if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
+                if (bioTextarea) profile.bio = bioTextarea.value;
+                if (inputGithub) profile.github = inputGithub.value;
+                if (inputLinkedin) profile.linkedin = inputLinkedin.value;
+                
+                if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saving...';
+                
+                const fullName = ((profile.firstName || '') + ' ' + (profile.lastName || '')).trim();
               const memberData = {
                   name: fullName,
                   role: profile.roleCustom || profile.role || 'Member',
