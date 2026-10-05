@@ -185,6 +185,9 @@ export default function RawStitch() {
                inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea
              ];
 
+             const uploadPicLabel = containerRef.current.querySelector('#uploadPicLabel');
+             const removeProfilePicBtn = containerRef.current.querySelector('#removeProfilePicBtn');
+             
              const toggleEditMode = (enable: boolean) => {
                inputsToToggle.forEach(input => {
                  if (input) {
@@ -205,6 +208,8 @@ export default function RawStitch() {
                  topDiscardBtn?.classList.remove('hidden');
                  dockSaveBtn?.classList.remove('hidden');
                  dockResetBtn?.classList.remove('hidden');
+                 uploadPicLabel?.classList.remove('hidden');
+                 removeProfilePicBtn?.classList.remove('hidden');
                } else {
                  topEditBtn?.classList.remove('hidden');
                  dockEditBtn?.classList.remove('hidden');
@@ -212,6 +217,8 @@ export default function RawStitch() {
                  topDiscardBtn?.classList.add('hidden');
                  dockSaveBtn?.classList.add('hidden');
                  dockResetBtn?.classList.add('hidden');
+                 uploadPicLabel?.classList.add('hidden');
+                 removeProfilePicBtn?.classList.add('hidden');
                }
              };
 
