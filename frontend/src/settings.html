@@ -39,16 +39,24 @@
 <div class="rounded-xl bg-surface-container p-space-lg shadow-xl relative overflow-hidden flex flex-col items-center text-center">
 <!-- Ambient subtle orange beacon behind avatar -->
 <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
-<div class="relative mb-space-md">
-<div class="relative w-32 h-32 rounded-2xl overflow-hidden shadow-2xl p-1 bg-gradient-to-b from-primary-container via-surface-container-high to-surface-container-lowest">
-<img alt="Riddhi Thummar - Git Club Admin and Tech Lead" class="w-full h-full object-cover rounded-xl" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
-</div>
-<!-- Verified Shield Badge -->
-<div class="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center p-0.5 shadow-lg">
-<div class="w-full h-full rounded-full bg-secondary-container text-secondary flex items-center justify-center" title="Verified Campus Club Lead">
-<span class="material-symbols-outlined text-[18px]">verified</span>
-</div>
-</div>
+<div class="relative mb-space-md flex flex-wrap gap-space-lg items-end">
+  <div class="relative w-32 h-32 rounded-2xl overflow-hidden shadow-2xl p-1 bg-gradient-to-b from-primary-container via-surface-container-high to-surface-container-lowest shrink-0">
+    <img id="profilePicPreview" alt="Profile" class="w-full h-full object-cover rounded-xl" src="https://api.dicebear.com/7.x/notionists/svg?seed=user"/>
+    <div class="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center p-0.5 shadow-lg">
+      <div class="w-full h-full rounded-full bg-secondary-container text-secondary flex items-center justify-center" title="Verified Campus Club Lead">
+        <span class="material-symbols-outlined text-[18px]">verified</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 pb-2">
+    <label class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 cursor-pointer text-center shadow-sm">
+      Upload Photo
+      <input type="file" class="hidden" id="profilePicInput" accept="image/*" />
+    </label>
+    <button type="button" id="removeProfilePicBtn" class="px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:text-error transition-colors font-title-md text-body-sm text-center">
+      Remove Photo
+    </button>
+  </div>
 </div>
 <div class="flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-primary/10 text-primary font-label-mono-sm text-label-mono-sm mb-space-xs">
 
@@ -70,29 +78,7 @@
 </button>
 </div>
 <span class="font-label-mono-sm text-label-mono-sm text-outline mt-2">PNG, JPG or WebP up to 5MB</span>
-<!-- Activity Spark Telemetry -->
-<div class="grid grid-cols-2 gap-space-xs w-full mt-space-lg pt-space-md border-t border-surface-container-highest">
-<div class="bg-surface-container-low p-space-sm rounded-lg text-left">
-<span class="font-label-mono-sm text-label-mono-sm text-outline block">MONTHLY COMMITS</span>
-<span class="font-title-md text-headline-sm text-on-surface font-bold">42</span>
-<span class="font-label-mono-sm text-label-mono-sm text-tertiary block mt-0.5">â†‘ 18% vs prev</span>
-</div>
-<div class="bg-surface-container-low p-space-sm rounded-lg text-left">
-<span class="font-label-mono-sm text-label-mono-sm text-outline block">MERGED PRs</span>
-<span class="font-title-md text-headline-sm text-on-surface font-bold">14</span>
-<span class="font-label-mono-sm text-label-mono-sm text-secondary block mt-0.5">100% reviewed</span>
-</div>
-<div class="bg-surface-container-low p-space-sm rounded-lg text-left">
-<span class="font-label-mono-sm text-label-mono-sm text-outline block">EVENTS CHAIRED</span>
-<span class="font-title-md text-headline-sm text-on-surface font-bold">03</span>
-<span class="font-label-mono-sm text-label-mono-sm text-primary block mt-0.5">GitOps Workshop</span>
-</div>
-<div class="bg-surface-container-low p-space-sm rounded-lg text-left">
-<span class="font-label-mono-sm text-label-mono-sm text-outline block">MEMBER SINCE</span>
-<span class="font-title-md text-headline-sm text-on-surface font-bold">F'23</span>
-<span class="font-label-mono-sm text-label-mono-sm text-outline block mt-0.5">Cohort Alpha</span>
-</div>
-</div>
+
 </div>
 <!-- Campus RBAC & Authority Level Card -->
 <div class="rounded-xl bg-surface-container p-space-lg shadow-md flex flex-col gap-space-md">
@@ -542,6 +528,8 @@
       if (inputLastName) window.GIT_CLUB_PROFILE.lastName = inputLastName.value;
         const inputStudentId = document.getElementById('inputStudentId');
         if (inputStudentId) window.GIT_CLUB_PROFILE.studentId = inputStudentId.value;
+        const profilePicPreview = document.getElementById('profilePicPreview');
+        if (profilePicPreview) window.GIT_CLUB_PROFILE.profilePic = profilePicPreview.src;
       if (roleSelect) window.GIT_CLUB_PROFILE.role = roleSelect.value;
       if (roleCustom) window.GIT_CLUB_PROFILE.roleCustom = roleCustom.value;
       if (inputPersonalEmail) window.GIT_CLUB_PROFILE.email = inputPersonalEmail.value;
@@ -603,7 +591,34 @@
     });
 
   })();
-</script></main></div><div class="fixed bottom-6 right-6 z-40 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
+
+            window.addEventListener('DOMContentLoaded', () => {
+               const fileInput = document.getElementById('profilePicInput');
+               const removeBtn = document.getElementById('removeProfilePicBtn');
+               const preview = document.getElementById('profilePicPreview');
+
+               if (fileInput && preview) {
+                  fileInput.addEventListener('change', (e) => {
+                     const file = e.target.files[0];
+                     if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                           preview.src = e.target.result;
+                           window.GIT_CLUB_PROFILE.profilePic = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                     }
+                  });
+               }
+
+               if (removeBtn && preview) {
+                  removeBtn.addEventListener('click', () => {
+                     preview.src = "https://api.dicebear.com/7.x/notionists/svg?seed=user";
+                     window.GIT_CLUB_PROFILE.profilePic = preview.src;
+                  });
+               }
+            });
+          </script></main></div><div class="fixed bottom-6 right-6 z-40 flex items-center gap-space-xs p-1.5 rounded-full bg-surface-container-highest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
     <a href="#" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
       <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
     </a>

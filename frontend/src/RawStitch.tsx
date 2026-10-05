@@ -112,6 +112,32 @@ export default function RawStitch() {
 
 
 
+      
+        // Profile picture handling
+        const fileInput = containerRef.current.querySelector('#profilePicInput');
+        const removeBtn = containerRef.current.querySelector('#removeProfilePicBtn');
+        const preview = containerRef.current.querySelector<HTMLImageElement>('#profilePicPreview');
+
+        if (fileInput && preview) {
+            fileInput.addEventListener('change', (e: any) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (ev: any) => {
+                        preview.src = ev.target.result;
+                        (window as any).GIT_CLUB_PROFILE.profilePic = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        if (removeBtn && preview) {
+            removeBtn.addEventListener('click', () => {
+                preview.src = "https://api.dicebear.com/7.x/notionists/svg?seed=user";
+                (window as any).GIT_CLUB_PROFILE.profilePic = preview.src;
+            });
+        }
+
       // Sync global profile state across all pages on load
       const profile = (window as any).GIT_CLUB_PROFILE;
       if (profile && containerRef.current) {
@@ -120,6 +146,12 @@ export default function RawStitch() {
            const roleEl = link.querySelector('.font-label-mono-sm');
            if (nameEl) nameEl.textContent = profile.firstName + ' ' + profile.lastName;
            if (roleEl) roleEl.textContent = profile.roleCustom;
+
+             if (profile.profilePic && currentPath === 'settings') {
+                const previewImg = containerRef.current!.querySelector<HTMLImageElement>('#profilePicPreview');
+                if (previewImg) previewImg.src = profile.profilePic;
+             }
+
         });
       }
 
