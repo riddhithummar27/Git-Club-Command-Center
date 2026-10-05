@@ -1515,48 +1515,62 @@
 
   
     async function handleCreateEvent(e) {
-      e.preventDefault();
-      
-      const btn = e.target.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = 'Saving to Database...';
-      btn.disabled = true;
-
-      const name = document.getElementById('eventName')?.value || 'Unnamed Event';
-      let category = document.getElementById('eventCategory')?.value || 'Workshop';\n        if (category === 'Other') category = document.getElementById('eventCategoryOther')?.value || 'Other';
-      const capacity = document.getElementById('eventCapacity')?.value || '100';
-      const date = document.getElementById('eventDate')?.value || new Date().toISOString();\n        const endDate = document.getElementById('eventEndDate')?.value || date;
-      const desc = document.getElementById('eventDesc')?.value || 'No description provided.';
-      const rounds = document.getElementById('eventRounds')?.value || '1';
-      const link = document.getElementById('eventLink')?.value || 'No link';
-      const audienceNodes = document.querySelectorAll('#eventAudience input:checked');\n        const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
-      
-      const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
-      
-      const newEvent = {
-        displayId: id, name, category, capacity, date, location: 'TBA', desc, rounds, link, audience, prereqs: 'See description',
-        status: 'PLANNING'
-      };
-      
-      try {
-        if (window.firebaseAddEvent) {
-          await window.firebaseAddEvent(newEvent);
-        } else {
-          console.warn('Firebase not wired up, saving locally');
-          window.GIT_CLUB_EVENTS.push(newEvent);
+        e.preventDefault();
+        
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Saving to Database...';
+        btn.disabled = true;
+        
+        try {
+          const fd = new FormData(e.target);
+          let category = fd.get('category');
+          if (category === 'Other') category = fd.get('categoryOther') || 'Other';
+          
+          const audienceNodes = e.target.querySelectorAll('input[type=checkbox]:checked');
+          const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
+          
+          const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
+          
+          const newEvent = {
+            displayId: id, 
+            name: fd.get('name') || 'Unnamed Event', 
+            category: category, 
+            capacity: fd.get('capacity') || '100', 
+            date: fd.get('startDate') || fd.get('date') || new Date().toISOString(), 
+            endDate: fd.get('endDate') || fd.get('startDate') || new Date().toISOString(), 
+            location: 'TBA', 
+            desc: fd.get('desc') || 'No description provided.', 
+            rounds: fd.get('rounds') || '1', 
+            link: fd.get('link') || 'No link', 
+            audience: audience, 
+            prereqs: 'See description',
+            status: 'PLANNING'
+          };
+          
+          if (window.firebaseAddEvent) {
+            await window.firebaseAddEvent(newEvent);
+          } else {
+            console.warn('Firebase not wired up, saving locally');
+            window.GIT_CLUB_EVENTS.push(newEvent);
+          }
+          
+          document.getElementById('createEventModal')?.classList.add('hidden');
+          e.target.reset();
+          
+          if (typeof renderEvents === 'function') {
+            await renderEvents();
+          }
+          alert('Event successfully created!');
+        } catch (err) {
+          console.error('Failed to create event', err);
+          alert('Failed to create event in database: ' + err.message);
+        } finally {
+          if (btn) {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }
         }
-        
-        document.getElementById('createEventModal').classList.add('hidden');
-        e.target.reset();
-        
-        await renderEvents();
-      } catch (err) {
-        console.error('Failed to create event', err);
-        alert('Failed to create event in database');
-      } finally {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-      }
     }
 function deleteEvent(btnElement) {
     // Find the closest article (the event card) and remove it from the DOM

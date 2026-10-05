@@ -666,36 +666,54 @@
     </div>
     
     <form class="space-y-space-md" onsubmit="event.preventDefault(); 
-    const fd = new FormData(event.target); 
-    const audienceNodes = event.target.querySelectorAll('input[type=checkbox]:checked');
-    const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
-    let category = fd.get('category');
-    if (category === 'Other') category = fd.get('categoryOther');
-    
-    const newEvent = { 
-      id: 'EVT-' + Math.floor(1000 + Math.random() * 9000), 
-      name: fd.get('name'), 
-      date: fd.get('startDate') || fd.get('date'), 
-      endDate: fd.get('endDate'),
-      category: category, 
-      link: fd.get('link'), 
-      capacity: fd.get('capacity'), 
-      audience: audience, 
-      rounds: fd.get('rounds'), 
-      desc: fd.get('desc'),
-      description: fd.get('desc')
-    };
-    
-    window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || []; 
-    window.GIT_CLUB_EVENTS.push(newEvent); 
-    
-    if (window.firebaseAddEvent) {
-      window.firebaseAddEvent(newEvent).catch(console.error);
-    }
-    
-    toggleModal('modal-event'); 
-    triggerFeedback('Event created & staged to main calendar!'); 
-    setTimeout(() => document.querySelector('a[data-path=events]').click(), 800);
+    const formEl = event.target;
+    (async () => {
+      const btn = formEl.querySelector('button[type=\'submit\']');
+      const originalText = btn ? btn.innerHTML : 'Deploy';
+      if (btn) { btn.innerHTML = 'Saving...'; btn.disabled = true; }
+      
+      try {
+        const fd = new FormData(formEl); 
+        const audienceNodes = formEl.querySelectorAll('input[type=checkbox]:checked');
+        const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
+        let category = fd.get('category');
+        if (category === 'Other') category = fd.get('categoryOther');
+        
+        const newEvent = { 
+          id: 'EVT-' + Math.floor(1000 + Math.random() * 9000), 
+          name: fd.get('name'), 
+          date: fd.get('startDate') || fd.get('date'), 
+          endDate: fd.get('endDate'),
+          category: category, 
+          link: fd.get('link'), 
+          capacity: fd.get('capacity'), 
+          audience: audience, 
+          rounds: fd.get('rounds'), 
+          desc: fd.get('desc'),
+          description: fd.get('desc'),
+          status: 'PLANNING'
+        };
+        
+        window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || []; 
+        window.GIT_CLUB_EVENTS.push(newEvent); 
+        
+        if (window.firebaseAddEvent) {
+          await window.firebaseAddEvent(newEvent);
+        }
+        
+        toggleModal('modal-event'); 
+        triggerFeedback('Event created & staged to main calendar!'); 
+        setTimeout(() => {
+          const link = document.querySelector('a[data-path=events]');
+          if (link) link.click();
+        }, 800);
+      } catch (err) {
+        console.error(err);
+        alert('Error saving event: ' + err.message);
+      } finally {
+        if (btn) { btn.innerHTML = originalText; btn.disabled = false; }
+      }
+    })();
   ">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
     <div class="flex flex-col gap-1">
