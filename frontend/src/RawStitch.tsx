@@ -294,7 +294,8 @@ export default function RawStitch() {
         // Sync global profile state across all pages on load
       
 
-      if (profile && containerRef.current) {
+      if (profile && profile.role === '') profile.role = 'Admin & Tech Lead';
+        if (profile && containerRef.current) {
         // 1. Update the Header Profile Link (Name, Role, Avatar)
         containerRef.current.querySelectorAll('a[data-path="settings"]').forEach(link => {
            const nameEl = link.querySelector('.font-title-md');
