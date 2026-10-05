@@ -715,13 +715,15 @@
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Category</label>
-      <select id="eventCategory" name="category" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
+      <select id="eventCategory" name="category" onchange="document.getElementById('eventCategoryOther').classList.toggle('hidden', this.value !== 'Other')" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
         <option>Workshop</option>
         <option>Hackathon</option>
         <option>Competition</option>
         <option>Community Talk</option>
         <option>Social Meetup</option>
+        <option>Other</option>
       </select>
+      <input id="eventCategoryOther" name="categoryOther" type="text" placeholder="Please specify..." class="w-full mt-2 bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors hidden" />
     </div>
   </div>
   
@@ -743,12 +745,20 @@
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Audience</label>
-      <select id="eventAudience" name="audience" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors">
-        <option>All Students (Beginner Friendly)</option>
-        <option>Intermediate (Some Experience)</option>
-        <option>Advanced (Domain Experts)</option>
-        <option>Core Team Only</option>
-      </select>
+      <div id="eventAudience" class="flex flex-col gap-2 p-2 bg-surface-container-lowest border border-outline/20 rounded">
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="All Students" class="accent-primary" /> All Students (Beginner)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="Intermediate" class="accent-primary" /> Intermediate (Some Exp)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="Advanced" class="accent-primary" /> Advanced (Domain Experts)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="Core Team" class="accent-primary" /> Core Team Only
+        </label>
+      </div>
     </div>
   </div>
 
@@ -1585,13 +1595,13 @@
       btn.disabled = true;
 
       const name = document.getElementById('eventName')?.value || 'Unnamed Event';
-      const category = document.getElementById('eventCategory')?.value || 'Workshop';
+      let category = document.getElementById('eventCategory')?.value || 'Workshop';\n        if (category === 'Other') category = document.getElementById('eventCategoryOther')?.value || 'Other';
       const capacity = document.getElementById('eventCapacity')?.value || '100';
       const date = document.getElementById('eventDate')?.value || new Date().toISOString();\n        const endDate = document.getElementById('eventEndDate')?.value || date;
       const desc = document.getElementById('eventDesc')?.value || 'No description provided.';
       const members = document.getElementById('eventMembers')?.value || 'None';
       const link = document.getElementById('eventLink')?.value || 'No link';
-      const audience = document.getElementById('eventAudience')?.value || 'All Students';
+      const audienceNodes = document.querySelectorAll('#eventAudience input:checked');\n        const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
       
       const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
       
