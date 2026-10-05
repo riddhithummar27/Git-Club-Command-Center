@@ -305,7 +305,7 @@ export default function RawStitch() {
              // Also update the Hero card in settings.html
              if (currentPath === 'settings') {
                const heroName = containerRef.current!.querySelector('h2.font-headline-sm');
-               const heroRole = containerRef.current!.querySelector('p.text-secondary.mt-0\.5');
+               const heroRole = containerRef.current!.querySelector('p.text-secondary');
                if (heroName) heroName.textContent = profile.firstName + ' ' + profile.lastName;
                if (heroRole) heroRole.textContent = profile.roleCustom || profile.role || 'Member';
              }
