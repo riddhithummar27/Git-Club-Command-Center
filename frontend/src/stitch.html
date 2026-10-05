@@ -681,7 +681,7 @@
       link: fd.get('link'), 
       capacity: fd.get('capacity'), 
       audience: audience, 
-      members: fd.get('members'), 
+      rounds: fd.get('rounds'), 
       desc: fd.get('desc'),
       description: fd.get('desc')
     };
@@ -753,12 +753,12 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
     <div class="flex flex-col gap-1">
-      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Members / Organizers</label>
-      <input name="members" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Jay Shah" required="" type="text">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Number of Rounds</label>
+      <input name="rounds" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. 1" required="" type="number" min="1">
     </div>
     <div class="flex flex-col gap-1">
-      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Registration Link (Optional)</label>
-      <input name="link" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://forms.gle/..." type="url">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Per Round Reg Links</label>
+      <textarea name="link" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors resize-y min-h-[48px]" placeholder="R1: http..., R2: http..."></textarea>
     </div>
   </div>
 
