@@ -5,7 +5,7 @@ import RawStitch from './RawStitch';
 import GlobalPatch from './components/GlobalPatch';
 import { signInWithGoogle, signInWithGithub, signInWithEmail, signUpWithEmail, signOut } from './services/auth';
 import { addEvent, fetchEvents, registerForEvent } from './services/events';
-import { addMember, fetchMembers, deleteMember } from './services/members';
+import { addMember, fetchMembers, deleteMember, updateMember } from './services/members';
 
 // Expose to window for raw HTML templates
 (window as any).firebaseLoginGoogle = signInWithGoogle;
@@ -18,6 +18,7 @@ import { addMember, fetchMembers, deleteMember } from './services/members';
   (window as any).firebaseAddMember = addMember;
   (window as any).firebaseFetchMembers = fetchMembers;
   (window as any).firebaseDeleteMember = deleteMember;
+  (window as any).firebaseUpdateMember = updateMember;
 (window as any).firebaseRegisterEvent = registerForEvent;
 
 

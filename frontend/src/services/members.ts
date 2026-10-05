@@ -1,5 +1,5 @@
 import { db } from "../firebase";
-import { collection, addDoc, getDocs, deleteDoc, doc, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from "firebase/firestore";
 
 const withTimeout = (promise: any, ms: number, defaultRet: any) => {
   return Promise.race([
@@ -49,6 +49,18 @@ export const deleteMember = async (id: string) => {
     await deleteDoc(doc(db, "members", id));
   } catch (e) {
     console.error("Error deleting member: ", e);
+    throw e;
+  }
+};
+
+export const updateMember = async (id: string, memberData: any) => {
+  try {
+    await updateDoc(doc(db, "members", id), {
+      ...memberData,
+      updatedAt: new Date().toISOString()
+    });
+  } catch (e) {
+    console.error("Error updating member: ", e);
     throw e;
   }
 };
