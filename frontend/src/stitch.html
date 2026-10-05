@@ -90,148 +90,60 @@
 </div>
 </div>
 </section>
-<!-- 4 MANDATORY METRICS (3D Dimensional Instrument Elevation) -->
-<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-space-md">
-<!-- Metric 1: MEMBERS -->
-<div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
-<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
-<div class="flex items-center justify-between">
-
-<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[18px]">group</span>
-</div>
-</div>
-<div class="mt-space-sm">
-<div class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold" id="metric-total-members">0</div>
-<div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Club Members</div>
-</div>
-<div class="mt-space-sm pt-space-xs flex items-center gap-space-xs">
-
-          +12 this month
-        </span>
-<span class="font-label-mono-sm text-label-mono-sm text-outline">• Active Cohort</span>
-</div>
-</div>
-<!-- Metric 2: UPCOMING EVENTS -->
-<div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
-<div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
-<div class="flex items-center justify-between">
-
-<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[18px]">calendar_today</span>
-</div>
-</div>
-<div class="mt-space-sm">
-<div class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">06</div>
-<div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Upcoming Events</div>
-</div>
-<div class="mt-space-sm pt-space-xs flex items-center gap-space-xs">
-<span class="font-label-mono-sm text-label-mono-sm text-primary font-medium truncate max-w-[200px]">
-          Next: Git &amp; GitHub Workshop
-        </span>
-</div>
-</div>
-
-  </section>
-<!-- SPLIT WORKBENCH: INTERACTIVE ACTIVITY CHART & UPCOMING SCHEDULE -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg" id="activity-telemetry">
-<!-- LEFT (8 cols): CLUB ACTIVITY TELEMETRY WITH INTERACTIVE SVG GRAPH -->
-<div class="lg:col-span-8 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
-<div>
-
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Club Activity Stream</h2>
-</div>
-<div class="flex flex-wrap items-center gap-space-xs">
-<!-- Metric Mode Tabs -->
-<div class="flex rounded-lg bg-surface-container p-0.5" id="chart-tabs">
-<button class="chart-tab-btn active px-3 py-1 rounded bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm transition-all" onclick="setChartMode('events')">Events</button>
-<button class="chart-tab-btn px-3 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="setChartMode('members')">Members</button>
-<button class="chart-tab-btn px-3 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm transition-all" onclick="setChartMode('projects')">Projects</button>
-</div>
-<!-- Time Horizon Filter -->
-<select class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none cursor-pointer">
-<option>3 Months</option>
-<option selected="">6 Months</option>
-<option>This Year</option>
-</select>
-</div>
-</div>
-<!-- Dynamic Data Visualization Canvas (SVG Area Chart with Git orange tone) -->
-<div class="relative w-full h-64 sm:h-72 bg-surface-container-lowest rounded-lg p-space-sm flex flex-col justify-end overflow-hidden group">
-<!-- SVG Grid & Ambient Glow -->
-<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none">
-<defs>
-<lineargradient id="gitCurveGrad" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#fd5832" stop-opacity="0.38"></stop>
-<stop offset="100%" stop-color="#fd5832" stop-opacity="0.0"></stop>
-</lineargradient>
-<pattern height="40" id="gridPattern" patternunits="userSpaceOnUse" width="60">
-<path d="M 60 0 L 0 0 0 40" fill="none" stroke="#353534" stroke-dasharray="2 4" stroke-width="0.75"></path>
-</pattern>
-</defs>
-<rect fill="url(#gridPattern)" height="100%" width="100%"></rect>
-<!-- Area Gradient -->
-<polygon fill="url(#gitCurveGrad)" id="chart-area" points="40,240 40,190 120,160 200,180 280,110 360,130 440,70 520,85 600,45 680,60 760,20 760,240"></polygon>
-<!-- Line Curve -->
-<polyline fill="none" id="chart-line" points="40,190 120,160 200,180 280,110 360,130 440,70 520,85 600,45 680,60 760,20" stroke="#fd5832" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
-<!-- High Point Node Halo -->
-<circle cx="760" cy="20" fill="#fd5832" r="5" stroke="#fff" stroke-width="2"></circle>
-<circle cx="600" cy="45" fill="#f5bd58" r="4"></circle>
-<circle cx="440" cy="70" fill="#fd5832" r="4"></circle>
-</svg>
-<!-- Hover inspection pill (floating telemetry marker) -->
-<div class="absolute top-6 right-8 px-space-sm py-1 rounded bg-surface-container-high/90 backdrop-blur shadow-md flex items-center gap-space-xs pointer-events-none">
-<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
-<span class="font-label-mono-sm text-label-mono-sm text-on-surface">Peak Activity: <strong class="text-primary">142 actions</strong> (Oct 2024)</span>
-</div>
-<!-- Horizontal Axis Labels -->
-<div class="relative z-10 flex justify-between px-space-md pt-space-xs text-outline font-label-mono-sm text-label-mono-sm">
-<span>MAY</span>
-<span>JUN</span>
-<span>JUL</span>
-<span>AUG</span>
-<span>SEP</span>
-<span class="text-primary font-bold">OCT (CURRENT)</span>
-</div>
-</div>
-<!-- Quick Telemetry Status Badges -->
-<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
-<div class="p-space-sm rounded bg-surface-container flex flex-col">
-<span class="font-label-mono-sm text-label-mono-sm text-outline">PULL REQUESTS</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">48 Merged</span>
-<span class="font-label-mono-sm text-label-mono-sm text-tertiary">98.4% success rate</span>
-</div>
-<div class="p-space-sm rounded bg-surface-container flex flex-col">
-<span class="font-label-mono-sm text-label-mono-sm text-outline">COMMITS LOGGED</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">1,248 Pushes</span>
-<span class="font-label-mono-sm text-label-mono-sm text-primary">+24% vs last term</span>
-</div>
-<div class="p-space-sm rounded bg-surface-container flex flex-col">
-<span class="font-label-mono-sm text-label-mono-sm text-outline">CAMPUS CHAPTER</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">CHARUSAT HQ</span>
-<span class="font-label-mono-sm text-label-mono-sm text-secondary">Tier 1 Chapter</span>
-</div>
-</div>
-</div>
-<!-- RIGHT (4 cols): WHAT'S NEXT (UPCOMING EVENTS PIPELINE) -->
-<div class="lg:col-span-4 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
-<div class="flex items-center justify-between">
-<div>
-
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">What's Next</h2>
-</div>
-<button class="p-1 rounded text-primary hover:bg-surface-container-high transition-colors" onclick="toggleModal('modal-event')" title="Create New Event">
-<span class="material-symbols-outlined text-[20px]">add</span>
-</button>
-</div>
-<div id="dashboard-upcoming-events" class="space-y-space-md flex-1 overflow-y-auto max-h-[400px] custom-scrollbar">
-    <div class="p-space-md rounded-lg bg-surface-container shadow flex items-center justify-center text-outline">
-      Loading events...
+<!-- METRICS -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mb-space-lg">
+    <!-- Metric 1: MEMBERS -->
+    <div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+      <div class="flex items-center justify-between">
+        <div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[18px]">group</span>
+        </div>
+      </div>
+      <div class="mt-space-sm">
+        <div id="metric-total-members" class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">0</div>
+        <div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Total Members</div>
+      </div>
     </div>
-  </div>
-  </div>
-  </div>
+    
+    <!-- Metric 2: EVENTS -->
+    <div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+      <div class="flex items-center justify-between">
+        <div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+        </div>
+      </div>
+      <div class="mt-space-sm">
+        <div id="metric-total-events" class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">0</div>
+        <div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Total Events</div>
+      </div>
+    </div>
+  </section>
+  <!-- SPLIT WORKBENCH -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+    <!-- LEFT (8 cols): RECENT MEMBERS -->
+    <div class="lg:col-span-8 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
+      <div class="flex items-center justify-between">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Recent Members</h2>
+      </div>
+      <div id="dashboard-recent-members" class="space-y-space-sm overflow-y-auto max-h-[400px] custom-scrollbar">
+        <div class="p-space-md rounded-lg bg-surface-container shadow text-outline text-center">Loading members...</div>
+      </div>
+    </div>
+    
+    <!-- RIGHT (4 cols): WHAT'S NEXT (UPCOMING EVENTS PIPELINE) -->
+    <div class="lg:col-span-4 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
+      <div class="flex items-center justify-between">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">What's Next</h2>
+        <button class="p-1 rounded text-primary hover:bg-surface-container-high transition-colors" onclick="toggleModal('modal-event')" title="Create New Event">
+          <span class="material-symbols-outlined text-[20px]">add</span>
+        </button>
+      </div>
+      <div id="dashboard-upcoming-events" class="space-y-space-md flex-1 overflow-y-auto max-h-[400px] custom-scrollbar">
+        <div class="p-space-md rounded-lg bg-surface-container shadow flex items-center justify-center text-outline">Loading events...</div>
+      </div>
+    </div>
   </div>
   <!-- INTERACTIVE MODAL: CREATE NEW EVENT -->
 <div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md p-space-md" id="modal-event">
@@ -487,6 +399,26 @@
           
           const members = await window.firebaseFetchMembers();
           document.getElementById('metric-total-members').innerText = members.length;
+          
+          const membersContainer = document.getElementById('dashboard-recent-members');
+          if (membersContainer) {
+            membersContainer.innerHTML = '';
+            if (members.length === 0) {
+              membersContainer.innerHTML = '<div class="p-4 text-center text-outline">No members found</div>';
+            } else {
+              members.slice(0, 6).forEach(m => {
+                membersContainer.insertAdjacentHTML('beforeend', `
+                  <div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex items-center gap-space-md">
+                    <img class="w-10 h-10 rounded-full object-cover shadow-sm" src="https://api.dicebear.com/7.x/notionists/svg?seed=${m.name}"/>
+                    <div class="flex flex-col min-w-0">
+                      <span class="font-title-md text-title-md text-on-surface font-bold truncate">${m.name}</span>
+                      <span class="font-label-mono-sm text-label-mono-sm text-primary font-medium truncate">${m.role}</span>
+                    </div>
+                  </div>
+                `);
+              });
+            }
+          }
         } catch(e) {
           console.error("Dashboard init error", e);
         }
