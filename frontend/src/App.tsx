@@ -16,6 +16,37 @@ import { addEvent, fetchEvents, registerForEvent } from './services/events';
 (window as any).firebaseFetchEvents = fetchEvents;
 (window as any).firebaseRegisterEvent = registerForEvent;
 
+
+(window as any).autofillFromUrl = async (url: string, nameInputId: string, descInputId: string) => {
+  if (!url || !url.startsWith('http')) return;
+  try {
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+    const res = await fetch(proxyUrl);
+    const data = await res.json();
+    if (!data.contents) return;
+    
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data.contents, "text/html");
+    
+    let title = doc.querySelector('meta[property="og:title"]')?.getAttribute('content');
+    let desc = doc.querySelector('meta[property="og:description"]')?.getAttribute('content');
+    
+    if (!title && doc.title) title = doc.title;
+    
+    const nameEl = document.getElementById(nameInputId) as HTMLInputElement;
+    const descEl = document.getElementById(descInputId) as HTMLTextAreaElement;
+    
+    if (title && nameEl && !nameEl.value) {
+      nameEl.value = title;
+    }
+    if (desc && descEl && !descEl.value) {
+      descEl.value = desc;
+    }
+  } catch (err) {
+    console.error("Autofill failed:", err);
+  }
+};
+
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = localStorage.getItem('auth') === 'true';
   return isAuthenticated ? <>{children}</> : <Navigate to="/showcase" replace />;

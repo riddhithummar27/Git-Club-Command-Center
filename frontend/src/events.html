@@ -769,7 +769,7 @@
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Registration Link (Optional)</label>
-      <input id="eventLink" name="link" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://forms.gle/..." type="url">
+      <input id="eventLink" name="link" onchange="if(window.autofillFromUrl) window.autofillFromUrl(this.value, 'eventName', 'eventDesc')" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://forms.gle/..." type="url">
     </div>
   </div>
 
