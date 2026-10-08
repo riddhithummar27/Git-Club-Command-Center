@@ -190,11 +190,9 @@
         
         
           if (window.firebaseAddEvent) {
-            window.firebaseAddEvent(newEvent).catch(err => console.error('Firebase background error:', err));
+            await window.firebaseAddEvent(newEvent);
           }
-    
-        
-        toggleModal('modal-event'); 
+toggleModal('modal-event'); 
         triggerFeedback('Event created & staged to main calendar!'); 
         setTimeout(() => {
           const link = document.querySelector('a[data-path=events]');
@@ -215,7 +213,7 @@
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Category</label>
-      <select name="category" onchange="this.nextElementSibling.classList.toggle('hidden', this.value !== 'Other')" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
+      <select name="category" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
         <option>Workshop</option>
         <option>Hackathon</option>
         <option>Competition</option>
@@ -287,16 +285,7 @@
   
   <div class="flex flex-col gap-1">
     <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Event Poster</label>
-    <input name="poster" id="eventPosterInput" onchange="
-  const file = this.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      document.getElementById('eventPosterBase64').value = ev.target.result;
-    };
-    reader.readAsDataURL(file);
-  }
-" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" type="file" accept="image/*">
+    <input name="poster" id="eventPosterInput" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" type="file" accept="image/*">
     <input type="hidden" name="posterBase64" id="eventPosterBase64">
   </div>
 
@@ -325,9 +314,25 @@
     document.getElementById('eventPosterInput')?.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (file) {
+        if (file.size > 2 * 1024 * 1024) {
+           alert("File too large. Please select an image under 2MB.");
+           e.target.value = '';
+           return;
+        }
         const reader = new FileReader();
         reader.onload = (ev) => {
-          document.getElementById('eventPosterBase64').value = ev.target.result;
+          const img = new Image();
+          img.onload = () => {
+             const canvas = document.createElement('canvas');
+             const MAX_WIDTH = 800;
+             const scaleSize = MAX_WIDTH / img.width;
+             canvas.width = MAX_WIDTH;
+             canvas.height = img.height * scaleSize;
+             const ctx = canvas.getContext('2d');
+             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+             document.getElementById('eventPosterBase64').value = canvas.toDataURL('image/jpeg', 0.8);
+          };
+          img.src = ev.target.result;
         };
         reader.readAsDataURL(file);
       }

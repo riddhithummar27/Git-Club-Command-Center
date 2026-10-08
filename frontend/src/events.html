@@ -368,7 +368,10 @@ function deleteEvent(btnElement) {
           }
         });
       
-      if (events.length === 0) return;
+      if (events.length === 0) {
+      container.innerHTML = '<div class="col-span-full p-8 text-center text-outline">No upcoming events found. Click + Create Event to add one!</div>';
+      return;
+}
       
       container.innerHTML = '';
       
