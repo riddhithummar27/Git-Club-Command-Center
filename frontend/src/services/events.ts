@@ -1,22 +1,14 @@
-import { collection, addDoc, getDocs, doc, updateDoc, arrayUnion, query, orderBy } from "firebase/firestore";
-import { db } from "../firebase";
-
-const withTimeout = (promise: any, ms: number, defaultRet: any) => {
-  return Promise.race([
-    promise,
-    new Promise((resolve) => setTimeout(() => resolve(defaultRet), ms))
-  ]);
-};
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 export const addEvent = async (eventData: any) => {
   try {
-    const p = addDoc(collection(db, "events"), {
-      ...eventData,
-      createdAt: new Date().toISOString()
+    const res = await fetch(`${API_URL}/events`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(eventData)
     });
-    // Don't await indefinitely
-    const docRef = await withTimeout(p, 5000, { id: 'local-' + Math.random() });
-    return docRef.id;
+    const data = await res.json();
+    return data.id;
   } catch (e) {
     console.error("Error adding event: ", e);
     throw e;
@@ -25,35 +17,24 @@ export const addEvent = async (eventData: any) => {
 
 export const fetchEvents = async () => {
   try {
-    const q = query(collection(db, "events"), orderBy("createdAt", "desc"));
-    const p = getDocs(q);
-    
-    // Timeout after 3 seconds so the UI never hangs
-    const querySnapshot: any = await withTimeout(p, 3000, null);
-    
-    if (!querySnapshot) {
-      console.warn("Firebase fetchEvents timed out. Falling back to local data.");
-      return [];
-    }
-    
-    const events: any[] = [];
-    querySnapshot.forEach((doc: any) => {
-      events.push({ id: doc.id, ...doc.data() });
-    });
+    const res = await fetch(`${API_URL}/events`);
+    if (!res.ok) throw new Error('Network error');
+    const events = await res.json();
     return events;
   } catch (e) {
     console.error("Error fetching events: ", e);
-    return []; // Return empty instead of throwing so UI renders
+    return []; 
   }
 };
 
 export const registerForEvent = async (eventId: string, user: { uid: string, name: string, email: string }) => {
   try {
-    const eventRef = doc(db, "events", eventId);
-    const p = updateDoc(eventRef, {
-      attendees: arrayUnion(user)
+    const res = await fetch(`${API_URL}/events/${eventId}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user })
     });
-    await withTimeout(p, 3000, null);
+    if (!res.ok) throw new Error('Failed to register');
   } catch (e) {
     console.error("Error registering for event: ", e);
     throw e;
