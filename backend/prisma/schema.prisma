@@ -45,13 +45,18 @@ model Event {
   description   String
   category      String
   date          DateTime
-  startTime     String
-  endTime       String
-  venue         String
-  capacity      Int
+  startTime     String?
+  endTime       String?
+  venue         String?
+  capacity      Int                 @default(100)
   status        String              @default("UPCOMING")
-  organizerId   String
-  organizer     User                @relation(fields: [organizerId], references: [id])
+  poster        String?
+  sheetLink     String?
+  link          String?
+  rounds        String?
+  audience      String?
+  organizerId   String?
+  organizer     User?               @relation(fields: [organizerId], references: [id])
   registrations EventRegistration[]
   createdAt     DateTime            @default(now())
   updatedAt     DateTime            @updatedAt
