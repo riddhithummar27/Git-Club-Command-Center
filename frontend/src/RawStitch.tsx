@@ -113,43 +113,11 @@ export default function RawStitch() {
 
 
       
-        // Profile picture handling
-        const fileInput = containerRef.current.querySelector('#profilePicInput');
-        const removeBtn = containerRef.current.querySelector('#removeProfilePicBtn');
-        const preview = containerRef.current.querySelector<HTMLImageElement>('#profilePicPreview');
-
-        if (fileInput && preview) {
-            fileInput.addEventListener('change', (e: any) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (ev: any) => {
-                        preview.src = ev.target.result;
-                        (window as any).GIT_CLUB_PROFILE.profilePic = ev.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-        if (removeBtn && preview) {
-            removeBtn.addEventListener('click', () => {
-                preview.src = "https://api.dicebear.com/7.x/notionists/svg?seed=user";
-                (window as any).GIT_CLUB_PROFILE.profilePic = preview.src;
-            });
-        }
-
-      
-        
-      try {
-         const localData = localStorage.getItem('userProfileData');
-         if (localData) {
-            (window as any).GIT_CLUB_PROFILE = JSON.parse(localData);
-         }
-      } catch(e) {}
+        // Profile picture handled in settings catch(e) {}
       const profile = (window as any).GIT_CLUB_PROFILE || {};
 
+        
         if (currentPath === 'settings') {
-           // Populate inputs
            const inputFirstName = containerRef.current.querySelector<HTMLInputElement>('#inputFirstName');
            const inputLastName = containerRef.current.querySelector<HTMLInputElement>('#inputLastName');
            const inputStudentId = containerRef.current.querySelector<HTMLInputElement>('#inputStudentId');
@@ -157,20 +125,17 @@ export default function RawStitch() {
            const roleCustom = containerRef.current.querySelector<HTMLInputElement>('#roleCustom');
            const inputPersonalEmail = containerRef.current.querySelector<HTMLInputElement>('#inputPersonalEmail');
            const bioTextarea = containerRef.current.querySelector<HTMLTextAreaElement>('#bioTextarea');
-             const inputUsername = containerRef.current.querySelector<HTMLInputElement>('#inputUsername');
-             const inputDepartment = containerRef.current.querySelector<HTMLInputElement>('#inputDepartment');
-             
-             if (inputUsername && profile.username) inputUsername.value = profile.username;
-             if (inputDepartment && profile.department) inputDepartment.value = profile.department;
-             const inputGithub = containerRef.current.querySelector<HTMLInputElement>('#inputGithub');
-             const inputLinkedin = containerRef.current.querySelector<HTMLInputElement>('#inputLinkedin');
-             
-             if (inputUsername && profile.username) inputUsername.value = profile.username;
-                 if (inputDepartment && profile.department) inputDepartment.value = profile.department;
-                 if (inputGithub && profile.github) inputGithub.value = profile.github;
-             if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
+           const inputUsername = containerRef.current.querySelector<HTMLInputElement>('#inputUsername');
+           const inputDepartment = containerRef.current.querySelector<HTMLInputElement>('#inputDepartment');
+           const inputGithub = containerRef.current.querySelector<HTMLInputElement>('#inputGithub');
+           const inputLinkedin = containerRef.current.querySelector<HTMLInputElement>('#inputLinkedin');
+           const preview = containerRef.current.querySelector<HTMLImageElement>('#profilePicPreview');
+           const fileInput = containerRef.current.querySelector<HTMLInputElement>('#profilePicInput');
+           const removeBtn = containerRef.current.querySelector<HTMLButtonElement>('#removeProfilePicBtn');
+           const topSaveBtn = containerRef.current.querySelector<HTMLElement>('#topSaveBtn');
+           const dockSaveBtn = containerRef.current.querySelector<HTMLElement>('#dockSaveBtn');
 
-
+           // Populate fields
            if (inputFirstName && profile.firstName) inputFirstName.value = profile.firstName;
            if (inputLastName && profile.lastName) inputLastName.value = profile.lastName;
            if (inputStudentId && profile.studentId) inputStudentId.value = profile.studentId;
@@ -178,136 +143,133 @@ export default function RawStitch() {
            if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
            if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
            if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
-                 if (inputUsername && profile.username) inputUsername.value = profile.username;
-                 if (inputDepartment && profile.department) inputDepartment.value = profile.department;
-                 if (inputGithub && profile.github) inputGithub.value = profile.github;
-                 if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
+           if (inputUsername && profile.username) inputUsername.value = profile.username;
+           if (inputDepartment && profile.department) inputDepartment.value = profile.department;
+           if (inputGithub && profile.github) inputGithub.value = profile.github;
+           if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
 
-           
-             // Hook save buttons
-             
-             
-             const topDiscardBtn = containerRef.current.querySelector('#topDiscardBtn');
-             const dockResetBtn = containerRef.current.querySelector('#dockResetBtn');
-             
-             const topEditBtn = containerRef.current.querySelector('#topEditBtn');
-             const dockEditBtn = containerRef.current.querySelector('#dockEditBtn');
-             
-             
-             
-             
-             
-             
-             const inputsToToggle = [
-               inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom, inputPersonalEmail, bioTextarea, inputGithub, inputLinkedin, inputUsername, inputDepartment
-             ];
+           // Ensure preview shows user avatar if saved
+           if (preview && (profile.profilePic || profile.avatar)) {
+              preview.src = profile.profilePic || profile.avatar;
+           }
 
-             const uploadPicLabel = containerRef.current.querySelector('#uploadPicLabel');
-             const removeProfilePicBtn = containerRef.current.querySelector('#removeProfilePicBtn');
-             
-             const toggleEditMode = (enable: boolean) => {
-               inputsToToggle.forEach(input => {
-                 if (input) {
-                   if (enable) {
-                     input.removeAttribute('disabled');
-                     input.classList.add('ring-1', 'ring-primary-container');
-                   } else {
-                     input.setAttribute('disabled', 'true');
-                     input.classList.remove('ring-1', 'ring-primary-container');
-                   }
+           // Make all inputs editable
+           const allInputs = [
+             inputFirstName, inputLastName, inputStudentId, roleSelect, roleCustom,
+             inputPersonalEmail, bioTextarea, inputGithub, inputLinkedin, inputUsername, inputDepartment
+           ];
+           allInputs.forEach(inp => {
+             if (inp) inp.removeAttribute('disabled');
+           });
+
+           // Show save buttons
+           if (topSaveBtn) topSaveBtn.classList.remove('hidden');
+           if (dockSaveBtn) dockSaveBtn.classList.remove('hidden');
+
+           // Profile photo upload handling
+           if (fileInput && preview) {
+              fileInput.addEventListener('change', (e: any) => {
+                 const file = e.target.files?.[0];
+                 if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (ev: any) => {
+                       const img = new Image();
+                       img.onload = () => {
+                          const canvas = document.createElement('canvas');
+                          const MAX_SIZE = 400;
+                          let width = img.width;
+                          let height = img.height;
+                          if (width > height) {
+                             if (width > MAX_SIZE) {
+                                height = Math.round((height * MAX_SIZE) / width);
+                                width = MAX_SIZE;
+                             }
+                          } else {
+                             if (height > MAX_SIZE) {
+                                width = Math.round((width * MAX_SIZE) / height);
+                                height = MAX_SIZE;
+                             }
+                          }
+                          canvas.width = width;
+                          canvas.height = height;
+                          const ctx = canvas.getContext('2d');
+                          ctx?.drawImage(img, 0, 0, width, height);
+                          const compressedUrl = canvas.toDataURL('image/jpeg', 0.85);
+                          preview.src = compressedUrl;
+                          profile.profilePic = compressedUrl;
+                          profile.avatar = compressedUrl;
+                          (window as any).GIT_CLUB_PROFILE = profile;
+                          localStorage.setItem('userProfileData', JSON.stringify(profile));
+                          
+                          // Sync all profile images in DOM
+                          containerRef.current?.querySelectorAll<HTMLImageElement>('img[alt="Profile"]').forEach(imgEl => {
+                             imgEl.src = compressedUrl;
+                          });
+                       };
+                       img.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
                  }
-               });
-               
-               if (enable) {
-                 topEditBtn?.classList.add('hidden');
-                 dockEditBtn?.classList.add('hidden');
-                 topSaveBtn?.classList.remove('hidden');
-                 topDiscardBtn?.classList.remove('hidden');
-                 dockSaveBtn?.classList.remove('hidden');
-                 dockResetBtn?.classList.remove('hidden');
-                 uploadPicLabel?.classList.remove('hidden');
-                 removeProfilePicBtn?.classList.remove('hidden');
-               } else {
-                 topEditBtn?.classList.remove('hidden');
-                 dockEditBtn?.classList.remove('hidden');
-                 topSaveBtn?.classList.add('hidden');
-                 topDiscardBtn?.classList.add('hidden');
-                 dockSaveBtn?.classList.add('hidden');
-                 dockResetBtn?.classList.add('hidden');
-                 uploadPicLabel?.classList.add('hidden');
-                 removeProfilePicBtn?.classList.add('hidden');
-               }
-             };
+              });
+           }
 
-             if (topEditBtn) topEditBtn.addEventListener('click', () => toggleEditMode(true));
-             if (dockEditBtn) dockEditBtn.addEventListener('click', () => toggleEditMode(true));
-
-             if (topDiscardBtn) topDiscardBtn.addEventListener('click', () => {
-               // Revert
-               if (inputFirstName && profile.firstName) inputFirstName.value = profile.firstName;
-               if (inputLastName && profile.lastName) inputLastName.value = profile.lastName;
-               if (inputStudentId && profile.studentId) inputStudentId.value = profile.studentId;
-               if (roleSelect && profile.role) roleSelect.value = profile.role;
-               if (roleCustom && profile.roleCustom) roleCustom.value = profile.roleCustom;
-               if (inputPersonalEmail && profile.email) inputPersonalEmail.value = profile.email;
-               if (bioTextarea && profile.bio) bioTextarea.value = profile.bio;
-                 if (inputUsername && profile.username) inputUsername.value = profile.username;
-                 if (inputDepartment && profile.department) inputDepartment.value = profile.department;
-                 if (inputGithub && profile.github) inputGithub.value = profile.github;
-                 if (inputLinkedin && profile.linkedin) inputLinkedin.value = profile.linkedin;
-               toggleEditMode(false);
-             });
-             
-             if (dockResetBtn) dockResetBtn.addEventListener('click', () => {
-               if (topDiscardBtn) (topDiscardBtn as HTMLElement).click();
-             });
-
-             // Old hook save buttons
-           const dockSaveBtn = containerRef.current.querySelector('#dockSaveBtn');
-           const topSaveBtn = containerRef.current.querySelector('#topSaveBtn');
+           // Remove photo handling
+           if (removeBtn && preview) {
+              removeBtn.addEventListener('click', () => {
+                 const defaultAvatar = `https://api.dicebear.com/7.x/notionists/svg?seed=${profile.firstName || 'user'}`;
+                 preview.src = defaultAvatar;
+                 profile.profilePic = defaultAvatar;
+                 profile.avatar = defaultAvatar;
+                 (window as any).GIT_CLUB_PROFILE = profile;
+                 localStorage.setItem('userProfileData', JSON.stringify(profile));
+                 containerRef.current?.querySelectorAll<HTMLImageElement>('img[alt="Profile"]').forEach(imgEl => {
+                    imgEl.src = defaultAvatar;
+                 });
+              });
+           }
 
            const triggerSave = async () => {
-                // Validation
-                const requiredInputs = [
-                  { el: inputFirstName, name: "First Name" },
-                  { el: inputLastName, name: "Last Name" },
-                  { el: inputStudentId, name: "Student ID" },
-                  { el: inputPersonalEmail, name: "Email" },
-                  { el: inputUsername, name: "Username" },
-                  { el: inputDepartment, name: "Department" },
-                  { el: inputGithub, name: "GitHub URL" },
-                  { el: inputLinkedin, name: "LinkedIn URL" }
-                ];
-                
-                for (const input of requiredInputs) {
-                   if (input.el && !input.el.value.trim()) {
-                      alert(input.name + ' is required!');
-                      input.el.focus();
-                      return; // Stop saving
-                   }
-                }
+              const requiredInputs = [
+                { el: inputFirstName, name: "First Name" },
+                { el: inputLastName, name: "Last Name" },
+                { el: inputStudentId, name: "Student ID" },
+                { el: inputPersonalEmail, name: "Email" },
+                { el: inputUsername, name: "Username" },
+                { el: inputDepartment, name: "Department" },
+                { el: inputGithub, name: "GitHub URL" },
+                { el: inputLinkedin, name: "LinkedIn URL" }
+              ];
+              
+              for (const input of requiredInputs) {
+                 if (input.el && !input.el.value.trim()) {
+                    alert(input.name + ' is required!');
+                    input.el.focus();
+                    return;
+                 }
+              }
 
-                if (inputFirstName) profile.firstName = inputFirstName.value;
-                if (inputLastName) profile.lastName = inputLastName.value;
-                if (inputStudentId) profile.studentId = inputStudentId.value;
-                if (roleSelect) profile.role = roleSelect.value;
-                if (roleCustom) profile.roleCustom = roleCustom.value;
-                if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
-                if (bioTextarea) profile.bio = bioTextarea.value;
-                if (inputUsername) profile.username = inputUsername.value;
-                if (inputDepartment) profile.department = inputDepartment.value;
-                if (inputGithub) profile.github = inputGithub.value;
-                if (inputLinkedin) profile.linkedin = inputLinkedin.value;
-                
-                if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saving...';
-                
-                const fullName = ((profile.firstName || '') + ' ' + (profile.lastName || '')).trim();
+              if (inputFirstName) profile.firstName = inputFirstName.value;
+              if (inputLastName) profile.lastName = inputLastName.value;
+              if (inputStudentId) profile.studentId = inputStudentId.value;
+              if (roleSelect) profile.role = roleSelect.value;
+              if (roleCustom) profile.roleCustom = roleCustom.value;
+              if (inputPersonalEmail) profile.email = inputPersonalEmail.value;
+              if (bioTextarea) profile.bio = bioTextarea.value;
+              if (inputUsername) profile.username = inputUsername.value;
+              if (inputDepartment) profile.department = inputDepartment.value;
+              if (inputGithub) profile.github = inputGithub.value;
+              if (inputLinkedin) profile.linkedin = inputLinkedin.value;
+
+              if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Saving...</span>';
+              if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saving...';
+
+              const fullName = ((profile.firstName || '') + ' ' + (profile.lastName || '')).trim();
               const memberData = {
                   name: fullName,
                   role: profile.roleCustom || profile.role || 'Member',
-                  department: profile.studentId || 'No ID',
+                  department: profile.department || profile.studentId || 'No ID',
                   email: profile.email || '',
-                  avatar: profile.profilePic || ''
+                  avatar: profile.profilePic || profile.avatar || ''
               };
 
               try {
@@ -319,24 +281,34 @@ export default function RawStitch() {
                           profile.firebaseId = newId;
                       }
                   }
-              } catch(e) { console.error('Firebase save failed', e); }
+              } catch(e) { console.error('Member save note:', e); }
 
               localStorage.setItem('userProfileData', JSON.stringify(profile));
               (window as any).GIT_CLUB_PROFILE = profile;
 
-              toggleEditMode(false);
+              // Immediately sync header
+              containerRef.current?.querySelectorAll('a[data-path="settings"]').forEach(link => {
+                 const nameEl = link.querySelector('.font-title-md');
+                 const roleEl = link.querySelector('.font-label-mono-sm');
+                 const imgEl = link.querySelector<HTMLImageElement>('img[alt="Profile"]');
+                 if (nameEl) nameEl.textContent = profile.firstName + ' ' + (profile.lastName || '');
+                 if (roleEl) roleEl.textContent = profile.role || profile.roleCustom || 'Admin & Tech Lead';
+                 if (imgEl && (profile.profilePic || profile.avatar)) imgEl.src = profile.profilePic || profile.avatar;
+              });
+
+              if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Saved!</span>';
               if (dockSaveBtn) dockSaveBtn.innerHTML = 'Saved!';
-              if (topSaveBtn) topSaveBtn.innerHTML = 'Changes Saved';
               setTimeout(() => {
-                 navigate('/dashboard');
-              }, 1000);
+                 if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Profile Changes</span>';
+                 if (dockSaveBtn) dockSaveBtn.innerHTML = 'Save Changes';
+              }, 2500);
            };
 
-           if (dockSaveBtn) dockSaveBtn.addEventListener('click', triggerSave);
            if (topSaveBtn) topSaveBtn.addEventListener('click', triggerSave);
+           if (dockSaveBtn) dockSaveBtn.addEventListener('click', triggerSave);
         }
 
-        // Sync global profile state across all pages on load
+// Sync global profile state across all pages on load
       
 
       if (profile && profile.role === '') profile.role = 'Admin & Tech Lead';
