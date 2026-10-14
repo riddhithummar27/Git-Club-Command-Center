@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad2","surface-container-high":"#2a2a2a","error":"#ffb4ab","outline-variant":"#5b403a","on-tertiary-fixed-variant":"#19512c","on-secondary-container":"#fff7f0","on-tertiary-container":"#003114","surface-container-highest":"#353534","on-background":"#e5e2e1","surface-tint":"#ffb4a3","surface-bright":"#393939","primary-fixed-dim":"#ffb4a3","surface-container-lowest":"#0e0e0e","on-tertiary":"#003918","surface-container-low":"#1c1b1b","on-tertiary-fixed":"#00210c","secondary-fixed-dim":"#f5bd58","on-primary-container":"#570c00","on-error":"#690005","on-primary-fixed":"#3d0600","surface":"#131313","on-primary":"#631000","tertiary-container":"#669d71","primary":"#ffb4a3","on-primary-fixed-variant":"#8b1a00","inverse-primary":"#b62500","surface-dim":"#131313","on-surface":"#e5e2e1","on-error-container":"#ffdad6","tertiary-fixed":"#b5f1be","primary-container":"#fd5832","on-secondary":"#422c00","background":"#131313","tertiary":"#9ad4a4","surface-variant":"#353534","on-surface-variant":"#e4beb6","secondary-container":"#976a00","tertiary-fixed-dim":"#9ad4a4","on-secondary-fixed":"#271900","inverse-surface":"#e5e2e1","on-secondary-fixed-variant":"#5f4100","outline":"#ab8981","secondary-fixed":"#ffdeaa","secondary":"#f5bd58","surface-container":"#201f1f","error-container":"#93000a","inverse-on-surface":"#313030"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","gutter-mobile":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","space-md":"1rem","space-xs":"0.25rem","gutter":"1.5rem","margin":"2rem"},fontFamily:{"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Inter"],"label-mono-md":["JetBrains Mono"],"label-mono-sm":["JetBrains Mono"],"title-md":["Plus Jakarta Sans"],"body-md":["Inter"],"headline-xl":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"800"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-mono-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"label-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"title-md":["18px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl":["40px",{"lineHeight":"48px","fontWeight":"700"}],"display-lg":["56px",{"lineHeight":"64px","fontWeight":"800"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}]}}}}</script><style id="gitclub-mobile-adjustments">
+@media (max-width: 1023px) {
+  html, body { width: 100%; min-width: 320px; overflow-x: hidden; }
+  header { left: 0 !important; padding-left: 12px !important; padding-right: 12px !important; }
+  main { padding-left: 12px !important; padding-right: 12px !important; overflow-x: clip; }
+  main .grid { grid-template-columns: minmax(0, 1fr) !important; }
+  main table { display: block; max-width: 100%; overflow-x: auto; }
+  main img, main canvas, main svg { max-width: 100%; }
+  #app-sidebar { width: min(84vw, 300px) !important; transform: translateX(-105%); }
+  #app-sidebar.gitclub-mobile-open { transform: translateX(0) !important; }
+  #mobile-overlay.gitclub-mobile-overlay-open { display: block !important; }
+}
+</style></head><body class="bg-background overflow-x-hidden font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside id="app-sidebar" class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="gitclub logo.png" class="h-8 w-auto object-contain" src="frontend/public/gitclub_logo.png"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface tracking-tight truncate">Git Club</span><span class="font-label-mono-sm text-label-mono-sm text-primary tracking-wide uppercase truncate">CHARUSAT HQ</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline flex items-center justify-between"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span></div></div><nav class="flex-1 px-space-sm space-y-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-title-md"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-title-md" data-path="dashboard" href="gitclub-mobile.html"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-body-md text-body-md font-medium">Command Center</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="events" href="gitclub-mobile-events.html"><span class="material-symbols-outlined text-[20px]">event</span><span class="font-body-md text-body-md font-medium">Events</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="members" href="gitclub-mobile-members.html"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md font-medium">Members</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="projects" href="gitclub-mobile-projects.html"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-body-md text-body-md font-medium">Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="announcements" href="gitclub-mobile-announcements.html"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-body-md text-body-md font-medium">Announcements</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics" href="gitclub-mobile-analytics.html"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-body-md text-body-md font-medium">Analytics</span></a><div class="my-space-sm pt-space-xs"><div class="h-[1px] bg-surface-container-highest mx-space-xs"></div></div><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="notifications" href="gitclub-mobile-notifications.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="font-body-md text-body-md font-medium">Notifications</span></div><span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm">4</span></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="messages" href="gitclub-mobile-messages.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">forum</span><span class="font-body-md text-body-md font-medium">Messages</span></div></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="gitclub-mobile-settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md font-medium">Settings</span></a></nav></div><div class="p-space-sm bg-surface-container-lowest border-t border-surface-container-highest">
+  <button onclick="if(confirm('Are you sure you want to log out?')) { localStorage.removeItem('auth'); window.location.href='/login'; }" class="w-full flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-error/10 hover:text-error transition-colors cursor-pointer group">
+    <span class="material-symbols-outlined text-[20px] group-hover:text-error transition-colors">logout</span>
+    <span class="font-body-md text-body-md font-medium group-hover:text-error transition-colors">Log Out</span>
+  </button>
+</div></aside><div id="mobile-overlay" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div><div class="lg:pl-64 flex flex-col min-h-screen w-full transition-all duration-300 overflow-x-hidden"><header class="fixed top-0 left-0 right-0 lg:left-64 h-16 z-30 bg-surface/85 backdrop-blur-xl z-30 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex items-center gap-space-sm md:gap-space-md"><button id="mobile-menu-btn" class="lg:hidden p-1.5 -ml-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">menu</span></button><div class="hidden sm:flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline"><span class="text-on-surface-variant">charusat</span><span>/</span><span class="text-primary font-medium">git-club-ops</span></div><button class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm hidden md:inline">Search or type command...</span><kbd class="hidden md:inline px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">⌘K</kbd></button></div><div class="flex items-center gap-2 sm:gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">shield_person</span><span class="text-on-surface font-label-mono-sm text-label-mono-sm">Role: Admin</span></div><button id="theme-toggle" class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Theme toggle"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><a href="gitclub-mobile-notifications.html" data-path="notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></a><a href="gitclub-mobile-settings.html" data-path="settings" class="flex items-center gap-space-sm pl-space-xs cursor-pointer group hover:opacity-80 transition-opacity"><div class="text-right hidden sm:block min-w-0"><div class="font-title-md text-body-sm text-on-surface font-semibold truncate leading-tight">Riddhi Thummar</div><div class="font-label-mono-sm text-label-mono-sm text-outline truncate leading-tight">Admin &amp; Tech Lead</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/></a></div></header><main class="relative pt-16 w-full min-h-screen pb-24 bg-background px-gutter"><div class="max-w-7xl mx-auto py-space-lg"><div class="flex flex-col w-full space-y-space-xl">
+<!-- TOP HERO BANNER & 3D SIGNATURE WORKSHOP CANVAS -->
+<section class="relative rounded-xl overflow-hidden bg-surface-container-low shadow-xl p-space-lg md:p-space-xl">
+<!-- Ambient directional glow -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 right-12 w-80 h-80 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center relative z-10">
+<!-- Left Column: Editorial Eyebrow, Hero Title & CTAs -->
+<div class="lg:col-span-7 flex flex-col space-y-space-md">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-highest text-primary font-label-mono-sm text-label-mono-sm tracking-wider uppercase">
+            GIT CLUB • CHARUSAT
+          </span>
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container text-tertiary font-label-mono-sm text-label-mono-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+<span>• ALL SYSTEMS OPERATIONAL • Updated just now</span>
+</div>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-none">
+          Where developers <br class="hidden sm:block"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">build together.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          Everything happening across Git Club - events, members, projects and activity, all in one place.
+        </p>
+<div class="pt-space-sm flex flex-wrap items-center gap-space-md">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-gradient-to-b from-primary to-primary-container text-on-primary-container font-title-md text-title-md shadow-md hover:brightness-110 active:translate-y-0.5 transition-all" onclick="toggleModal('modal-event')">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Create Event</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-bright transition-all" onclick="document.getElementById('activity-telemetry').scrollIntoView({behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Explore Activity</span>
+</button>
+<span class="font-label-mono-sm text-label-mono-sm text-outline hidden sm:inline-block">
+            
+</span>
+</div>
+</div>
+<!-- Right Column: 3D Orbital Emblem & Branch Node Topology -->
+<div class="lg:col-span-5 flex justify-center items-center py-space-md lg:py-0">
+<div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+<!-- Outer orbital vector guides -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none animate-[spin_60s_linear_infinite]" viewbox="0 0 320 320">
+<circle cx="160" cy="160" fill="none" opacity="0.25" r="140" stroke="#ab8981" stroke-dasharray="4 6" stroke-width="1"></circle>
+<circle cx="160" cy="160" fill="none" opacity="0.35" r="110" stroke="#fd5832" stroke-dasharray="2 12" stroke-width="1.5"></circle>
+</svg>
+<!-- Branch Spine SVG connecting satellite nodes -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 320 320">
+<path d="M 160 50 L 160 160 L 270 160" fill="none" opacity="0.3" stroke="#ab8981" stroke-width="2"></path>
+<path d="M 160 160 L 50 160 L 50 260" fill="none" opacity="0.45" stroke="#fd5832" stroke-width="2"></path>
+<path d="M 160 160 L 250 250" fill="none" opacity="0.5" stroke="#9ad4a4" stroke-dasharray="3 3" stroke-width="2"></path>
+</svg>
+<!-- Core 3D Disc Emblem -->
+<div class="relative z-20 w-36 h-36 sm:w-44 sm:h-44 rounded-full p-2 bg-gradient-to-br from-primary-fixed to-primary-container shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_24px_rgba(253,88,50,0.35)] flex items-center justify-center transform hover:scale-105 transition-transform duration-500">
+<div class="w-full h-full rounded-full bg-surface-container-lowest flex items-center justify-center text-center overflow-hidden">
+  <img alt="Git Club Emblem Logo" class="w-full h-full object-cover filter drop-shadow" src="frontend/public/gitclub_logo.png"/>
+</div>
+</div>
+<!-- Satellite Nodes with telemetry badges -->
+<!-- Node 1: Members (North) -->
+<div class="absolute top-2 left-1/2 -translate-x-1/2 px-space-sm py-1 rounded-full bg-surface-container-highest shadow-md flex items-center gap-1.5 z-30">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold">MEMBERS: 0</span>
+</div>
+<!-- Node 2: Events (East) -->
+<div class="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 px-space-sm py-1 rounded-full bg-surface-container-highest shadow-md flex items-center gap-1.5 z-30">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold">EVENTS: 0</span>
+</div>
+<!-- Node 3: Projects (South-West) -->
+<div class="absolute bottom-2 left-4 px-space-sm py-1 rounded-full bg-surface-container-highest shadow-md flex items-center gap-1.5 z-30">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold">PROJECTS: 0</span>
+</div>
+<!-- Node 4 Removed -->
+</div>
+</div>
+</div>
+</section>
+<!-- METRICS -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mb-space-lg">
+    <!-- Metric 1: MEMBERS -->
+    <div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+      <div class="flex items-center justify-between">
+        <div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[18px]">group</span>
+        </div>
+      </div>
+      <div class="mt-space-sm">
+        <div id="metric-total-members" class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">0</div>
+        <div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Total Members</div>
+      </div>
+    </div>
+    
+    <!-- Metric 2: EVENTS -->
+    <div class="relative p-space-md rounded-xl bg-surface-container-low shadow-lg hover:shadow-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+      <div class="flex items-center justify-between">
+        <div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+        </div>
+      </div>
+      <div class="mt-space-sm">
+        <div id="metric-total-events" class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">0</div>
+        <div class="font-title-md text-title-md text-on-surface-variant font-medium mt-0.5">Total Events</div>
+      </div>
+    </div>
+  </section>
+  <!-- SPLIT WORKBENCH -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+    <!-- LEFT (8 cols): RECENT MEMBERS -->
+    <div class="lg:col-span-8 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
+      <div class="flex items-center justify-between">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Recent Members</h2>
+      </div>
+      <div id="dashboard-recent-members" class="space-y-space-sm overflow-y-auto max-h-[400px] custom-scrollbar">
+        <div class="p-space-md rounded-lg bg-surface-container shadow text-outline text-center">Loading members...</div>
+      </div>
+    </div>
+    
+    <!-- RIGHT (4 cols): WHAT'S NEXT (UPCOMING EVENTS PIPELINE) -->
+    <div class="lg:col-span-4 flex flex-col space-y-space-md p-space-md lg:p-space-lg rounded-xl bg-surface-container-low shadow-lg">
+      <div class="flex items-center justify-between">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">What's Next</h2>
+        <button class="p-1 rounded text-primary hover:bg-surface-container-high transition-colors" onclick="toggleModal('modal-event')" title="Create New Event">
+          <span class="material-symbols-outlined text-[20px]">add</span>
+        </button>
+      </div>
+      <div id="dashboard-upcoming-events" class="space-y-space-md flex-1 overflow-y-auto max-h-[400px] custom-scrollbar">
+        <div class="p-space-md rounded-lg bg-surface-container shadow flex items-center justify-center text-outline">Loading events...</div>
+      </div>
+    </div>
+  </div>
+  <!-- INTERACTIVE MODAL: CREATE NEW EVENT -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md p-space-md" id="modal-event">
+  <div class="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl p-space-lg flex flex-col space-y-space-md transform transition-all">
+    <div class="flex items-center justify-between">
+      <h2 class="font-headline-sm text-title-lg font-semibold flex items-center gap-2 text-on-surface">
+        <span class="material-symbols-outlined text-[#fd5832] text-[24px]">calendar_today</span> Create New Club Event
+      </h2>
+      <button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container transition-colors" onclick="toggleModal('modal-event')">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+    
+    <form class="space-y-space-md" onsubmit="event.preventDefault(); 
+    const formEl = event.target;
+
+    (async () => {
+      const btn = formEl.querySelector('button[type=\'submit\']');
+      const originalText = btn ? btn.innerHTML : 'Deploy';
+      if (btn) { btn.innerHTML = 'Saving...'; btn.disabled = true; }
+      
+      try {
+        const fd = new FormData(formEl); 
+        const audienceNodes = formEl.querySelectorAll('input[type=checkbox]:checked');
+        const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
+        let category = fd.get('category');
+        if (category === 'Other') category = fd.get('categoryOther');
+        
+        const newEvent = { 
+          id: 'EVT-' + Math.floor(1000 + Math.random() * 9000), 
+          name: fd.get('name'), 
+          date: fd.get('startDate') || fd.get('date'), 
+          endDate: fd.get('endDate'),
+          category: category, 
+          link: fd.get('link'),
+          sheetLink: fd.get('sheetLink'), 
+          capacity: fd.get('capacity'), 
+          audience: audience, 
+          rounds: fd.get('rounds'), 
+          desc: fd.get('desc'),
+          poster: fd.get('posterBase64'),
+          description: fd.get('desc'),
+          status: 'PLANNING'
+        };
+        
+        window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || []; 
+        window.GIT_CLUB_EVENTS.push(newEvent); 
+        
+        
+          if (window.firebaseAddEvent) {
+            await window.firebaseAddEvent(newEvent);
+          }
+toggleModal('modal-event'); 
+        triggerFeedback('Event created & staged to main calendar!'); 
+        setTimeout(() => {
+          const link = document.querySelector('a[data-path=events]');
+          if (link) link.click();
+        }, 800);
+      } catch (err) {
+        console.error(err);
+        alert('Error saving event: ' + err.message);
+      } finally {
+        if (btn) { btn.innerHTML = originalText; btn.disabled = false; }
+      }
+    })();
+  ">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Event Name</label>
+      <input id="eventNameDashboard" name="name" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. Open Source Hack Night" required="" type="text">
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Category</label>
+      <select name="category" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors cursor-pointer">
+        <option>Workshop</option>
+        <option>Hackathon</option>
+        <option>Competition</option>
+        <option>Community Talk</option>
+        <option>Social Meetup</option>
+        <option>Other</option>
+      </select>
+      <input name="categoryOther" type="text" placeholder="Please specify..." class="w-full mt-2 bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors hidden" />
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Starts From</label>
+      <input name="startDate" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="datetime-local">
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Ends From</label>
+      <input name="endDate" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="datetime-local">
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Capacity</label>
+      <input name="capacity" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" required="" type="number" value="100">
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Audience</label>
+      <div class="flex flex-col gap-2 p-2 bg-surface-container-lowest border border-outline/20 rounded">
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="All Students" class="accent-primary" /> All Students (Beginner)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="Intermediate" class="accent-primary" /> Intermediate (Some Exp)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="Advanced" class="accent-primary" /> Advanced (Domain Experts)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-body-sm text-on-surface-variant hover:text-on-surface">
+          <input type="checkbox" value="Core Team" class="accent-primary" /> Core Team Only
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+    
+      <div class="flex flex-col gap-1">
+        <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Google Sheet Link (Responses)</label>
+        <input name="sheetLink" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://docs.google.com/spreadsheets/..." type="url">
+      </div>
+<div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Number of Rounds</label>
+      <input name="rounds" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="e.g. 1" required="" type="number" min="1">
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Registration Link (Optional)</label>
+      <input name="link" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" placeholder="https://forms.gle/..." type="url">
+    </div>
+  </div>
+
+  
+  <div class="flex flex-col gap-1">
+    <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Event Poster (Optional)</label>
+    <input name="poster" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-2.5 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-container file:text-on-primary-container hover:file:bg-primary cursor-pointer" type="file" accept="image/*">
+  </div>
+
+  
+  <div class="flex flex-col gap-1">
+    <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Event Poster</label>
+    <input name="poster" id="eventPosterInput" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors" type="file" accept="image/*">
+    <input type="hidden" name="posterBase64" id="eventPosterBase64">
+  </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="font-label-mono-sm text-outline uppercase tracking-wider text-[10px] pl-1">Description</label>
+    <textarea id="eventDescDashboard" name="desc" class="w-full bg-surface-container-lowest text-on-surface border border-outline/20 px-space-md py-3 rounded font-body-md text-body-md focus:outline-none focus:border-[#fd5832] focus:ring-1 focus:ring-[#fd5832] transition-colors min-h-[100px] resize-y" placeholder="Brief details about the event..." required=""></textarea>
+  </div>
+  
+  <!-- Buttons -->
+  <div class="flex items-center justify-end gap-space-sm pt-space-md">
+    <button class="px-space-md py-2.5 rounded bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-container-highest transition-colors cursor-pointer" onclick="toggleModal('modal-event')" type="button">Cancel</button>
+    <button class="px-space-md py-2.5 rounded bg-[#fd5832] text-white font-title-md text-body-md hover:brightness-110 transition-all cursor-pointer shadow-md" type="submit">Deploy Event Hook</button>
+  </div>
+</form>
+  </div>
+</div>
+<!-- INTERACTIVE MODAL: COMMAND PALETTE (CMD + K) -->
+<!-- TOAST NOTIFICATION CONTAINER -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 hidden px-space-md py-space-sm rounded-full bg-surface-container-highest/95 backdrop-blur shadow-2xl text-on-surface font-label-mono-sm text-label-mono-sm flex items-center gap-space-sm transition-all" id="toast-notification">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span id="toast-text">Operation completed.</span>
+</div>
+<!-- MICRO-INTERACTIONS LOGIC -->
+<script>
+
+    document.getElementById('eventPosterInput')?.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        if (file.size > 2 * 1024 * 1024) {
+           alert("File too large. Please select an image under 2MB.");
+           e.target.value = '';
+           return;
+        }
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+             const canvas = document.createElement('canvas');
+             const MAX_WIDTH = 800;
+             const scaleSize = MAX_WIDTH / img.width;
+             canvas.width = MAX_WIDTH;
+             canvas.height = img.height * scaleSize;
+             const ctx = canvas.getContext('2d');
+             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+             document.getElementById('eventPosterBase64').value = canvas.toDataURL('image/jpeg', 0.8);
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function toggleModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.toggle('hidden');
+        if (!modal.classList.contains('hidden')) {
+          const input = modal.querySelector('input');
+          if (input) setTimeout(() => input.focus(), 50);
+        }
+      }
+    }
+
+    function triggerFeedback(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-text');
+      if (toast && text) {
+        text.innerText = msg;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3200);
+      }
+    }
+
+    function setChartMode(mode) {
+      document.querySelectorAll('#chart-tabs .chart-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+        btn.classList.add('text-on-surface-variant');
+      });
+      event.target.classList.remove('text-on-surface-variant');
+      event.target.classList.add('bg-primary-container', 'text-on-primary-container');
+      
+      const line = document.getElementById('chart-line');
+      const area = document.getElementById('chart-area');
+      if (mode === 'events') {
+        line.setAttribute('points', '40,190 120,160 200,180 280,110 360,130 440,70 520,85 600,45 680,60 760,20');
+        area.setAttribute('points', '40,240 40,190 120,160 200,180 280,110 360,130 440,70 520,85 600,45 680,60 760,20 760,240');
+      } else if (mode === 'members') {
+        line.setAttribute('points', '40,210 120,190 200,140 280,130 360,95 440,80 520,60 600,30 680,40 760,15');
+        area.setAttribute('points', '40,240 40,210 120,190 200,140 280,130 360,95 440,80 520,60 600,30 680,40 760,15 760,240');
+      } else if (mode === 'projects') {
+        line.setAttribute('points', '40,220 120,200 200,190 280,170 360,140 440,120 520,110 600,90 680,75 760,50');
+        area.setAttribute('points', '40,240 40,220 120,200 200,190 280,170 360,140 440,120 520,110 600,90 680,75 760,50 760,240');
+      }
+    }
+
+    // Global Key Listener for Command Palette (CMD+K / Ctrl+K and ESC)
+    
+  </script>
+</div></div></main></div><div class="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-1 sm:gap-space-xs p-1 sm:p-1.5 rounded-full bg-surface-container-highest/95 max-w-[calc(100vw-1.5rem)] overflow-x-auto backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
+  <a href="gitclub-mobile-events.html" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
+  </a>
+  <a href="gitclub-mobile-members.html" data-path="members" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span>
+  </a>
+  <a href="gitclub-mobile-projects.html" data-path="projects" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span>
+  </a>
+  <a href="gitclub-mobile-announcements.html" data-path="announcements" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span>
+  </a>
+    <a href="gitclub-mobile-messages.html" data-path="messages" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+      <span class="material-symbols-outlined text-[18px]">forum</span><span>Messages</span>
+    </a>
+</div>
+  <script>
+    async function initDashboard() {
+      if (window.firebaseFetchEvents && window.firebaseFetchMembers) {
+        try {
+          const events = await window.firebaseFetchEvents();
+          document.getElementById('metric-total-events').innerText = events.length;
+          
+          const upcomingContainer = document.getElementById('dashboard-upcoming-events');
+          if (upcomingContainer) {
+            upcomingContainer.innerHTML = '';
+            if (events.length === 0) {
+              upcomingContainer.innerHTML = '<div class="p-4 text-center text-outline">No upcoming events</div>';
+            } else {
+              events.slice(0, 5).forEach(evt => {
+                const d = new Date(evt.date);
+                const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                
+                upcomingContainer.insertAdjacentHTML('beforeend', `
+                  <div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex flex-col space-y-space-xs">
+                    <div class="flex items-center justify-between">
+                      <span class="px-space-xs py-0.5 rounded bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm font-bold">${evt.category || 'Event'}</span>
+                      <span class="font-label-mono-sm text-label-mono-sm text-outline">${dateStr}</span>
+                    </div>
+                    <h3 class="font-title-md text-title-md text-on-surface font-semibold">${evt.name || 'Unnamed Event'}</h3>
+                  </div>
+                `);
+              });
+            }
+          }
+          
+          const members = await window.firebaseFetchMembers();
+          document.getElementById('metric-total-members').innerText = members.length;
+          
+          const membersContainer = document.getElementById('dashboard-recent-members');
+          if (membersContainer) {
+            membersContainer.innerHTML = '';
+            if (members.length === 0) {
+              membersContainer.innerHTML = '<div class="p-4 text-center text-outline">No members found</div>';
+            } else {
+              members.slice(0, 6).forEach(m => {
+                membersContainer.insertAdjacentHTML('beforeend', `
+                  <div class="p-space-md rounded-lg bg-surface-container shadow hover:bg-surface-container-high transition-all flex items-center gap-space-md">
+                    <img class="w-10 h-10 rounded-full object-cover shadow-sm" src="https://api.dicebear.com/7.x/notionists/svg?seed=${m.name}"/>
+                    <div class="flex flex-col min-w-0">
+                      <span class="font-title-md text-title-md text-on-surface font-bold truncate">${m.name}</span>
+                      <span class="font-label-mono-sm text-label-mono-sm text-primary font-medium truncate">${m.role}</span>
+                    </div>
+                  </div>
+                `);
+              });
+            }
+          }
+        } catch(e) {
+          console.error("Dashboard init error", e);
+        }
+      }
+    }
+    
+    // Run on load
+    setTimeout(initDashboard, 500);
+  </script>
+
+<script id="gitclub-mobile-menu">
+(() => {
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('mobile-overlay');
+  const button = document.getElementById('mobile-menu-btn');
+  if (!sidebar || !overlay || !button) return;
+  const closeMenu = () => {
+    sidebar.classList.remove('gitclub-mobile-open');
+    overlay.classList.remove('gitclub-mobile-overlay-open');
+    document.body.style.overflow = '';
+  };
+  button.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('gitclub-mobile-open');
+    overlay.classList.toggle('gitclub-mobile-overlay-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  overlay.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a[data-path]').forEach(link => link.addEventListener('click', closeMenu));
+})();
+</script></body></html>...

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com">
+  window.openEventDrawer = (evt) => {
+    const drawer = document.getElementById('eventDetailDrawer');
+    if (drawer) {
+      document.getElementById('drawerEventTitle').innerText = evt.name || 'Event Details';
+      const content = drawer.querySelector('.p-space-lg.space-y-space-md');
+      if (content) {
+         content.innerHTML = `
+           ${evt.poster ? `<img src="${evt.poster}" class="w-full h-48 object-cover rounded-lg mb-4" />` : ''}
+           <p class="text-on-surface-variant">${evt.desc || 'No description provided.'}</p>
+           <ul class="space-y-2 mt-4 text-sm text-on-surface">
+             <li><strong>Date & Time:</strong> ${new Date(evt.date).toLocaleString()}</li>
+             <li><strong>Capacity:</strong> ${evt.capacity || 'N/A'}</li>
+             <li><strong>Audience:</strong> ${evt.audience || 'All'}</li>
+           </ul>
+         `;
+      }
+      drawer.classList.remove('translate-x-full');
+    }
+  };
+
+</script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad2","surface-container-high":"#2a2a2a","error":"#ffb4ab","outline-variant":"#5b403a","on-tertiary-fixed-variant":"#19512c","on-secondary-container":"#fff7f0","on-tertiary-container":"#003114","surface-container-highest":"#353534","on-background":"#e5e2e1","surface-tint":"#ffb4a3","surface-bright":"#393939","primary-fixed-dim":"#ffb4a3","surface-container-lowest":"#0e0e0e","on-tertiary":"#003918","surface-container-low":"#1c1b1b","on-tertiary-fixed":"#00210c","secondary-fixed-dim":"#f5bd58","on-primary-container":"#570c00","on-error":"#690005","on-primary-fixed":"#3d0600","surface":"#131313","on-primary":"#631000","tertiary-container":"#669d71","primary":"#ffb4a3","on-primary-fixed-variant":"#8b1a00","inverse-primary":"#b62500","surface-dim":"#131313","on-surface":"#e5e2e1","on-error-container":"#ffdad6","tertiary-fixed":"#b5f1be","primary-container":"#fd5832","on-secondary":"#422c00","background":"#131313","tertiary":"#9ad4a4","surface-variant":"#353534","on-surface-variant":"#e4beb6","secondary-container":"#976a00","tertiary-fixed-dim":"#9ad4a4","on-secondary-fixed":"#271900","inverse-surface":"#e5e2e1","on-secondary-fixed-variant":"#5f4100","outline":"#ab8981","secondary-fixed":"#ffdeaa","secondary":"#f5bd58","surface-container":"#201f1f","error-container":"#93000a","inverse-on-surface":"#313030"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","gutter-mobile":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","space-md":"1rem","space-xs":"0.25rem","gutter":"1.5rem","margin":"2rem"},fontFamily:{"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Inter"],"label-mono-md":["JetBrains Mono"],"label-mono-sm":["JetBrains Mono"],"title-md":["Plus Jakarta Sans"],"body-md":["Inter"],"headline-xl":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"800"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-mono-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"label-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"title-md":["18px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl":["40px",{"lineHeight":"48px","fontWeight":"700"}],"display-lg":["56px",{"lineHeight":"64px","fontWeight":"800"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}]}}}}</script><style id="gitclub-mobile-adjustments">
+@media (max-width: 1023px) {
+  html, body { width: 100%; min-width: 320px; overflow-x: hidden; }
+  header { left: 0 !important; padding-left: 12px !important; padding-right: 12px !important; }
+  main { padding-left: 12px !important; padding-right: 12px !important; overflow-x: clip; }
+  main .grid { grid-template-columns: minmax(0, 1fr) !important; }
+  main table { display: block; max-width: 100%; overflow-x: auto; }
+  main img, main canvas, main svg { max-width: 100%; }
+  #app-sidebar { width: min(84vw, 300px) !important; transform: translateX(-105%); }
+  #app-sidebar.gitclub-mobile-open { transform: translateX(0) !important; }
+  #mobile-overlay.gitclub-mobile-overlay-open { display: block !important; }
+}
+</style></head><body class="bg-background overflow-x-hidden font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside id="app-sidebar" class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="gitclub logo.png" class="h-8 w-auto object-contain" src="frontend/public/gitclub_logo.png"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface tracking-tight truncate">Git Club</span><span class="font-label-mono-sm text-label-mono-sm text-primary tracking-wide uppercase truncate">CHARUSAT HQ</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline flex items-center justify-between"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span></div></div><nav class="flex-1 px-space-sm space-y-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-title-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="gitclub-mobile.html"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-body-md text-body-md font-medium">Command Center</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-title-md" data-path="events" href="gitclub-mobile-events.html"><span class="material-symbols-outlined text-[20px]">event</span><span class="font-body-md text-body-md font-medium">Events</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="members" href="gitclub-mobile-members.html"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md font-medium">Members</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="projects" href="gitclub-mobile-projects.html"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-body-md text-body-md font-medium">Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="announcements" href="gitclub-mobile-announcements.html"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-body-md text-body-md font-medium">Announcements</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics" href="gitclub-mobile-analytics.html"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-body-md text-body-md font-medium">Analytics</span></a><div class="my-space-sm pt-space-xs"><div class="h-[1px] bg-surface-container-highest mx-space-xs"></div></div><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="notifications" href="gitclub-mobile-notifications.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="font-body-md text-body-md font-medium">Notifications</span></div><span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm">4</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="gitclub-mobile-settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md font-medium">Settings</span></a></nav></div><div class="p-space-sm bg-surface-container-lowest border-t border-surface-container-highest">
+  <button onclick="if(confirm('Are you sure you want to log out?')) { localStorage.removeItem('auth'); window.location.href='/login'; }" class="w-full flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-error/10 hover:text-error transition-colors cursor-pointer group">
+    <span class="material-symbols-outlined text-[20px] group-hover:text-error transition-colors">logout</span>
+    <span class="font-body-md text-body-md font-medium group-hover:text-error transition-colors">Log Out</span>
+  </button>
+
+</div></aside><div id="mobile-overlay" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div><div class="lg:pl-64 flex flex-col min-h-screen w-full transition-all duration-300 overflow-x-hidden"><header class="fixed top-0 left-0 right-0 lg:left-64 h-16 z-30 bg-surface/85 backdrop-blur-xl z-30 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex items-center gap-space-sm md:gap-space-md"><button id="mobile-menu-btn" class="lg:hidden p-1.5 -ml-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">menu</span></button><div class="hidden sm:flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline"><span class="text-on-surface-variant">charusat</span><span>/</span><span class="text-primary font-medium">git-club-ops</span></div><button class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm hidden md:inline">Search or type command...</span><kbd class="hidden md:inline px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">⌘K</kbd></button></div><div class="flex items-center gap-2 sm:gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">shield_person</span><span class="text-on-surface font-label-mono-sm text-label-mono-sm">Role: Admin</span></div><button id="theme-toggle" class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Theme toggle"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><a href="gitclub-mobile-notifications.html" data-path="notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></a><a href="gitclub-mobile-settings.html" data-path="settings" class="flex items-center gap-space-sm pl-space-xs cursor-pointer group hover:opacity-80 transition-opacity"><div class="text-right hidden sm:block min-w-0"><div class="font-title-md text-body-sm text-on-surface font-semibold truncate leading-tight">Riddhi Thummar</div><div class="font-label-mono-sm text-label-mono-sm text-outline truncate leading-tight">Admin &amp; Tech Lead</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/></a></div></header><main class="relative pt-16 w-full min-h-screen pb-24 bg-background px-gutter"><div class="max-w-7xl mx-auto py-space-lg"><div class="flex flex-col w-full">
+<!-- Top Command Telemetry Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-primary tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+
+</div>
+<h1 class="font-display-lg text-headline-xl md:text-display-lg text-on-surface tracking-tight uppercase">
+        EVENTS
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+        Everything happening inside Git Club. Real-time scheduling, attendee rosters, commit clinics, and campus hackathons at CHARUSAT.
+      </p>
+</div>
+<!-- Right Quick Actions -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-md shadow-md hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer" onclick="document.getElementById('createEventModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Create Event</span>
+</button>
+<button class="p-space-sm rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all cursor-pointer" title="Calendar Feed Export">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</button>
+
+</div>
+</div>
+<!-- Filter & Search Console -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm mb-space-lg space-y-space-md">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search Input with Shell-styled Prompt -->
+<div class="relative flex-1">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-label-mono-sm text-label-mono-sm text-primary font-bold">❯</span>
+<input class="w-full bg-surface-container-lowest text-on-surface pl-8 pr-10 py-2.5 rounded-lg font-label-mono-md text-label-mono-md focus:outline-none focus:bg-surface-container transition-all" id="eventSearchInput" placeholder="Search events by name, track, or organizer..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">filter_list</span>
+</div>
+<!-- Status Filters Tabs -->
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded-lg self-start lg:self-auto overflow-x-auto max-w-full">
+<button class="status-pill active-status px-space-sm py-1.5 rounded font-label-mono-sm text-label-mono-sm bg-primary-container text-on-primary-container transition-all cursor-pointer">
+          Upcoming (0)
+        </button>
+<button class="status-pill px-space-sm py-1.5 rounded font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer">
+          In Progress (0)
+        </button>
+<button class="status-pill px-space-sm py-1.5 rounded font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer">
+          Completed (0)
+        </button>
+<button class="status-pill px-space-sm py-1.5 rounded font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer">
+          Drafts (0)
+        </button>
+</div>
+</div>
+<!-- Category Pills Row -->
+<div class="flex items-center justify-between gap-space-md pt-space-xs overflow-x-auto">
+<div class="flex items-center gap-space-xs min-w-max">
+
+<button class="category-pill active-cat px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-mono-sm text-label-mono-sm cursor-pointer transition-all">All Tracks</button>
+<button class="category-pill px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm cursor-pointer transition-all">Workshop</button>
+<button class="category-pill px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm cursor-pointer transition-all">Competition</button>
+<button class="category-pill px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm cursor-pointer transition-all">Hackathon</button>
+<button class="category-pill px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm cursor-pointer transition-all">Community</button>
+<button class="category-pill px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm cursor-pointer transition-all">Social</button>
+</div>
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline min-w-max">
+<span>SORT:</span>
+<select class="bg-surface-container-high text-on-surface px-2 py-1 rounded cursor-pointer focus:outline-none">
+<option>Chronological (Soonest)</option>
+<option>Capacity (Highest)</option>
+<option>Recently Added</option>
+</select>
+</div>
+</div>
+</div>
+<!-- UPCOMING EVENTS GRID -->
+<div class="mb-space-xl">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Upcoming Assemblies</h2>
+</div>
+<span id="event-view-count" class="font-label-mono-sm text-label-mono-sm text-outline"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+    <div class="col-span-full p-8 text-center text-outline">Loading events...</div>
+  </div>
+<!-- EVENT DETAIL DRAWER (Overlay / Slide-in HUD) -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-sm hidden flex justify-end transition-opacity" id="eventDetailDrawer">
+<div class="w-full max-w-2xl bg-surface-container-low h-full overflow-y-auto shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
+<!-- Drawer Top Bar -->
+<div>
+<div class="p-space-lg bg-surface-container flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[20px]">event_note</span>
+</div>
+<div>
+
+<h2 class="font-title-md text-title-md text-on-surface font-bold" id="drawerEventTitle">Git &amp; GitHub Workshop</h2>
+</div>
+</div>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer" onclick="closeDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg space-y-space-lg">
+<!-- Summary Header Block -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest space-y-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<span class="px-2 py-0.5 rounded bg-primary/20 text-primary font-label-mono-sm text-label-mono-sm font-semibold">WORKSHOP TRACK</span>
+<span class="font-label-mono-sm text-label-mono-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 120 / 150 Checked-in
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs font-label-mono-sm text-label-mono-sm pt-space-xs">
+<div class="text-on-surface"><span class="text-outline">DATE:</span> 03 OCT, 4:00 PM IST</div>
+<div class="text-on-surface"><span class="text-outline">LOCATION:</span> Auditorium A, CHARUSAT</div>
+<div class="text-on-surface"><span class="text-outline">LEAD:</span> Riddhi Thummar</div>
+<div class="text-on-surface"><span class="text-outline">BRANCH:</span> workshop/git-101</div>
+</div>
+</div>
+<!-- Drawer Bottom Action Footer -->
+<div class="p-space-md bg-surface-container sticky bottom-0 flex items-center gap-space-sm shadow-xl">
+<button class="flex-1 py-2.5 px-space-md rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm flex items-center justify-center gap-2 hover:brightness-110 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">qr_code_scanner</span>
+<span>Open QR Check-In Scanner</span>
+</button>
+<button class="py-2.5 px-space-md rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-sm flex items-center justify-center gap-2 hover:bg-surface-bright transition-all cursor-pointer" onclick="copyShareLink()">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span id="shareBtnText">Share Link</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Client-side Interactive Behavior -->
+
+<script>
+
+function parseCSV(str) {
+  const arr = [];
+  let quote = false;
+  let col, c;
+  for (let row = col = c = 0; c < str.length; c++) {
+    let cc = str[c], nc = str[c+1];
+    arr[row] = arr[row] || [];
+    arr[row][col] = arr[row][col] || '';
+    if (cc == '"' && quote && nc == '"') { arr[row][col] += cc; ++c; continue; }
+    if (cc == '"') { quote = !quote; continue; }
+    if (cc == ',' && !quote) { ++col; continue; }
+    if (cc == '\r' && nc == '\n' && !quote) { ++row; col = 0; ++c; continue; }
+    if (cc == '\n' && !quote) { ++row; col = 0; continue; }
+    if (cc == '\r' && !quote) { ++row; col = 0; continue; }
+    arr[row][col] += cc;
+  }
+  return arr;
+}
+
+window.viewEventResponses = async (link) => {
+  let csvLink = link;
+  const match = link.match(/\/d\/([a-zA-Z0-9-_]+)/);
+  if (match && match[1]) {
+    csvLink = `https://docs.google.com/spreadsheets/d/${match[1]}/gviz/tq?tqx=out:csv`;
+  } else {
+    alert("Please provide a valid Google Sheets link");
+    return;
+  }
+  
+  try {
+    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(csvLink);
+    const res = await fetch(proxyUrl);
+    if (!res.ok) throw new Error("Could not fetch sheet. Make sure it is 'Anyone with the link can view'.");
+    const text = await res.text();
+    const rows = parseCSV(text);
+    
+    let tableHtml = '<div class="overflow-x-auto"><table class="w-full text-left border-collapse whitespace-nowrap">';
+    rows.forEach((row, i) => {
+      if (i === 0) {
+        tableHtml += '<thead><tr class="border-b border-outline/20 bg-surface-container">';
+        row.forEach(cell => tableHtml += `<th class="p-3 font-bold text-primary font-label-mono-sm uppercase tracking-wider">${cell}</th>`);
+        tableHtml += '</tr></thead><tbody>';
+      } else {
+        if (row.length === 1 && !row[0]) return; 
+        tableHtml += '<tr class="border-b border-outline/10 hover:bg-surface-container-high transition-colors">';
+        row.forEach(cell => tableHtml += `<td class="p-3 text-sm">${cell}</td>`);
+        tableHtml += '</tr>';
+      }
+    });
+    tableHtml += '</tbody></table></div>';
+    
+    let modal = document.getElementById('responsesModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'responsesModal';
+      modal.className = 'fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm';
+      document.body.appendChild(modal);
+    }
+    modal.innerHTML = `
+      <div class="bg-surface border border-outline/20 rounded-xl w-full max-w-6xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div class="p-4 border-b border-outline/20 flex justify-between items-center bg-surface-container-low">
+          <h2 class="font-title-lg font-bold flex items-center gap-2 text-on-surface">
+            <span class="material-symbols-outlined text-tertiary">table_chart</span> Form Responses
+          </h2>
+          <button onclick="document.getElementById('responsesModal').classList.add('hidden')" class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <div class="p-0 overflow-y-auto overflow-x-auto flex-1 bg-surface-container-lowest custom-scrollbar">
+          ${tableHtml}
+        </div>
+      </div>
+    `;
+    modal.classList.remove('hidden');
+  } catch (err) {
+    alert(err.message);
+  }
+};
+
+    function openDrawer(eventTitle) {
+      const drawer = document.getElementById('eventDetailDrawer');
+      const titleEl = document.getElementById('drawerEventTitle');
+      if (titleEl && eventTitle) {
+        titleEl.textContent = eventTitle;
+      }
+      drawer.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      const drawer = document.getElementById('eventDetailDrawer');
+      drawer.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function copyShareLink() {
+      const btn = document.getElementById('shareBtnText');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+      }
+      const original = btn.textContent;
+      btn.textContent = 'Link Copied!';
+      setTimeout(() => {
+        btn.textContent = original;
+      }, 2000);
+    }
+
+    
+  
+  window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || [];
+
+  
+    async function handleCreateEvent(e) {
+        e.preventDefault();
+        
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Saving to Database...';
+        btn.disabled = true;
+        
+        try {
+          const fd = new FormData(e.target);
+          let category = fd.get('category');
+          if (category === 'Other') category = fd.get('categoryOther') || 'Other';
+          
+          const audienceNodes = e.target.querySelectorAll('input[type=checkbox]:checked');
+          const audience = Array.from(audienceNodes).map(n => n.value).join(', ') || 'All Students';
+          
+          const id = '#EVT-' + Math.floor(Math.random() * 9000 + 1000);
+          
+          const newEvent = {
+            id: id,
+            displayId: id, 
+            name: fd.get('name') || 'Unnamed Event', 
+            category: category, 
+            capacity: fd.get('capacity') || '100', 
+            date: fd.get('startDate') || fd.get('date') || new Date().toISOString(), 
+            endDate: fd.get('endDate') || fd.get('startDate') || new Date().toISOString(), 
+            location: 'TBA', 
+            desc: fd.get('desc') || 'No description provided.', 
+            rounds: fd.get('rounds') || '1', 
+            link: fd.get('link') || 'No link',
+            sheetLink: fd.get('sheetLink') || '', 
+            audience: audience, 
+            prereqs: 'See description',
+            status: 'PLANNING'
+          };
+          
+          
+          window.GIT_CLUB_EVENTS = window.GIT_CLUB_EVENTS || [];
+          window.GIT_CLUB_EVENTS.unshift(newEvent);
+          
+          if (window.firebaseAddEvent) {
+            // Fire and forget (Optimistic UI) so it doesn't freeze the modal
+            window.firebaseAddEvent(newEvent).catch(err => console.error("Firebase background error:", err));
+          }
+    
+          
+          document.getElementById('createEventModal')?.classList.add('hidden');
+          e.target.reset();
+          
+          if (typeof renderEvents === 'function') {
+            await renderEvents();
+          }
+          alert('Event successfully created!');
+        } catch (err) {
+          console.error('Failed to create event', err);
+          alert('Failed to create event in database: ' + err.message);
+        } finally {
+          if (btn) {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }
+        }
+    }
+function deleteEvent(btnElement) {
+    // Find the closest article (the event card) and remove it from the DOM
+    const card = btnElement.closest('article');
+    if (card) {
+      card.remove();
+    }
+  }
+  
+  
+    async function renderEvents() {
+      const container = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.gap-space-lg') || document.querySelector('.grid');
+      if (!container) return;
+      
+      let events = [];
+      if (window.firebaseFetchEvents) {
+           try {
+             events = await window.firebaseFetchEvents();
+           } catch (e) {
+             console.error(e);
+             events = [];
+           }
+        }
+        // Optimistically prepend locally created events that haven't refreshed yet
+        const localEvents = window.GIT_CLUB_EVENTS || [];
+        localEvents.forEach(le => {
+          if (!events.find(e => e.id === le.id)) {
+            events.unshift(le);
+          }
+        });
+      
+      if (events.length === 0) {
+      container.innerHTML = '<div class="col-span-full p-8 text-center text-outline">No upcoming events found. Click + Create Event to add one!</div>';
+      return;
+}
+      
+      container.innerHTML = '';
+      
+      events.forEach((evt, index) => {
+        const d = new Date(evt.date);
+        const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        
+        const cardHtml = `
+          <article class="bg-surface-container rounded-xl overflow-hidden shadow-md flex flex-col hover:bg-surface-container-high transition-all group relative">
+            <div class="h-32 bg-surface-container-highest relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCAwTDggOFpNOCAwTDAgOFoiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')]"></div>
+              <div class="absolute top-space-sm right-space-sm flex gap-2">
+                <span class="px-2 py-1 rounded bg-surface/80 backdrop-blur-sm font-label-mono-sm text-[10px] text-on-surface uppercase font-bold tracking-wider">
+                  ${evt.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-space-md flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-space-sm">
+                <span class="font-label-mono-sm text-label-mono-sm text-primary font-bold">Event ${index + 1}</span>
+                <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-mono-sm text-[10px]">${evt.status}</span>
+              </div>
+              <h3 class="font-headline-sm text-title-md text-on-surface font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">${evt.name}</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-sm">${evt.desc}</p>
+              
+              <div class="mt-auto space-y-1.5 font-label-mono-sm text-[11px] text-outline pt-2 border-t border-surface-container-highest">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                  <span>${dateStr} @ ${timeStr}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[14px]">group</span>
+                  <span id="attendee-count-${(evt.id || '').replace(/[^a-zA-Z0-9]/g, '')}">Cap: ${evt.capacity} | Attendees: ${evt.attendees ? evt.attendees.length : 0}</span>
+                </div>
+              </div>
+              
+              <div class="mt-4 flex gap-2">
+                 ${evt.sheetLink ? `<button onclick="window.viewEventResponses(\'${evt.sheetLink}\')" class="flex-1 bg-surface-container-highest text-on-surface py-2 rounded font-bold hover:bg-surface-bright transition-all text-sm">View Sheet</button>` : ''}
+                   <button onclick="window.registerForThisEvent('${evt.id}')" class="flex-1 bg-primary-container text-on-primary-container py-2 rounded font-bold hover:brightness-110 transition-all text-sm">Register</button>
+              </div>
+            </div>
+          </article>
+        `;
+                  container.insertAdjacentHTML('beforeend', cardHtml);
+        });
+        
+        // Auto-fetch total registered from Google Sheets if available
+        setTimeout(() => {
+          events.forEach(async (evt) => {
+            if (evt.sheetLink) {
+              try {
+                let csvLink = evt.sheetLink;
+                const match = csvLink.match(/\/d\/([a-zA-Z0-9-_]+)/);
+                if (match && match[1]) {
+                  csvLink = `https://docs.google.com/spreadsheets/d/${match[1]}/gviz/tq?tqx=out:csv`;
+                }
+                const proxyUrl2 = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(csvLink);
+                const res = await fetch(proxyUrl2);
+                if (res.ok) {
+                  const text = await res.text();
+                  if (typeof parseCSV === 'function') {
+                    const rows = parseCSV(text).filter(r => r.length > 1 || r[0]);
+                    const count = Math.max(0, rows.length - 1);
+                    const safeId = (evt.id || '').replace(/[^a-zA-Z0-9]/g, '');
+                    const countEl = document.getElementById('attendee-count-' + safeId);
+                    if (countEl) {
+                      countEl.innerHTML = `Cap: ${evt.capacity} | <span class="text-primary font-bold">External Registered: ${count}</span>`;
+                    }
+                  }
+                }
+              } catch (e) {}
+            }
+          });
+        }, 100);
+      }
+
+    setTimeout(() => {
+       renderEvents();
+    }, 500);
+    
+    window.registerForThisEvent = async function(dbId) {
+      if (!window.firebaseRegisterEvent) {
+         alert('Firebase not connected');
+         return;
+      }
+      
+      const userName = localStorage.getItem('user_name');
+      const userEmail = localStorage.getItem('user_email');
+      const userUid = localStorage.getItem('user_uid');
+      
+      if (!userName) {
+         alert('You must be logged in to register!');
+         return;
+      }
+      
+      try {
+         await window.firebaseRegisterEvent(dbId, {
+            uid: userUid,
+            name: userName,
+            email: userEmail
+         });
+         alert('Successfully registered!');
+         renderEvents();
+      } catch (err) {
+         console.error(err);
+         alert('Failed to register');
+      }
+    };
+</script>
+
+</div></div></main></div><div class="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-1 sm:gap-space-xs p-1 sm:p-1.5 rounded-full bg-surface-container-highest/95 max-w-[calc(100vw-1.5rem)] overflow-x-auto backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
+  <a href="gitclub-mobile-events.html" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
+  </a>
+  <a href="gitclub-mobile-members.html" data-path="members" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span>
+  </a>
+  <a href="gitclub-mobile-projects.html" data-path="projects" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span>
+  </a>
+  <a href="gitclub-mobile-announcements.html" data-path="announcements" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span>
+  </a>
+</div></div></div></main></div>
+<script id="gitclub-mobile-menu">
+(() => {
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('mobile-overlay');
+  const button = document.getElementById('mobile-menu-btn');
+  if (!sidebar || !overlay || !button) return;
+  const closeMenu = () => {
+    sidebar.classList.remove('gitclub-mobile-open');
+    overlay.classList.remove('gitclub-mobile-overlay-open');
+    document.body.style.overflow = '';
+  };
+  button.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('gitclub-mobile-open');
+    overlay.classList.toggle('gitclub-mobile-overlay-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  overlay.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a[data-path]').forEach(link => link.addEventListener('click', closeMenu));
+})();
+</script></body></html>

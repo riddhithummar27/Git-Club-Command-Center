@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad2","surface-container-high":"#2a2a2a","error":"#ffb4ab","outline-variant":"#5b403a","on-tertiary-fixed-variant":"#19512c","on-secondary-container":"#fff7f0","on-tertiary-container":"#003114","surface-container-highest":"#353534","on-background":"#e5e2e1","surface-tint":"#ffb4a3","surface-bright":"#393939","primary-fixed-dim":"#ffb4a3","surface-container-lowest":"#0e0e0e","on-tertiary":"#003918","surface-container-low":"#1c1b1b","on-tertiary-fixed":"#00210c","secondary-fixed-dim":"#f5bd58","on-primary-container":"#570c00","on-error":"#690005","on-primary-fixed":"#3d0600","surface":"#131313","on-primary":"#631000","tertiary-container":"#669d71","primary":"#ffb4a3","on-primary-fixed-variant":"#8b1a00","inverse-primary":"#b62500","surface-dim":"#131313","on-surface":"#e5e2e1","on-error-container":"#ffdad6","tertiary-fixed":"#b5f1be","primary-container":"#fd5832","on-secondary":"#422c00","background":"#131313","tertiary":"#9ad4a4","surface-variant":"#353534","on-surface-variant":"#e4beb6","secondary-container":"#976a00","tertiary-fixed-dim":"#9ad4a4","on-secondary-fixed":"#271900","inverse-surface":"#e5e2e1","on-secondary-fixed-variant":"#5f4100","outline":"#ab8981","secondary-fixed":"#ffdeaa","secondary":"#f5bd58","surface-container":"#201f1f","error-container":"#93000a","inverse-on-surface":"#313030"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","gutter-mobile":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","space-md":"1rem","space-xs":"0.25rem","gutter":"1.5rem","margin":"2rem"},fontFamily:{"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Inter"],"label-mono-md":["JetBrains Mono"],"label-mono-sm":["JetBrains Mono"],"title-md":["Plus Jakarta Sans"],"body-md":["Inter"],"headline-xl":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"800"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-mono-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"label-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"title-md":["18px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl":["40px",{"lineHeight":"48px","fontWeight":"700"}],"display-lg":["56px",{"lineHeight":"64px","fontWeight":"800"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}]}}}}</script><style id="gitclub-mobile-adjustments">
+@media (max-width: 1023px) {
+  html, body { width: 100%; min-width: 320px; overflow-x: hidden; }
+  header { left: 0 !important; padding-left: 12px !important; padding-right: 12px !important; }
+  main { padding-left: 12px !important; padding-right: 12px !important; overflow-x: clip; }
+  main .grid { grid-template-columns: minmax(0, 1fr) !important; }
+  main table { display: block; max-width: 100%; overflow-x: auto; }
+  main img, main canvas, main svg { max-width: 100%; }
+  #app-sidebar { width: min(84vw, 300px) !important; transform: translateX(-105%); }
+  #app-sidebar.gitclub-mobile-open { transform: translateX(0) !important; }
+  #mobile-overlay.gitclub-mobile-overlay-open { display: block !important; }
+}
+</style></head><body class="bg-background overflow-x-hidden font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside id="app-sidebar" class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="gitclub logo.png" class="h-8 w-auto object-contain" src="frontend/public/gitclub_logo.png"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface tracking-tight truncate">Git Club</span><span class="font-label-mono-sm text-label-mono-sm text-primary tracking-wide uppercase truncate">CHARUSAT HQ</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline flex items-center justify-between"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span></div></div><nav class="flex-1 px-space-sm space-y-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-title-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="gitclub-mobile.html"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-body-md text-body-md font-medium">Command Center</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="events" href="gitclub-mobile-events.html"><span class="material-symbols-outlined text-[20px]">event</span><span class="font-body-md text-body-md font-medium">Events</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-title-md" data-path="members" href="gitclub-mobile-members.html"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md font-medium">Members</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="projects" href="gitclub-mobile-projects.html"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-body-md text-body-md font-medium">Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="announcements" href="gitclub-mobile-announcements.html"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-body-md text-body-md font-medium">Announcements</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics" href="gitclub-mobile-analytics.html"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-body-md text-body-md font-medium">Analytics</span></a><div class="my-space-sm pt-space-xs"><div class="h-[1px] bg-surface-container-highest mx-space-xs"></div></div><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="notifications" href="gitclub-mobile-notifications.html"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="font-body-md text-body-md font-medium">Notifications</span></div><span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-label-mono-sm">4</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="gitclub-mobile-settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md font-medium">Settings</span></a></nav></div><div class="p-space-sm bg-surface-container-lowest border-t border-surface-container-highest">
+  <button onclick="if(confirm('Are you sure you want to log out?')) { localStorage.removeItem('auth'); window.location.href='/login'; }" class="w-full flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-error/10 hover:text-error transition-colors cursor-pointer group">
+    <span class="material-symbols-outlined text-[20px] group-hover:text-error transition-colors">logout</span>
+    <span class="font-body-md text-body-md font-medium group-hover:text-error transition-colors">Log Out</span>
+  </button>
+</div></aside><div id="mobile-overlay" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div><div class="lg:pl-64 flex flex-col min-h-screen w-full transition-all duration-300 overflow-x-hidden"><header class="fixed top-0 left-0 right-0 lg:left-64 h-16 z-30 bg-surface/85 backdrop-blur-xl z-30 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex items-center gap-space-sm md:gap-space-md"><button id="mobile-menu-btn" class="lg:hidden p-1.5 -ml-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">menu</span></button><div class="hidden sm:flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline"><span class="text-on-surface-variant">charusat</span><span>/</span><span class="text-primary font-medium">git-club-ops</span></div><button class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm hidden md:inline">Search or type command...</span><kbd class="hidden md:inline px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">⌘K</kbd></button></div><div class="flex items-center gap-2 sm:gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">shield_person</span><span class="text-on-surface font-label-mono-sm text-label-mono-sm">Role: Admin</span></div><button id="theme-toggle" class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Theme toggle"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><a href="gitclub-mobile-notifications.html" data-path="notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></a><a href="gitclub-mobile-settings.html" data-path="settings" class="flex items-center gap-space-sm pl-space-xs cursor-pointer group hover:opacity-80 transition-opacity"><div class="text-right hidden sm:block min-w-0"><div class="font-title-md text-body-sm text-on-surface font-semibold truncate leading-tight">Riddhi Thummar</div><div class="font-label-mono-sm text-label-mono-sm text-outline truncate leading-tight">Admin &amp; Tech Lead</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/></a></div></header><main class="relative pt-16 w-full min-h-screen pb-24 bg-background px-gutter"><div class="max-w-7xl mx-auto py-space-lg"><div class="flex flex-col w-full">
+<!-- Top Section: Overview & Metrics Header -->
+<section class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-sm font-label-mono-sm text-label-mono-sm text-primary">
+<span class="inline-block w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight uppercase">
+        The People Behind <span class="text-primary-container font-black">The Club</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+        Find the right people to learn, build, and collaborate with across every commit and milestone.
+      </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Action Button -->
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-primary-container text-on-primary-container font-title-md text-body-md font-semibold hover:brightness-110 shadow-lg transition-all active:scale-95" onclick="window.openAddMemberModal()">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>+ Add Member</span>
+</button>
+</div>
+</section>
+<!-- Section 3: Filter & Query Matrix -->
+<section class="space-y-space-md mb-space-xl">
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm space-y-space-sm">
+<div class="flex flex-col md:flex-row items-center gap-space-md">
+<!-- Search Prompt -->
+<div class="relative flex-1 w-full">
+<span class="absolute left-space-md top-1/2 -translate-y-1/2 text-primary font-label-mono-sm text-label-mono-sm">❯</span>
+<input class="w-full pl-8 pr-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-label-mono-sm text-label-mono-sm focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="memberSearchInput" placeholder="Search by name, skill, or role..." type="text"/>
+</div>
+<!-- Segmented Category Filters -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<!-- Branch Tabs -->
+<div class="flex flex-wrap items-center gap-1 p-1 rounded-lg bg-surface-container-lowest">
+<button class="px-space-sm py-1 rounded bg-surface-container text-primary font-label-mono-sm text-label-mono-sm font-semibold">All Branches</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">CSE</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">IT</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">CE</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-mono-sm text-label-mono-sm transition-colors">Other</button>
+</div>
+<!-- Role / Year Selectors -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline">
+<span>YEAR:</span>
+<select class="bg-transparent text-on-surface cursor-pointer focus:outline-none">
+<option class="bg-surface-container-low text-on-surface">All Years</option>
+<option class="bg-surface-container-low text-on-surface">1st Year</option>
+<option class="bg-surface-container-low text-on-surface" selected="">2nd Year</option>
+<option class="bg-surface-container-low text-on-surface">3rd Year</option>
+<option class="bg-surface-container-low text-on-surface">4th Year</option>
+</select>
+</div>
+<div class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline">
+<span>ROLE:</span>
+<select class="bg-transparent text-on-surface cursor-pointer focus:outline-none">
+<option class="bg-surface-container-low text-on-surface">All Roles</option>
+<option class="bg-surface-container-low text-on-surface">Core Team</option>
+<option class="bg-surface-container-low text-on-surface">Lead</option>
+<option class="bg-surface-container-low text-on-surface">Active Contributor</option>
+<option class="bg-surface-container-low text-on-surface">Member</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Dynamic Member Grid -->
+  <section class="space-y-space-md mb-space-xl">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline uppercase tracking-wider">
+        <span class="material-symbols-outlined text-[16px] text-primary">group</span>
+        <span>Registered Members</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline">
+        <span id="member-count">0 Members</span>
+      </div>
+    </div>
+    
+    <div id="members-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+       <div class="col-span-full p-8 text-center text-outline">Loading members...</div>
+    </div>
+  </section>
+  <!-- Section 5: Member Detail Inspection Drawer (Slide-Over Panel) -->
+<aside class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-surface-container-low shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto" id="member-drawer">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-lowest sticky top-0 z-10 flex items-center justify-between">
+<div class="hidden sm:flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline">
+<span class="text-primary font-bold">#GrowWith git</span>
+<span>/</span>
+<span>NODE_INSPECT</span>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-all" onclick="closeInspectDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Content Body -->
+<div class="p-space-lg space-y-space-lg flex-1">
+<!-- Member Identity Header -->
+<div class="flex items-start gap-space-md">
+<div class="relative">
+<img class="w-20 h-20 rounded-xl object-cover shadow-md" data-alt="Detailed close up avatar portrait of Riddhi Thummar, tech admin lead student, studio warm lighting, charcoal backdrop" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/>
+<div class="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-[9px] font-bold">ROOT</div>
+</div>
+<div class="space-y-1 min-w-0">
+<span class="px-2 py-0.5 rounded bg-primary-fixed/20 text-primary-fixed font-label-mono-sm text-[10px] font-semibold uppercase">Admin &amp; Tech Lead</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Riddhi Thummar</h3>
+<p class="font-label-mono-sm text-label-mono-sm text-outline">2nd Year CSE • CHARUSAT HQ</p>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-space-lg bg-surface-container-lowest sticky bottom-0 z-10 flex items-center gap-space-sm">
+<a href="https://github.com/riddhithummar27" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-md font-semibold hover:bg-surface-bright transition-all text-center flex items-center justify-center gap-2 border border-outline/10">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub Profile
+        </a>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-title-md text-body-md hover:bg-surface-bright transition-all" onclick="closeInspectDrawer()">
+        Close
+      </button>
+</div>
+</aside>
+<!-- Section 6: Add Member Modal Preview (Hidden by default, toggleable via JavaScript) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-md hidden p-space-md" id="add-member-modal">
+<div class="w-full max-w-lg rounded-xl bg-surface-container-low shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<!-- Modal Top -->
+<div class="px-space-lg py-space-md bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-primary">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+
+</div>
+<button class="p-1 rounded text-outline hover:text-on-surface" onclick="document.getElementById('add-member-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Modal Form Body -->
+        <form onsubmit="window.handleMemberSubmit(event)">
+          <div class="p-space-lg space-y-space-md">
+            <div class="grid grid-cols-2 gap-space-md">
+              <div class="space-y-1">
+                <label class="font-label-mono-sm text-label-mono-sm text-outline block">FULL NAME</label>
+                <input name="name" required class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. Aarav Patel" type="text" />
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-mono-sm text-label-mono-sm text-outline block">STUDENT ID</label>
+                <input name="studentId" required class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. 23IT082" type="text" />
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-space-md">
+              <div class="space-y-1">
+                <label class="font-label-mono-sm text-label-mono-sm text-outline block">DEPARTMENT / BRANCH</label>
+                <select name="department" class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+                  <option>Computer Science (CSE)</option>
+                  <option>Information Tech (IT)</option>
+                  <option>Computer Eng (CE)</option>
+                  <option>Other Department</option>
+                </select>
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-mono-sm text-label-mono-sm text-outline block">ACADEMIC YEAR</label>
+                <select name="year" class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+                  <option>1st Year</option>
+                  <option selected>2nd Year</option>
+                  <option>3rd Year</option>
+                  <option>4th Year</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-label-mono-sm text-label-mono-sm text-outline block">CLUB ROLE</label>
+              <select name="role" class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+                <option>General Member</option>
+                <option>Active Contributor</option>
+                <option>Project Member</option>
+                <option>Core Team Lead</option>
+              </select>
+            </div>
+
+            <div class="space-y-1">
+                <label class="font-label-mono-sm text-label-mono-sm text-outline block">GITHUB USERNAME</label>
+                <input name="github" class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. riddhithummar27" type="text" />
+              </div>
+              <div class="space-y-1">
+              <label class="font-label-mono-sm text-label-mono-sm text-outline block">INITIAL SKILL TOKENS (COMMA SEPARATED)</label>
+              <input name="skills" required class="w-full px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. React, Git, Docker, Go" type="text" />
+            </div>
+
+            <div class="p-space-sm rounded bg-surface-container-lowest flex items-center gap-space-sm">
+              <input type="checkbox" id="invite-box" class="accent-primary-container w-4 h-4 cursor-pointer" checked />
+              <label for="invite-box" class="font-label-mono-sm text-label-mono-sm text-outline cursor-pointer select-none">Send Git Club CHARUSAT onboarding packet & GitHub team invite</label>
+            </div>
+          </div>
+          
+          <!-- Modal Footer -->
+          <div class="px-space-lg py-space-md bg-surface-container-lowest flex items-center justify-end gap-space-sm">
+            <button type="button" class="px-space-md py-2 rounded bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all" onclick="document.getElementById('add-member-modal').classList.add('hidden')">Cancel</button>
+            <button type="submit" class="px-space-lg py-2 rounded bg-primary-container text-on-primary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md transition-all">Register Contributor</button>
+          </div>
+        </form>
+      </div>
+</div>
+<!-- Micro-Interaction Scripts for Slide-over & Modal controls -->
+<script>
+    function openInspectDrawer() {
+      const drawer = document.getElementById('member-drawer');
+      if (drawer) {
+        drawer.classList.remove('translate-x-full');
+      }
+    }
+
+    function closeInspectDrawer() {
+      const drawer = document.getElementById('member-drawer');
+      if (drawer) {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+  </script>
+</div></div>
+    
+    <script>
+        window.GIT_CLUB_MEMBERS = window.GIT_CLUB_MEMBERS || [];
+          window.EDITING_MEMBER_ID = null;
+
+          window.openAddMemberModal = function() {
+             window.EDITING_MEMBER_ID = null;
+             const modal = document.getElementById('add-member-modal');
+             const form = modal.querySelector('form');
+             modal.querySelector('h2').innerText = 'Create New Member';
+             form.querySelector('button[type="submit"]').innerText = 'Register Contributor';
+             form.reset();
+             modal.classList.remove('hidden');
+          };
+
+          window.editMemberRecord = function(memberStr) {
+             const m = JSON.parse(decodeURIComponent(memberStr));
+             window.EDITING_MEMBER_ID = m.id;
+             const modal = document.getElementById('add-member-modal');
+             const form = modal.querySelector('form');
+             
+             modal.querySelector('h2').innerText = 'Edit Member Profile';
+             form.querySelector('button[type="submit"]').innerText = 'Save Changes';
+
+             form.name.value = m.name || '';
+             form.studentId.value = m.studentId || '';
+             form.department.value = m.department || '';
+             form.year.value = m.year || '';
+             form.role.value = m.role || '';
+             form.github.value = m.github || '';
+             form.skills.value = (m.skills || []).join(', ');
+
+             modal.classList.remove('hidden');
+             closeInspectDrawer();
+          };
+
+          window.handleMemberSubmit = async function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const orig = btn.innerText;
+            btn.innerText = 'Saving...';
+            btn.disabled = true;
+            try {
+              const fd = new FormData(e.target);
+              const newMember = {
+                name: fd.get('name'),
+                studentId: fd.get('studentId') || 'N/A',
+                department: fd.get('department') || 'N/A',
+                year: fd.get('year') || 'N/A',
+                role: fd.get('role') || 'Member',
+                  github: fd.get('github') || '',
+                skills: (fd.get('skills') || '').split(',').map(s => s.trim()).filter(Boolean)
+              };
+              
+                              if (window.EDITING_MEMBER_ID) {
+                  if (window.firebaseUpdateMember) {
+                    await window.firebaseUpdateMember(window.EDITING_MEMBER_ID, newMember);
+                    if (window.triggerFeedback) window.triggerFeedback('Member updated: ' + newMember.name);
+                  }
+                } else {
+                  if (window.firebaseAddMember) {
+                    await window.firebaseAddMember(newMember);
+                    if (window.triggerFeedback) window.triggerFeedback('Member record added: ' + newMember.name);
+                  }
+                }
+                
+                const modal = document.getElementById('add-member-modal');
+                if (modal) modal.classList.add('hidden');
+              
+              e.target.reset();
+              if (window.renderMembers) window.renderMembers();
+            } catch(err) {
+              alert(err.message);
+            } finally {
+              btn.innerText = orig;
+              btn.disabled = false;
+            }
+          };
+          
+          window.deleteMemberRecord = async function(id) {
+            if (!confirm('Are you sure you want to delete this member?')) return;
+            try {
+               if (window.firebaseDeleteMember) await window.firebaseDeleteMember(id);
+               if (window.renderMembers) window.renderMembers();
+               closeInspectDrawer();
+            } catch (err) {
+               alert(err.message);
+            }
+          };
+          
+          window.inspectMember = function(memberStr) {
+             const m = JSON.parse(decodeURIComponent(memberStr));
+             const drawer = document.getElementById('member-drawer');
+             if (!drawer) return;
+             
+             // Update drawer HTML dynamically!
+             const header = drawer.querySelector('.flex.items-start.gap-space-md');
+             if (header) {
+                header.innerHTML = `
+                  <div class="relative">
+                    <img class="w-20 h-20 rounded-xl object-cover shadow-md" src="https://api.dicebear.com/7.x/notionists/svg?seed=${m.name}"/>
+                    <div class="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-mono-sm text-[9px] font-bold">USR</div>
+                  </div>
+                  <div class="space-y-1 min-w-0">
+                    <span class="px-2 py-0.5 rounded bg-primary-fixed/20 text-primary-fixed font-label-mono-sm text-[10px] font-semibold uppercase">${m.role}</span>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">${m.name}</h3>
+                    <p class="font-label-mono-sm text-label-mono-sm text-outline">${m.year} ? ${m.department}</p>
+                  </div>
+                `;
+             }
+             
+             // Contact Info Strip
+             const contact = drawer.querySelector('.grid.grid-cols-2.gap-space-xs');
+             if (contact) {
+                contact.innerHTML = `
+                  <div class="p-space-sm rounded-lg bg-surface-container-lowest">
+                    <span class="text-outline block text-[10px]">STUDENT ID</span>
+                    <span class="text-on-surface truncate block">${m.studentId}</span>
+                  </div>
+                  <div class="p-space-sm rounded-lg bg-surface-container-lowest">
+                    <span class="text-outline block text-[10px]">ROLE</span>
+                    <span class="text-on-surface truncate block">${m.role}</span>
+                  </div>
+                ${m.github ? `<div class="p-space-sm rounded-lg bg-surface-container-lowest col-span-2 flex items-center justify-between mt-2"><div><span class="text-outline block text-[10px]">GITHUB</span><span class="text-on-surface truncate block">@${m.github}</span></div><a href="https://github.com/${m.github}" target="_blank" class="text-primary hover:underline font-label-mono-sm text-[10px] flex items-center gap-1">View Profile ↗</a></div>` : ''}
+                  `;
+             }
+             
+             // Add delete button at bottom
+             const footer = drawer.querySelector('.p-space-lg.bg-surface-container-lowest.sticky.bottom-0');
+             if (footer) {
+               footer.innerHTML = `
+                 <button onclick="window.deleteMemberRecord('${m.id}')" class="flex-1 py-2.5 rounded-lg bg-error-container text-on-error-container font-title-md text-body-md font-semibold hover:brightness-110 transition-all text-center border border-error/20">
+                   Delete Member
+                 </button>
+               `;
+             }
+             
+             openInspectDrawer();
+          };
+          
+          window.renderMembers = async function() {
+             const grid = document.getElementById('members-grid');
+             if (!grid) return;
+             
+             let members = [];
+             if (window.firebaseFetchMembers) {
+                try {
+                  members = await window.firebaseFetchMembers();
+                } catch(e) { console.error(e); }
+             }
+             
+             const countEl = document.getElementById('member-count');
+             if (countEl) countEl.innerText = members.length + ' Members';
+             
+             grid.innerHTML = '';
+             if (members.length === 0) {
+               grid.innerHTML = '<div class="col-span-full p-8 text-center text-outline">No members found. Add one!</div>';
+               return;
+             }
+             
+             members.forEach(m => {
+                const safeJson = encodeURIComponent(JSON.stringify(m));
+                grid.insertAdjacentHTML('beforeend', `
+                  <div class="flex flex-col justify-between rounded-xl bg-surface-container-low p-space-md shadow-sm hover:bg-surface-container transition-all group">
+                    <div>
+                      <div class="flex items-start justify-between gap-space-sm mb-space-sm">
+                        <img class="w-12 h-12 rounded-lg object-cover" src="https://api.dicebear.com/7.x/notionists/svg?seed=${m.name}"/>
+                        <span class="px-2 py-0.5 rounded font-label-mono-sm text-[10px] bg-tertiary-fixed/20 text-tertiary-fixed font-semibold truncate max-w-[100px]">${m.role}</span>
+                      </div>
+                      <h3 class="font-title-md text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors truncate">${m.name}</h3>
+                      <button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-sm text-label-mono-sm transition-all mt-2" onclick="window.inspectMember('${safeJson}')">Profile</button>
+                    </div>
+                  </div>
+                `);
+             });
+          };
+          
+          setTimeout(() => {
+             if (window.renderMembers) window.renderMembers();
+          }, 500);
+
+        (function() {
+          const searchInput = document.getElementById('memberSearchInput');
+          // Find the category buttons (All, Core Team, Active, Alumni)
+          // Based on the HTML, they are buttons inside a div
+          const filterBtns = document.querySelectorAll('.category-filter-btn, button:contains("Core Team"), button:contains("Active")'); 
+          // Wait, let's identify them. They are probably the buttons right after the search bar.
+          // Let's just hook up a generic search function for now since we don't have explicit IDs.
+          
+          const memberCards = document.querySelectorAll('.bg-surface-container-low.rounded-xl.p-4');
+
+          if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+              const query = e.target.value.toLowerCase();
+              memberCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                  card.parentElement.style.display = '';
+                  // Also reveal the card itself if needed
+                  card.style.display = '';
+                } else {
+                  // Hide the parent column wrapper
+                  if (card.parentElement.tagName === 'DIV') {
+                      card.parentElement.style.display = 'none';
+                  } else {
+                      card.style.display = 'none';
+                  }
+                }
+              });
+            });
+          }
+          
+          // Let's hook up the category buttons
+          const tabContainer = searchInput ? searchInput.closest('section').querySelector('.flex.items-center.gap-1.overflow-x-auto') : null;
+          if (tabContainer) {
+            const tabs = tabContainer.querySelectorAll('button');
+            tabs.forEach(tab => {
+              tab.addEventListener('click', (e) => {
+                 tabs.forEach(t => {
+                   t.classList.remove('bg-primary-container', 'text-on-primary-container');
+                   t.classList.add('bg-surface-container', 'text-on-surface-variant');
+                 });
+                 e.target.classList.remove('bg-surface-container', 'text-on-surface-variant');
+                 e.target.classList.add('bg-primary-container', 'text-on-primary-container');
+
+                 const cat = e.target.textContent.toLowerCase();
+                 memberCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    let match = false;
+                    if (cat.includes('all')) match = true;
+                    else if (cat.includes('core team') && text.includes('lead')) match = true;
+                    else if (cat.includes('active') && !text.includes('alumni')) match = true;
+                    else if (cat.includes('alumni') && text.includes('alumni')) match = true;
+
+                    // Also respect search query
+                    const query = searchInput.value.toLowerCase();
+                    if (match && text.includes(query)) {
+                        card.parentElement.style.display = '';
+                    } else {
+                        card.parentElement.style.display = 'none';
+                    }
+                 });
+              });
+            });
+          }
+        });
+    </script>
+
+  </main></div><div class="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-1 sm:gap-space-xs p-1 sm:p-1.5 rounded-full bg-surface-container-highest/95 max-w-[calc(100vw-1.5rem)] overflow-x-auto backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
+  <a href="gitclub-mobile-events.html" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
+  </a>
+  <a href="gitclub-mobile-members.html" data-path="members" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span>
+  </a>
+  <a href="gitclub-mobile-projects.html" data-path="projects" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span>
+  </a>
+  <a href="gitclub-mobile-announcements.html" data-path="announcements" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+    <span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span>
+  </a>
+</div><script id="gitclub-mobile-menu">
+(() => {
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('mobile-overlay');
+  const button = document.getElementById('mobile-menu-btn');
+  if (!sidebar || !overlay || !button) return;
+  const closeMenu = () => {
+    sidebar.classList.remove('gitclub-mobile-open');
+    overlay.classList.remove('gitclub-mobile-overlay-open');
+    document.body.style.overflow = '';
+  };
+  button.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('gitclub-mobile-open');
+    overlay.classList.toggle('gitclub-mobile-overlay-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  overlay.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a[data-path]').forEach(link => link.addEventListener('click', closeMenu));
+})();
+</script></body></html>

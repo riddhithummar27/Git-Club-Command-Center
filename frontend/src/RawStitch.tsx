@@ -40,6 +40,13 @@ export default function RawStitch() {
   useEffect(() => {
     if (!containerRef.current) return;
     
+    // Ensure document and body allow natural vertical scrolling
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.overflowY = 'auto';
+    document.body.style.overflow = '';
+    document.body.style.overflowY = 'auto';
+    window.scrollTo(0, 0);
+
     // Parse the raw HTML string into a DOM so we can extract just the body contents
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlToLoad, 'text/html');
@@ -400,10 +407,12 @@ export default function RawStitch() {
       window.addEventListener('force-navigate', handleForceNavigate);
       
       return () => {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
         window.removeEventListener('force-navigate', handleForceNavigate);
       };
 
   }, [navigate, htmlToLoad]);
 
-  return <div ref={containerRef} className="w-full min-h-screen text-on-surface bg-surface font-sans overflow-x-hidden" />;
+  return <div ref={containerRef} className="w-full min-h-screen text-on-surface bg-surface font-sans" />;
 }

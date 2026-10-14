@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style id="gitclub-mobile-adjustments">
+@media (max-width: 1023px) {
+  html, body { width: 100%; min-width: 320px; overflow-x: hidden; }
+  header { left: 0 !important; padding-left: 12px !important; padding-right: 12px !important; }
+  main { padding-left: 12px !important; padding-right: 12px !important; overflow-x: clip; }
+  main .grid { grid-template-columns: minmax(0, 1fr) !important; }
+  main table { display: block; max-width: 100%; overflow-x: auto; }
+  main img, main canvas, main svg { max-width: 100%; }
+  #app-sidebar { width: min(84vw, 300px) !important; transform: translateX(-105%); }
+  #app-sidebar.gitclub-mobile-open { transform: translateX(0) !important; }
+  #mobile-overlay.gitclub-mobile-overlay-open { display: block !important; }
+}
+</style><style id="gitclub-settings-mobile-fix">
+@media (max-width: 1023px) {
+  #unsavedDock {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 76px !important;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px !important;
+    padding: 8px !important;
+    border-radius: 16px !important;
+  }
+  #unsavedDock > div:first-child { display: none; }
+  #unsavedDock button { white-space: nowrap; }
+  #toast-notification {
+    bottom: 148px !important;
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
+    white-space: normal;
+  }
+}
+@media (max-width: 380px) {
+  #unsavedDock { left: 8px !important; right: 8px !important; max-width: calc(100vw - 16px); }
+  main h1 { font-size: 24px; line-height: 1.2; }
+}
+</style></head><body class="bg-background overflow-x-hidden font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside id="app-sidebar" class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="gitclub logo.png" class="h-8 w-auto object-contain" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface tracking-tight truncate">Git Club</span><span class="font-label-mono-sm text-label-mono-sm text-primary tracking-wide uppercase truncate">CHARUSAT HQ</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-outline flex items-center justify-between"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span></div></div><nav class="flex-1 px-space-sm space-y-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-title-md"><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="gitclub-mobile.html"><span class="font-body-md text-body-md font-medium">Command Center</span></a><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="events" href="gitclub-mobile-events.html"><span class="font-body-md text-body-md font-medium">Events</span></a><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="members" href="gitclub-mobile-members.html"><span class="font-body-md text-body-md font-medium">Members</span></a><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="projects" href="gitclub-mobile-projects.html"><span class="font-body-md text-body-md font-medium">Projects</span></a><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="announcements" href="gitclub-mobile-announcements.html"><span class="font-body-md text-body-md font-medium">Announcements</span></a><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics" href="gitclub-mobile-analytics.html"><span class="font-body-md text-body-md font-medium">Analytics</span></a><div class="my-space-sm pt-space-xs"><div class="h-[1px] bg-surface-container-highest mx-space-xs"></div></div><a class="flex items-center justify-between px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="notifications" href="gitclub-mobile-notifications.html"><span class="font-body-md text-body-md font-medium">Notifications</span><span class="px-space-xs py-0.5 rounded-full bg-surface-container-highest text-primary font-label-mono-sm text-label-mono-sm">4</span></a><a class="flex items-center px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="gitclub-mobile-settings.html"><span class="font-body-md text-body-md font-medium">Settings</span></a></nav></div><div class="p-space-sm bg-surface-container-lowest"><div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between"><div class="flex flex-col min-w-0"><span class="font-label-mono-sm text-label-mono-sm text-outline truncate">#GrowWith git</span><span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Build. Collab. Ship.</span></div><span class="material-symbols-outlined text-primary text-[18px]">commit</span></div></div></aside><div id="mobile-overlay" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div><div class="lg:pl-64 flex flex-col min-h-screen w-full transition-all duration-300 overflow-x-hidden"><header class="fixed top-0 left-0 right-0 lg:left-64 h-16 z-30 bg-surface/85 backdrop-blur-xl z-30 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex items-center gap-space-sm md:gap-space-md"><button id="mobile-menu-btn" class="lg:hidden p-1.5 -ml-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">menu</span></button><div class="hidden sm:flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-outline"><span class="text-on-surface-variant">charusat</span><span>/</span><span class="text-primary font-medium">git-club-ops</span></div><button class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm hidden sm:inline">Search or type command...</span><span class="font-body-sm text-body-sm sm:hidden">Search...</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-label-mono-sm text-[10px]">âŒ˜K</kbd></button></div><div class="flex items-center gap-2 sm:gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container font-label-mono-sm text-label-mono-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">shield_person</span><span class="text-on-surface font-label-mono-sm text-label-mono-sm">Role: Admin</span></div><button id="theme-toggle" class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Theme toggle"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><a href="gitclub-mobile-notifications.html" data-path="notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" title="Notifications"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></a><a href="gitclub-mobile-settings.html" data-path="settings" class="flex items-center gap-space-sm pl-space-xs cursor-pointer group hover:opacity-80 transition-opacity"><div class="text-right hidden sm:block min-w-0"><div class="font-title-md text-body-sm text-on-surface font-semibold truncate leading-tight">Riddhi Thummar</div><div class="font-label-mono-sm text-label-mono-sm text-outline truncate leading-tight">Admin &amp; Tech Lead</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://api.dicebear.com/7.x/notionists/svg?seed=riddhi"/></a></div></header><main class="relative pt-16 w-full min-h-screen pb-24 bg-background px-gutter"><div class="flex flex-col w-full">
+<!-- Sub-Header / Identity Breadcrumb & Global Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md pb-space-lg mb-space-lg border-b border-surface-container-highest">
+<div class="flex flex-col min-w-0">
+
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Profile &amp; Identity Settings</h1>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+        Update campus credentials, lead title, notification dispatch emails, and public club portfolio.
+      </p>
+</div>
+<!-- Quick Action Triggers -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-title-md text-body-md transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>Public Profile</span>
+</button>
+<button id="topDiscardBtn" class="hidden px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-title-md text-body-md transition-all">Discard</button>
+<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-md hover:brightness-110 shadow-lg shadow-primary-container/20 flex items-center gap-1.5 transition-all cursor-pointer" id="topSaveBtn">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Profile Changes</span>
+</button>
+</div>
+</div>
+<!-- Bento Layout Grid for Identity Settings -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- LEFT COLUMN: Avatar & Club Credential Token Card (4 Cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Profile Hero Card with Hardware Medallion Aura -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-xl relative overflow-hidden flex flex-col items-center text-center">
+<!-- Ambient subtle orange beacon behind avatar -->
+<div class="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative mb-space-md flex flex-wrap gap-space-lg items-end">
+  <div class="relative w-32 h-32 rounded-2xl overflow-hidden shadow-2xl p-1 bg-gradient-to-b from-primary-container via-surface-container-high to-surface-container-lowest shrink-0">
+    <img id="profilePicPreview" alt="Profile" class="w-full h-full object-cover rounded-xl" src="https://api.dicebear.com/7.x/notionists/svg?seed=user"/>
+    <div class="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center p-0.5 shadow-lg">
+      <div class="w-full h-full rounded-full bg-secondary-container text-secondary flex items-center justify-center" title="Verified Campus Club Lead">
+        <span class="material-symbols-outlined text-[18px]">verified</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 pb-2">
+    <label id="uploadPicLabel" class="flex items-center justify-center gap-1.5 px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 cursor-pointer text-center shadow-sm">
+      Upload Photo
+      <input type="file" class="hidden" id="profilePicInput" accept="image/*" />
+    </label>
+    <button type="button" id="removeProfilePicBtn" class="flex items-center justify-center gap-1 px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:text-error transition-colors font-title-md text-body-sm text-center cursor-pointer">
+      Remove Photo
+    </button>
+  </div>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-primary/10 text-primary font-label-mono-sm text-label-mono-sm mb-space-xs">
+
+<span class="material-symbols-outlined text-[14px]">shield_person</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Riddhi Thummar</h2>
+<p class="font-label-mono-md text-label-mono-md text-secondary mt-0.5">Admin &amp; Tech Lead</p>
+
+
+<span class="font-label-mono-sm text-label-mono-sm text-outline mt-2">PNG, JPG or WebP up to 5MB</span>
+
+</div>
+</div>
+<!-- RIGHT COLUMN: Core Fields, Emails & Integrations (8 Cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- SECTION 1: Core Profile Information -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-container-highest pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Campus &amp; Club Identity</h3>
+</div>
+
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- First Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">FIRST NAME</label>
+<div class="relative">
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed"  id="inputFirstName" required type="text" value=""/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">person</span>
+</div>
+</div>
+<!-- Last Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">LAST NAME</label>
+<div class="relative">
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed"  id="inputLastName" required type="text" value=""/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">person</span>
+</div>
+</div>
+<!-- Preferred Moniker / Handle -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">USERNAME</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-label-mono-md text-label-mono-md text-primary font-bold">@</span>
+<input id="inputUsername" required class="w-full pl-8 pr-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" disabled type="text" value=""/>
+</div>
+</div>
+<!-- Student / Campus Enrollment ID -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">CHARUSAT STUDENT ID</label>
+
+</div>
+<div class="relative">
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed"  id="inputStudentId" required type="text" value=""/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">school</span>
+</div>
+</div>
+<!-- Position in Club (Prompt Focus) -->
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<div class="flex items-center justify-between">
+<label class="font-label-mono-sm text-label-mono-sm text-primary font-semibold">POSITION IN GIT CLUB (APPOINTED ROLE)</label>
+
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm">
+<div class="md:col-span-6 relative">
+<select class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all appearance-none cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed" id="roleSelect" required>
+<option selected="" value="Admin &amp; Tech Lead">Admin &amp; Tech Lead</option>
+<option value="Event Lead">Event Lead</option>
+<option value="Project Lead">Project Lead</option>
+<option value="DevRel &amp; Community Lead">DevRel &amp; Community Lead</option>
+<option value="Core Maintainer (Tier 3)">Core Maintainer (Tier 3)</option>
+<option value="Student Fellow">Student Fellow</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-outline pointer-events-none">expand_more</span>
+</div>
+<div class="md:col-span-6">
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed"  id="roleCustom" required placeholder="e.g. Lead Designer, Backend Developer..." type="text" value=""/>
+</div>
+</div>
+</div>
+<!-- Department / Academic Program -->
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">DEPARTMENT / DEGREE PROGRAM</label>
+<input id="inputDepartment" required class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" disabled type="text" value=""/>
+</div>
+</div>
+</div>
+
+  <!-- Social Profiles -->
+  <div class="flex flex-col gap-1.5 md:col-span-2 mt-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">GITHUB PROFILE URL</label>
+        <div class="relative">
+          <input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" id="inputGithub" type="url" placeholder="https://github.com/username" required />
+          <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">code</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant uppercase">LINKEDIN PROFILE URL</label>
+        <div class="relative">
+          <input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all disabled:opacity-60 disabled:cursor-not-allowed" id="inputLinkedin" type="url" placeholder="https://linkedin.com/in/username" required />
+          <span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">work</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- SECTION 2: All Email IDs & Dispatch Routing (Crucial Prompt Request) -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-surface-container-highest pb-space-sm gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">alternate_email</span>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Email Addresses &amp; Notification Routing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage your institutional SSO, git commit identity, and club lead aliases.</p>
+</div>
+</div>
+<button class="self-start sm:self-auto px-space-sm py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-title-md text-body-sm transition-all flex items-center gap-1" id="addEmailBtn">
+<span class="material-symbols-outlined text-[16px] text-primary">add</span>
+<span>Add Secondary Email</span>
+</button>
+</div>
+<!-- Email List Matrix -->
+<div class="space-y-space-sm" id="emailListContainer">
+<!-- Email 1: Primary Academic SSO -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-mono-md text-label-mono-md text-on-surface font-semibold truncate">riddhi.thummar@charusat.edu.in</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-label-mono-sm text-label-mono-sm">PRIMARY â€¢ SSO</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-mono-sm text-label-mono-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Verified
+                  </span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Institutional Google Workspace account. Linked with campus active directory.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end lg:self-center shrink-0">
+<span class="font-label-mono-sm text-label-mono-sm text-outline">Default SSO</span>
+<button class="p-1.5 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Lock settings">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+</div>
+</div>
+<!-- Email 2: Personal Developer Email (Git Commit Signer) -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<input class="font-label-mono-md text-label-mono-md text-on-surface bg-surface-container px-2 py-1 rounded focus:outline-none focus:ring-1 focus:ring-primary w-64 max-w-full disabled:opacity-60 disabled:cursor-not-allowed"  id="inputPersonalEmail" required type="email" value=""/>
+<span class="px-space-xs py-0.5 rounded bg-secondary-container/20 text-secondary font-label-mono-sm text-label-mono-sm">COMMIT AUTHOR</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-mono-sm text-label-mono-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Verified
+                  </span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Associated with GitHub GPG signature and Git log provenance.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end lg:self-center shrink-0">
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-mono-sm text-label-mono-sm transition-all">
+                Make Primary
+              </button>
+<button class="p-1.5 rounded text-outline hover:text-error hover:bg-surface-container-high transition-colors" title="Remove Email">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Email 3: Role Alias Forwarding -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">forward_to_inbox</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-mono-md text-label-mono-md text-on-surface font-semibold truncate">lead.gitclub@charusat.ac.in</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-mono-sm text-label-mono-sm">ROLE ALIAS</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-mono-sm text-label-mono-sm">ACTIVE ROUTE</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Automated forwarding pipeline to your academic address. Managed by Git Club Ops.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end lg:self-center shrink-0">
+<span class="font-label-mono-sm text-label-mono-sm text-outline">Auto-Managed</span>
+<button class="p-1.5 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Alias Settings">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Inline Add New Email Input Box (Toggled on Demand) -->
+<div class="hidden p-space-md rounded-lg bg-surface-container-low border border-surface-container-highest flex-col gap-space-sm" id="newEmailForm">
+<div class="flex items-center justify-between">
+
+<button class="text-outline hover:text-on-surface text-label-mono-sm" id="cancelAddEmail">Cancel</button>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-sm">
+<input class="flex-1 px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. riddhi.alternate@proton.me" type="email"/>
+<select class="px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-sm text-label-mono-sm focus:outline-none">
+<option>Git Authoring</option>
+<option>Emergency Dispatch</option>
+<option>Notification Backup</option>
+</select>
+<button type="button" class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110" onclick="alert('Verification OTP sent successfully! (Simulated)')">
+              Send Verification OTP
+              </button>
+</div>
+</div>
+<!-- Notification & Webhook Routing Rules -->
+<div class="mt-space-sm pt-space-md border-t border-surface-container-highest">
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<label class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="mt-1 accent-primary-container w-4 h-4 rounded" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-title-md text-body-sm text-on-surface font-medium">Critical Security Alerts</span>
+<span class="font-body-sm text-body-sm text-outline">Route 2FA &amp; server alerts to Personal Email</span>
+</div>
+</label>
+<label class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="mt-1 accent-primary-container w-4 h-4 rounded" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-title-md text-body-sm text-on-surface font-medium">Turnstile RSVPs</span>
+<span class="font-body-sm text-body-sm text-outline">Send campus registrations to Academic SSO</span>
+</div>
+</label>
+<label class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="mt-1 accent-primary-container w-4 h-4 rounded" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-title-md text-body-sm text-on-surface font-medium">PR &amp; Issue Webhooks</span>
+<span class="font-body-sm text-body-sm text-outline">Forward all GitHub activity to Club Alias</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- SECTION 3: Social & Developer Ecosystem Integrations -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-container-highest pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Developer Links &amp; Public Handles</h3>
+</div>
+
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- GitHub Integration -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant flex items-center gap-1">
+<span>GITHUB ACCOUNT</span>
+</label>
+<span class="font-label-mono-sm text-label-mono-sm text-tertiary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> OAuth Linked
+              </span>
+</div>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-label-mono-md text-label-mono-md text-outline">github.com/</span>
+<input class="w-full pl-28 pr-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" type="text" value=""/>
+</div>
+</div>
+<!-- LinkedIn Integration -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">LINKEDIN PROFILE</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-label-mono-md text-label-mono-md text-outline">linkedin.com/in/</span>
+<input class="w-full pl-32 pr-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" type="text" value=""/>
+</div>
+</div>
+<!-- Discord Integration -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">DISCORD TAG (GIT CLUB DISCORD)</label>
+<div class="relative">
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" type="text" value=""/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">chat</span>
+</div>
+</div>
+<!-- Telegram Emergency Dispatch -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">TELEGRAM BOT DISPATCH HANDLE</label>
+<div class="relative">
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" type="text" value=""/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">send</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 4: Lead Biography & Open-Source Manifesto -->
+<div class="rounded-xl bg-surface-container p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-container-highest pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">edit_note</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Lead Biography &amp; Technical Statement</h3>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">MARKDOWN ENABLED</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">PUBLIC BIO (DISPLAYED ON CLUB DIRECTORY &amp; PORTFOLIO)</label>
+<span class="font-label-mono-sm text-label-mono-sm text-outline" id="charCount">186 / 300 CHARS</span>
+</div>
+<div class="relative">
+<textarea class="w-full p-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container transition-all leading-relaxed resize-none disabled:opacity-60 disabled:cursor-not-allowed"  disabled id="bioTextarea" required rows="4">Spearheading technical pipeline deployments and student open-source mentor clinics at CHARUSAT. Passionate about distributed systems, Rust, and building welcoming developer ecosystems.</textarea>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-label-mono-sm text-label-mono-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">markdown</span> Supports inline backticks for code highlighting
+            </span>
+<button class="font-label-mono-sm text-label-mono-sm text-primary hover:underline">Preview rendered markdown</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FLOATING PERSISTENT SAVE NOTIFICATION BAR (Interactive) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 bg-surface-container-highest/95 backdrop-blur-xl px-space-lg py-space-sm rounded-full shadow-[0_12px_32px_-4px_rgba(0,0,0,0.85)] flex items-center gap-space-md transition-all duration-300" id="unsavedDock">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">person</span><span class="font-label-mono-sm text-label-mono-sm text-on-surface font-medium">Profile Controls</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-title-md text-body-sm transition-all" id="dockEditBtn" class="flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md transition-all"><span class="material-symbols-outlined text-[16px]">edit</span><span>Edit Profile</span></button>
+<button id="dockResetBtn" class="hidden">
+        Reset
+      </button>
+<button class="hidden flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm font-semibold hover:brightness-110 shadow-md shadow-primary-container/25 transition-all" id="dockSaveBtn">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span>Save Changes</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Inline UI Logic for Seamless Experience -->
+
+<!-- TOAST NOTIFICATION CONTAINER -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 hidden px-space-md py-space-sm rounded-full bg-surface-container-highest/95 backdrop-blur shadow-2xl text-on-surface font-label-mono-sm text-label-mono-sm flex items-center gap-space-sm transition-all" id="toast-notification">
+  <span class="w-2 h-2 rounded-full bg-tertiary"></span>
+  <span id="toast-text">Operation completed.</span>
+</div>
+
+
+<script>
+  (function() {
+    
+      try {
+        const localData = localStorage.getItem('userProfileData');
+        if (localData) {
+          window.GIT_CLUB_PROFILE = JSON.parse(localData);
+        }
+      } catch(e) {}
+      
+      window.GIT_CLUB_PROFILE = window.GIT_CLUB_PROFILE || {
+        firstName: '',
+        lastName: '',
+        studentId: '',
+        profilePic: 'https://api.dicebear.com/7.x/notionists/svg?seed=user',
+        role: '',
+        roleCustom: '',
+        email: '',
+        bio: ''
+      };
+
+
+    const inputFirstName = document.getElementById('inputFirstName');
+    const inputLastName = document.getElementById('inputLastName');
+    const roleSelect = document.getElementById('roleSelect');
+    const roleCustom = document.getElementById('roleCustom');
+    const inputPersonalEmail = document.getElementById('inputPersonalEmail');
+    const bioTextarea = document.getElementById('bioTextarea');
+
+    if (inputFirstName) inputFirstName.value = window.GIT_CLUB_PROFILE.firstName;
+    if (inputLastName) inputLastName.value = window.GIT_CLUB_PROFILE.lastName;
+    if (roleSelect) roleSelect.value = window.GIT_CLUB_PROFILE.role;
+    if (roleCustom) roleCustom.value = window.GIT_CLUB_PROFILE.roleCustom;
+    if (inputPersonalEmail) inputPersonalEmail.value = window.GIT_CLUB_PROFILE.email;
+    if (bioTextarea) bioTextarea.value = window.GIT_CLUB_PROFILE.bio;
+      const loadedStudentId = document.getElementById('inputStudentId');
+      if (loadedStudentId && window.GIT_CLUB_PROFILE.studentId) loadedStudentId.value = window.GIT_CLUB_PROFILE.studentId;
+      const loadedProfilePic = document.getElementById('profilePicPreview');
+      if (loadedProfilePic && window.GIT_CLUB_PROFILE.profilePic) loadedProfilePic.src = window.GIT_CLUB_PROFILE.profilePic;
+      
+      
+
+    const addEmailBtn = document.getElementById('addEmailBtn');
+    const newEmailForm = document.getElementById('newEmailForm');
+    const cancelAddEmail = document.getElementById('cancelAddEmail');
+    const charCount = document.getElementById('charCount');
+    
+    const dockSaveBtn = document.getElementById('dockSaveBtn');
+    const topSaveBtn = document.getElementById('topSaveBtn');
+    const dockResetBtn = document.getElementById('dockResetBtn');
+    const topDiscardBtn = document.getElementById('topDiscardBtn');
+    const unsavedDock = document.getElementById('unsavedDock');
+
+    function triggerFeedback(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-text');
+      if (toast && text) {
+        text.innerText = msg;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3200);
+      } else {
+        alert(msg);
+      }
+    }
+
+    if (roleSelect && roleCustom) {
+      roleSelect.addEventListener('change', (e) => {
+        roleCustom.value = e.target.value;
+      });
+    }
+
+    if (addEmailBtn && newEmailForm && cancelAddEmail) {
+      addEmailBtn.addEventListener('click', () => {
+        newEmailForm.classList.remove('hidden');
+        newEmailForm.classList.add('flex');
+      });
+      cancelAddEmail.addEventListener('click', () => {
+        newEmailForm.classList.add('hidden');
+        newEmailForm.classList.remove('flex');
+      });
+    }
+
+    if (bioTextarea && charCount) {
+      bioTextarea.addEventListener('input', () => {
+        const len = bioTextarea.value.length;
+        charCount.textContent = `${len} / 300 CHARS`;
+      });
+    }
+
+    function goToDashboard() {
+      const dashboardLink = document.querySelector('a[data-path="dashboard"]');
+      if (dashboardLink) dashboardLink.click();
+    }
+
+    async function triggerSave() {
+        if (inputFirstName) window.GIT_CLUB_PROFILE.firstName = inputFirstName.value;
+        if (inputLastName) window.GIT_CLUB_PROFILE.lastName = inputLastName.value;
+        const inputStudentId = document.getElementById('inputStudentId');
+        if (inputStudentId) window.GIT_CLUB_PROFILE.studentId = inputStudentId.value;
+        const profilePicPreview = document.getElementById('profilePicPreview');
+        if (profilePicPreview) window.GIT_CLUB_PROFILE.profilePic = profilePicPreview.src;
+        if (roleSelect) window.GIT_CLUB_PROFILE.role = roleSelect.value;
+        if (roleCustom) window.GIT_CLUB_PROFILE.roleCustom = roleCustom.value;
+        if (inputPersonalEmail) window.GIT_CLUB_PROFILE.email = inputPersonalEmail.value;
+        if (bioTextarea) window.GIT_CLUB_PROFILE.bio = bioTextarea.value;
+        
+        const originalText = dockSaveBtn ? dockSaveBtn.innerHTML : '';
+        if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving to Server...</span>';
+        if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving to Server...</span>';
+
+        // Firebase Sync
+        const fullName = ((window.GIT_CLUB_PROFILE.firstName || '') + ' ' + (window.GIT_CLUB_PROFILE.lastName || '')).trim();
+        const memberData = {
+            name: fullName,
+            role: window.GIT_CLUB_PROFILE.roleCustom || window.GIT_CLUB_PROFILE.role || 'Member',
+            department: window.GIT_CLUB_PROFILE.studentId || 'No ID',
+            email: window.GIT_CLUB_PROFILE.email || '',
+            avatar: window.GIT_CLUB_PROFILE.profilePic || ''
+        };
+
+        try {
+            if (window.GIT_CLUB_PROFILE.firebaseId) {
+                if (window.firebaseUpdateMember) await window.firebaseUpdateMember(window.GIT_CLUB_PROFILE.firebaseId, memberData);
+            } else {
+                if (window.firebaseAddMember) {
+                    const newId = await window.firebaseAddMember(memberData);
+                    window.GIT_CLUB_PROFILE.firebaseId = newId;
+                }
+            }
+        } catch(e) { console.error(e); }
+
+        localStorage.setItem('userProfileData', JSON.stringify(window.GIT_CLUB_PROFILE));
+
+        document.querySelectorAll('a[data-path="settings"]').forEach(link => {
+           const nameEl = link.querySelector('.font-title-md');
+           const roleEl = link.querySelector('.font-label-mono-sm');
+           if (nameEl) nameEl.textContent = window.GIT_CLUB_PROFILE.firstName + ' ' + window.GIT_CLUB_PROFILE.lastName;
+           if (roleEl) roleEl.textContent = window.GIT_CLUB_PROFILE.roleCustom;
+        });
+
+        if (dockSaveBtn) dockSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] text-on-primary-container">done</span><span>Saved to Cluster!</span>';
+        if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Changes Saved</span>';
+        triggerFeedback('Profile Identity Saved to Server.');
+        
+        setTimeout(() => {
+          if (unsavedDock) unsavedDock.style.opacity = '0.5';
+          if (dockSaveBtn) dockSaveBtn.innerHTML = originalText;
+          if (topSaveBtn) topSaveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Profile Changes</span>';
+          goToDashboard();
+        }, 1200);
+      }
+
+    function triggerDiscard() {
+      // Revert values to global
+      if (inputFirstName) inputFirstName.value = window.GIT_CLUB_PROFILE.firstName;
+      if (inputLastName) inputLastName.value = window.GIT_CLUB_PROFILE.lastName;
+      if (roleSelect) roleSelect.value = window.GIT_CLUB_PROFILE.role;
+      if (roleCustom) roleCustom.value = window.GIT_CLUB_PROFILE.roleCustom;
+      if (inputPersonalEmail) inputPersonalEmail.value = window.GIT_CLUB_PROFILE.email;
+      if (bioTextarea) bioTextarea.value = window.GIT_CLUB_PROFILE.bio;
+
+      if (unsavedDock) unsavedDock.style.opacity = '0.5';
+      triggerFeedback('Profile edits discarded.');
+      setTimeout(() => {
+        goToDashboard();
+      }, 800);
+    }
+
+    if (dockSaveBtn) dockSaveBtn.addEventListener('click', triggerSave);
+    if (topSaveBtn) topSaveBtn.addEventListener('click', triggerSave);
+    if (dockResetBtn) dockResetBtn.addEventListener('click', triggerDiscard);
+    if (topDiscardBtn) topDiscardBtn.addEventListener('click', triggerDiscard);
+
+    // Sync header on load
+    document.querySelectorAll('a[data-path="settings"]').forEach(link => {
+       const nameEl = link.querySelector('.font-title-md');
+       const roleEl = link.querySelector('.font-label-mono-sm');
+       if (nameEl) nameEl.textContent = window.GIT_CLUB_PROFILE.firstName + ' ' + window.GIT_CLUB_PROFILE.lastName;
+       if (roleEl) roleEl.textContent = window.GIT_CLUB_PROFILE.roleCustom;
+    });
+
+  })();
+
+            window.addEventListener('DOMContentLoaded', () => {
+               const fileInput = document.getElementById('profilePicInput');
+               const removeBtn = document.getElementById('removeProfilePicBtn');
+               const preview = document.getElementById('profilePicPreview');
+
+               if (fileInput && preview) {
+                  fileInput.addEventListener('change', (e) => {
+                     const file = e.target.files[0];
+                     if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                           preview.src = e.target.result;
+                           window.GIT_CLUB_PROFILE.profilePic = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                     }
+                  });
+               }
+
+               if (removeBtn && preview) {
+                  removeBtn.addEventListener('click', () => {
+                     preview.src = "https://api.dicebear.com/7.x/notionists/svg?seed=user";
+                     window.GIT_CLUB_PROFILE.profilePic = preview.src;
+                  });
+               }
+            });
+          </script></main></div><div class="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center gap-1 sm:gap-space-xs p-1 sm:p-1.5 rounded-full bg-surface-container-highest/95 max-w-[calc(100vw-1.5rem)] overflow-x-auto backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.65)]">
+    <a href="gitclub-mobile-events.html" data-path="events" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-title-md text-body-sm hover:brightness-110 transition-all cursor-pointer">
+      <span class="material-symbols-outlined text-[18px]">add</span><span>Event</span>
+    </a>
+    <a href="gitclub-mobile-members.html" data-path="members" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+      <span class="material-symbols-outlined text-[18px]">person_add</span><span>Member</span>
+    </a>
+    <a href="gitclub-mobile-projects.html" data-path="projects" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+      <span class="material-symbols-outlined text-[18px]">create_new_folder</span><span>Project</span>
+    </a>
+    <a href="gitclub-mobile-announcements.html" data-path="announcements" class="flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface font-title-md text-body-sm hover:bg-surface-bright transition-all cursor-pointer">
+      <span class="material-symbols-outlined text-[18px]">campaign</span><span>Broadcast</span>
+    </a>
+  </div><script id="gitclub-mobile-menu">
+(() => {
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('mobile-overlay');
+  const button = document.getElementById('mobile-menu-btn');
+  if (!sidebar || !overlay || !button) return;
+  const closeMenu = () => {
+    sidebar.classList.remove('gitclub-mobile-open');
+    overlay.classList.remove('gitclub-mobile-overlay-open');
+    document.body.style.overflow = '';
+  };
+  button.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('gitclub-mobile-open');
+    overlay.classList.toggle('gitclub-mobile-overlay-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  overlay.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a[data-path]').forEach(link => link.addEventListener('click', closeMenu));
+})();
+</script></body></html>
