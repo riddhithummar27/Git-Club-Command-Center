@@ -56,7 +56,7 @@ export default function RawStitch() {
       document.body.removeChild(newScript);
     });
     
-    // Setup routing for sidebar links
+    // Setup routing for sidebar links and mobile navigation
     const setupNavigation = () => {
       const links = containerRef.current!.querySelectorAll('a[data-path]');
       links.forEach(link => {
@@ -69,6 +69,45 @@ export default function RawStitch() {
         });
       });
     };
+
+    // Mobile menu toggle & drawer controller
+    const setupMobileMenu = () => {
+      const mobileMenuBtn = containerRef.current?.querySelector('#mobile-menu-btn');
+      const sidebar = containerRef.current?.querySelector('#app-sidebar');
+      const overlay = containerRef.current?.querySelector('#mobile-overlay');
+
+      if (!sidebar) return;
+
+      const closeSidebar = () => {
+        sidebar.classList.remove('translate-x-0');
+        sidebar.classList.add('-translate-x-full');
+        overlay?.classList.add('hidden');
+        document.body.style.overflow = '';
+      };
+
+      const openSidebar = () => {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        overlay?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      };
+
+      mobileMenuBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (sidebar.classList.contains('translate-x-0')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay?.addEventListener('click', closeSidebar);
+
+      sidebar.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeSidebar);
+      });
+    };
+    setupMobileMenu();
     
     
       setupNavigation();
