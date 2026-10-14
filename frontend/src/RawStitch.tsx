@@ -88,22 +88,24 @@ export default function RawStitch() {
       if (!sidebar) return;
 
       const closeSidebar = () => {
-        sidebar.classList.remove('translate-x-0');
+        sidebar.classList.remove('translate-x-0', 'gitclub-mobile-open');
         sidebar.classList.add('-translate-x-full');
         overlay?.classList.add('hidden');
+        overlay?.classList.remove('gitclub-mobile-overlay-open');
         document.body.style.overflow = '';
       };
 
       const openSidebar = () => {
         sidebar.classList.remove('-translate-x-full');
-        sidebar.classList.add('translate-x-0');
+        sidebar.classList.add('translate-x-0', 'gitclub-mobile-open');
         overlay?.classList.remove('hidden');
+        overlay?.classList.add('gitclub-mobile-overlay-open');
         document.body.style.overflow = 'hidden';
       };
 
       mobileMenuBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (sidebar.classList.contains('translate-x-0')) {
+        if (sidebar.classList.contains('translate-x-0') || sidebar.classList.contains('gitclub-mobile-open')) {
           closeSidebar();
         } else {
           openSidebar();

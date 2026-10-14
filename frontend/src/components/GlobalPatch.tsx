@@ -26,12 +26,25 @@ function applyPatches(path: string) {
     if (!sidebar || !overlay) return;
     if (forceClose) {
       sidebar.classList.add('-translate-x-full');
+      sidebar.classList.remove('translate-x-0', 'gitclub-mobile-open');
       overlay.classList.add('hidden');
+      overlay.classList.remove('gitclub-mobile-overlay-open');
       document.body.style.overflow = '';
     } else {
-      sidebar.classList.toggle('-translate-x-full');
-      overlay.classList.toggle('hidden');
-      document.body.style.overflow = overlay.classList.contains('hidden') ? '' : 'hidden';
+      const isOpening = sidebar.classList.contains('-translate-x-full') || !sidebar.classList.contains('gitclub-mobile-open');
+      if (isOpening) {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0', 'gitclub-mobile-open');
+        overlay.classList.remove('hidden');
+        overlay.classList.add('gitclub-mobile-overlay-open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        sidebar.classList.remove('translate-x-0', 'gitclub-mobile-open');
+        overlay.classList.add('hidden');
+        overlay.classList.remove('gitclub-mobile-overlay-open');
+        document.body.style.overflow = '';
+      }
     }
   };
 

@@ -120,61 +120,147 @@ input[type="date"], input[type="time"] {
 }
 
 
-/* MOBILE WEB UI/UX POLISH */
-@media (max-width: 640px) {
+/* ==========================================================================
+   MOBILE WEB UI/UX POLISH & ERGONOMIC RESPONSIVE SYSTEM
+   Reference: gitclub-mobile reference suite
+   ========================================================================== */
+
+@media (max-width: 1023px) {
   html, body, #root {
-    overflow-x: hidden !important;
     width: 100% !important;
-    max-width: 100vw !important;
+    min-width: 320px !important;
+    overflow-x: hidden !important;
   }
 
-  /* Safe tap targets */
+  /* Safe tap target manipulation */
   button, a, input, select, textarea {
     touch-action: manipulation;
   }
 
-  /* Header adjustments on mobile */
+  /* Header adjustments on mobile & tablet: align to screen edges */
   header {
+    left: 0 !important;
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 
-  /* Main content spacing on mobile to avoid overlap */
+  /* Main content spacing to eliminate overlap and provide breathing room */
   main {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
     padding-bottom: 7rem !important;
+    overflow-x: clip;
   }
 
-  /* Floating dock on mobile */
+  /* Responsive sidebar drawer */
+  #app-sidebar {
+    width: min(84vw, 300px) !important;
+    transform: translateX(-105%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 50 !important;
+  }
+  #app-sidebar.gitclub-mobile-open,
+  #app-sidebar.translate-x-0 {
+    transform: translateX(0) !important;
+  }
+
+  /* Backdrop blur overlay */
+  #mobile-overlay.gitclub-mobile-overlay-open {
+    display: block !important;
+  }
+
+  /* Tables horizontal scrolling with smooth touch swipe */
+  main table {
+    display: block !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Responsive media containers */
+  main img, main canvas, main svg {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Prevent typography collisions on mobile */
+  .font-display-lg, h1.font-display-lg {
+    font-size: 1.85rem !important;
+    line-height: 1.2 !important;
+  }
+  .font-headline-xl, h1.font-headline-xl {
+    font-size: 1.65rem !important;
+    line-height: 1.25 !important;
+  }
+  .font-headline-lg, h1.font-headline-lg {
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
+  }
+  .font-headline-sm, h2.font-headline-sm {
+    font-size: 1.2rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Floating quick action dock on mobile - sleek, ergonomic, horizontal scrolling */
+  .fixed.bottom-3.right-3,
   .fixed.bottom-6.right-6 {
     bottom: 0.75rem !important;
     right: 0.75rem !important;
+    left: auto !important;
     max-width: calc(100vw - 1.5rem) !important;
     padding: 0.25rem 0.4rem !important;
     gap: 0.35rem !important;
+    z-index: 40 !important;
   }
 
+  .fixed.bottom-3.right-3 a,
   .fixed.bottom-6.right-6 a {
     padding: 0.35rem 0.6rem !important;
     font-size: 0.75rem !important;
+    white-space: nowrap !important;
   }
 
-  /* Dialogs and modals mobile fit */
+  /* Dialogs and modals: Guaranteed viewport bounds with internal scrolling */
   .fixed.inset-0.z-50 > div,
   .fixed.inset-0.z-\[60\] > div,
   #createEventModal > div,
   #modal-event > div,
   #modal-project-inspect > div,
-  #modal-add-project > div {
-    max-height: 90vh !important;
+  #modal-add-project > div,
+  #add-member-modal > div,
+  #publishModalOverlay > div {
+    max-height: 88vh !important;
     width: calc(100vw - 1.5rem) !important;
     margin: auto !important;
+    overflow-y: auto !important;
   }
 
-  /* Prevent headings overflow */
-  .font-headline-xl {
-    font-size: 1.85rem !important;
+  /* Drawers take full mobile viewport cleanly */
+  #member-drawer,
+  #project-inspect-drawer,
+  #eventDetailDrawer > div {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  /* Floating unsaved indicator in settings */
+  #unsavedDock {
+    left: 8px !important;
+    right: 8px !important;
+    max-width: calc(100vw - 16px) !important;
+    bottom: 0.75rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #unsavedDock {
+    left: 6px !important;
+    right: 6px !important;
+    max-width: calc(100vw - 12px) !important;
+  }
+  main h1 {
+    font-size: 1.45rem !important;
     line-height: 1.2 !important;
   }
 }
