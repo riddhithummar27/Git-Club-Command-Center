@@ -9,6 +9,7 @@ import notificationsHtml from './notifications.html?raw';
 import settingsHtml from './settings.html?raw';
 import analyticsHtml from './analytics.html?raw';
 import loginHtml from './login.html?raw';
+import signupHtml from './signup.html?raw';
 import showcaseHtml from './showcase.html?raw';
 import messagesHtml from './messages.html?raw';
 
@@ -23,6 +24,7 @@ const pages: Record<string, string> = {
   'settings': settingsHtml,
   'analytics': analyticsHtml,
   'login': loginHtml,
+  'signup': signupHtml,
   'showcase': showcaseHtml,
 };
 
@@ -403,5 +405,5 @@ export default function RawStitch() {
 
   }, [navigate, htmlToLoad]);
 
-  return <div ref={containerRef} className="w-full h-full text-on-surface bg-surface font-sans" />;
+  return <div ref={containerRef} className="w-full min-h-screen text-on-surface bg-surface font-sans overflow-x-hidden" />;
 }
