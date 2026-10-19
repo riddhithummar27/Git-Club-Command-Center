@@ -83,7 +83,7 @@ function applyPatches(path: string) {
     });
 
     // Quick Actions
-    const quickActions = document.querySelector('.fixed.bottom-6.right-6');
+    const quickActions = document.querySelector('.fixed.bottom-6.right-6, .fixed.bottom-3.right-3');
     if (quickActions) {
       const eventBtn = quickActions.querySelector('a[data-path="events"]');
       if (eventBtn) {

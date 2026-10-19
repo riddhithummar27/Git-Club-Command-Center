@@ -40,11 +40,9 @@ export default function RawStitch() {
   useEffect(() => {
     if (!containerRef.current) return;
     
-    // Ensure document and body allow natural vertical scrolling
+    // Ensure document and body allow natural native scrolling
     document.documentElement.style.overflow = '';
-    document.documentElement.style.overflowY = 'auto';
     document.body.style.overflow = '';
-    document.body.style.overflowY = 'auto';
     window.scrollTo(0, 0);
 
     // Parse the raw HTML string into a DOM so we can extract just the body contents
@@ -54,9 +52,18 @@ export default function RawStitch() {
     // Set the container HTML to the body's innerHTML
     containerRef.current.innerHTML = doc.body.innerHTML;
     
+    // Also inject any <style> tags from doc.head so mobile adjustments in head are applied
+    const headStyles = doc.head.querySelectorAll('style');
+    headStyles.forEach(style => {
+      containerRef.current?.appendChild(style.cloneNode(true));
+    });
+
     // Execute any scripts that came with the HTML (since innerHTML strips them)
-    const scripts = doc.body.querySelectorAll('script');
+    const scripts = [...doc.head.querySelectorAll('script'), ...doc.body.querySelectorAll('script')];
     scripts.forEach(oldScript => {
+      if (oldScript.src && oldScript.src.includes('tailwindcss')) return;
+      if (oldScript.id === 'tailwind-config') return;
+      
       const newScript = document.createElement('script');
       Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
       newScript.textContent = oldScript.textContent;
@@ -133,7 +140,7 @@ export default function RawStitch() {
           const isComplete = profile.firstName && profile.lastName;
           
           const currentPath = window.location.pathname;
-          if (!isComplete && currentPath !== '/settings' && currentPath !== '/login' && currentPath !== '/showcase' && currentPath !== '/') {
+          if (!isComplete && currentPath !== '/settings' && currentPath !== '/login' && currentPath !== '/signup' && currentPath !== '/showcase' && currentPath !== '/') {
              alert('Please complete your profile configuration first!');
              navigate('/settings');
              return;
@@ -152,7 +159,7 @@ export default function RawStitch() {
             });
             
             // Hide floating shortcuts
-            const shortcuts = document.querySelectorAll<HTMLElement>('.fixed.bottom-6.right-6 a');
+            const shortcuts = document.querySelectorAll<HTMLElement>('.fixed.bottom-6.right-6 a, .fixed.bottom-3.right-3 a');
             shortcuts.forEach(s => {
                if(!s.textContent.includes('Messages')) s.style.display = 'none';
             });

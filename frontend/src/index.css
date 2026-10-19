@@ -4,8 +4,30 @@
 
 ::-webkit-scrollbar { display: none; }
 
-html, body { margin: 0; padding: 0; min-height: 100%; -webkit-overflow-scrolling: touch; }
-body { overflow-x: hidden; }
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}
 main > :first-child { margin-top: 0 !important; }
 main > :last-child { margin-bottom: 0 !important; }
 
@@ -126,10 +148,15 @@ input[type="date"], input[type="time"] {
    ========================================================================== */
 
 @media (max-width: 1023px) {
-  html, body, #root {
+  html, body {
     width: 100% !important;
     min-width: 320px !important;
     overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #root {
+    width: 100% !important;
+    min-width: 320px !important;
   }
 
   /* Safe tap target manipulation */
